@@ -1,3 +1,3 @@
-# LJO-Anmeldung (Sommer 2020)
+# LJO-Anmeldungen
 
-Dies ist die Anmeldung zur Arbeitsphase des LJO Hamburg.
+In diesem Repository befinden sich die Online-Anmeldungen des LJO Hamburg.

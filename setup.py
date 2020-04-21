@@ -1,12 +1,24 @@
+"""Die Anmeldung für die Sommerarbeitsphase 2020 des LJO Hamburg."""
+
 import os
-import sys
-from setuptools import setup, find_packages
-from fnmatch import fnmatchcase
 from distutils.util import convert_path
+from fnmatch import fnmatchcase
+
+from setuptools import find_packages, setup
 
 standard_exclude = ('*.pyc', '*~', '.*', '*.bak', '*.swp*')
-standard_exclude_directories = ('.*', 'CVS', '_darcs', './build', './dist', 'EGG-INFO', '*.egg-info')
-def find_package_data(where='.', package='', exclude=standard_exclude, exclude_directories=standard_exclude_directories):
+standard_exclude_directories = (
+    '.*', 'CVS', '_darcs', './build', './dist', 'EGG-INFO', '*.egg-info')
+
+
+def long_description():
+    this_directory = os.path.abspath(os.path.dirname(__file__))
+    with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as f:
+        return f.read()
+
+
+def find_package_data(where='.', package='', exclude=standard_exclude,
+                      exclude_directories=standard_exclude_directories):
     out = {}
     stack = [(convert_path(where), '', package)]
     while stack:
@@ -17,7 +29,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
                 bad_name = False
                 for pattern in exclude_directories:
                     if (fnmatchcase(name, pattern)
-                        or fn.lower() == pattern.lower()):
+                            or fn.lower() == pattern.lower()):
                         bad_name = True
                         break
                 if bad_name:
@@ -34,18 +46,19 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
                 bad_name = False
                 for pattern in exclude:
                     if (fnmatchcase(name, pattern)
-                        or fn.lower() == pattern.lower()):
+                            or fn.lower() == pattern.lower()):
                         bad_name = True
                         break
                 if bad_name:
                     continue
-                out.setdefault(package, []).append(prefix+name)
+                out.setdefault(package, []).append(prefix + name)
     return out
 
-setup(name='docassemble.Anmeldungen',
-      version='1.0.5',
-      description=('Die Anmeldung für die Sommerarbeitsphase 2020 des LJO Hamburg.'),
-      long_description='# LJO-Anmeldung (Sommer 2020)\r\n\r\nDies ist die Anmeldung zur Arbeitsphase des LJO Hamburg.',
+
+setup(name='LJO-Anmeldungen',
+      version='2020-1.0.5',
+      description=__doc__,
+      long_description=long_description(),
       long_description_content_type='text/markdown',
       author='Kim Wittenburg',
       author_email='admin@ljo-hamburg.de',
@@ -55,6 +68,6 @@ setup(name='docassemble.Anmeldungen',
       namespace_packages=['docassemble'],
       install_requires=['requests'],
       zip_safe=False,
-      package_data=find_package_data(where='docassemble/Anmeldungen/', package='docassemble.Anmeldungen'),
-     )
-
+      package_data=find_package_data(where='docassemble/ljo_hamburg/registration/',
+                                     package='docassemble.ljo_hamburg.registration'),
+      )
