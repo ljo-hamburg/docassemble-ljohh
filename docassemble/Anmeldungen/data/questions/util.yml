@@ -1,0 +1,46 @@
+---
+code: |
+  def raw_dates(date_list):
+    return [date[0] if isinstance(date, tuple) else date for date in date_list]
+---
+code: |
+  def missing_dates():
+    dates = []
+    for date in raw_dates(rehearsals + concerts + tour):
+      if not rehearsal_dates.get(date, False) and \
+             not concert_dates.get(date, False) and \
+             not tour_dates.get(date, False):
+         dates.append(date)
+    return dates
+---
+code: |
+  def all_rendsburg_notes():
+    notes = []
+    if rendsburg_notes.get('vegan', False):
+      notes.append("Ich möchte vegan ernährt werden")
+    elif rendsburg_notes.get('vegetarian', False):
+      notes.append("Ich möchte vegetarisch ernährt werden")
+    notes.extend([line.strip() for line in rendsburg_extended_notes.splitlines()
+                                if line.strip()])
+    return notes
+---
+code: |
+  state = url_args.get("status", "normal").lower()
+  if state not in ["normal", "flex", "aushilfe"]:
+    state = "normal"  
+---
+code: |
+  def yesnomaybe(x):
+    if x is None:
+      return "maybe"
+    elif x:
+      return "yes"
+    else:
+      return "no"
+---
+code: |
+  def needs_to_be_checked(x):
+    if not x:
+      validation_error("Dieses Feld muss ausgewählt sein.")
+    return True
+---
