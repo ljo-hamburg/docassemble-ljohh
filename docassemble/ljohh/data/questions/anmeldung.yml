@@ -30,7 +30,7 @@ include:
 attachment:
   name: Anmeldung ${ person.name }
   filename: Anmeldung ${ person.name }
-  docx template file: Anmeldungsformular_Fruhjahr_2020.docx
+  docx template file: registration.docx
   variable name: registration
   valid formats:
     - pdf
