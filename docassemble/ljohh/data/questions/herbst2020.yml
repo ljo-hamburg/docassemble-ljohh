@@ -1,0 +1,93 @@
+---
+# Dieser Abschnitt sollte nicht verändert werden.
+include:
+  - data.yml
+  - questions-herbst2020.yml
+---
+metadata:
+  title: Anmeldung zur Herbstarbeitsphase 2020
+  tab title: Anmeldung Herbst 2020
+  short title: LJO-Anmeldung
+  logo:
+    <img src="https://ljo-hamburg.de/wp-content/uploads/2019/12/logo-weiß.png"
+         height="27">
+  description:
+    Dies ist das Anmeldeformular zur Herbstarbeitsphase 2020 des LJO Hamburg.
+  exit url: https://ljo-hamburg.de
+  revision_date: 2020-04-26
+---
+variable name: daten
+data:
+  Phase: Herbstphase 2020
+  E-Mail Benachrichtigung: []
+  Mailingliste: test@test.ljo-hamburg.de
+  Mailingliste (Eltern): test@test.ljo-hamburg.de
+  Kontakt Gruppe: Test
+  Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe # admin@ljo-hamburg.de/Test-Anmeldungen
+  Tabellen-ID: 1HVhljvwdh3BqyxbIIWy3BuOiMrgSjb7a7ARtHD7jbfY # admin@ljo-hamburg-de/Test-Anmeldungen
+  Konzerttermine:
+    - [2020-11-21, Option Konzert]
+    - [2020-11-22, Konzert Laeiszhalle]
+  Probentermine:
+    - [2020-08-17, Erste Probe]
+    - 2020-08-24
+    - [2020-08-29, Stimmproben / Probenwochenende Hamburg]
+    - [2020-08-30, Stimmproben / Probenwochenende Hamburg]
+    - 2020-09-07
+    - 2020-09-14
+    - [2020-09-19, Dozentenproben / Probenwochenende Hamburg]
+    - [2020-09-20, Dozentenproben / Probenwochenende Hamburg]
+    - [2020-09-28, Dozentenproben]
+    - 2020-10-19
+    - 2020-10-26
+    - 2020-11-02
+    - 2020-11-09
+    - [2020-11-13, Probenwochenende Tönning]
+    - [2020-11-14, Probenwochenende Tönning]
+    - [2020-11-15, Probenwochenende Tönning]
+    - 2020-11-16
+    - [2020-11-20, Generalprobe]
+---
+attachment:
+  name: Anmeldung ${ mitglied.name }
+  filename: Anmeldung ${ mitglied.name }
+  docx template file: registration.docx
+  variable name: anmeldeformular
+  valid formats: [pdf]
+---
+template: mitglied_email
+subject: Deine Anmeldung zur Herbstphase 2020 des LJO Hamburg
+content file: confirmation_email.md
+---
+template: orga_email
+subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
+content file: notification_email.md
+---
+sections:
+  - Persönliche Daten
+  - Teilnehmerbeitrag
+  - Termine
+  - Zukünftige Arbeitsphasen
+  - Vorbereitung
+  - Probenwochenende in Rendsburg
+  - Jugend- und Datenschutz
+  - Deine Anmeldung
+---
+mandatory: True
+code: |
+  Einleitung
+  Kontaktdaten
+  if minderjaehrig:
+    Elternkontakt
+  Teilnehmerbeitrag
+  Termine
+  if status != "aushilfe":
+    Phasen
+  Vorbereitung
+  Probenwochenende
+  Jugendschutz
+  Datenschutz
+  Kontrolle
+  Abschicken
+  Fertig
+---

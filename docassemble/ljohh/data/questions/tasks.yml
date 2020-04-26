@@ -1,0 +1,45 @@
+---
+code: save_data_task = background_action('save_data')
+---
+event: save_data
+code: background_response(ljo.save_user_data())
+
+---
+code: save_contact_task = background_action('save_contact', 'refresh')
+---
+event: save_contact
+code: background_response(ljo.save_contact_data())
+
+---
+code: register_member_email_task = background_action('register_member_email')
+---
+event: register_member_email
+code: background_response(ljo.register_member_email())
+
+---
+code: register_parent_email_task = background_action('register_parent_email')
+---
+event: register_parent_email
+code: background_response(ljo.register_parent_email())
+
+---
+code: member_email_task = background_action('send_member_mail')
+---
+event: send_member_mail
+need: anmeldung
+code: background_response(ljo.send_member_mail())
+
+---
+code: orga_email_task = background_action('send_orga_mail')
+---
+event: send_orga_mail
+need: anmeldung
+code: background_response(ljo.send_orga_mail())
+
+---
+code: archive_registration_task = background_action('archive_registration')
+---
+event: archive_registration
+need: anmeldung
+code: background_response(ljo.archive_registration())
+---
