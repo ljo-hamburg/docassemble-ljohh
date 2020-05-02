@@ -5,15 +5,16 @@ import requests
 from docassemble.base.functions import get_config, value
 from docassemble.base.util import DADict, DAFile, DATemplate, Individual, \
     send_email
+from google.oauth2 import service_account
 from googleapiclient import discovery
-from oauth2client.service_account import ServiceAccountCredentials
+
+__all__ = ["add_spreadsheet_row", "add_group_member"]
 
 
 def get_google_credentials(**kwargs):
-    credential_data = get_config('google').get('service account credentials')
-    info = json.loads(credential_data, strict=False)
-    return ServiceAccountCredentials.from_json_keyfile_dict(
-        info,
+    info = get_config('google').get('service account credentials')
+    return service_account.Credentials.from_service_account_info(
+        json.loads(info, strict=False),
         **kwargs
     )
 
