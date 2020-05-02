@@ -15,8 +15,6 @@ include:
 ---
 modules:
   - .util
----
-imports:
   - .ljo
 ---
 code: |
@@ -56,7 +54,7 @@ code: |
 ---
 code: |
   tasks = [save_data_task,
-           save_contact_task,
+           add_member_task,
            register_member_email_task,
            register_parent_email_task,
            member_email_task,
@@ -65,11 +63,11 @@ code: |
   if all(task.ready() for task in tasks):
     Abschicken = True
   else:
-    warten
+    Warten
 ---
 sets: anmeldung
 need: anmeldung_task
-code: warten
+code: Warten
 ---
 code: anmeldung_task = background_action('assemble_anmeldung', 'refresh')
 ---

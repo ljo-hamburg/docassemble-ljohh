@@ -1,65 +1,63 @@
 import base64
+import json
 
 import requests
+from docassemble.base.functions import get_config, value
 from docassemble.base.util import DADict, DAFile, DATemplate, Individual, \
     send_email
-
-# Variables defined in interview files
-
-def save_user_data():
-    data = {
-        'state': state,
-        'firstName': mitglied.name.first,
-        'lastName': mitglied.name.last,
-        'mail': mitglied.email,
-        'phone': mitglied.phone_number,
-        'address': mitglied.address,
-        'birthday': format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-        'instrument': mitglied.instrument,
-        'rehearsals': list(rehearsal_dates.true_values()),
-        'concerts': list(concert_dates.true_values()),
-        'tour': list(tour_dates.true_values()),
-        'nextTerm': yesnomaybe(next_term),
-        'nextNextTerm': yesnomaybe(nextnext_term),
-        'rendsburgNotes': list(rendsburg_notes.true_values()),
-        'rendsburgExtendedNotes': rendsburg_extended_notes,
-    }
-    if person.age_in_years() < 18:
-        data['parentFirstName'] = parent.name.first
-        data['parentLastName'] = parent.name.last
-        data['parentMail'] = parent.email
-        data['parentPhone'] = parent.phone_number
-    requests.post(
-        'https://script.google.com/macros/s/AKfycbyWbQUObPHQGcv8-f1x6ynVX2kZHL4Y2hheOMXpgbAmVUxNCOk/exec',
-        data={
-            'spreadsheetID': automation['spreadsheet id'],
-            'key': 'cHwzP9DaMbT8DWJIeuTulrPTwqGr7TWm',
-            'data': json.dumps(data)
-        }).raise_for_status()
-    return True  # TODO: Return success/failed
+from googleapiclient import discovery
+from oauth2client.service_account import ServiceAccountCredentials
 
 
-def save_contact_data():
-    contact_data = {
-        'firstName': person.name.first,
-        'lastName': person.name.last,
-        'mail': person.email,
-        'phone': person.phone_number,
-        'address': person.address,
-        'birthday': format_date(person.birthdate, 'yyyy-MM-dd'),
-        'instrument': person.instrument,
-        'group': automation['contact group'],
-        'key': 'UUYxwdbAM6wqZ3NagCCbDpiGRXMtFuRU'
-    }
-    if person.age_in_years() < 18:
-        contact_data['parentFirstName'] = parent.name.first
-        contact_data['parentLastName'] = parent.name.last
-        contact_data['parentMail'] = parent.email
-        contact_data['parentPhone'] = parent.phone_number
-    requests.post(
-        'https://script.google.com/macros/s/AKfycbythVM4a1_dfHc6-JnY-YsauhfUwfD-JcK4-qHkAMDB96zrSEo/exec',
-        data=contact_data).raise_for_status()
-    return True  # TODO: Return success/failed
+def get_google_credentials(**kwargs):
+    credential_data = get_config('google').get('service account credentials')
+    info = json.loads(credential_data, strict=False)
+    return ServiceAccountCredentials.from_json_keyfile_dict(
+        info,
+        **kwargs
+    )
+
+
+def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
+    credentials = get_google_credentials(
+        scopes='https://www.googleapis.com/auth/spreadsheets'
+    )
+    service = discovery.build('sheets', 'v4', credentials=credentials)
+    request = service.spreadsheets().values().get(
+        spreadsheetId=spreadsheet,
+        range=range
+    )
+    headers = request.execute()[0]
+    row = map(lambda header: data.get(header, None), headers)
+    request = service.spreadsheet().values().append(
+        spreadsheetId=spreadsheet,
+        range=range,
+        valueInputOption='RAW',
+        insertDataOption='INSERT_ROWS',
+        body={
+            "majorDimension": "ROWS",
+            "values": [row]
+        }
+    )
+    request.execute()
+    return True
+
+
+def add_group_member(group: str, email: str):
+    credentials = get_google_credentials(
+        subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
+        scopes="https://www.googleapis.com/auth/admin.directory.group.member",
+    )
+    service = discovery.build('admin', 'directory_v1', credentials=credentials)
+    request = service.members().insert(
+        groupKey=group,
+        body={
+            "email": email,
+            "role": "MEMBER"
+        }
+    )
+    request.execute()
+    return True
 
 
 def send_member_mail():
@@ -92,29 +90,8 @@ def archive_registration():
         }).raise_for_status()
 
 
-def register_member_email():
-    requests.post(
-        'https://script.google.com/macros/s/AKfycbw7xJlo62WldzOT9pbIUO-59EEfw70U7WUcPBO5KwFuMOUnTwc/exec',
-        data={
-            'user': person.email,
-            'group': automation['mailing list'],
-            'key': 'yARJdazgU77oJRySiBGcQy39mNpreO4k'
-        }).raise_for_status()
-
-
-def register_parent_email():
-    if person.age_in_years() < 18:
-        requests.post(
-            'https://script.google.com/macros/s/AKfycbw7xJlo62WldzOT9pbIUO-59EEfw70U7WUcPBO5KwFuMOUnTwc/exec',
-            data={
-                'user': parent.email,
-                'group': automation['parent mailing list'],
-                'key': 'yARJdazgU77oJRySiBGcQy39mNpreO4k'
-            }).raise_for_status()
-
 def raw_dates(date_list):
     return [date[0] if isinstance(date, tuple) else date for date in date_list]
-
 
 
 def missing_dates():

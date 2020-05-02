@@ -3,7 +3,7 @@ from docassemble.base.util import format_date, validation_error
 
 
 def alle_termine(key):
-    data: dict = value("daten")
+    config: dict = value("daten")
     return [
         {
             date[0]: format_date(date[0], 'E, d. MMMM'),
@@ -12,14 +12,14 @@ def alle_termine(key):
         } if isinstance(date, list) else {
             date: format_date(date, 'E, d. MMMM'),
             'default': True
-        } for date in data[key]
+        } for date in config[key]
     ]
 
 
 def fehltermine(key, amount):
-    data: dict = value("daten")
+    config: dict = value("daten")
     if value("status") == "normal":
-        return len(data[key]) - amount
+        return len(config[key]) - amount
     else:
         return 0
 
@@ -32,18 +32,12 @@ def ja_nein_vielleicht():
     ]
 
 
-def muss_ausgewaehlt_sein(x):
-    if not x:
-        validation_error("Dieses Feld muss ausgewählt sein.")
-    return True
-
-
 def terminliste():
     output = ""
-    data: dict = value("daten")
+    config: dict = value("daten")
     rehearsal_dates: dict = value("probentermine")
     concert_dates: dict = value("konzerttermine")
-    for date in data["Probentermine"] + data["Konzerttermine"]:
+    for date in config["Probentermine"] + config["Konzerttermine"]:
         the_date = date[0] if isinstance(date, list) else date
         text = format_date(the_date, 'E, d. MMMM yyyy')
         if isinstance(date, list):

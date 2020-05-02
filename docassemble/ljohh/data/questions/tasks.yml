@@ -1,26 +1,67 @@
 ---
+code: |
+  member_data = {
+    "Status": status,
+    "Vorname": mitglied.name.first,
+    "Nachname": mitglied.name.last,
+    "E-Mail": mitglied.email,
+    "Telefonnummer": mitglied.phone_number,
+    "Adresse": mitglied.address,
+    "Geburtsdatum": mitglied.birthdate,
+    "Instrument": mitglied.instrument,
+    "Probentermine": list(probentermine.true_values()),
+    "Konzerttermine": list(konzerttermine.true_values()),
+    "Anmerkungen": anmerkungen,
+    "Nächste Phase": ja_nein_vielleicht()[nachste_phase],
+    "Übernächste Phase": ja_nein_vielleicht()[ubernachste_phase],
+    "Versorgung (PWE)": list(pwe_versorgung.true_values()),
+    "Sonstiges (PWE)": pwe_sonstiges
+  }
+  if mitglied.age_in_years() < 18:
+    data["Eltern Vorname"] = eltern.name.first
+    data["Eltern Nachname"] = eltern.name.last
+    data["Eltern E-Mail"] = eltern.email
+    data["Eltern Telefon"] = eltern.phone_number
+---
 code: save_data_task = background_action('save_data')
 ---
 event: save_data
-code: background_response(ljo.save_user_data())
+code: |
+  background_response(add_spreadsheet_row(
+    daten["Anmeldungen"]["Tabelle"],
+    daten["Anmeldungen"]["Bereich"],
+    member_data
+  ))
 
 ---
-code: save_contact_task = background_action('save_contact', 'refresh')
+code: add_member_task = background_action('add_member')
 ---
-event: save_contact
-code: background_response(ljo.save_contact_data())
+event: add_member
+code: |
+  background_response(add_spreadsheet_row(
+    daten["Mitgliederliste"]["Tabelle"],
+    daten["Mitgliederliste"]["Bereich"],
+    member_data
+  ))
 
 ---
 code: register_member_email_task = background_action('register_member_email')
 ---
 event: register_member_email
-code: background_response(ljo.register_member_email())
+code: |
+  result = add_group_member(mitglied.email, daten["Mailingliste"])
+  background_response(result)
 
 ---
 code: register_parent_email_task = background_action('register_parent_email')
 ---
 event: register_parent_email
-code: background_response(ljo.register_parent_email())
+code: |
+  if mitglied.age_in_years() < 18:
+    result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
+  else:
+    result = True
+  background_response(result)
 
 ---
 code: member_email_task = background_action('send_member_mail')

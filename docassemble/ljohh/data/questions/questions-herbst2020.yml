@@ -1,7 +1,6 @@
 id: herbst-2020/einleitung
 field: Einleitung
 question: Anmeldung zur Herbstphase 2020
-decoration: address-book
 subquestion: |
   Über dieses Formular meldest du dich zur Herbstarbeitsphase 2020 des LJO
   Hamburg an. Die Anmeldung ist **verbindlich**, das heißt sobald du die
@@ -105,7 +104,7 @@ question: Teilnehmerbeitrag
 subquestion: |
   Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
   zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 50€ pro Person erheben.
+  Teilnehmerbeitrag von 60€ pro Person erheben.
 
   % if status == "aushilfe":
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
@@ -228,8 +227,8 @@ buttons:
 ---
 id: herbst-2020/probenwochenende
 field: Probenwochenende
-section: Probenwochenende in Rendsburg
-question: Probenwochenende in Rendsburg
+section: Probenwochenende in Tönning
+question: Probenwochenende in Tönning
 subquestion: |
   Am Ende der Arbeitsphase fährt das LJO Hamburg kurz vor den Konzerten zu einem
   gemeinsamen Probenwochenende nach Tönning, um die letzten Feinschliffe vor
@@ -241,7 +240,7 @@ subquestion: |
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 fields:
-  - "Ich möchte für Rendsburg folgendes angeben": pwe_versorgung
+  - "Ich möchte für Tönning folgendes angeben": pwe_versorgung
     datatype: checkboxes
     required: false
     choices:
@@ -297,16 +296,17 @@ fields:
   - ? Ich habe die Teilnahmebedingungen gelesen und akzeptiere sie
     : bedingungen.tnbedingungen
     datatype: yesnowide
-    validate: muss_ausgewaehlt_sein
+    validate:
+      "lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')"
   - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
       drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
       bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
       dürfen den Veranstaltungsort ohne Betreuer nicht verlassen.
     : bedingungen.veranstaltungsort
     datatype: yesnowide
-    show if:
-      code: minderjaehrig
-    validate: muss_ausgewaehlt_sein
+    show if: {code: minderjaehrig}
+    validate:
+      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
   - ? Ich gebe dem Landesmusikrat Hamburg e.V. (LMR HH) mein / unser
       Einverständnis zu Rundfunk- und Fernsehaufnahmen, Aufzeichnungen von Ton
       und Bild, die im Zusammenhang mit dem LJO Hamburg gemacht werden, sowie
@@ -315,7 +315,8 @@ fields:
       Rechte hiermit auf den LMR HH.
     : bedingungen.aufnahmen
     datatype: yesnowide
-    validate: muss_ausgewaehlt_sein
+    validate:
+      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
   - ? Ich bin informiert, dass die Arbeitsphase nur stattfinden kann, wenn eine
       auskömmliche Finanzierung sowie eine vollständige Orchesterbesetzung
       gesichert ist. Im Falle des nicht Zustandekommen kann die Arbeitsphase
@@ -323,13 +324,15 @@ fields:
       Fall zurückerstattet.
     : bedingungen.finanzierung
     datatype: yesnowide
-    validate: muss_ausgewaehlt_sein
+    validate:
+      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
   - ? Ich erkläre mich damit einverstanden, zukünftig Informationen des
       Landesmusikrates Hamburg zum Thema LJO HH, den Newsletter sowie weitere
       Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
-    validate: muss_ausgewaehlt_sein
+    validate:
+      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
 ---
 id: herbst-2020/kontrolle
 continue button field: Kontrolle
@@ -377,7 +380,7 @@ review:
       % if anmerkungen:
       ${ anmerkungen }
       % else:
-      **Keine weiteren Anmerkungen.**
+      *Keine weiteren Anmerkungen.*
       %endif
   - Angaben ändern: Probenwochenende
     button: |
@@ -444,7 +447,7 @@ question: Deine Anmeldung
 subquestion:
   Deine Anmeldung wurde erfolgreich abgeschickt. Du hast eine Kopie per E-Mail
   bekommen. Du kannst deine Anmeldung auch direkt hier
-  [herunterladen](${ registration.pdf.url_for() }). Wir freuen uns darauf, mit
+  [herunterladen](${ anmeldung.pdf.url_for() }). Wir freuen uns darauf, mit
   dir zusammenzuspielen.
 
   Klicke auf "Fertig", um die Anmeldung zu beenden.

@@ -4,6 +4,9 @@ include:
   - data.yml
   - questions-herbst2020.yml
 ---
+# Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
+# Titel). Mögliche Felder sind hier dokumentiert:
+# https://docassemble.org/docs/initial.html#metadata
 metadata:
   title: Anmeldung zur Herbstarbeitsphase 2020
   tab title: Anmeldung Herbst 2020
@@ -16,15 +19,37 @@ metadata:
   exit url: https://ljo-hamburg.de
   revision_date: 2020-04-26
 ---
+# In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
+# konfiguriert. Die einzelnen Felder sind separat dokumentiert.
 variable name: daten
 data:
-  Phase: Herbstphase 2020
+  # Das Aktivieren des Testmodus verhindert, dass Anmeldungen automatisch
+  # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
+  # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
+  # Testmodus passiert wäre.
+  Testmodus: false
+
+  # Der Name der Arbeitsphase. Dieser Wert wird in der Mitgliederliste benutzt.
+  Phase: Herbst 2020
+
+  # Konfiguriert die Anbindung an die Mitgliederliste. Die 'Tabelle' gibt die ID
+  # einer Google Docs Tabelle an, in der neue Anmeldungen eingefügt werden
+  # sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an, in dem neue
+  # Anmeldungen eingefügt werden sollen.
+  Mitgliederliste:
+    Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
+    Bereich: Anmeldungen
+
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab.
+  Anmeldungen:
+    Tabelle: 1HVhljvwdh3BqyxbIIWy3BuOiMrgSjb7a7ARtHD7jbfY
+    Bereich: Anmeldungen
+
   E-Mail Benachrichtigung: []
   Mailingliste: test@test.ljo-hamburg.de
   Mailingliste (Eltern): test@test.ljo-hamburg.de
   Kontakt Gruppe: Test
   Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe # admin@ljo-hamburg.de/Test-Anmeldungen
-  Tabellen-ID: 1HVhljvwdh3BqyxbIIWy3BuOiMrgSjb7a7ARtHD7jbfY # admin@ljo-hamburg-de/Test-Anmeldungen
   Konzerttermine:
     - [2020-11-21, Option Konzert]
     - [2020-11-22, Konzert Laeiszhalle]
@@ -69,7 +94,7 @@ sections:
   - Termine
   - Zukünftige Arbeitsphasen
   - Vorbereitung
-  - Probenwochenende in Rendsburg
+  - Probenwochenende in Tönning
   - Jugend- und Datenschutz
   - Deine Anmeldung
 ---
