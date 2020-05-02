@@ -2,9 +2,8 @@ import base64
 import json
 
 import requests
-from docassemble.base.functions import get_config, value
-from docassemble.base.util import DADict, DAFile, DATemplate, Individual, \
-    send_email
+from docassemble.base.functions import get_config
+from docassemble.base.util import send_email
 from google.oauth2 import service_account
 from googleapiclient import discovery
 
@@ -21,7 +20,7 @@ def get_google_credentials(**kwargs):
 
 def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
     credentials = get_google_credentials(
-        scopes='https://www.googleapis.com/auth/spreadsheets'
+        scopes=['https://www.googleapis.com/auth/spreadsheets']
     )
     service = discovery.build('sheets', 'v4', credentials=credentials)
     request = service.spreadsheets().values().get(
@@ -47,7 +46,7 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
 def add_group_member(group: str, email: str):
     credentials = get_google_credentials(
         subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
-        scopes="https://www.googleapis.com/auth/admin.directory.group.member",
+        scopes=["https://www.googleapis.com/auth/admin.directory.group.member"],
     )
     service = discovery.build('admin', 'directory_v1', credentials=credentials)
     request = service.members().insert(

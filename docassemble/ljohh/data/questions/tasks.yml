@@ -64,6 +64,7 @@ code: |
   background_response(result)
 
 ---
+need: anmeldung
 code: member_email_task = background_action('send_member_mail')
 ---
 event: send_member_mail
@@ -71,6 +72,7 @@ need: anmeldung
 code: background_response(ljo.send_member_mail())
 
 ---
+need: anmeldung
 code: orga_email_task = background_action('send_orga_mail')
 ---
 event: send_orga_mail
@@ -78,6 +80,7 @@ need: anmeldung
 code: background_response(ljo.send_orga_mail())
 
 ---
+need: anmeldung
 code: archive_registration_task = background_action('archive_registration')
 ---
 event: archive_registration
