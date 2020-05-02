@@ -9,6 +9,8 @@ from googleapiclient import discovery
 
 __all__ = ["add_spreadsheet_row", "add_group_member"]
 
+from googleapiclient.errors import HttpError
+
 
 def get_google_credentials(**kwargs):
     info = get_config('google').get('service account credentials')
@@ -27,9 +29,9 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
         spreadsheetId=spreadsheet,
         range=range
     )
-    headers = request.execute()[0]
-    row = map(lambda header: data.get(header, None), headers)
-    request = service.spreadsheet().values().append(
+    headers = request.execute()["values"][0]
+    row = list(map(lambda header: data.get(header, None), headers))
+    request = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet,
         range=range,
         valueInputOption='RAW',
@@ -56,7 +58,13 @@ def add_group_member(group: str, email: str):
             "role": "MEMBER"
         }
     )
-    request.execute()
+    try:
+        request.execute()
+    except HttpError as error:
+        # If the email is already in the group do not raise an error.
+        # Status code 409 Conflict
+        if error.resp.status != 409:
+            raise error
     return True
 
 

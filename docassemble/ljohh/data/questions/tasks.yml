@@ -7,7 +7,7 @@ code: |
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
     "Adresse": mitglied.address,
-    "Geburtsdatum": mitglied.birthdate,
+    "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
     "Instrument": mitglied.instrument,
     "Probentermine": list(probentermine.true_values()),
     "Konzerttermine": list(konzerttermine.true_values()),
@@ -49,7 +49,7 @@ code: register_member_email_task = background_action('register_member_email')
 ---
 event: register_member_email
 code: |
-  result = add_group_member(mitglied.email, daten["Mailingliste"])
+  result = add_group_member(daten["Mailingliste"], mitglied.email)
   background_response(result)
 
 ---
