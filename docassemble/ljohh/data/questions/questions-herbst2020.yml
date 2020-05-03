@@ -158,7 +158,7 @@ fields:
     datatype: checkboxes
     none of the above: false
     code: alle_termine("Probentermine")
-    minlength: ${ fehltermine("Probentermine", 4) }
+    minlength: ${ max_fehltermine("Probentermine", 4) }
     validation messages:
       minlength: |
         Um im LJO mitspielen zu können erwarten wir, dass du auch zu allen
@@ -182,7 +182,7 @@ fields:
     datatype: checkboxes
     none of the above: false
     code: alle_termine("Konzerttermine")
-    minlength: ${ fehltermine("Konzerttermine", 0) }
+    minlength: ${ max_fehltermine("Konzerttermine", 0) }
     validation messages:
       minlength: |
         Es ist leider nicht möglich, nur bei einigen Konzerten mitzuspielen. Für
@@ -386,17 +386,11 @@ review:
     button: |
       ## Probenwochenende in Tönning
 
-      % if pwe_versorgung.get('vegan'):
-        - Du wirst beim Probenwochenende **vegan** versorgt.
-      % elif pwe_versorgung.get('vegetarisch'):
-        - Du wirst beim Probenwochenende **vegetarisch** versorgt.
-      % endif
-      % for zeile in pwe_angaben():
+      % for zeile in alle_pwe_angaben():
         - ${ zeile }
       % endfor
-
-      % if not pwe_angaben():
-        *Du hast keine weiteren Angaben gemacht*
+      % if not alle_pwe_angaben():
+        *Du hast keine Angaben zum Probenwochenende gemacht*
       % endif
   - Angaben ändern: Phasen
     show if: status != "aushilfe"

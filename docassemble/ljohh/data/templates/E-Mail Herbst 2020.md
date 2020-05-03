@@ -1,4 +1,4 @@
-Liebe\*r ${ person.name.first },
+Liebe\*r ${ mitglied.name.first },
 
 vielen Dank zu deiner Anmeldung zur ${ term['name'] } im Landesjugendorchester
 Hamburg. In dieser Mail bekommst du nun einige wichtige Informationen für die

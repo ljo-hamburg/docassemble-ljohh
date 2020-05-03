@@ -1,5 +1,6 @@
 import base64
 import json
+from typing import Any, Dict
 
 import requests
 from docassemble.base.functions import get_config
@@ -20,7 +21,7 @@ def get_google_credentials(**kwargs):
     )
 
 
-def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
+def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     credentials = get_google_credentials(
         scopes=['https://www.googleapis.com/auth/spreadsheets']
     )
@@ -29,13 +30,17 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: dict):
         spreadsheetId=spreadsheet,
         range=range
     )
-    headers = request.execute()["values"][0]
-    row = list(map(lambda header: data.get(header, None), headers))
+    response = request.execute()
+    print("Response:")
+    print(response)
+    headers = response["values"][0]
+    data = {key.casefold(): value for key, value in data.items()}
+    row = list(map(lambda header: data.get(header.casefold(), None), headers))
     request = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet,
         range=range,
         valueInputOption='RAW',
-        insertDataOption='INSERT_ROWS',
+        insertDataOption='OVERWRITE',
         body={
             "majorDimension": "ROWS",
             "values": [row]
@@ -96,26 +101,3 @@ def archive_registration():
             'key': '8aPDVTmpRdzqxwP700QAgTqk9tUtAomm',
             'data': base64.b64encode(registration.pdf.slurp(auto_decode=False))
         }).raise_for_status()
-
-
-def raw_dates(date_list):
-    return [date[0] if isinstance(date, tuple) else date for date in date_list]
-
-
-def missing_dates():
-    dates = []
-    for date in raw_dates(rehearsals + concerts + tour):
-        if not rehearsal_dates.get(date, False) and \
-                not concert_dates.get(date, False) and \
-                not tour_dates.get(date, False):
-            dates.append(date)
-    return dates
-
-
-def yesnomaybe(x):
-    if x is None:
-        return "maybe"
-    elif x:
-        return "yes"
-    else:
-        return "no"

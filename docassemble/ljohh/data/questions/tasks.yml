@@ -4,11 +4,11 @@ code: |
     "Status": status,
     "Vorname": mitglied.name.first,
     "Nachname": mitglied.name.last,
+    "Instrument": mitglied.instrument,
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
     "Adresse": mitglied.address,
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-    "Instrument": mitglied.instrument,
     "Probentermine": list(probentermine.true_values()),
     "Konzerttermine": list(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen,
@@ -17,13 +17,13 @@ code: |
     "Versorgung (PWE)": list(pwe_versorgung.true_values()),
     "Sonstiges (PWE)": pwe_sonstiges
   }
-  if mitglied.age_in_years() < 18:
+  if minderjaehrig:
     data["Eltern Vorname"] = eltern.name.first
     data["Eltern Nachname"] = eltern.name.last
     data["Eltern E-Mail"] = eltern.email
     data["Eltern Telefon"] = eltern.phone_number
 ---
-code: save_data_task = background_action('save_data')
+code: save_data_task = background_action('save_data', 'refresh')
 ---
 event: save_data
 code: |
@@ -34,7 +34,7 @@ code: |
   ))
 
 ---
-code: add_member_task = background_action('add_member')
+code: add_member_task = background_action('add_member', 'refresh')
 ---
 event: add_member
 code: |
@@ -45,7 +45,7 @@ code: |
   ))
 
 ---
-code: register_member_email_task = background_action('register_member_email')
+code: register_member_email_task = background_action('register_member_email', 'refresh')
 ---
 event: register_member_email
 code: |
@@ -53,11 +53,11 @@ code: |
   background_response(result)
 
 ---
-code: register_parent_email_task = background_action('register_parent_email')
+code: register_parent_email_task = background_action('register_parent_email', 'refresh')
 ---
 event: register_parent_email
 code: |
-  if mitglied.age_in_years() < 18:
+  if minderjaehrig:
     result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
   else:
     result = True
@@ -65,7 +65,7 @@ code: |
 
 ---
 need: anmeldung
-code: member_email_task = background_action('send_member_mail')
+code: member_email_task = background_action('send_member_mail', 'refresh')
 ---
 event: send_member_mail
 need: anmeldung
@@ -73,7 +73,7 @@ code: background_response(ljo.send_member_mail())
 
 ---
 need: anmeldung
-code: orga_email_task = background_action('send_orga_mail')
+code: orga_email_task = background_action('send_orga_mail', 'refresh')
 ---
 event: send_orga_mail
 need: anmeldung
@@ -81,7 +81,7 @@ code: background_response(ljo.send_orga_mail())
 
 ---
 need: anmeldung
-code: archive_registration_task = background_action('archive_registration')
+code: archive_registration_task = background_action('archive_registration', 'refresh')
 ---
 event: archive_registration
 need: anmeldung

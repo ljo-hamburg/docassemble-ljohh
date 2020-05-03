@@ -42,7 +42,7 @@ data:
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab.
   Anmeldungen:
-    Tabelle: 1HVhljvwdh3BqyxbIIWy3BuOiMrgSjb7a7ARtHD7jbfY
+    Tabelle: 1Dr0qfACZ1uYdYlWvuNxOaorGbdKibvGgtNCdpFsBIYY
     Bereich: Anmeldungen
 
   E-Mail Benachrichtigung: []
@@ -76,13 +76,13 @@ data:
 attachment:
   name: Anmeldung ${ mitglied.name }
   filename: Anmeldung ${ mitglied.name }
-  docx template file: registration.docx
+  docx template file: Anmeldung Herbst 2020.docx
   variable name: anmeldeformular
   valid formats: [pdf]
 ---
 template: mitglied_email
 subject: Deine Anmeldung zur Herbstphase 2020 des LJO Hamburg
-content file: confirmation_email.md
+content file: E-Mail Herbst 2020.md
 ---
 template: orga_email
 subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
