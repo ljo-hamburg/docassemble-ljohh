@@ -1,8 +1,10 @@
 import base64
+import io
 import json
-from typing import Any, Dict
+from typing import Any, Dict, Iterable
 
 import requests
+from docassemble.base.core import DAFile
 from docassemble.base.functions import get_config
 from docassemble.base.util import send_email
 from google.oauth2 import service_account

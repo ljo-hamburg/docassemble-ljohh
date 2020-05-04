@@ -40,15 +40,24 @@ data:
     Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
     Bereich: Anmeldungen
 
-  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab.
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)
   Anmeldungen:
     Tabelle: 1Dr0qfACZ1uYdYlWvuNxOaorGbdKibvGgtNCdpFsBIYY
     Bereich: Anmeldungen
 
-  E-Mail Benachrichtigung: []
+  # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
+  # Mailingliste hinzugefügt.
   Mailingliste: test@test.ljo-hamburg.de
   Mailingliste (Eltern): test@test.ljo-hamburg.de
-  Kontakt Gruppe: Test
+
+  # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
+  # wenn eine Anmeldung abgeschickt wird.
+  E-Mail Benachrichtigung: []
+
+  # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
+  # die Variable {{{ content }}} enthalten.
+  E-Mail Vorlage: anmeldung
+
   Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe # admin@ljo-hamburg.de/Test-Anmeldungen
   Konzerttermine:
     - [2020-11-21, Option Konzert]
