@@ -8,7 +8,12 @@ from docassemble.base.util import send_email
 from google.oauth2 import service_account
 from googleapiclient import discovery
 
-__all__ = ["add_spreadsheet_row", "add_group_member"]
+__all__ = [
+    "add_spreadsheet_row",
+    "add_group_member",
+    "upload_file",
+    "send_ljo_email"
+]
 
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
@@ -38,6 +43,11 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     headers = response["values"][0]
     normalized_data = {key.casefold(): value for key, value in data.items()}
     row = [normalized_data.get(header.casefold(), None) for header in headers]
+    for header in headers:
+        print(f"Replacing {header} with "
+              f"{normalized_data.get(header.casefold())}")
+    print("Inserting Row")
+    print(row)
     request = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet,
         range=range,
