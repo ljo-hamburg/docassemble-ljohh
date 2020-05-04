@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 import requests
 from bs4 import BeautifulSoup
 from docassemble.base.core import DAFile
-from docassemble.base.functions import get_config, mark_task_as_performed
+from docassemble.base.functions import get_config, mark_task_as_performed, value
 from docassemble.base.util import email_stringer, send_email
 from flask_mail import sanitize_addresses
 from google.oauth2 import service_account
@@ -86,17 +86,18 @@ def add_group_member(group: str, email: str):
 
 
 def upload_file(file: DAFile):
+    config = value('daten')
     file.retrieve()
     credentials = get_google_credentials()
     service = discovery.build('drive', 'v3', credentials=credentials)
     file_metadata = {
-        'name': file.filename
+        'name': file.filename,
+        'parents': [config['Archivordner-ID']]
     }
     media = MediaFileUpload(file.path(), mimetype=file.mimetype)
     request = service.files().create(body=file_metadata, media_body=media)
-    result = request.execute()
-    print(result)
-    return result
+    request.execute()
+    return True
 
 
 def send_ljo_email(
@@ -117,7 +118,7 @@ def send_ljo_email(
                      "https://api.mailgun.net/v3/%s/messages")
     domain = config.get('mailgun domain', None)
     key = config.get('mailgun api key', None)
-    mg_template = get_config('daten').get('Mailgun Vorlage', None)
+    mg_template = value('daten').get('Mailgun Vorlage', None)
     if not all([url, domain, key, mg_template]):
         return send_email(
             to=to,
@@ -158,10 +159,10 @@ def send_ljo_email(
                       for attachment in attachments)
     else:
         files = ()
-    ok = requests.post(url,
-                       auth=HTTPBasicAuth('api', key),
-                       data=data,
-                       files=files).ok
-    if ok and task is not None:
+    requests.post(url % domain,
+                  auth=HTTPBasicAuth('api', key),
+                  data=data,
+                  files=files).raise_for_status()
+    if task is not None:
         mark_task_as_performed(task)
-    return ok
+    return True

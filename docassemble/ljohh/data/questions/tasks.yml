@@ -73,7 +73,7 @@ code: |
   background_response(send_ljo_email(
       to=[mitglied],
       template=mitglied_email,
-      attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung]
+      attachments=[anmeldung.pdf, teilnahmebedingungen, geschäftsordnung]
   ))
 
 ---
@@ -92,7 +92,7 @@ code: |
     background_response(send_ljo_email(
       to=recipients,
       template=orga_email,
-      attachments=[anmeldung]
+      attachments=[anmeldung.pdf]
     ))
 
 ---
