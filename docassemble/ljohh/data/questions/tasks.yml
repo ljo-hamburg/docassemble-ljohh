@@ -76,7 +76,7 @@ code: |
       attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung],
       mailgun_variables={
         "template": daten["E-Mail Vorlage"],
-        "content": mitglied_mail.content_as_html()
+        "content": mitglied_email.content_as_html()
       }
   )
   background_response(result)
@@ -95,5 +95,5 @@ code: archive_registration_task = background_action('archive_registration', 'ref
 ---
 event: archive_registration
 need: anmeldung
-code: background_response(ljo.archive_registration())
+code: background_response(upload_file(anmeldung))
 ---

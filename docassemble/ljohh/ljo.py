@@ -13,9 +13,11 @@ from googleapiclient import discovery
 __all__ = ["add_spreadsheet_row", "add_group_member"]
 
 from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaFileUpload
 
 
 def get_google_credentials(**kwargs):
+    print("Getting Creds")
     info = get_config('google').get('service account credentials')
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
@@ -75,10 +77,24 @@ def add_group_member(group: str, email: str):
     return True
 
 
+def upload_file(file: DAFile):
+    file.retrieve()
+    credentials = get_google_credentials()
+    service = discovery.build('drive', 'v3', credentials=credentials)
+    file_metadata = {
+        'name': file.filename
+    }
+    media = MediaFileUpload(file.path(), mimetype=file.mimetype)
+    request = service.files().create(body=file_metadata, media_body=media)
+    result = request.execute()
+    print(result)
+    return result
+
+
 def send_member_mail():
     send_email(
         to=[mitglied],
-        template=mitglied_mail,
+        template=mitglied_email,
         attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung]
     )
 
