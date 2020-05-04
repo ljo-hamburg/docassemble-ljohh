@@ -1,10 +1,12 @@
 import json
-from typing import Any, Dict
+from typing import Any, Dict, List
 
+import requests
 from bs4 import BeautifulSoup
 from docassemble.base.core import DAFile
-from docassemble.base.functions import get_config
-from docassemble.base.util import send_email
+from docassemble.base.functions import get_config, mark_task_as_performed
+from docassemble.base.util import email_stringer, send_email
+from flask_mail import sanitize_addresses
 from google.oauth2 import service_account
 from googleapiclient import discovery
 
@@ -17,6 +19,7 @@ __all__ = [
 
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
+from requests.auth import HTTPBasicAuth
 
 
 def get_google_credentials(**kwargs):
@@ -43,11 +46,6 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     headers = response["values"][0]
     normalized_data = {key.casefold(): value for key, value in data.items()}
     row = [normalized_data.get(header.casefold(), None) for header in headers]
-    for header in headers:
-        print(f"Replacing {header} with "
-              f"{normalized_data.get(header.casefold())}")
-    print("Inserting Row")
-    print(row)
     request = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet,
         range=range,
@@ -58,7 +56,9 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
             "values": [row]
         }
     )
-    request.execute()
+    response = request.execute()
+    print("Insert Response")
+    print(response)
     return True
 
 
@@ -99,17 +99,69 @@ def upload_file(file: DAFile):
     return result
 
 
-def send_ljo_email(to, template, attachments=None, mg_template=None):
-    html = template.content_as_html()
-    body = BeautifulSoup(html, "html.parser").get_text('\n')
-    mg_vars = {}
-    if mg_template:
-        mg_vars["template"] = mg_template
-        mg_vars["content"] = template.content_as_html()
-    return send_email(
-        to=to,
-        body=body,
-        subject=template.subject,
-        attachments=attachments,
-        mailgun_variables=mg_vars
-    )
+def send_ljo_email(
+        to=None,
+        sender=None,
+        cc=None,
+        bcc=None,
+        body=None,
+        html=None,
+        subject="",
+        template=None,
+        task=None,
+        attachments: List[DAFile] = None,
+        mailgun_variables=None
+):
+    config = get_config('mail')
+    url = config.get('mailgun send url',
+                     "https://api.mailgun.net/v3/%s/messages")
+    domain = config.get('mailgun domain', None)
+    key = config.get('mailgun api key', None)
+    mg_template = get_config('daten').get('Mailgun Vorlage', None)
+    if not all([url, domain, key, mg_template]):
+        return send_email(
+            to=to,
+            sender=sender,
+            cc=cc,
+            bcc=bcc,
+            body=body,
+            html=html,
+            subject=subject,
+            template=template,
+            task=task,
+            attachments=attachments,
+            mailgun_variables=mailgun_variables
+        )
+
+    def join_email(email):
+        return ", ".join(sanitize_addresses(email_stringer(email,
+                                                           include_name=True)))
+
+    html = html or template.content_as_html()
+    text = body or BeautifulSoup(html, "html.parser").get_text('\n')
+    data = {
+        "from": sender or config["default sender"],
+        "to": join_email(to),
+        "subject": subject or template.subject,
+        "template": mg_template,
+        "t:text": text,
+        "v:content": html
+    }
+    if cc:
+        data["cc"] = join_email(cc)
+    if bcc:
+        data["bcc"] = join_email("bcc")
+    if attachments:
+        files = tuple(("attachment", (attachment.filename,
+                                      attachment.slurp(auto_decode=False),
+                                      attachment.mimetype))
+                      for attachment in attachments)
+    else:
+        files = ()
+    ok = requests.post(url,
+                       auth=HTTPBasicAuth('api', key),
+                       data=data,
+                       files=files).ok
+    if ok and task is not None:
+        mark_task_as_performed(task)
+    return ok

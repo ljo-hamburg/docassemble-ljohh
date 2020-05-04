@@ -56,7 +56,7 @@ data:
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.
-  E-Mail Vorlage: anmeldung
+  Mailgun Vorlage: anmeldung
 
   # ID des Google Drive Ordners, in dem Anmeldungne archiviert werden sollen.
   # Die ID kann aus der URL herausgelesen werden.

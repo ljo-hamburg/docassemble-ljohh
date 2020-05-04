@@ -101,5 +101,5 @@ code: archive_registration_task = background_action('archive_registration', 'ref
 ---
 event: archive_registration
 need: anmeldung
-code: background_response(upload_file(anmeldung))
+code: background_response(upload_file(anmeldung.pdf))
 ---
