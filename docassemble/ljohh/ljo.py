@@ -1,9 +1,7 @@
-import base64
-import io
 import json
-from typing import Any, Dict, Iterable
+from typing import Any, Dict
 
-import requests
+from bs4 import BeautifulSoup
 from docassemble.base.core import DAFile
 from docassemble.base.functions import get_config
 from docassemble.base.util import send_email
@@ -38,8 +36,8 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     print("Response:")
     print(response)
     headers = response["values"][0]
-    data = {key.casefold(): value for key, value in data.items()}
-    row = list(map(lambda header: data.get(header.casefold(), None), headers))
+    normalized_data = {key.casefold(): value for key, value in data.items()}
+    row = [normalized_data.get(header.casefold(), None) for header in headers]
     request = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet,
         range=range,
@@ -91,31 +89,17 @@ def upload_file(file: DAFile):
     return result
 
 
-def send_member_mail():
-    send_email(
-        to=[mitglied],
-        template=mitglied_email,
-        attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung]
+def send_ljo_email(to, template, attachments=None, mg_template=None):
+    html = template.content_as_html()
+    body = BeautifulSoup(html, "html.parser").get_text('\n')
+    mg_vars = {}
+    if mg_template:
+        mg_vars["template"] = mg_template
+        mg_vars["content"] = template.content_as_html()
+    return send_email(
+        to=to,
+        body=body,
+        subject=template.subject,
+        attachments=attachments,
+        mailgun_variables=mg_vars
     )
-
-
-def send_orga_mail():
-    recipients = anmeldeformular["E-Mail Benachrichtigung"]
-    if not recipients:
-        return
-    send_email(
-        to=recipients,
-        template=orga_mail,
-        attachments=[anmeldeformular]
-    )
-
-
-def archive_registration():
-    requests.post(
-        'https://script.google.com/macros/s/AKfycbzTVMyYn6q0OydgArzMbTBlw197-6B7uunHzPJp6Pn8d92wQQI/exec',
-        data={
-            'folderID': automation['archive folder'],
-            'filename': registration.pdf.filename,
-            'key': '8aPDVTmpRdzqxwP700QAgTqk9tUtAomm',
-            'data': base64.b64encode(registration.pdf.slurp(auto_decode=False))
-        }).raise_for_status()

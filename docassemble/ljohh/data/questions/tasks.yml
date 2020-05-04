@@ -65,29 +65,35 @@ code: |
 
 ---
 need: anmeldung
-code: member_email_task = background_action('send_member_mail', 'refresh')
+code: member_email_task = background_action('send_member_email', 'refresh')
 ---
-event: send_member_mail
+event: send_member_email
 need: anmeldung
 code: |
-  result = send_email(
+  background_response(send_ljo_email(
       to=[mitglied],
       template=mitglied_email,
-      attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung],
-      mailgun_variables={
-        "template": daten["E-Mail Vorlage"],
-        "content": mitglied_email.content_as_html()
-      }
-  )
-  background_response(result)
+      attachments=[anmeldeformular, teilnahmebedingungen, geschäftsordnung]
+  ))
 
 ---
 need: anmeldung
-code: orga_email_task = background_action('send_orga_mail', 'refresh')
+code: orga_email_task = background_action('send_orga_email', 'refresh')
 ---
-event: send_orga_mail
+event: send_orga_email
 need: anmeldung
-code: background_response(ljo.send_orga_mail())
+code: |
+  recipients = daten["E-Mail Benachrichtigung"]
+  if isinstance(recipients, str):
+    recipients = [recipients]
+  if not recipients:
+    background_response(True)
+  else:
+    background_response(send_ljo_email(
+      to=recipients,
+      template=orga_email,
+      attachments=[anmeldung]
+    ))
 
 ---
 need: anmeldung

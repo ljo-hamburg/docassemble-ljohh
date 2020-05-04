@@ -58,7 +58,16 @@ data:
   # die Variable {{{ content }}} enthalten.
   E-Mail Vorlage: anmeldung
 
-  Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe # admin@ljo-hamburg.de/Test-Anmeldungen
+  # ID des Google Drive Ordners, in dem Anmeldungne archiviert werden sollen.
+  # Die ID kann aus der URL herausgelesen werden.
+  Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe
+
+  # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
+  # sind möglich:
+  # - yyyy-mm-dd: Ein einzelnes Datum. Der Wochentag wird automatisch erkannt.
+  # - [yyyy-mm-dd, <text>]: Ein Datum mit einem Texthinweis. Wenn der
+  #                         Texthinweis ein Komma enthält, muss er in
+  #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
     - [2020-11-21, Option Konzert]
     - [2020-11-22, Konzert Laeiszhalle]
@@ -82,6 +91,8 @@ data:
     - 2020-11-16
     - [2020-11-20, Generalprobe]
 ---
+# Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
+# Der variable name sowie die valid formats sollten nicht verändert werden.
 attachment:
   name: Anmeldung ${ mitglied.name }
   filename: Anmeldung ${ mitglied.name }
@@ -89,14 +100,20 @@ attachment:
   variable name: anmeldeformular
   valid formats: [pdf]
 ---
+# Der Inhalt der E-Mail, die an neu angemeldete Mitglieder geschickt wird. Der
+# Wert von template sollte nicht verändert werden.
 template: mitglied_email
 subject: Deine Anmeldung zur Herbstphase 2020 des LJO Hamburg
 content file: E-Mail Herbst 2020.md
 ---
+# Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
+# versendet wird. Der Wert von template sollte nicht verändert werden.
 template: orga_email
 subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
-content file: notification_email.md
+content file: Benachrichtigung.md
 ---
+# Die Abschnitte der Anmeldung. In der questions-Datei können Fragen diesen
+# Abschnitten zugeordnet werden.
 sections:
   - Persönliche Daten
   - Teilnehmerbeitrag
@@ -107,6 +124,8 @@ sections:
   - Jugend- und Datenschutz
   - Deine Anmeldung
 ---
+# Die Reihenfolge, in der Fragen gestellt werden. Dies ist eine erweiterte
+# Funktion, die nicht leichtfertig verändert werden sollte.
 mandatory: True
 code: |
   Einleitung
