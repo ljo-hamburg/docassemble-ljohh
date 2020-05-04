@@ -1,0 +1,146 @@
+---
+# Dieser Abschnitt sollte nicht verändert werden.
+include:
+  - data.yml
+  - questions-herbst2020.yml
+---
+# Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
+# Titel). Mögliche Felder sind hier dokumentiert:
+# https://docassemble.org/docs/initial.html#metadata
+metadata:
+  title: Anmeldung zur Herbstarbeitsphase 2020
+  tab title: Anmeldung Herbst 2020
+  short title: LJO-Anmeldung
+  logo:
+    <img src="https://ljo-hamburg.de/wp-content/uploads/2019/12/logo-weiß.png"
+         height="27">
+  description:
+    Dies ist das Anmeldeformular zur Herbstarbeitsphase 2020 des LJO Hamburg.
+  exit url: https://ljo-hamburg.de
+  revision_date: 2020-04-26
+---
+# In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
+# konfiguriert. Die einzelnen Felder sind separat dokumentiert.
+variable name: daten
+data:
+  # Das Aktivieren des Testmodus verhindert, dass Anmeldungen automatisch
+  # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
+  # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
+  # Testmodus passiert wäre.
+  Testmodus: false
+
+  # Der Name der Arbeitsphase. Dieser Wert wird in der Mitgliederliste benutzt.
+  Phase: Herbst 2020
+
+  # Konfiguriert die Anbindung an die Mitgliederliste. Die 'Tabelle' gibt die ID
+  # einer Google Docs Tabelle an, in der neue Anmeldungen eingefügt werden
+  # sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an, in dem neue
+  # Anmeldungen eingefügt werden sollen.
+  Mitgliederliste:
+    Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
+    Bereich: Anmeldungen
+
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)
+  Anmeldungen:
+    Tabelle: 1Dr0qfACZ1uYdYlWvuNxOaorGbdKibvGgtNCdpFsBIYY
+    Bereich: Anmeldungen
+
+  # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
+  # Mailingliste hinzugefügt.
+  Mailingliste: test@test.ljo-hamburg.de
+  Mailingliste (Eltern): test@test.ljo-hamburg.de
+
+  # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
+  # wenn eine Anmeldung abgeschickt wird.
+  E-Mail Benachrichtigung: []
+
+  # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
+  # die Variable {{{ content }}} enthalten.
+  Mailgun Vorlage: anmeldung
+
+  # ID des Google Drive Ordners, in dem Anmeldungne archiviert werden sollen.
+  # Die ID kann aus der URL herausgelesen werden.
+  Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe
+
+  # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
+  # sind möglich:
+  # - yyyy-mm-dd: Ein einzelnes Datum. Der Wochentag wird automatisch erkannt.
+  # - [yyyy-mm-dd, <text>]: Ein Datum mit einem Texthinweis. Wenn der
+  #                         Texthinweis ein Komma enthält, muss er in
+  #                         Anführungszeichen eingeschlossen sein.
+  Konzerttermine:
+    - [2020-11-21, Option Konzert]
+    - [2020-11-22, Konzert Laeiszhalle]
+  Probentermine:
+    - [2020-08-17, Erste Probe]
+    - 2020-08-24
+    - [2020-08-29, Stimmproben / Probenwochenende Hamburg]
+    - [2020-08-30, Stimmproben / Probenwochenende Hamburg]
+    - 2020-09-07
+    - 2020-09-14
+    - [2020-09-19, Dozentenproben / Probenwochenende Hamburg]
+    - [2020-09-20, Dozentenproben / Probenwochenende Hamburg]
+    - [2020-09-28, Dozentenproben]
+    - 2020-10-19
+    - 2020-10-26
+    - 2020-11-02
+    - 2020-11-09
+    - [2020-11-13, Probenwochenende Tönning]
+    - [2020-11-14, Probenwochenende Tönning]
+    - [2020-11-15, Probenwochenende Tönning]
+    - 2020-11-16
+    - [2020-11-20, Generalprobe]
+---
+# Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
+# Der variable name sowie die valid formats sollten nicht verändert werden.
+attachment:
+  name: Anmeldung ${ mitglied.name }
+  filename: Anmeldung ${ mitglied.name }
+  docx template file: Anmeldung Herbst 2020.docx
+  variable name: anmeldeformular
+  valid formats: [pdf]
+---
+# Der Inhalt der E-Mail, die an neu angemeldete Mitglieder geschickt wird. Der
+# Wert von template sollte nicht verändert werden.
+template: mitglied_email
+subject: Deine Anmeldung zur Herbstphase 2020 des LJO Hamburg
+content file: E-Mail Herbst 2020.md
+---
+# Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
+# versendet wird. Der Wert von template sollte nicht verändert werden.
+template: orga_email
+subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
+content file: Benachrichtigung.md
+---
+# Die Abschnitte der Anmeldung. In der questions-Datei können Fragen diesen
+# Abschnitten zugeordnet werden.
+sections:
+  - Persönliche Daten
+  - Teilnehmerbeitrag
+  - Termine
+  - Zukünftige Arbeitsphasen
+  - Vorbereitung
+  - Probenwochenende in Tönning
+  - Jugend- und Datenschutz
+  - Deine Anmeldung
+---
+# Die Reihenfolge, in der Fragen gestellt werden. Dies ist eine erweiterte
+# Funktion, die nicht leichtfertig verändert werden sollte.
+mandatory: True
+code: |
+  Einleitung
+  Kontaktdaten
+  if minderjaehrig:
+    Elternkontakt
+  Teilnehmerbeitrag
+  Termine
+  if status != "aushilfe":
+    Phasen
+  Vorbereitung
+  Probenwochenende
+  Jugendschutz
+  Datenschutz
+  Kontrolle
+  Abschicken
+  Fertig
+---

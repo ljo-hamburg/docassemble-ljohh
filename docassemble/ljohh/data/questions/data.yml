@@ -1,90 +1,80 @@
 ---
-metadata:
-  title: "Anmeldung zur Frühjahrarbeitsphase 2020"
-  tab title: Anmeldung Frühjahr 2020
-  short title: LJO-Anmeldung
-  logo: |
-    <img src="https://ljo-hamburg.de/wp-content/uploads/2019/12/logo-weiß.png"
-         height="27">
-  description: |
-    Dies ist das Anmeldeformular zur Sommerarbeitsphase 2020 des LJO Hamburg.
-  exit url: https://ljo-hamburg.de
-  revision_date: 2020-01-30
+features:
+  navigation: true
+  hide navbar: false
+  hide standard menu: true
+  labels above fields: true
 ---
-variable name: automation
-data:
-  notification recipients:
-    - probespiel@ljo-hamburg.de
-    - zuern@lmr-hh.de
-  mailing list: sommer-2020@ljo-hamburg.de
-  parent mailing list: sommer-2020-eltern@ljo-hamburg.de
-  contact group: Sommer 2020
-  archive folder: 1LILXYoaKW0vomDbyhl3WfvqhXKrJeRYE
-  spreadsheet id: 1Rs2vyivUSKKdSZVrZm3ZFNcxp_fzQP5WQz3U4VCfRvI
+objects:
+  mitglied: Individual
+  eltern: Individual
+  bedingungen: DAObject
 ---
-variable name: term
-data:
-  name: Sommerphase 2020
-  start: 2020-01-20
-  end: 2020-06-29
-  conductor: "[Johannes Witt](http://johanneswitt.de)"
-  fee: 60€
-  next term name: Herbstphase 2020
-  nextnext term name: Sommerphase 2021
+include:
+  - tasks.yml
 ---
-variable name: transaction_subject
-data:
-  Teilnehmerbeitrag  (1. AP 2020, ${ person.name.first } ${ person.name.last })
+modules:
+  - .util
+  - .ljo
 ---
-variable name: rehearsals
-data from code: |
-  [
-    ("2020-01-20", "Erste Probe"),
-    ("2020-01-25", "Dozentenproben / Probenwochenende Hamburg"),
-    ("2020-01-26", "Dozentenproben / Probenwochenende Hamburg"),
-    "2020-02-03",
-    "2020-02-10",
-    "2020-02-17",
-    ("2020-02-24", "Stimmproben mit Dozenten"),
-    "2020-03-16",
-    ("2020-03-22", "Probenwochenende Hamburg / Michel-Projekt"),
-    "2020-03-23",
-    ("2020-03-30", "Probe Michel-Projekt mit Chören"),
-    ("2020-04-05", "Probentag Hamburg"),
-    ("2020-04-06", "Probe"),
-    ("2020-04-16", "Probe Michel-Projekt ab 16:00 Uhr"),
-    ("2020-04-17", "Generalprobe Michel-Projekt ab 15:00 Uhr"),
-    "2020-04-20",
-    ("2020-04-25", "Probentag Hamburg"),
-    "2020-04-27",
-    "2020-05-04",
-    ("2020-05-09", "Probentag Hamburg"),
-    "2020-05-11",
-    "2020-05-25",
-    ("2020-05-30", "Probenwochenende Rendsburg"),
-    ("2020-05-31", "Probenwochenende Rendsburg"),
-    ("2020-06-01", "Probenwochenende Rendsburg"),
-    ("2020-06-04", "Generalprobe Laeiszhalle"),
-    "2020-06-08",
-    ("2020-06-12", "Generalprobe Bergedorfer Musiktage"),
-    ("2020-06-21", "Probentag Hamburg"),
-  ]
+code: |
+  minderjaehrig = mitglied.age_in_years() < 18
+  if minderjaehrig:
+    need(Elternkontakt)
 ---
-variable name: tour
-data from code: |
-  [
-    "2020-06-25",
-    "2020-06-26",
-    "2020-06-27",
-    "2020-06-28",
-    "2020-06-29",
-  ]
+code: |
+  bedingungen.akzeptiert = all([
+    bedingungen.tnbedingungen,
+    bedingungen.aufnahmen,
+    bedingungen.finanzierung,
+    bedingungen.newsletter
+  ])
+  if minderjaehrig:
+    bedingungen.akzeptiert = (
+      bedingungen.akzeptiert and bedingungen.veranstaltungsort
+    )
 ---
-variable name: concerts
-data from code: |
-  [
-    ("2020-04-18", "Konzert Michel-Projekt"),
-    ("2020-06-05", "Konzert Laeiszhalle"),
-    ("2020-06-13", "Konzert Bergedorfer Musiktage")
-  ]
+code: |
+
+  teilnahmebedingungen = DAFile('conditions')
+  teilnahmebedingungen.initialize(filename="Teilnahmebedingungen.pdf")
+  teilnahmebedingungen.from_url("https://ljo-hamburg.de/Teilnahmebedingungen")
+  teilnahmebedingungen.commit()
 ---
+code: |
+  geschäftsordnung = DAFile('bylaws')
+  geschäftsordnung.initialize(filename="Geschaeftsordnung.pdf")
+  geschäftsordnung.from_url("https://ljo-hamburg.de/Geschaeftsordnung")
+  geschäftsordnung.commit()
+---
+code: |
+  status = url_args.get("status", "normal").lower()
+  if status not in ["normal", "flex", "aushilfe"]:
+    status = "normal"
+---
+code: |
+  tasks = [save_data_task,
+           add_member_task,
+           register_member_email_task,
+           register_parent_email_task,
+           member_email_task,
+           orga_email_task,
+           archive_registration_task]
+  if all(task.ready() for task in tasks):
+    Abschicken = True
+  else:
+    Warten
+---
+sets: anmeldung
+need: anmeldung_task
+code: Warten
+---
+code: anmeldung_task = background_action('assemble_anmeldung', 'refresh')
+---
+event: assemble_anmeldung
+code: background_response_action('set_anmeldung', anmeldung=anmeldeformular)
+---
+event: set_anmeldung
+code: |
+  anmeldung = action_argument('anmeldung')
+  background_response()

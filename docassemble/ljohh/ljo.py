@@ -1,0 +1,168 @@
+import json
+from typing import Any, Dict, List
+
+import requests
+from bs4 import BeautifulSoup
+from docassemble.base.core import DAFile
+from docassemble.base.functions import get_config, mark_task_as_performed, value
+from docassemble.base.util import email_stringer, send_email
+from flask_mail import sanitize_addresses
+from google.oauth2 import service_account
+from googleapiclient import discovery
+
+__all__ = [
+    "add_spreadsheet_row",
+    "add_group_member",
+    "upload_file",
+    "send_ljo_email"
+]
+
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaFileUpload
+from requests.auth import HTTPBasicAuth
+
+
+def get_google_credentials(**kwargs):
+    print("Getting Creds")
+    info = get_config('google').get('service account credentials')
+    return service_account.Credentials.from_service_account_info(
+        json.loads(info, strict=False),
+        **kwargs
+    )
+
+
+def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/spreadsheets']
+    )
+    service = discovery.build('sheets', 'v4', credentials=credentials)
+    request = service.spreadsheets().values().get(
+        spreadsheetId=spreadsheet,
+        range=range
+    )
+    response = request.execute()
+    print("Response:")
+    print(response)
+    headers = response["values"][0]
+    normalized_data = {key.casefold(): value for key, value in data.items()}
+    row = [normalized_data.get(header.casefold(), None) for header in headers]
+    request = service.spreadsheets().values().append(
+        spreadsheetId=spreadsheet,
+        range=range,
+        valueInputOption='RAW',
+        insertDataOption='OVERWRITE',
+        body={
+            "majorDimension": "ROWS",
+            "values": [row]
+        }
+    )
+    response = request.execute()
+    print("Insert Response")
+    print(response)
+    return True
+
+
+def add_group_member(group: str, email: str):
+    credentials = get_google_credentials(
+        subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
+        scopes=["https://www.googleapis.com/auth/admin.directory.group.member"],
+    )
+    service = discovery.build('admin', 'directory_v1', credentials=credentials)
+    request = service.members().insert(
+        groupKey=group,
+        body={
+            "email": email,
+            "role": "MEMBER"
+        }
+    )
+    try:
+        request.execute()
+    except HttpError as error:
+        # If the email is already in the group do not raise an error.
+        # Status code 409 Conflict
+        if error.resp.status != 409:
+            raise error
+    return True
+
+
+def upload_file(file: DAFile):
+    config = value('daten')
+    file.retrieve()
+    credentials = get_google_credentials()
+    service = discovery.build('drive', 'v3', credentials=credentials)
+    file_metadata = {
+        'name': file.filename,
+        'parents': [config['Archivordner-ID']]
+    }
+    media = MediaFileUpload(file.path(), mimetype=file.mimetype)
+    request = service.files().create(body=file_metadata, media_body=media)
+    request.execute()
+    return True
+
+
+def send_ljo_email(
+        to=None,
+        sender=None,
+        cc=None,
+        bcc=None,
+        body=None,
+        html=None,
+        subject="",
+        template=None,
+        task=None,
+        attachments: List[DAFile] = None,
+        mailgun_variables=None
+):
+    config = get_config('mail')
+    url = config.get('mailgun send url',
+                     "https://api.mailgun.net/v3/%s/messages")
+    domain = config.get('mailgun domain', None)
+    key = config.get('mailgun api key', None)
+    mg_template = value('daten').get('Mailgun Vorlage', None)
+    if not all([url, domain, key, mg_template]):
+        return send_email(
+            to=to,
+            sender=sender,
+            cc=cc,
+            bcc=bcc,
+            body=body,
+            html=html,
+            subject=subject,
+            template=template,
+            task=task,
+            attachments=attachments,
+            mailgun_variables=mailgun_variables
+        )
+
+    def join_email(email):
+        return ", ".join(sanitize_addresses(email_stringer(email,
+                                                           include_name=True)))
+
+    html = html or template.content_as_html()
+    text = body or BeautifulSoup(html, "html.parser").get_text('\n')
+    data = {
+        "from": sender or config["default sender"],
+        "to": join_email(to),
+        "subject": subject or template.subject,
+        "template": mg_template,
+        "t:text": text,
+        "v:content": html
+    }
+    if cc:
+        data["cc"] = join_email(cc)
+    if bcc:
+        data["bcc"] = join_email("bcc")
+    if attachments:
+        files = tuple(("attachment", (attachment.filename,
+                                      attachment.slurp(auto_decode=False),
+                                      attachment.mimetype))
+                      for attachment in attachments)
+    else:
+        files = ()
+    requests.post(url % domain,
+                  auth=HTTPBasicAuth('api', key),
+                  data=data,
+                  files=files).raise_for_status()
+    if task is not None:
+        mark_task_as_performed(task)
+    return True

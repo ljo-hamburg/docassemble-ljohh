@@ -1,0 +1,105 @@
+---
+code: |
+  member_data = {
+    "Status": status,
+    "Vorname": mitglied.name.first,
+    "Nachname": mitglied.name.last,
+    "Instrument": mitglied.instrument,
+    "E-Mail": mitglied.email,
+    "Telefonnummer": mitglied.phone_number,
+    "Adresse": mitglied.address,
+    "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
+    "Probentermine": list(probentermine.true_values()),
+    "Konzerttermine": list(konzerttermine.true_values()),
+    "Anmerkungen": anmerkungen,
+    "Nächste Phase": ja_nein_vielleicht()[nachste_phase],
+    "Übernächste Phase": ja_nein_vielleicht()[ubernachste_phase],
+    "Versorgung (PWE)": list(pwe_versorgung.true_values()),
+    "Sonstiges (PWE)": pwe_sonstiges
+  }
+  if minderjaehrig:
+    data["Eltern Vorname"] = eltern.name.first
+    data["Eltern Nachname"] = eltern.name.last
+    data["Eltern E-Mail"] = eltern.email
+    data["Eltern Telefon"] = eltern.phone_number
+---
+code: save_data_task = background_action('save_data', 'refresh')
+---
+event: save_data
+code: |
+  background_response(add_spreadsheet_row(
+    daten["Anmeldungen"]["Tabelle"],
+    daten["Anmeldungen"]["Bereich"],
+    member_data
+  ))
+
+---
+code: add_member_task = background_action('add_member', 'refresh')
+---
+event: add_member
+code: |
+  background_response(add_spreadsheet_row(
+    daten["Mitgliederliste"]["Tabelle"],
+    daten["Mitgliederliste"]["Bereich"],
+    member_data
+  ))
+
+---
+code: register_member_email_task = background_action('register_member_email', 'refresh')
+---
+event: register_member_email
+code: |
+  result = add_group_member(daten["Mailingliste"], mitglied.email)
+  background_response(result)
+
+---
+code: register_parent_email_task = background_action('register_parent_email', 'refresh')
+---
+event: register_parent_email
+code: |
+  if minderjaehrig:
+    result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
+  else:
+    result = True
+  background_response(result)
+
+---
+need: anmeldung
+code: member_email_task = background_action('send_member_email', 'refresh')
+---
+event: send_member_email
+need: anmeldung
+code: |
+  background_response(send_ljo_email(
+      to=[mitglied],
+      template=mitglied_email,
+      attachments=[anmeldung.pdf, teilnahmebedingungen, geschäftsordnung]
+  ))
+
+---
+need: anmeldung
+code: orga_email_task = background_action('send_orga_email', 'refresh')
+---
+event: send_orga_email
+need: anmeldung
+code: |
+  recipients = daten["E-Mail Benachrichtigung"]
+  if isinstance(recipients, str):
+    recipients = [recipients]
+  if not recipients:
+    background_response(True)
+  else:
+    background_response(send_ljo_email(
+      to=recipients,
+      template=orga_email,
+      attachments=[anmeldung.pdf]
+    ))
+
+---
+need: anmeldung
+code: archive_registration_task = background_action('archive_registration', 'refresh')
+---
+event: archive_registration
+need: anmeldung
+code: background_response(upload_file(anmeldung.pdf))
+---
