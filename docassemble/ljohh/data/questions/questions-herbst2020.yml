@@ -20,7 +20,8 @@ subquestion: |
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
-    - TODO: Hier das Programm einfügen
+    - F. Mendelssohn: Violinkonzert in e-Moll, op. 64
+    - P. Tschaikowski: Sinfonie Nr. 5, op 64
 
   ### Was ist mit Corona?
 
@@ -59,7 +60,7 @@ under: |
   (mailto:vorstand@ljo-hamburg.de).
   </small>
 ---
-id: herbst-2020/persönliche-daten
+id: herbst-2020/persoenliche-daten
 field: Kontaktdaten
 section: Persönliche Daten
 question: Persönliche Daten
@@ -195,7 +196,7 @@ fields:
     input type: area
     required: False
 ---
-id: herbst-2020/nächste-phasen
+id: herbst-2020/naechste-phasen
 field: Phasen
 section: Zukünftige Arbeitsphasen
 question: Zukünftige Arbeitsphasen
@@ -433,8 +434,8 @@ subquestion:
   Deine Anmeldung wird gerade abgeschickt. Dies kann einen Moment dauern. Bitte
   lass dieses Fenster geöffnet, bis die Anmeldung erfolgreich abgeschickt wurde.
 ---
-id: herbst-2020/bestätigung
-field: Fertig
+id: herbst-2020/bestaetigung
+event: Fertig
 section: Deine Anmeldung
 prevent going back: True
 question: Deine Anmeldung
