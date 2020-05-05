@@ -5,7 +5,7 @@ Hamburg. In dieser Mail bekommst du nun einige wichtige Informationen für die
 Arbeitsphase. Bitte lies dir diese Mail durch, damit du gut auf die Phase
 vorbereitet bist.
 
-## Allgemeines
+# Allgemeines
 Nachdem die Sommerarbeitsphase 2020 leider wegen Corona ausfallen musste,
 versuchen wir im Herbst wieder zu proben. Die erste Probe soll am 17. August
 stattfinden. Die Arbeitsphase wird von Johannes Witt mit folgendem Programm
@@ -20,7 +20,7 @@ Noten für deine Stimme herunter und drucke sie aus. Bitte benutze genau die
 Ausgaben von unserer Website, da es sonst oft Unterschiede in der Dynamik gibt.
 Originalnoten werden erst kurz vor dem Konzert verteilt.
 
-## Probenplan
+# Probenplan
 In der Anmeldung hast du bereits die geplanten Proben- und Konzerttermine gesehen.
 Einen detaillierten Probenplan kannst du im internen Bereich der LJO-Website
 finden oder unter auch als Übersicht unter https://probenplan.ljo-hamburg.de.
@@ -36,7 +36,7 @@ LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/freistellung/).
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
 der Teilnahme am Konzert ausschließen.** 
 
-## Teilnehmerbeitrag
+# Teilnehmerbeitrag
 Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
 zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
 Teilnehmerbeitrag von 60€ pro Person erheben.
@@ -57,7 +57,7 @@ Wir möchten dich bitten, den Beitrag selbstständig und rechtzeitig zu überwei
 Es ist immer sehr aufwändig, wenn wir den Beiträgen „hinterherrennen“ müssen.
 % endif
 
-## Was nun?
+# Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das
 Formular und schicke es zeitnah an [zuern@lmr-hh.de](mailto:zuern@lmr-hh.de). Erst
 dann bist du offiziell angemeldet und darfst mitspielen. Denk auch daran, den
