@@ -93,18 +93,18 @@ mako: |
       Der Account ${ daten["Account"] } hat keinen Zugriff auf die Tabelle.
       </span>
     % elif table["code"] == 200:
-      - => **${ table["name"] }**
+      - ⇒ **${ table["name"] }**
 
-      % if not table["sheet"]:
-        - <span style="color:red">
-          Die Datei ist keine Google Tabelle.
-          </span>
-      % elif table["editable"]:
-        - <span style="color:red">
-          Der Account ${ daten["Account"] } kann keine Daten in die Tabelle
-          schreiben.
-          </span>
-      % endif
+    % if not table["sheet"]:
+      <span style="color:red">
+      Die Datei ist keine Google Tabelle.
+      </span>
+    % elif not table["editable"]:
+      <span style="color:red">
+      Der Account ${ daten["Account"] } kann keine Daten in die Tabelle
+      schreiben.
+      </span>
+    % endif
     % else:
     <span style="color:red">
     Ein unbekannter Fehler ist aufgetreten.
@@ -117,7 +117,7 @@ mako: |
       Die Gruppe exitiert nicht.
       </span>
     % elif group["code"] == 200:
-      - **${ group["name"] }
+      - ⇒ **${ group["name"] }**
     % else:
       <span style="color:red">
       Ein unbekannter Fehler ist aufgetreten.
@@ -135,7 +135,7 @@ mako: |
       Der Account ${ daten["Account"] } hat keinen Zugriff auf den Ordner.
       </span>
     % elif folder["code"] == 200:
-      - => **${ folder["name"] }**
+      - ⇒ **${ folder["name"] }**
 
       % if not folder["folder"]:
         - <span style="color:red">
@@ -207,10 +207,8 @@ subquestion: |
      - *Keine Empfänger angegeben*
      % endif
 attachments:
-  - name: E-Mail an ${ mitglied.email }
+  - name: "E-Mail: *${ mitglied_email.subject }*"
     description: |
-      Betreff: ${ mitglied_email.subject }
-
       Diese E-Mail wird an ${ mitglied.name } gesendet. Der Inhalt der E-Mail
       ist in diesem PDF zu sehen, das Design sieht aber anders aus. Angehängt an
       diese Mail sind die folgenden Dokumenten:
@@ -220,12 +218,10 @@ attachments:
       - [${ geschaeftsordnung.filename }](${ geschaeftsordnung.url_for() })
     filename: email
     content: ${ mitglied_email.content }
-  - name: E-Mail Benachrichtigung
+  - name: "E-Mail: *${ orga_email.subject }*"
     description: |
       Diese E-Mail wird als Benachrichtigung versendet, wenn eine Anmeldung
       abgeschickt wird.
-
-      Betreff: ${ orga_email.subject }
     filename: email
     content: ${ orga_email.content }
 buttons:

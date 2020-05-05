@@ -40,6 +40,7 @@ def get_file_meta(file: str):
     service = discovery.build('drive', 'v3', credentials=credentials)
     request = service.files().get(
         fileId=file,
+        supportsAllDrives=True,
         fields="id,"
                "name,"
                "mimeType,"
@@ -159,7 +160,10 @@ def upload_file(file: DAFile, folder: str):
         'parents': [folder]
     }
     media = MediaFileUpload(file.path(), mimetype=file.mimetype)
-    request = service.files().create(body=file_metadata, media_body=media)
+    request = service.files().create(
+        supportsAllDrives=True,
+        body=file_metadata,
+        media_body=media)
     request.execute()
     return True
 
