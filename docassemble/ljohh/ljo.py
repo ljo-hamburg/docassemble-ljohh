@@ -31,6 +31,34 @@ def get_google_credentials(**kwargs):
     )
 
 
+def get_file_meta(file: str):
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/drive.metadata.readonly'],
+        fields="id, name, mimeType, capabilities/canModifyContent"
+    )
+    service = discovery.build('drive', 'v3', credentials=credentials)
+    request = service.files().get(fileId=file)
+    try:
+        result = request.execute()
+    except HttpError as error:
+        if error.resp.status in {403, 404}:
+            return {
+                "id": file,
+                "code": error.resp.status
+            }
+        else:
+            raise error
+    return {
+        "code": 200,
+        "id": result["id"],
+        "name": result["name"],
+        "editable": result["capabilities"]["canModifyContent"],
+        "sheet": result[
+                     "mimeType"] == "application/vnd.google-apps.spreadsheet",
+        "folder": result["mimeType"] == "application/vnd.google-apps.folder"
+    }
+
+
 def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     credentials = get_google_credentials(
         scopes=['https://www.googleapis.com/auth/spreadsheets']
@@ -62,6 +90,32 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
     return True
 
 
+def get_group_meta(group: str):
+    credentials = get_google_credentials(
+        subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
+        scopes=[
+            "https://www.googleapis.com/auth/admin.directory.group.readonly"]
+    )
+    service = discovery.build('admin', 'directory_v1', credentials=credentials)
+    request = service.groups().get(
+        groupKey=group
+    )
+    try:
+        response = request.execute()
+        return {
+            "code": 200,
+            "email": response["email"],
+            "name": response["name"]
+        }
+    except HttpError as error:
+        if error.resp.status == 404:
+            return {
+                "email": group,
+                "code": 404
+            }
+        raise error
+
+
 def add_group_member(group: str, email: str):
     credentials = get_google_credentials(
         subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
@@ -85,14 +139,15 @@ def add_group_member(group: str, email: str):
     return True
 
 
-def upload_file(file: DAFile):
-    config = value('daten')
+def upload_file(file: DAFile, folder: str):
     file.retrieve()
-    credentials = get_google_credentials()
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/drive']
+    )
     service = discovery.build('drive', 'v3', credentials=credentials)
     file_metadata = {
         'name': file.filename,
-        'parents': [config['Archivordner-ID']]
+        'parents': [folder]
     }
     media = MediaFileUpload(file.path(), mimetype=file.mimetype)
     request = service.files().create(body=file_metadata, media_body=media)

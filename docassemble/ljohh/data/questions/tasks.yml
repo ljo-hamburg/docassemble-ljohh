@@ -73,7 +73,7 @@ code: |
   background_response(send_ljo_email(
       to=[mitglied],
       template=mitglied_email,
-      attachments=[anmeldung.pdf, teilnahmebedingungen, geschäftsordnung]
+      attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
   ))
 
 ---
@@ -101,5 +101,5 @@ code: archive_registration_task = background_action('archive_registration', 'ref
 ---
 event: archive_registration
 need: anmeldung
-code: background_response(upload_file(anmeldung.pdf))
+code: background_response(upload_file(anmeldung.pdf, daten["Archivordner-ID"]))
 ---

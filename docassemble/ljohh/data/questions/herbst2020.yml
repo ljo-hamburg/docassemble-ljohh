@@ -17,7 +17,7 @@ metadata:
   description:
     Dies ist das Anmeldeformular zur Herbstarbeitsphase 2020 des LJO Hamburg.
   exit url: https://ljo-hamburg.de
-  revision_date: 2020-04-26
+  revision_date: 2020-05-05
 ---
 # In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
 # konfiguriert. Die einzelnen Felder sind separat dokumentiert.
@@ -27,7 +27,11 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: false
+  Testmodus: true
+
+  # Dieser Account führt die Automatischen Aktionen durch. Der Wert sollte nicht
+  # geändert werden.
+  Account: anmeldung@docassemble-264719.iam.gserviceaccount.com
 
   # Der Name der Arbeitsphase. Dieser Wert wird in der Mitgliederliste benutzt.
   Phase: Herbst 2020
