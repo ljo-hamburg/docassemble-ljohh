@@ -1,4 +1,9 @@
 ---
+event: set_variable
+code: |
+  define(action_argument('name'), action_argument('value'))
+  background_response()
+---
 code: |
   member_data = {
     "Status": status,
@@ -27,41 +32,101 @@ code: save_data_task = background_action('save_data', 'refresh')
 ---
 event: save_data
 code: |
-  background_response(add_spreadsheet_row(
-    daten["Anmeldungen"]["Tabelle"],
-    daten["Anmeldungen"]["Bereich"],
-    member_data
-  ))
+  if testmodus:
+    background_response_action(
+      'set_variable',
+      name='test_anmeldungen_tabelle',
+      value=get_file_meta(daten["Anmeldungen"]["Tabelle"])
+    )
+  else:
+    background_response(add_spreadsheet_row(
+      daten["Anmeldungen"]["Tabelle"],
+      daten["Anmeldungen"]["Bereich"],
+      member_data
+    ))
+---
 
 ---
 code: add_member_task = background_action('add_member', 'refresh')
 ---
 event: add_member
 code: |
-  background_response(add_spreadsheet_row(
-    daten["Mitgliederliste"]["Tabelle"],
-    daten["Mitgliederliste"]["Bereich"],
-    member_data
-  ))
+  if testmodus:
+    background_response_action(
+      'set_variable',
+      name='test_mitglieder_tabelle',
+      value=get_file_meta(daten["Mitgliederliste"]["Tabelle"])
+    )
+  else:
+    background_response(add_spreadsheet_row(
+      daten["Mitgliederliste"]["Tabelle"],
+      daten["Mitgliederliste"]["Bereich"],
+      member_data
+    ))
+---
 
 ---
 code: register_member_email_task = background_action('register_member_email', 'refresh')
 ---
 event: register_member_email
 code: |
-  result = add_group_member(daten["Mailingliste"], mitglied.email)
-  background_response(result)
+  if testmodus:
+    background_response_action(
+      'set_variable',
+      name='test_mitglied_mailingliste',
+      value=get_group_meta(daten["Mailingliste"])
+    )
+  else:
+    result = add_group_member(daten["Mailingliste"], mitglied.email)
+    background_response(result)
+---
 
 ---
 code: register_parent_email_task = background_action('register_parent_email', 'refresh')
 ---
 event: register_parent_email
 code: |
-  if minderjaehrig:
-    result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
+  if not minderjaehrig:
+    background_response(True)
+  if testmodus:
+    background_response_action(
+      'set_variable',
+      name='test_eltern_mailingliste',
+      value=get_group_meta(daten["Mailingliste (Eltern)"])
+    )
   else:
-    result = True
-  background_response(result)
+    result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
+    background_response(result)
+---
+
+---
+code: anmeldung_task = background_action('assemble_anmeldung', 'refresh')
+---
+event: assemble_anmeldung
+code: |
+  background_response_action(
+    'set_variable',
+    name='anmeldung',
+    value=anmeldeformular
+  )
+---
+
+---
+need: anmeldung
+code: archive_registration_task = background_action('archive_registration', 'refresh')
+---
+event: archive_registration
+need: anmeldung
+code: |
+  if testmodus:
+    background_response_action(
+      'set_variable',
+      name='test_archiv_ordner',
+      value=get_file_meta(daten["Archivordner-ID"])
+    )
+  else:
+    background_response(upload_file(anmeldung.pdf, daten["Archivordner-ID"]))
+---
 
 ---
 need: anmeldung
@@ -70,11 +135,15 @@ code: member_email_task = background_action('send_member_email', 'refresh')
 event: send_member_email
 need: anmeldung
 code: |
-  background_response(send_ljo_email(
-      to=[mitglied],
-      template=mitglied_email,
-      attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
-  ))
+  if testmodus:
+    background_response(True)
+  else:
+    background_response(send_ljo_email(
+        to=[mitglied],
+        template=mitglied_email,
+        attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
+    ))
+---
 
 ---
 need: anmeldung
@@ -88,18 +157,12 @@ code: |
     recipients = [recipients]
   if not recipients:
     background_response(True)
+  elif testmodus:
+    background_response(True)
   else:
     background_response(send_ljo_email(
       to=recipients,
       template=orga_email,
       attachments=[anmeldung.pdf]
     ))
-
----
-need: anmeldung
-code: archive_registration_task = background_action('archive_registration', 'refresh')
----
-event: archive_registration
-need: anmeldung
-code: background_response(upload_file(anmeldung.pdf, daten["Archivordner-ID"]))
 ---

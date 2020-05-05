@@ -116,6 +116,9 @@ template: orga_email
 subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
 content file: Benachrichtigung.md
 ---
+template: testergebnis
+content file: Testmodus.md
+---
 # Die Abschnitte der Anmeldung. In der questions-Datei können Fragen diesen
 # Abschnitten zugeordnet werden.
 sections:
@@ -146,5 +149,8 @@ code: |
   Datenschutz
   Kontrolle
   Abschicken
-  Fertig
+  if testmodus:
+    Testergebnisse
+  else:
+    Fertig
 ---

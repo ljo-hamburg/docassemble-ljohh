@@ -449,3 +449,11 @@ subquestion:
 buttons:
   - Fertig: exit
 ---
+id: herbst-2020/testergebnisse
+event: Testergebnisse
+section: Deine Anmeldung
+# TODO: Test going back
+question: Testmodus
+subquestion: ${ testergebnis }
+buttons:
+  - Fertig: exit
