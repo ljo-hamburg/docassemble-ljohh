@@ -206,25 +206,28 @@ subquestion: |
      % if not daten["E-Mail Benachrichtigung"]:
      - *Keine Empfänger angegeben*
      % endif
-
 attachments:
-  - content file: {code: anmeldeformular}
   - name: E-Mail an ${ mitglied.email }
     description: |
+      Betreff: ${ mitglied_email.subject }
+
       Diese E-Mail wird an ${ mitglied.name } gesendet. Der Inhalt der E-Mail
-      ist diesem PDF zu sehen, das Design sieht aber anders aus.
+      ist in diesem PDF zu sehen, das Design sieht aber anders aus. Angehängt an
+      diese Mail sind die folgenden Dokumenten:
+
+      - [${ anmeldeformular.pdf.filename }](${ anmeldeformular.pdf.url_for() })
+      - [${ teilnahmebedingungen.filename }](${ teilnahmebedingungen.url_for() })
+      - [${ geschaeftsordnung.filename }](${ geschaeftsordnung.url_for() })
     filename: email
     content: ${ mitglied_email.content }
   - name: E-Mail Benachrichtigung
     description: |
       Diese E-Mail wird als Benachrichtigung versendet, wenn eine Anmeldung
       abgeschickt wird.
+
+      Betreff: ${ orga_email.subject }
     filename: email
     content: ${ orga_email.content }
-  - name: Teilnahmebedingungen
-    content file: {code: teilnahmebedingungen}
-  - name: Geschäftsordnung
-    content file: {code: geschaeftsordnung}
 buttons:
   Weiter: continue
   Wartebildschirm ansehen:
