@@ -35,11 +35,17 @@ def get_google_credentials(**kwargs):
 
 def get_file_meta(file: str):
     credentials = get_google_credentials(
-        scopes=['https://www.googleapis.com/auth/drive.metadata.readonly'],
-        fields="id, name, mimeType, capabilities/canModifyContent"
+        scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
     )
     service = discovery.build('drive', 'v3', credentials=credentials)
-    request = service.files().get(fileId=file)
+    request = service.files().get(
+        fileId=file,
+        fields="id,"
+               "name,"
+               "mimeType,"
+               "capabilities/canEdit,"
+               "capabilities/canModifyContent"
+    )
     try:
         result = request.execute()
     except HttpError as error:
@@ -54,7 +60,8 @@ def get_file_meta(file: str):
         "code": 200,
         "id": result["id"],
         "name": result["name"],
-        "editable": result["capabilities"]["canModifyContent"],
+        "editable": result["capabilities"]["canEdit"]
+                    and result["capabilities"]["canModifyContent"],
         "sheet": result[
                      "mimeType"] == "application/vnd.google-apps.spreadsheet",
         "folder": result["mimeType"] == "application/vnd.google-apps.folder"

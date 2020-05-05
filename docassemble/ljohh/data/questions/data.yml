@@ -80,19 +80,19 @@ code: |
   anmeldung = action_argument('anmeldung')
   background_response()
 ---
-def: test_mode
-mako: >
+def: testmode_defs
+mako: |
   <%def name="check_table(table)">
-    % if table["status"] == 404:
+    % if table["code"] == 404:
       <span style="color:red">
       Diese Tabelle wurde nicht gefunden. Prüfe, ob die ID richtig ist und ob der
       Account ${ daten["Account"] } Zugriff auf die Datei hat.
       </span>
-    % elif table["status"] == 403:
+    % elif table["code"] == 403:
       <span style="color:red">
       Der Account ${ daten["Account"] } hat keinen Zugriff auf die Tabelle.
       </span>
-    % elif table["status"] == 200:
+    % elif table["code"] == 200:
       - => **${ table["name"] }**
 
       % if not table["sheet"]:
@@ -112,28 +112,29 @@ mako: >
     % endif
   </%def>
   <%def name="check_group(group)">
-    % if group["status"] == 404:
+    % if group["code"] == 404:
       <span style="color:red">
       Die Gruppe exitiert nicht.
       </span>
-    % elif group["status"] == 200:
+    % elif group["code"] == 200:
       - **${ group["name"] }
     % else:
       <span style="color:red">
       Ein unbekannter Fehler ist aufgetreten.
       </span>
+    % endif
   </%def>
   <%def name="check_folder(folder)">
-    % if folder["status"] == 404:
+    % if folder["code"] == 404:
       <span style="color:red">
       Der Ordner wurde nicht gefunden. Prüfe, ob die ID richtig ist und ob der
       Account ${ daten["Account"] } Zugriff auf den Ordner hat.
       </span>
-    % elif folder["status"] == 403:
+    % elif folder["code"] == 403:
       <span style="color:red">
       Der Account ${ daten["Account"] } hat keinen Zugriff auf den Ordner.
       </span>
-    % elif folder["status"] == 200:
+    % elif folder["code"] == 200:
       - => **${ folder["name"] }**
 
       % if not folder["folder"]:
@@ -157,6 +158,7 @@ id: testmodus
 field: Testmodus
 section: Deine Anmeldung
 question: Testmodus
+usedefs: [testmode_defs]
 subquestion: |
   Die Anmeldung befindet sich im Testmodus. Daher werden keine E-Mails
   verschickt und auch keine weiteren Automatisierungen vorgenommen. Außerhalb
@@ -165,7 +167,7 @@ subquestion: |
   <%
     anmeldung_meta = get_file_meta(daten["Anmeldungen"]["Tabelle"])
     mitglieder_meta = get_file_meta(daten["Mitgliederliste"]["Tabelle"])
-    folder_meta = get_folder_meta(daten["Archivordner-ID"])
+    folder_meta = get_file_meta(daten["Archivordner-ID"])
     member_list = get_group_meta(daten["Mailingliste"])
   %>
 
