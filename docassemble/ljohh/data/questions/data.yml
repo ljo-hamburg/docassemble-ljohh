@@ -206,7 +206,7 @@ subquestion: |
      % endif
 
 attachments:
-  - content file: {code: anmeldung}
+  - content file: {code: anmeldeformular}
   - name: E-Mail an ${ mitglied.email }
     description: |
       Diese E-Mail wird an ${ mitglied.name } gesendet. Der Inhalt der E-Mail

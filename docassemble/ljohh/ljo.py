@@ -11,6 +11,8 @@ from google.oauth2 import service_account
 from googleapiclient import discovery
 
 __all__ = [
+    "get_file_meta",
+    "get_group_meta",
     "add_spreadsheet_row",
     "add_group_member",
     "upload_file",
