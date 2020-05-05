@@ -20,7 +20,8 @@ subquestion: |
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
-    - TODO: Hier das Programm einfügen
+    - F. Mendelssohn: Violinkonzert in e-Moll, op. 64
+    - P. Tschaikowski: Sinfonie Nr. 5
 
   ### Was ist mit Corona?
 
@@ -434,7 +435,7 @@ subquestion:
   lass dieses Fenster geöffnet, bis die Anmeldung erfolgreich abgeschickt wurde.
 ---
 id: herbst-2020/bestätigung
-field: Fertig
+event: Fertig
 section: Deine Anmeldung
 prevent going back: True
 question: Deine Anmeldung
@@ -446,5 +447,5 @@ subquestion:
 
   Klicke auf "Fertig", um die Anmeldung zu beenden.
 buttons:
-  - Fertig: leave
+  - Fertig: exit
 ---
