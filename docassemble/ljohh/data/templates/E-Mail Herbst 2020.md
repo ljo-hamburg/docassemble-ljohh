@@ -71,5 +71,5 @@ haben, schreibe uns immer gerne:
 - Kim Wittenburg (1. Vorsitzender):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
-Viele Grüße
+Viele Grüße  
 Der LJO-Vorstand
