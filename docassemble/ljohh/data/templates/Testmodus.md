@@ -1,132 +1,151 @@
-<%def name="check_table(table)">
-% if table["code"] == 404:
-  <span style="color:red">
-  Diese Tabelle wurde nicht gefunden. Prüfe, ob die ID richtig ist und ob der
-  Account ${ daten["Account"] } Zugriff auf die Datei hat.
-  </span>
-% elif table["code"] == 403:
-  <span style="color:red">
-  Der Account ${ daten["Account"] } hat keinen Zugriff auf die Tabelle.
-  </span>
-% elif table["code"] == 200:
-  - ⇒ **${ table["name"] }**
-
-% if not table["sheet"]:
-  <span style="color:red">
-  Die Datei ist keine Google Tabelle.
-  </span>
-% elif not table["editable"]:
-  <span style="color:red">
-  Der Account ${ daten["Account"] } kann keine Daten in die Tabelle
-  schreiben.
-  </span>
-% endif
-% else:
-<span style="color:red">
-Ein unbekannter Fehler ist aufgetreten.
-</span>
-% endif
-</%def>
-<%def name="check_group(group)">
-% if group["code"] == 404:
-  <span style="color:red">
-  Die Gruppe exitiert nicht.
-  </span>
-% elif group["code"] == 200:
-  - ⇒ **${ group["name"] }**
-% else:
-  <span style="color:red">
-  Ein unbekannter Fehler ist aufgetreten.
-  </span>
-% endif
-</%def>
-<%def name="check_folder(folder)">
-% if folder["code"] == 404:
-  <span style="color:red">
-  Der Ordner wurde nicht gefunden. Prüfe, ob die ID richtig ist und ob der
-  Account ${ daten["Account"] } Zugriff auf den Ordner hat.
-  </span>
-% elif folder["code"] == 403:
-  <span style="color:red">
-  Der Account ${ daten["Account"] } hat keinen Zugriff auf den Ordner.
-  </span>
-% elif folder["code"] == 200:
-  - ⇒ **${ folder["name"] }**
-
-% if not folder["folder"]:
-  <span style="color:red">
-  Die ID ist kein Ordner.
-  </span>
-% elif not folder["editable"]:
-  <span style="color:red">
-  Der Account ${ daten["Account"] } kann keine Daten in den Ordner
-  schreiben.
-  </span>
-% endif
-% else:
-<span style="color:red">
-Ein unbekannter Fehler ist aufgetreten.
-</span>
-% endif
-</%def>
-
-Die Anmeldung befindet sich im Testmodus. Daher werden keine E-Mails
-verschickt und auch keine weiteren Automatisierungen vorgenommen. Außerhalb
-des Testmodus würde nun folgendes passieren:
-
-1. Die eingegebenen Daten werden in der Tabelle mit der ID
- `${ test_anmeldungen_tabelle["id"] }` eingetragen.
-
- ${ check_table(test_anmeldungen_tabelle) }
-2. Die eingegebenen Daten werden in der Mitgliedertabelle mit der ID
- `${ test_mitglieder_tabelle["id"] }` eingetragen.
-
- ${ check_table(test_mitglieder_tabelle) }
-3. Die E-Mail-Adresse ${ mitglied.email } wird dem Verteiler
- ${ test_mitglied_mailingliste["email"] } hinzugefügt.
-
- ${ check_group(test_mitglied_mailingliste) }
-% if minderjaehrig:
-4. Die E-Mail-Adresse ${ eltern.email } wird dem Verteiler
-   ${ test_eltern_mailingliste["email"] } hinzugefügt.
-
-   ${ check_group(test_eltern_mailingliste) }
-% endif
-5. Das Anmeldeformular wird im Ordner mit der ID `${ test_archiv_ordner["id"] }`
- gespeichert.
-
- ${ check_folder(test_archiv_ordner) }
-7. Eine E-Mail wird an ${ mitglied.email } gesendet. Die E-Mail ist unten zu
- sehen. Angehängt an die E-Mail sind das Anmeldeformular, die
- Teilnahmebedingungen und die Geschäftsordnung.
-% if daten["E-Mail Benachrichtigung"]:
-8. Die folgenden Empfänger werden per E-Mail über die Anmeldung benachrichtigt
- und erhalten die Anmeldung im Anhang:
-
- % for email in daten["E-Mail Benachrichtigung"]:
-  - ${ email }
- % endfor
-% endif
-
-% if daten["E-Mail Benachrichtigung"]:
-### E-Mail: *${ orga_email.subject }*
-Diese E-Mail wird als Benachrichtigung versendet, wenn eine Anmeldung
-abgeschickt wird.
-
-<div class="card card-body">
-${ orga_email }
+<div class="alert alert-info" role="alert">
+  <h5 class="alert-heading">Testmodus</h5>
+  
+  Die Anmeldung befindet sich im Testmodus. Daher werden keine E-Mails
+  verschickt und auch keine weiteren Automatisierungen vorgenommen. Dies ist nur
+  eine Zusammenfassung der Automatisierung, die bei einer echten Anmeldung
+  ablaufen würde.
 </div>
-% endif
 
-### E-Mail: *${ mitglied_email.subject }*
-Diese E-Mail wird an ${ mitglied.name } gesendet. Der Inhalt der E-Mail
-ist in diesem PDF zu sehen, das Design sieht aber anders aus. Angehängt an
-diese Mail sind die folgenden Dokumenten:
+### Anmeldungsformular
+Es wurde ein Anmeldungsformular als PDF generiert.
+
+<a href="${ anmeldung.pdf.url_for() }"
+   target="_blank"
+   class="btn btn-primary btn-sm">
+    Anmeldeformular ansehen
+</a>
+
+### Begrüßungs-E-Mail
+Eine E-Mail würde an `${ mitglied.email }` geschickt werden. In der E-Mail wird
+${ mitglied.name } zur Arbeitsphase begrüßt. Es werden außerdem wichtige
+Randinformationen genannt. Der Text der E-Mail kann unten angesehen werden. Das
+Design der E-Mail sieht allerdings anders aus.
+
+An die E-Mail sind drei Dokumente angehängt:
 
 - [${ anmeldeformular.pdf.filename }](${ anmeldung.pdf.url_for() })
 - [${ teilnahmebedingungen.filename }](${ teilnahmebedingungen.url_for() })
 - [${ geschaeftsordnung.filename }](${ geschaeftsordnung.url_for() })
 
-<div class="card card-body">
-${ mitglied_email }
+<div>
+    ${ collapse_button(
+           'mitglied-email-collapse',
+           'E-Mail-Inhalt anzeigen',
+           css_class='btn-sm'
+       ) }
+    <button type="button"
+            id="send-mitglied-mail-button"
+            class="btn btn-primary btn-sm">
+    E-Mail trotzdem senden
+    </button>
 </div>
+
+<%self:collapse id="mitglied-email-collapse" title="${ mitglied_email.subject }">
+  ${ mitglied_email }
+</%self:collapse>
+
+### Benachrichtigungs-E-Mail
+Bei jeder Anmeldung werden bestimmte Empfänger benachrichtigt.
+% if not daten["E-Mail Benachrichtigung"]:
+Es sind bisher keine Empfänger konfiguriert, daher würde dieser Schritt
+übersprungen werden.
+% else:
+Die Benachrichtigung enthält ebenfalls die
+[Anmeldung](${ anmeldung.pdf.url_for() }) im Anhang, enhält aber nur wenig Text
+und auch nicht die Teilnahmebedingungen und die Geschäftsordnung. Folgende
+Empfänger werden benachrichtigt:
+
+% for email in daten["E-Mail Benachrichtigung"]:
+  - ${ email }
+% endfor
+
+${ collapse_button(
+       'orga-email-collapse',
+       'E-Mail-Inhalt anzeigen',
+       css_class='btn-sm'
+   ) }
+<button type="button"
+        id="send-orga-mail-button"
+        class="btn btn-primary btn-sm">
+E-Mail trotzdem senden
+</button>
+
+<%self:collapse id="orga-email-collapse" title="${ orga_email.subject }">
+  ${ orga_email }
+</%self:collapse>
+% endif
+
+### Archivieren der Anmeldung
+Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
+`${ test_archiv_ordner['id'] }` archiviert.
+
+${ check_folder(test_archiv_ordner) }
+
+<button type="button"
+        id="archive-registration-button"
+        class="btn btn-primary btn-sm">
+Anmeldung archivieren
+</button>
+
+### Mailingliste
+Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
+`${ test_mitglied_mailingliste['email'] }` hinzugefügt.
+
+${ check_group(test_mitglied_mailingliste) }
+
+<button type="button"
+        id="register-member-mail-button"
+        class="btn btn-primary btn-sm">
+Zur Gruppe hinzufügen
+</button>
+
+### Mailingliste (Eltern)
+% if minderjaehrig:
+Die E-Mail-Adresse `${ eltern.email }` wird dem Verteiler
+`${ test_eltern_mailingliste['email'] }` hinzugefügt.
+% else:
+${ mitglied.name } ist volljährig. Daher wird keine Elternadresse zur
+Mailingliste hinzugefügt. Der Elternverteiler ist
+`${ test_eltern_mailingliste['email'] }`.
+% endif
+
+${ check_group(test_eltern_mailingliste) }
+
+% if minderjaehrig:
+<button type="button"
+        id="register-parent-mail-button"
+        class="btn btn-primary btn-sm">
+E-Mail trotzdem senden
+</button>
+% endif
+
+### Anmeldeliste
+Alle eingegebenen Daten werden automatisch zur Anmeldeliste hinzugefügt. Die
+Anmeldeliste ist eine Google-Tabelle mit der ID
+`${ test_anmeldungen_tabelle["id"] }`. Die Daten werden dort dem Bereich
+`${ daten["Anmeldungen"]["Bereich"] }` hinzugefügt. Überschriften werden
+automatisch erkannt und den Einträgen zugeordnet.
+
+${ check_spreadsheet(test_anmeldungen_tabelle) }
+
+<button type="button"
+        id="save-data-button"
+        class="btn btn-primary btn-sm">
+Zur Tabelle hinzufügen
+</button>
+
+### Mitgliederliste
+Alle Daten werden auch automatisch zur Mitgliederliste hinzugefügt. Die
+Mitgliederliste ist mit der ID `${ test_mitglieder_tabelle["id"] }` konfiguriert.
+Dort werden Daten im Bereich `${ daten["Mitgliederliste"]["Bereich"] }`
+hinzugefügt. Überschriften werden automatisch erkannt und den Einträgen
+zugeordnet.
+
+ ${ check_spreadsheet(test_mitglieder_tabelle) }
+
+<button type="button"
+        id="add-member-button"
+        class="btn btn-primary btn-sm">
+Zur Tabelle hinzufügen
+</button>

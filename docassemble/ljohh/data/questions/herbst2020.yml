@@ -117,6 +117,7 @@ subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
 content file: Benachrichtigung.md
 ---
 template: testergebnis
+usedefs: [test_defs]
 content file: Testmodus.md
 ---
 # Die Abschnitte der Anmeldung. In der questions-Datei können Fragen diesen

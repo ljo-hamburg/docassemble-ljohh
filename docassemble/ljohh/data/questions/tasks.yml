@@ -86,17 +86,17 @@ code: register_parent_email_task = background_action('register_parent_email', 'r
 ---
 event: register_parent_email
 code: |
-  if not minderjaehrig:
-    background_response(True)
   if testmodus:
     background_response_action(
       'set_variable',
       name='test_eltern_mailingliste',
       value=get_group_meta(daten["Mailingliste (Eltern)"])
     )
-  else:
+  elif minderjaehrig:
     result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
     background_response(result)
+  else:
+    background_response(True)
 ---
 
 ---
