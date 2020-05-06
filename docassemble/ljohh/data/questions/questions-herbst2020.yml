@@ -347,6 +347,12 @@ section: Deine Anmeldung
 question: Deine Anmeldung zur Herbstphase 2021
 review:
   - note: |
+      % if testmodus:
+      <div class="alert alert-warning" role="alert">
+      Die Anmeldung wird im Testmodus ausgefüllt. Die Ergebnisse werden nicht
+      automatisch übermittelt.
+      </div>
+      % endif
       Bevor du die Anmeldung abschickst, hast du nun noch einmal die Möglichkeit,
       deine Angaben zu überprüfen. Nachdem du die Anmeldung abgeschickt hast,
       bekommst du eine Bestätigung per E-Mail.

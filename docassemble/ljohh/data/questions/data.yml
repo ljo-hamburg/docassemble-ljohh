@@ -186,8 +186,8 @@ mako: |
       </%self:cross>
     % elif not sheet['range']:
       <%self:cross msg="Der Tabellenbereich ist ungültig.">
-        Der Tabellenbereich, in dem Daten eingefügt werden sollen, muss im A1
-        Format sein oder einen benannten Bereich definieren.
+        Der Tabellenbereich, in dem Daten eingefügt werden sollen, muss in
+        A1-Notation angegeben sein oder einen benannten Bereich definieren.
       </%self:cross>
     % else:
       <%self:check help="Die Daten aus den Anmeldungen werden automatisch in der Tabelle ergänzt.">
