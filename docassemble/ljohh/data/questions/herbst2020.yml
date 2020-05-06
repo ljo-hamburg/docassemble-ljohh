@@ -27,7 +27,7 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: true
+  Testmodus: false
 
   # Dieser Account führt die Automatischen Aktionen durch. Der Wert sollte nicht
   # geändert werden.
@@ -41,7 +41,7 @@ data:
   # sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an, in dem neue
   # Anmeldungen eingefügt werden sollen.
   Mitgliederliste:
-    Tabelle: 2UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
+    Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
     Bereich: Anmeldungen
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)
@@ -56,7 +56,7 @@ data:
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
-  E-Mail Benachrichtigung: []
+  E-Mail Benachrichtigung: [info@wittenburg.kim]
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.

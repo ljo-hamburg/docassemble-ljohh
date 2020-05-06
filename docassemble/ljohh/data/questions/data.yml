@@ -56,13 +56,13 @@ code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
 ---
 code: |
   if not all(task.ready() for task in [
-    save_data_task,
-    add_member_task,
-    register_member_email_task,
-    register_parent_email_task,
-    member_email_task,
-    orga_email_task,
-    archive_registration_task
+      save_data_task,
+      add_member_task,
+      register_member_email_task,
+      register_parent_email_task,
+      member_email_task,
+      orga_email_task,
+      archive_registration_task
   ]):
     Warten
   else:
@@ -77,26 +77,23 @@ mako: |
   <%def name="cross(msg='')">
     <span style="color:red"
           data-toggle="tooltip"
-          title="${ caller.body() }">
-      <i class="fas fa-times"></i> ${ msg }
-    </span>
+          title="${ caller.body() }"
+        ><i class="fas fa-times"></i> ${ msg }</span>
   </%def>
 
   <%def name="check(help='')">
     <span style="color:green"
           data-toggle="tooltip"
-          title="${ help }">
-      <i class="fas fa-check"></i> ${ caller.body() }
-    </span>
+          title="${ help }"
+        ><i class="fas fa-check"></i> ${ caller.body() }</span>
   </%def>
 
   <%def name="action_button(action, message='')">
     <button class="btn btn-primary btn-sm"
             type="button"
             data-da-action="${ action }"
-            data-da-message="${ message }">
-      ${ single_paragraph(caller.body()) }
-    </button>
+            data-da-message="${ message }"
+        >${ caller.body() }</button>
   </%def>
 
   <%def name="collapse_button(id)">
@@ -105,9 +102,8 @@ mako: |
             data-toggle="collapse"
             data-target="#${ id }"
             aria-expanded="false"
-            aria-controls="${ id }">
-    ${ single_paragraph(caller.body()) }
-    </button>
+            aria-controls="${ id }"
+        >${ caller.body() }</button>
   </%def>
 
   <%def name="collapse(id, title='')">

@@ -53,7 +53,7 @@ und auch nicht die Teilnahmebedingungen und die Geschäftsordnung. Folgende
 Empfänger werden benachrichtigt:
 
 % for email in daten["E-Mail Benachrichtigung"]:
-  - ${ email }
+  - `${ email }`
 % endfor
 
 <div>
@@ -86,7 +86,7 @@ Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
 
 ${ check_group(test_mitglied_mailingliste) }
 
-<%self:action_button action="register_member_email" message="Die E-Mail `${ mitglied.email }` wurde zur Gruppe hinzugefügt.">
+<%self:action_button action="register_member_email" message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
 
@@ -103,7 +103,7 @@ Mailingliste hinzugefügt. Der Elternverteiler ist
 ${ check_group(test_eltern_mailingliste) }
 
 % if minderjaehrig:
-<%self:action_button action="register_parent_email" message="Die E-Mail `${ eltern.email }` wurde zur Gruppe hinzugefügt.">
+<%self:action_button action="register_parent_email" message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
 % endif

@@ -16,17 +16,17 @@ code: |
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
     "Probentermine": list(probentermine.true_values()),
     "Konzerttermine": list(konzerttermine.true_values()),
-    "Anmerkungen": anmerkungen,
+    "Anmerkungen": anmerkungen.strip(),
     "Nächste Phase": ja_nein_vielleicht(nachste_phase),
     "Übernächste Phase": ja_nein_vielleicht(ubernachste_phase),
     "Versorgung (PWE)": list(pwe_versorgung.true_values()),
-    "Sonstiges (PWE)": pwe_sonstiges
+    "Sonstiges (PWE)": pwe_sonstiges.strip()
   }
   if minderjaehrig:
-    data["Eltern Vorname"] = eltern.name.first
-    data["Eltern Nachname"] = eltern.name.last
-    data["Eltern E-Mail"] = eltern.email
-    data["Eltern Telefon"] = eltern.phone_number
+    member_data["Eltern Vorname"] = eltern.name.first
+    member_data["Eltern Nachname"] = eltern.name.last
+    member_data["Eltern E-Mail"] = eltern.email
+    member_data["Eltern Telefon"] = eltern.phone_number
 ---
 code: save_data_task = background_action('save_data', 'refresh')
 ---

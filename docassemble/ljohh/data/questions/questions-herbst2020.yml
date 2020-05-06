@@ -379,7 +379,12 @@ review:
       ${ terminliste() }
 
       % if anmerkungen:
-      ${ anmerkungen }
+      <p><div class="card">
+      <div class="card-header">Weitere Anmerkungen</div>
+      <div class="card-body">
+      ${ verbatim(anmerkungen.strip()).replace('\n', '<br />') }
+      </div>
+      </div></p>
       % else:
       *Keine weiteren Anmerkungen.*
       %endif
@@ -387,10 +392,16 @@ review:
     button: |
       ## Probenwochenende in Tönning
 
-      % for zeile in alle_pwe_angaben():
+      % for zeile in get_pwe_versorgung():
         - ${ zeile }
       % endfor
-      % if not alle_pwe_angaben():
+
+      % if pwe_sonstiges.strip():
+        <p><div class="card card-body">
+        ${ verbatim(pwe_sonstiges.strip()).replace('\n', '<br />') }
+        </div></p>
+      % endif
+      % if not pwe_angaben():
         *Du hast keine Angaben zum Probenwochenende gemacht*
       % endif
   - Angaben ändern: Phasen
@@ -452,6 +463,7 @@ buttons:
 id: herbst-2020/testergebnisse
 event: Testergebnisse
 section: Deine Anmeldung
+prevent going back: True
 question: Testmodus
 subquestion: ${ testergebnis }
 buttons:

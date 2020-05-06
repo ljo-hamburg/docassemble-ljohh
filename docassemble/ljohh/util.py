@@ -59,18 +59,18 @@ def terminliste():
     return output
 
 
-def alle_pwe_angaben():
+def get_pwe_versorgung():
     versorgung: dict = value('pwe_versorgung')
-    sonstiges: str = value('pwe_sonstiges')
     angaben = []
     if versorgung.get('vegan'):
         angaben.append("Ich möchte **vegan** versorgt werden.")
     elif versorgung.get('vegetarisch'):
         angaben.append("Ich möchte **vegetarisch** versorgt werden.")
-    angaben.extend(
-        line.strip() for line in sonstiges.splitlines() if line.strip()
-    )
     return angaben
+
+
+def pwe_angaben():
+    return get_pwe_versorgung() or value('pwe_sonstiges').strip()
 
 
 def alle_fehltermine():
