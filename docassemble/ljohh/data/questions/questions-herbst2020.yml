@@ -2,6 +2,12 @@ id: herbst-2020/einleitung
 field: Einleitung
 question: Anmeldung zur Herbstphase 2020
 subquestion: |
+  % if testmodus:
+  <div class="alert alert-warning" role="alert">
+  Die Anmeldung wird im Testmodus ausgefüllt. Die Ergebnisse werden nicht
+  automatisch übermittelt.
+  </div>
+  % endif
   Über dieses Formular meldest du dich zur Herbstarbeitsphase 2020 des LJO
   Hamburg an. Die Anmeldung ist **verbindlich**, das heißt sobald du die
   Anmeldung abgegeben hast, gehen wir davon aus, dass du auch zu allen
