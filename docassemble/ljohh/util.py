@@ -24,12 +24,20 @@ def alle_termine(key):
     ]
 
 
-def ja_nein_vielleicht():
-    return [
-        {True: "Vermutlich ja"},
-        {False: "Vermutlich nein"},
-        {None: "Kann ich noch nicht sagen"}
-    ]
+def ja_nein_vielleicht(*args):
+    values = {
+        True: "Vermutlich ja",
+        False: "Vermutlich nein",
+        None: "Kann ich noch nicht sagen"
+    }
+    if args:
+        return values[args[0]]
+    else:
+        return [
+            {True: values[True]},
+            {False: values[False]},
+            {None: values[None]}
+        ]
 
 
 def terminliste():

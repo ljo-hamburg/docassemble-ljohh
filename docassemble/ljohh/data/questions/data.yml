@@ -4,6 +4,7 @@ features:
   hide navbar: false
   hide standard menu: true
   labels above fields: true
+  javascript: actions.js
 ---
 objects:
   mitglied: Individual
@@ -89,14 +90,23 @@ mako: |
     </span>
   </%def>
 
-  <%def name="collapse_button(id, text, css_class='')">
-    <button class="btn btn-primary ${ css_class }"
+  <%def name="action_button(action, message='')">
+    <button class="btn btn-primary btn-sm"
+            type="button"
+            data-da-action="${ action }"
+            data-da-message="${ message }">
+      ${ single_paragraph(caller.body()) }
+    </button>
+  </%def>
+
+  <%def name="collapse_button(id)">
+    <button class="btn btn-primary btn-sm"
             type="button"
             data-toggle="collapse"
             data-target="#${ id }"
             aria-expanded="false"
             aria-controls="${ id }">
-    ${ text }
+    ${ single_paragraph(caller.body()) }
     </button>
   </%def>
 

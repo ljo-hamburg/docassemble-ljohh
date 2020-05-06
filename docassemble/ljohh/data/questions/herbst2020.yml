@@ -41,7 +41,7 @@ data:
   # sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an, in dem neue
   # Anmeldungen eingefügt werden sollen.
   Mitgliederliste:
-    Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
+    Tabelle: 2UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
     Bereich: Anmeldungen
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)

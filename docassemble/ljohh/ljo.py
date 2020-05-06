@@ -213,7 +213,7 @@ def send_ljo_email(
         "to": join_email(to),
         "subject": subject or template.subject,
         "template": mg_template,
-        "t:text": text,
+        "text": text,
         "v:content": html
     }
     if cc:

@@ -17,8 +17,8 @@ code: |
     "Probentermine": list(probentermine.true_values()),
     "Konzerttermine": list(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen,
-    "Nächste Phase": ja_nein_vielleicht()[nachste_phase],
-    "Übernächste Phase": ja_nein_vielleicht()[ubernachste_phase],
+    "Nächste Phase": ja_nein_vielleicht(nachste_phase),
+    "Übernächste Phase": ja_nein_vielleicht(ubernachste_phase),
     "Versorgung (PWE)": list(pwe_versorgung.true_values()),
     "Sonstiges (PWE)": pwe_sonstiges
   }
@@ -32,18 +32,23 @@ code: save_data_task = background_action('save_data', 'refresh')
 ---
 event: save_data
 code: |
-  if testmodus:
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
     background_response_action(
       'set_variable',
       name='test_anmeldungen_tabelle',
       value=get_file_meta(daten["Anmeldungen"]["Tabelle"])
     )
   else:
-    background_response(add_spreadsheet_row(
+    result = add_spreadsheet_row(
       daten["Anmeldungen"]["Tabelle"],
       daten["Anmeldungen"]["Bereich"],
       member_data
-    ))
+    )
+    if background:
+      background_response(result)
+    else:
+      json_response(result)
 ---
 
 ---
@@ -51,18 +56,23 @@ code: add_member_task = background_action('add_member', 'refresh')
 ---
 event: add_member
 code: |
-  if testmodus:
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
     background_response_action(
       'set_variable',
       name='test_mitglieder_tabelle',
       value=get_file_meta(daten["Mitgliederliste"]["Tabelle"])
     )
   else:
-    background_response(add_spreadsheet_row(
+    result = add_spreadsheet_row(
       daten["Mitgliederliste"]["Tabelle"],
       daten["Mitgliederliste"]["Bereich"],
       member_data
-    ))
+    )
+    if background:
+      background_response(result)
+    else:
+      json_response(result)
 ---
 
 ---
@@ -70,7 +80,8 @@ code: register_member_email_task = background_action('register_member_email', 'r
 ---
 event: register_member_email
 code: |
-  if testmodus:
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
     background_response_action(
       'set_variable',
       name='test_mitglied_mailingliste',
@@ -78,7 +89,10 @@ code: |
     )
   else:
     result = add_group_member(daten["Mailingliste"], mitglied.email)
-    background_response(result)
+    if background:
+      background_response(result)
+    else:
+      json_response(result)
 ---
 
 ---
@@ -86,17 +100,20 @@ code: register_parent_email_task = background_action('register_parent_email', 'r
 ---
 event: register_parent_email
 code: |
-  if testmodus:
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
     background_response_action(
       'set_variable',
       name='test_eltern_mailingliste',
       value=get_group_meta(daten["Mailingliste (Eltern)"])
     )
-  elif minderjaehrig:
-    result = add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
-    background_response(result)
   else:
-    background_response(True)
+    result = (add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
+              if minderjaehrig else True)
+    if background:
+      background_response(result)
+    else:
+      json_response(result)
 ---
 
 ---
@@ -118,14 +135,19 @@ code: archive_registration_task = background_action('archive_registration', 'ref
 event: archive_registration
 need: anmeldung
 code: |
-  if testmodus:
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
     background_response_action(
       'set_variable',
       name='test_archiv_ordner',
       value=get_file_meta(daten["Archivordner-ID"])
     )
   else:
-    background_response(upload_file(anmeldung.pdf, daten["Archivordner-ID"]))
+    result = upload_file(anmeldung.pdf, daten["Archivordner-ID"])
+    if background:
+      background_response(result)
+    else:
+      json_response(result)
 ---
 
 ---
@@ -135,14 +157,19 @@ code: member_email_task = background_action('send_member_email', 'refresh')
 event: send_member_email
 need: anmeldung
 code: |
-  if testmodus:
-    background_response(True)
+  background = interface() in {"worker", "cron"}
+  if testmodus and background:
+    result = True
   else:
-    background_response(send_ljo_email(
+    result = send_ljo_email(
         to=[mitglied],
         template=mitglied_email,
         attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
-    ))
+    )
+  if background:
+    background_response(result)
+  else:
+    json_response(result)
 ---
 
 ---
@@ -152,17 +179,20 @@ code: orga_email_task = background_action('send_orga_email', 'refresh')
 event: send_orga_email
 need: anmeldung
 code: |
+  background = interface() in {"worker", "cron"}
   recipients = daten["E-Mail Benachrichtigung"]
   if isinstance(recipients, str):
     recipients = [recipients]
-  if not recipients:
-    background_response(True)
-  elif testmodus:
-    background_response(True)
+  if not recipients or (testmodus and background):
+    result = True
   else:
-    background_response(send_ljo_email(
+    result = send_ljo_email(
       to=recipients,
       template=orga_email,
       attachments=[anmeldung.pdf]
-    ))
+    )
+  if background:
+    background_response(result)
+  else:
+    json_response(result)
 ---

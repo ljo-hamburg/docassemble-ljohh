@@ -29,16 +29,12 @@ An die E-Mail sind drei Dokumente angehängt:
 - [${ geschaeftsordnung.filename }](${ geschaeftsordnung.url_for() })
 
 <div>
-    ${ collapse_button(
-           'mitglied-email-collapse',
-           'E-Mail-Inhalt anzeigen',
-           css_class='btn-sm'
-       ) }
-    <button type="button"
-            id="send-mitglied-mail-button"
-            class="btn btn-primary btn-sm">
+  <%self:collapse_button id="mitglied-email-collapse">
+    E-Mail-Inhalt anzeigen
+  </%self:collapse_button>
+  <%self:action_button action="send_member_email" message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die Mail ankommt.">
     E-Mail trotzdem senden
-    </button>
+  </%self:action_button>
 </div>
 
 <%self:collapse id="mitglied-email-collapse" title="${ mitglied_email.subject }">
@@ -60,16 +56,14 @@ Empfänger werden benachrichtigt:
   - ${ email }
 % endfor
 
-${ collapse_button(
-       'orga-email-collapse',
-       'E-Mail-Inhalt anzeigen',
-       css_class='btn-sm'
-   ) }
-<button type="button"
-        id="send-orga-mail-button"
-        class="btn btn-primary btn-sm">
-E-Mail trotzdem senden
-</button>
+<div>
+  <%self:collapse_button id="orga-email-collapse">
+    E-Mail-Inhalt anzeigen
+  </%self:collapse_button>
+  <%self:action_button action="send_orga_email" message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die E-Mail ankommt.">
+    E-Mail trotzdem senden
+  </%self:action_button>
+</div>
 
 <%self:collapse id="orga-email-collapse" title="${ orga_email.subject }">
   ${ orga_email }
@@ -82,11 +76,9 @@ Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
 
 ${ check_folder(test_archiv_ordner) }
 
-<button type="button"
-        id="archive-registration-button"
-        class="btn btn-primary btn-sm">
-Anmeldung archivieren
-</button>
+<%self:action_button action="archive_registration" message="Die Anmeldung wurde zum Ordner hinzugefügt.">
+  Anmeldung archivieren
+</%self:action_button>
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
@@ -94,11 +86,9 @@ Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
 
 ${ check_group(test_mitglied_mailingliste) }
 
-<button type="button"
-        id="register-member-mail-button"
-        class="btn btn-primary btn-sm">
-Zur Gruppe hinzufügen
-</button>
+<%self:action_button action="register_member_email" message="Die E-Mail `${ mitglied.email }` wurde zur Gruppe hinzugefügt.">
+  Zur Gruppe hinzufügen
+</%self:action_button>
 
 ### Mailingliste (Eltern)
 % if minderjaehrig:
@@ -113,11 +103,9 @@ Mailingliste hinzugefügt. Der Elternverteiler ist
 ${ check_group(test_eltern_mailingliste) }
 
 % if minderjaehrig:
-<button type="button"
-        id="register-parent-mail-button"
-        class="btn btn-primary btn-sm">
-E-Mail trotzdem senden
-</button>
+<%self:action_button action="register_parent_email" message="Die E-Mail `${ eltern.email }` wurde zur Gruppe hinzugefügt.">
+  Zur Gruppe hinzufügen
+</%self:action_button>
 % endif
 
 ### Anmeldeliste
@@ -129,11 +117,9 @@ automatisch erkannt und den Einträgen zugeordnet.
 
 ${ check_spreadsheet(test_anmeldungen_tabelle) }
 
-<button type="button"
-        id="save-data-button"
-        class="btn btn-primary btn-sm">
-Zur Tabelle hinzufügen
-</button>
+<%self:action_button action="save_data" message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
+  Zur Tabelle hinzufügen
+</%self:action_button>
 
 ### Mitgliederliste
 Alle Daten werden auch automatisch zur Mitgliederliste hinzugefügt. Die
@@ -144,8 +130,6 @@ zugeordnet.
 
  ${ check_spreadsheet(test_mitglieder_tabelle) }
 
-<button type="button"
-        id="add-member-button"
-        class="btn btn-primary btn-sm">
-Zur Tabelle hinzufügen
-</button>
+<%self:action_button action="add_member" message="Die Daten wurden zur Mitgliederliste hinzugefügt.">
+  Zur Tabelle hinzufügen
+</%self:action_button>
