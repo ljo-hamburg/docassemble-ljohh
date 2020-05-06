@@ -4,6 +4,7 @@ features:
   hide navbar: false
   hide standard menu: true
   labels above fields: true
+  javascript: actions.js
 ---
 objects:
   mitglied: Individual
@@ -35,46 +36,157 @@ code: |
     )
 ---
 code: |
-
-  teilnahmebedingungen = DAFile('conditions')
+  teilnahmebedingungen = DAFile('teilnahmebedingungen')
   teilnahmebedingungen.initialize(filename="Teilnahmebedingungen.pdf")
   teilnahmebedingungen.from_url("https://ljo-hamburg.de/Teilnahmebedingungen")
   teilnahmebedingungen.commit()
 ---
 code: |
-  geschäftsordnung = DAFile('bylaws')
-  geschäftsordnung.initialize(filename="Geschaeftsordnung.pdf")
-  geschäftsordnung.from_url("https://ljo-hamburg.de/Geschaeftsordnung")
-  geschäftsordnung.commit()
+  geschaeftsordnung = DAFile('geschaeftsordnung')
+  geschaeftsordnung.initialize(filename="Geschaeftsordnung.pdf")
+  geschaeftsordnung.from_url("https://ljo-hamburg.de/Geschaeftsordnung")
+  geschaeftsordnung.commit()
 ---
 code: |
   status = url_args.get("status", "normal").lower()
   if status not in ["normal", "flex", "aushilfe"]:
     status = "normal"
 ---
+code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
+---
 code: |
-  tasks = [save_data_task,
-           add_member_task,
-           register_member_email_task,
-           register_parent_email_task,
-           member_email_task,
-           orga_email_task,
-           archive_registration_task]
-  if all(task.ready() for task in tasks):
-    Abschicken = True
-  else:
+  if not all(task.ready() for task in [
+      save_data_task,
+      add_member_task,
+      register_member_email_task,
+      register_parent_email_task,
+      member_email_task,
+      orga_email_task,
+      archive_registration_task
+  ]):
     Warten
+  else:
+    Abschicken = True
 ---
 sets: anmeldung
 need: anmeldung_task
 code: Warten
 ---
-code: anmeldung_task = background_action('assemble_anmeldung', 'refresh')
----
-event: assemble_anmeldung
-code: background_response_action('set_anmeldung', anmeldung=anmeldeformular)
----
-event: set_anmeldung
-code: |
-  anmeldung = action_argument('anmeldung')
-  background_response()
+def: test_defs
+mako: |
+  <%def name="cross(msg='')">
+    <span style="color:red"
+          data-toggle="tooltip"
+          title="${ caller.body() }"
+        ><i class="fas fa-times"></i> ${ msg }</span>
+  </%def>
+
+  <%def name="check(help='')">
+    <span style="color:green"
+          data-toggle="tooltip"
+          title="${ help }"
+        ><i class="fas fa-check"></i> ${ caller.body() }</span>
+  </%def>
+
+  <%def name="action_button(action, message='')">
+    <button class="btn btn-primary btn-sm"
+            type="button"
+            data-da-action="${ action }"
+            data-da-message="${ message }"
+        >${ caller.body() }</button>
+  </%def>
+
+  <%def name="collapse_button(id)">
+    <button class="btn btn-primary btn-sm"
+            type="button"
+            data-toggle="collapse"
+            data-target="#${ id }"
+            aria-expanded="false"
+            aria-controls="${ id }"
+        >${ caller.body() }</button>
+  </%def>
+
+  <%def name="collapse(id, title='')">
+    <div class="collapse card" id="${ id }">
+    % if title:
+      <div class="card-header">${ title }</div>
+    % endif
+    <div class="card-body">${ caller.body() }</div>
+    </div>
+  </%def>
+
+  <%def name="check_folder(folder)">
+    % if folder['code'] == 404:
+      <%self:cross msg="Der Ordner kann nicht gefunden werden.">
+        Die ID ist möglicherweise falsch oder der Account ${ daten['Account'] }
+        hat keinen Zugriff auf den Ordner.
+      </%self:cross>
+    % elif folder['code'] == 403:
+      <%self:cross msg="Auf den Ordner kann nicht zugegriffen werden.">
+        Prüfe, dass der Account ${ daten['Account'] } Schreibrechte hat.
+      </%self:cross>
+    % elif folder['code'] != 200:
+      <%self:cross msg="Der Ordner kann nicht überprüft werden.">
+        Ein unbekannter Fehler ist aufgetreten.
+      </%self:cross>
+    % elif not folder['folder']:
+      <%self:cross msg="Der Ordner ist kein Ordner.">
+        Die angegebene ID verweist auf eine Datei und nicht auf einen Ordner.
+      </%self:cross>
+    % elif not folder['editable']:
+      <%self:cross msg="Der Ordner ist nicht beschreibbar.">
+        Der Account ${ daten['Account'] } muss Schreibrechte auf dem Ordner
+        haben.
+      </%self:cross>
+    % else:
+      <%self:check help="Anmeldungen werden automatisch in diesem Ordner gespeichert.">
+        Der Ordner **${ folder['name'] }** ist scheibar korrekt konfiguriert.
+      </%self:check>
+    % endif
+  </%def>
+
+  <%def name="check_group(group)">
+    % if group["code"] == 404:
+      <%self:cross msg="Die Gruppe kann nicht gefunden werden.">
+        Die Adresse ist möglicherweise falsch geschrieben.
+      </%self:cross>
+    % elif group["code"] != 200:
+      <%self:cross msg="Die Gruppe kann nicht überprüft werden.">
+        Ein unbekannter Fehler ist aufgetreten.
+      </%self:cross>
+    % else:
+      <%self:check help="Adressen werden der Gruppe automatisch hinzugefügt.">
+        Die Gruppe **${ group['name'] }** ist scheinbar korrekt konfiguriert.
+      </%self:check>
+    % endif
+  </%def>
+
+  <%def name="check_spreadsheet(sheet)">
+    % if sheet["code"] == 404:
+      <%self:cross msg="Die Tabelle wurde nicht gefunden.">
+        Die ID ist möglicherweise falsch oder der Account ${ daten["Account"] }
+        hat keinen Zugriff auf die Tabelle.
+      </%self:cross>
+    % elif sheet["code"] == 403:
+      <%self:cross msg="Auf die Tabelle kann nicht zugegriffen werden.">
+        Der Account ${ daten["Account"] } braucht Schreibzugriff auf die Tabelle.
+      </%self:cross>
+    % elif sheet["code"] != 200:
+      <%self:cross msg="Die Tabelle kann nicht überprüft werden.">
+        Ein unbekannter Fehler ist aufgetreten.
+      </%self:cross>
+    % elif not sheet['sheet']:
+      <%self:cross msg="Die Tabelle hat das falsche Dateiformat.">
+        Es werden nur Google Tabellen unterstützt, die referenzierte Datei ist aber
+        in einem anderen Format.
+      </%self:cross>
+    % elif not sheet['editable']:
+      <%self:cross msg="Die Tabelle kann nicht bearbeitet werden.">
+        Der Account ${ daten["Account"] } muss Schreibzugriff auf die Tabelle haben.
+      </%self:cross>
+    % else:
+      <%self:check help="Die Daten aus den Anmeldungen werden automatisch in der Tabelle ergänzt.">
+        Die Tabelle **${ sheet['name'] }** ist scheinbar korrekt konfiguriert.
+      </%self:check>
+    % endif
+  </%def>

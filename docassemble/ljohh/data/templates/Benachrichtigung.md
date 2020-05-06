@@ -1,7 +1,7 @@
 Hallo,
   
-${ person } hat sich soeben zur ${ term['name'] } angemeldet.
+${ mitglied } hat sich soeben zur Arbeitsphase ${ daten['Phase'] } angemeldet.
 Die Anmeldung ist im Anhang.
 
 Viele Grüße  
-Die LJO-Website
+Das LJO-Anmeldungssystem

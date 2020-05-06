@@ -11,6 +11,8 @@ from google.oauth2 import service_account
 from googleapiclient import discovery
 
 __all__ = [
+    "get_file_meta",
+    "get_group_meta",
     "add_spreadsheet_row",
     "add_group_member",
     "upload_file",
@@ -23,12 +25,47 @@ from requests.auth import HTTPBasicAuth
 
 
 def get_google_credentials(**kwargs):
-    print("Getting Creds")
     info = get_config('google').get('service account credentials')
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
         **kwargs
     )
+
+
+def get_file_meta(file: str):
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
+    )
+    service = discovery.build('drive', 'v3', credentials=credentials)
+    request = service.files().get(
+        fileId=file,
+        supportsAllDrives=True,
+        fields="id,"
+               "name,"
+               "mimeType,"
+               "capabilities/canEdit,"
+               "capabilities/canModifyContent"
+    )
+    try:
+        result = request.execute()
+    except HttpError as error:
+        if error.resp.status in {403, 404}:
+            return {
+                "id": file,
+                "code": error.resp.status
+            }
+        else:
+            raise error
+    return {
+        "code": 200,
+        "id": result["id"],
+        "name": result["name"],
+        "editable": result["capabilities"]["canEdit"]
+                    and result["capabilities"]["canModifyContent"],
+        "sheet": result[
+                     "mimeType"] == "application/vnd.google-apps.spreadsheet",
+        "folder": result["mimeType"] == "application/vnd.google-apps.folder"
+    }
 
 
 def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
@@ -41,8 +78,6 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
         range=range
     )
     response = request.execute()
-    print("Response:")
-    print(response)
     headers = response["values"][0]
     normalized_data = {key.casefold(): value for key, value in data.items()}
     row = [normalized_data.get(header.casefold(), None) for header in headers]
@@ -57,9 +92,33 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
         }
     )
     response = request.execute()
-    print("Insert Response")
-    print(response)
     return True
+
+
+def get_group_meta(group: str):
+    credentials = get_google_credentials(
+        subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
+        scopes=[
+            "https://www.googleapis.com/auth/admin.directory.group.readonly"]
+    )
+    service = discovery.build('admin', 'directory_v1', credentials=credentials)
+    request = service.groups().get(
+        groupKey=group
+    )
+    try:
+        response = request.execute()
+        return {
+            "code": 200,
+            "email": response["email"],
+            "name": response["name"]
+        }
+    except HttpError as error:
+        if error.resp.status == 404:
+            return {
+                "email": group,
+                "code": 404
+            }
+        raise error
 
 
 def add_group_member(group: str, email: str):
@@ -85,17 +144,21 @@ def add_group_member(group: str, email: str):
     return True
 
 
-def upload_file(file: DAFile):
-    config = value('daten')
+def upload_file(file: DAFile, folder: str):
     file.retrieve()
-    credentials = get_google_credentials()
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/drive']
+    )
     service = discovery.build('drive', 'v3', credentials=credentials)
     file_metadata = {
         'name': file.filename,
-        'parents': [config['Archivordner-ID']]
+        'parents': [folder]
     }
     media = MediaFileUpload(file.path(), mimetype=file.mimetype)
-    request = service.files().create(body=file_metadata, media_body=media)
+    request = service.files().create(
+        supportsAllDrives=True,
+        body=file_metadata,
+        media_body=media)
     request.execute()
     return True
 
@@ -145,7 +208,7 @@ def send_ljo_email(
         "to": join_email(to),
         "subject": subject or template.subject,
         "template": mg_template,
-        "t:text": text,
+        "text": text,
         "v:content": html
     }
     if cc:

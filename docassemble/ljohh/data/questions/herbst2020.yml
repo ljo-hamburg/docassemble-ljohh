@@ -17,7 +17,7 @@ metadata:
   description:
     Dies ist das Anmeldeformular zur Herbstarbeitsphase 2020 des LJO Hamburg.
   exit url: https://ljo-hamburg.de
-  revision_date: 2020-04-26
+  revision_date: 2020-05-05
 ---
 # In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
 # konfiguriert. Die einzelnen Felder sind separat dokumentiert.
@@ -28,6 +28,10 @@ data:
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
   Testmodus: false
+
+  # Dieser Account führt die Automatischen Aktionen durch. Der Wert sollte nicht
+  # geändert werden.
+  Account: anmeldung@docassemble-264719.iam.gserviceaccount.com
 
   # Der Name der Arbeitsphase. Dieser Wert wird in der Mitgliederliste benutzt.
   Phase: Herbst 2020
@@ -52,7 +56,7 @@ data:
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
-  E-Mail Benachrichtigung: []
+  E-Mail Benachrichtigung: [info@wittenburg.kim]
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.
@@ -112,6 +116,10 @@ template: orga_email
 subject: ${ mitglied } hat sich zur Herbstphase 2020 angemeldet
 content file: Benachrichtigung.md
 ---
+template: testergebnis
+usedefs: [test_defs]
+content file: Testmodus.md
+---
 # Die Abschnitte der Anmeldung. In der questions-Datei können Fragen diesen
 # Abschnitten zugeordnet werden.
 sections:
@@ -142,5 +150,8 @@ code: |
   Datenschutz
   Kontrolle
   Abschicken
-  Fertig
+  if testmodus:
+    Testergebnisse
+  else:
+    Fertig
 ---
