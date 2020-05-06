@@ -2,15 +2,23 @@ from docassemble.base.functions import value
 from docassemble.base.util import format_date, validation_error
 
 
-def max_fehltermine(key, amount):
+def max_fehltermine(key, anzahl):
+    """
+    Berechnet die Anzahl der Präsenztermine, sodass höchstens anzahl Fehltermine
+    verzeichnet sind. Wenn status != "normal" ist, wird immer 0 zurückgegeben.
+    """
     config: dict = value("daten")
     if value("status") == "normal":
-        return len(config[key]) - amount
+        return len(config[key]) - anzahl
     else:
         return 0
 
 
 def alle_termine(key):
+    """
+    Erstellt eine Checkbox-Liste mit den Terminen in der entsprechenden
+    Konfiguration.
+    """
     config: dict = value("daten")
     return [
         {
@@ -25,6 +33,10 @@ def alle_termine(key):
 
 
 def ja_nein_vielleicht(*args):
+    """
+    Ohne Argumente erstellt diese Funktion eine Ja-Nein-Vielleicht Auswahl. Mit
+    einem Argument gibt es den Wert der entsprechenden Auswahl zurück.
+    """
     values = {
         True: "Vermutlich ja",
         False: "Vermutlich nein",
@@ -41,6 +53,10 @@ def ja_nein_vielleicht(*args):
 
 
 def terminliste():
+    """
+    Erstellt eine Liste von Terminen, in denen Fehltermine gekennzeichnet sind.
+    Das Ergebnis kann dem Benutzer angezeigt werden.
+    """
     output = ""
     config: dict = value("daten")
     probentermine: dict = value("probentermine")
@@ -60,6 +76,9 @@ def terminliste():
 
 
 def get_pwe_versorgung():
+    """
+    Erstellt eine Liste mit allen Angaben zur Versorgung beim Probenwochenende.
+    """
     versorgung: dict = value('pwe_versorgung')
     angaben = []
     if versorgung.get('vegan'):
@@ -70,10 +89,17 @@ def get_pwe_versorgung():
 
 
 def pwe_angaben():
+    """
+    Gibt einen wahren Wert zurück, wenn irgendwelche Angaben zum
+    Probenwochenende gemacht wurden.
+    """
     return get_pwe_versorgung() or value('pwe_sonstiges').strip()
 
 
 def alle_fehltermine():
+    """
+    Gibt eine Liste von Daten zurück, die als Fehltermin gekennzeichnet wurden.
+    """
     config: dict = value("daten")
     probentermine = value("probentermine")
     konzerttermine = value("konzerttermine")
@@ -87,12 +113,24 @@ def alle_fehltermine():
 
 
 def dabei(phase):
+    """
+    Gibt True zurück, wenn die Person in der angegebenen Phase weiterhin
+    mitspielt.
+    """
     return phase is True
 
 
 def nicht_dabei(phase):
+    """
+    Gibt True zurück, wenn die Person in der angegebenen Phase nicht mehr
+    mitspielt.
+    """
     return phase is False
 
 
 def unsicher(phase):
+    """
+    Gibt True zurück, wenn die Person nicht sicher ist, ob sie in der
+    angegebenen Phase weiter mitspielt.
+    """
     return phase is None

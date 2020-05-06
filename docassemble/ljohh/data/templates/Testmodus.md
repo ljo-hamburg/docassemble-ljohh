@@ -32,7 +32,8 @@ An die E-Mail sind drei Dokumente angehängt:
   <%self:collapse_button id="mitglied-email-collapse">
     E-Mail-Inhalt anzeigen
   </%self:collapse_button>
-  <%self:action_button action="send_member_email" message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die Mail ankommt.">
+  <%self:action_button action="send_member_email"
+                       message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die Mail ankommt.">
     E-Mail trotzdem senden
   </%self:action_button>
 </div>
@@ -60,7 +61,8 @@ Empfänger werden benachrichtigt:
   <%self:collapse_button id="orga-email-collapse">
     E-Mail-Inhalt anzeigen
   </%self:collapse_button>
-  <%self:action_button action="send_orga_email" message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die E-Mail ankommt.">
+  <%self:action_button action="send_orga_email"
+                       message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die E-Mail ankommt.">
     E-Mail trotzdem senden
   </%self:action_button>
 </div>
@@ -76,7 +78,8 @@ Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
 
 ${ check_folder(test_archiv_ordner) }
 
-<%self:action_button action="archive_registration" message="Die Anmeldung wurde zum Ordner hinzugefügt.">
+<%self:action_button action="archive_registration"
+                     message="Die Anmeldung wurde zum Ordner hinzugefügt.">
   Anmeldung archivieren
 </%self:action_button>
 
@@ -86,7 +89,10 @@ Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
 
 ${ check_group(test_mitglied_mailingliste) }
 
-<%self:action_button action="register_member_email" message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
+<%self:action_button action="register_email"
+                     email="${ mitglied.email }"
+                     group="${ test_mitglied_mailingliste['email'] }"
+                     message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
 
@@ -103,7 +109,11 @@ Mailingliste hinzugefügt. Der Elternverteiler ist
 ${ check_group(test_eltern_mailingliste) }
 
 % if minderjaehrig:
-<%self:action_button action="register_parent_email" message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
+<%self:action_button action="register_email"
+                     email="${ eltern.email }"
+                     group="${ test_eltern_mailingliste['email'] }"
+                     condition="${ minderjaehrig }"
+                     message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
 % endif
@@ -117,7 +127,10 @@ automatisch erkannt und den Einträgen zugeordnet.
 
 ${ check_spreadsheet(test_anmeldungen_tabelle) }
 
-<%self:action_button action="save_data" message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
+<%self:action_button action="append_to_spreadsheet"
+                     spreadsheet="${ test_anmeldungen_tabelle['id'] }"
+                     range="${ daten['Anmeldungen']['Bereich'] }"
+                     message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
   Zur Tabelle hinzufügen
 </%self:action_button>
 
@@ -130,6 +143,9 @@ zugeordnet.
 
  ${ check_spreadsheet(test_mitglieder_tabelle) }
 
-<%self:action_button action="add_member" message="Die Daten wurden zur Mitgliederliste hinzugefügt.">
+<%self:action_button action="append_to_spreadsheet"
+                     spreadsheet="${ test_mitglieder_tabelle['id'] }"
+                     range="${ daten['Mitgliederliste']['Bereich'] }"
+                     message="Die Daten wurden zur Mitgliederliste hinzugefügt.">
   Zur Tabelle hinzufügen
 </%self:action_button>

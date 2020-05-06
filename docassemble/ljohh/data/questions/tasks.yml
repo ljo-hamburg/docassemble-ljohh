@@ -1,9 +1,14 @@
 ---
+# Sets a variable in the interview. This is used in the context of a
+# background_action_response.
 event: set_variable
 code: |
   define(action_argument('name'), action_argument('value'))
   background_response()
 ---
+# The member_data forms is the data that is available to be put in spreadsheets.
+# The dictionary keys are compared to spreadsheet headings. The comparison is
+# case-insensitive.
 code: |
   member_data = {
     "Status": status,
@@ -28,25 +33,49 @@ code: |
     member_data["Eltern E-Mail"] = eltern.email
     member_data["Eltern Telefon"] = eltern.phone_number
 ---
-code: save_data_task = background_action('save_data', 'refresh')
+# A task that adds a row to the Anmeldungen.
+code: |
+  save_data_task = background_action(
+    'append_to_spreadsheet',
+    'refresh',
+    test_variable='test_anmeldungen_tabelle',
+    spreadsheet=daten["Anmeldungen"]["Tabelle"],
+    range=daten["Anmeldungen"]["Bereich"]
+  )
 ---
-event: save_data
+# A task that adds a row to the Mitgliederliste.
+code: |
+  add_member_task = background_action(
+    'append_to_spreadsheet',
+    'refresh',
+    test_variable='test_mitglieder_tabelle',
+    spreadsheet=daten["Mitgliederliste"]["Tabelle"],
+    range=daten["Mitgliederliste"]["Bereich"]
+  )
+---
+# This action saves member_data to a spreadsheet configured via action arguments.
+# All arguments are required.
+# - spreadsheet: This argument provides the spreadsheet ID
+# - range: This argument provides the range in the spreadsheet where the data
+#          should be inserted.
+# - test_variable: This argument provides the variable to fill in test mode.
+event: append_to_spreadsheet
 code: |
   background = interface() in {"worker", "cron"}
   if testmodus and background:
     background_response_action(
       'set_variable',
-      name='test_anmeldungen_tabelle',
+      name=action_argument('test_variable'),
       value=get_file_meta(
-        daten["Anmeldungen"]["Tabelle"],
+        action_argument('spreadsheet'),
         mode="spreadsheet",
-        range=daten["Anmeldungen"]["Bereich"]
+        range=action_argument('range')
       )
     )
   else:
     result = add_spreadsheet_row(
-      daten["Anmeldungen"]["Tabelle"],
-      daten["Anmeldungen"]["Bereich"],
+      action_argument('spreadsheet'),
+      action_argument('range'),
       member_data
     )
     if background:
@@ -56,27 +85,51 @@ code: |
 ---
 
 ---
-code: add_member_task = background_action('add_member', 'refresh')
+# A task that adds the member email to a mailing list.
+code: |
+  register_member_email_task = background_action(
+    'register_email',
+    'refresh',
+    test_variable='test_mitglied_mailingliste',
+    email=mitglied.email,
+    group=daten["Mailingliste"]
+  )
 ---
-event: add_member
+# A task that adds the parent email to a mailing list.
+code: |
+  email = eltern.email if defined('eltern.email') else ''
+  register_parent_email_task = background_action(
+    'register_email',
+    'refresh',
+    test_variable='test_eltern_mailingliste',
+    email=email,
+    group=daten["Mailingliste (Eltern)"],
+    condition=minderjaehrig
+  )
+---
+# Adds an email address to a group. The action receives the following arguments:
+# - test_variable: The variable name to fill in testing mode.
+# - email: The email address that should be added.
+# - group: The group that the address should be added to.
+# - condition (optional): A boolean value. If this is set to false the action
+#                         will be skipped outside of testing mode. The default
+#                         is True.
+event: register_email
 code: |
   background = interface() in {"worker", "cron"}
   if testmodus and background:
     background_response_action(
       'set_variable',
-      name='test_mitglieder_tabelle',
-      value=get_file_meta(
-        daten["Mitgliederliste"]["Tabelle"],
-        mode="spreadsheet",
-        range=daten["Mitgliederliste"]["Tabelle"]
-      )
+      name=action_argument('test_variable'),
+      value=get_group_meta(action_argument('group'))
     )
   else:
-    result = add_spreadsheet_row(
-      daten["Mitgliederliste"]["Tabelle"],
-      daten["Mitgliederliste"]["Bereich"],
-      member_data
-    )
+    condition = action_argument('skip')
+    if condition is None:
+      condition = True
+    result = (add_group_member(action_argument('group'),
+                               action_argument('email'))
+              if condition else True)
     if background:
       background_response(result)
     else:
@@ -84,49 +137,10 @@ code: |
 ---
 
 ---
-code: register_member_email_task = background_action('register_member_email', 'refresh')
----
-event: register_member_email
-code: |
-  background = interface() in {"worker", "cron"}
-  if testmodus and background:
-    background_response_action(
-      'set_variable',
-      name='test_mitglied_mailingliste',
-      value=get_group_meta(daten["Mailingliste"])
-    )
-  else:
-    result = add_group_member(daten["Mailingliste"], mitglied.email)
-    if background:
-      background_response(result)
-    else:
-      json_response(result)
----
-
----
-code: register_parent_email_task = background_action('register_parent_email', 'refresh')
----
-event: register_parent_email
-code: |
-  background = interface() in {"worker", "cron"}
-  if testmodus and background:
-    background_response_action(
-      'set_variable',
-      name='test_eltern_mailingliste',
-      value=get_group_meta(daten["Mailingliste (Eltern)"])
-    )
-  else:
-    result = (add_group_member(daten["Mailingliste (Eltern)"], eltern.email)
-              if minderjaehrig else True)
-    if background:
-      background_response(result)
-    else:
-      json_response(result)
----
-
----
+# A task that assembles the registration PDF.
 code: anmeldung_task = background_action('assemble_anmeldung', 'refresh')
 ---
+# Assembles the registration pdf.
 event: assemble_anmeldung
 code: |
   background_response_action(
@@ -137,9 +151,12 @@ code: |
 ---
 
 ---
+# A task that archives the registration PDF to a folder.
 need: anmeldung
 code: archive_registration_task = background_action('archive_registration', 'refresh')
 ---
+# Archives the registration PDF to a folder. This action does not receive
+# arguments.
 event: archive_registration
 need: anmeldung
 code: |
@@ -159,9 +176,11 @@ code: |
 ---
 
 ---
+# Sends an email to the registered email address
 need: anmeldung
 code: member_email_task = background_action('send_member_email', 'refresh')
 ---
+# Sends an email to the registered email address.
 event: send_member_email
 need: anmeldung
 code: |
@@ -181,9 +200,11 @@ code: |
 ---
 
 ---
+# Sends an email to the notification addresses.
 need: anmeldung
 code: orga_email_task = background_action('send_orga_email', 'refresh')
 ---
+# Sends an email to the notification addresses.
 event: send_orga_email
 need: anmeldung
 code: |

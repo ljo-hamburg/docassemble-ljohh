@@ -4,9 +4,10 @@ $(document).on("daPageLoad", () => {
         $(element).on("click", event => {
             event.preventDefault();
             const action = element.dataset.daAction;
+            const args = element.dataset.args ? JSON.parse(element.dataset.args) : {};
             element.disabled = true;
-            action_call(action, {}, data => {
-                message = element.dataset.daMessage;
+            action_call(action, args, data => {
+                const message = element.dataset.daMessage;
                 if (message) {
                     flash(message, 'info');
                 }
