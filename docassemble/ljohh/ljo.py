@@ -25,7 +25,6 @@ from requests.auth import HTTPBasicAuth
 
 
 def get_google_credentials(**kwargs):
-    print("Getting Creds")
     info = get_config('google').get('service account credentials')
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
@@ -79,8 +78,6 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
         range=range
     )
     response = request.execute()
-    print("Response:")
-    print(response)
     headers = response["values"][0]
     normalized_data = {key.casefold(): value for key, value in data.items()}
     row = [normalized_data.get(header.casefold(), None) for header in headers]
@@ -95,8 +92,6 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
         }
     )
     response = request.execute()
-    print("Insert Response")
-    print(response)
     return True
 
 
