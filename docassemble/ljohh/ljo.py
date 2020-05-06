@@ -32,9 +32,13 @@ def get_google_credentials(**kwargs):
     )
 
 
-def get_file_meta(file: str):
+def get_file_meta(file: str, mode: str = None, **kwargs):
+    scopes = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+    if mode == "spreadsheet":
+        scopes.append(
+            "https://www.googleapis.com/auth/spreadsheets.readonly")
     credentials = get_google_credentials(
-        scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
+        scopes=scopes
     )
     service = discovery.build('drive', 'v3', credentials=credentials)
     request = service.files().get(
@@ -48,6 +52,16 @@ def get_file_meta(file: str):
     )
     try:
         result = request.execute()
+        meta = {
+            "code": 200,
+            "id": result["id"],
+            "name": result["name"],
+            "editable": result["capabilities"]["canEdit"]
+                        and result["capabilities"]["canModifyContent"],
+            "sheet": result[
+                         "mimeType"] == "application/vnd.google-apps.spreadsheet",
+            "folder": result["mimeType"] == "application/vnd.google-apps.folder"
+        }
     except HttpError as error:
         if error.resp.status in {403, 404}:
             return {
@@ -56,16 +70,27 @@ def get_file_meta(file: str):
             }
         else:
             raise error
-    return {
-        "code": 200,
-        "id": result["id"],
-        "name": result["name"],
-        "editable": result["capabilities"]["canEdit"]
-                    and result["capabilities"]["canModifyContent"],
-        "sheet": result[
-                     "mimeType"] == "application/vnd.google-apps.spreadsheet",
-        "folder": result["mimeType"] == "application/vnd.google-apps.folder"
-    }
+    if mode == "spreadsheet":
+        service = discovery.build('sheets', 'v4', credentials=credentials)
+        request = service.spreadsheets().values().get(
+            spreadsheetId=file,
+            range=kwargs["range"]
+        )
+        try:
+            result = request.execute()
+            meta["range"] = result["range"]
+        except HttpError as error:
+            if error.resp.status == 400:
+                meta["range"] = False
+            else:
+                raise error
+    return meta
+
+
+def get_spreadsheet_meta(spreadsheet: str, range: str):
+    credentials = get_google_credentials(
+        scopes=['https://www.googleapis.com/auth/spreadsheets.readonly']
+    )
 
 
 def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):

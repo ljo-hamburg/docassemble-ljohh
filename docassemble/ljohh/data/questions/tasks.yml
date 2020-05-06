@@ -37,7 +37,11 @@ code: |
     background_response_action(
       'set_variable',
       name='test_anmeldungen_tabelle',
-      value=get_file_meta(daten["Anmeldungen"]["Tabelle"])
+      value=get_file_meta(
+        daten["Anmeldungen"]["Tabelle"],
+        mode="spreadsheet",
+        range=daten["Anmeldungen"]["Bereich"]
+      )
     )
   else:
     result = add_spreadsheet_row(
@@ -61,7 +65,11 @@ code: |
     background_response_action(
       'set_variable',
       name='test_mitglieder_tabelle',
-      value=get_file_meta(daten["Mitgliederliste"]["Tabelle"])
+      value=get_file_meta(
+        daten["Mitgliederliste"]["Tabelle"],
+        mode="spreadsheet",
+        range=daten["Mitgliederliste"]["Tabelle"]
+      )
     )
   else:
     result = add_spreadsheet_row(
