@@ -11,6 +11,7 @@ from google.oauth2 import service_account
 from googleapiclient import discovery
 
 __all__ = [
+    "ljo_account",
     "get_file_meta",
     "get_group_meta",
     "add_spreadsheet_row",
@@ -24,7 +25,22 @@ from googleapiclient.http import MediaFileUpload
 from requests.auth import HTTPBasicAuth
 
 
+def ljo_account():
+    """
+    Returns the email address of the service account that is used for
+    automation actions.
+    """
+    info = get_config('google').get('service account credentials')
+    data = json.loads(info, strict=False)
+    return data["client_email"]
+
+
 def get_google_credentials(**kwargs):
+    """
+    Returns Credentials that are able to authenticate against the Google APIs.
+    Use the keyword arguments to provide further details (such as the scopes of
+    the credentials).
+    """
     info = get_config('google').get('service account credentials')
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
@@ -33,6 +49,13 @@ def get_google_credentials(**kwargs):
 
 
 def get_file_meta(file: str, mode: str = None, **kwargs):
+    """
+    Returns information about the file with the specified ID. Optionally
+    additional information can be queried using the mode parameter. Currently
+    the only supported value is 'spreadsheet'. If mode is set to 'spreadsheet'
+    you must provide an additional keyword argument 'range' specifying the range
+    where data would be inserted.
+    """
     scopes = ['https://www.googleapis.com/auth/drive.metadata.readonly']
     if mode == "spreadsheet":
         scopes.append(
@@ -87,13 +110,14 @@ def get_file_meta(file: str, mode: str = None, **kwargs):
     return meta
 
 
-def get_spreadsheet_meta(spreadsheet: str, range: str):
-    credentials = get_google_credentials(
-        scopes=['https://www.googleapis.com/auth/spreadsheets.readonly']
-    )
-
-
 def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
+    """
+    Inserts a new row of data into the spreadsheet with the specified ID in the
+    specified range. The data dictionary provides the data. Keys in the
+    dictionary are matched against the first row in the range (usually a header
+    row of the table) to determine which fields should be inserted where. The
+    comparison is performed case-insensitively.
+    """
     credentials = get_google_credentials(
         scopes=['https://www.googleapis.com/auth/spreadsheets']
     )
@@ -121,6 +145,9 @@ def add_spreadsheet_row(spreadsheet: str, range: str, data: Dict[str, Any]):
 
 
 def get_group_meta(group: str):
+    """
+    Returns information about the specified group.
+    """
     credentials = get_google_credentials(
         subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
         scopes=[
@@ -147,6 +174,10 @@ def get_group_meta(group: str):
 
 
 def add_group_member(group: str, email: str):
+    """
+    Adds a member to a group. Both are specified using the respective email
+    address.
+    """
     credentials = get_google_credentials(
         subject="admin@ljo-hamburg.de",  # Delegate to Domain Admin
         scopes=["https://www.googleapis.com/auth/admin.directory.group.member"],
@@ -170,6 +201,10 @@ def add_group_member(group: str, email: str):
 
 
 def upload_file(file: DAFile, folder: str):
+    """
+    Uploads a file into the specified folder. The folder is specified using its
+    ID.
+    """
     file.retrieve()
     credentials = get_google_credentials(
         scopes=['https://www.googleapis.com/auth/drive']
@@ -201,6 +236,15 @@ def send_ljo_email(
         attachments: List[DAFile] = None,
         mailgun_variables=None
 ):
+    """
+    Sends an email. This method is a drop-in replacement for docassemble's
+    send_mail function. However this method will send the email using a
+    pre-configured Mailgun template if possible. If not it falls back to the
+    send_mail function.
+
+    The template can be configured in the interview configuration as
+    daten['Mailgun Vorlage'].
+    """
     config = get_config('mail')
     url = config.get('mailgun send url',
                      "https://api.mailgun.net/v3/%s/messages")
