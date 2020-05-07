@@ -57,9 +57,9 @@ code: |
 ---
 # Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
 code: |
-  status = url_args.get("status", "normal").lower()
-  if status not in ["normal", "flex", "aushilfe"]:
-    status = "normal"
+  status = url_args.get("status", "").lower()
+  if status not in ["mitglied", "flex", "aushilfe"]:
+    status = "mitglied"
 ---
 # Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
 # festgelegt.

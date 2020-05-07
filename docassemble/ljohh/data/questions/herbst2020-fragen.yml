@@ -141,7 +141,7 @@ subquestion: |
   Informationen dazu findest du auf der
   [LJO-Website im internen Bereich](https://ljo-hamburg.de/interner-bereich/freistellung/).
 
-  % if status == "normal":
+  % if status == "mitglied":
     Wenn du bei mehr als 4 Probenterminen nicht kannst oder du bei vielen
     wichtigen Proben nicht kannst, schreib uns bitte eine Mail an
     [freistellung@ljo-hamburg.de](mailto:freistellung@ljo-hamburg.de),
@@ -172,7 +172,7 @@ fields:
         Proben kommst. Für eine Sonderregelung sprich bitte sofort mit dem
         Vorstand: vorstand@ljo-hamburg.de.
   - note: |
-      % if status == "normal":
+      % if status == "mitglied":
         Die Anwesenheit bei allen Konzerten ist verpflichtend. Solltest du die
         Arbeitsphase mitspielen wollen, kannst aber nicht zu allen
         Konzertterminen, setze dich bitte vorher mit uns

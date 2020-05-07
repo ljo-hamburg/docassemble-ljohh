@@ -5,10 +5,10 @@ from docassemble.base.util import format_date, validation_error
 def max_fehltermine(key, anzahl):
     """
     Berechnet die Anzahl der Präsenztermine, sodass höchstens anzahl Fehltermine
-    verzeichnet sind. Wenn status != "normal" ist, wird immer 0 zurückgegeben.
+    verzeichnet sind. Wenn status != "mitglied" ist, wird immer 0 zurückgegeben.
     """
     config: dict = value("daten")
-    if value("status") == "normal":
+    if value("status") == "mitglied":
         return len(config[key]) - anzahl
     else:
         return 0
