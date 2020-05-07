@@ -38,6 +38,7 @@ data:
   # Anmeldungen eingefügt werden sollen.
   Mitgliederliste:
     Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
+    Blatt-ID: 194218765
     Bereich: Anmeldungen
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)

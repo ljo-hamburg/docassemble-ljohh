@@ -3,7 +3,8 @@
 # background_action_response.
 event: set_variable
 code: |
-  define(action_argument('name'), action_argument('value'))
+  for name, value in action_arguments().items():
+    define(name, value)
   background_response()
 ---
 # The member_data forms is the data that is available to be put in spreadsheets.
@@ -19,12 +20,12 @@ code: |
     "Telefonnummer": mitglied.phone_number,
     "Adresse": mitglied.address,
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-    "Probentermine": list(probentermine.true_values()),
-    "Konzerttermine": list(konzerttermine.true_values()),
+    "Probentermine": ', '.join(probentermine.true_values()),
+    "Konzerttermine": ', '.join(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen.strip(),
     "Nächste Phase": ja_nein_vielleicht(nachste_phase),
     "Übernächste Phase": ja_nein_vielleicht(ubernachste_phase),
-    "Versorgung (PWE)": list(pwe_versorgung.true_values()),
+    "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
     "Sonstiges (PWE)": pwe_sonstiges.strip()
   }
   if minderjaehrig:
@@ -65,12 +66,11 @@ code: |
   if testmodus and background:
     background_response_action(
       'set_variable',
-      name=action_argument('test_variable'),
-      value=get_file_meta(
+      **{action_argument('test_variable'): get_file_meta(
         action_argument('spreadsheet'),
         mode="spreadsheet",
         range=action_argument('range')
-      )
+      )}
     )
   else:
     result = add_spreadsheet_row(
@@ -120,8 +120,7 @@ code: |
   if testmodus and background:
     background_response_action(
       'set_variable',
-      name=action_argument('test_variable'),
-      value=get_group_meta(action_argument('group'))
+      **{action_argument('test_variable'): get_group_meta(action_argument('group'))}
     )
   else:
     condition = action_argument('skip')
@@ -145,8 +144,7 @@ event: assemble_anmeldung
 code: |
   background_response_action(
     'set_variable',
-    name='anmeldung',
-    value=anmeldeformular
+    anmeldung=anmeldeformular
   )
 ---
 
@@ -164,8 +162,7 @@ code: |
   if testmodus and background:
     background_response_action(
       'set_variable',
-      name='test_archiv_ordner',
-      value=get_file_meta(daten["Archivordner-ID"])
+      test_archiv_ordner=get_file_meta(daten["Archivordner-ID"])
     )
   else:
     result = upload_file(anmeldung.pdf, daten["Archivordner-ID"])
