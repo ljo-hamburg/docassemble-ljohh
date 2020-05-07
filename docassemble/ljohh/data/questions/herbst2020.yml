@@ -44,6 +44,7 @@ data:
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)
   Anmeldungen:
     Tabelle: 1Dr0qfACZ1uYdYlWvuNxOaorGbdKibvGgtNCdpFsBIYY
+    Blatt-ID: 1223040774
     Bereich: Anmeldungen
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
