@@ -133,19 +133,3 @@ ${ check_spreadsheet(test_anmeldungen_tabelle) }
                      message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
   Zur Tabelle hinzufügen
 </%self:action_button>
-
-### Mitgliederliste
-Alle Daten werden auch automatisch zur Mitgliederliste hinzugefügt. Die
-Mitgliederliste ist mit der ID `${ test_mitglieder_tabelle["id"] }` konfiguriert.
-Dort werden Daten im Bereich `${ daten["Mitgliederliste"]["Bereich"] }`
-hinzugefügt. Überschriften werden automatisch erkannt und den Einträgen
-zugeordnet.
-
- ${ check_spreadsheet(test_mitglieder_tabelle) }
-
-<%self:action_button action="append_to_spreadsheet"
-                     spreadsheet="${ test_mitglieder_tabelle['id'] }"
-                     range="${ daten['Mitgliederliste']['Bereich'] }"
-                     message="Die Daten wurden zur Mitgliederliste hinzugefügt.">
-  Zur Tabelle hinzufügen
-</%self:action_button>

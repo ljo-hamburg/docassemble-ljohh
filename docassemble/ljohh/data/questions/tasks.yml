@@ -44,16 +44,6 @@ code: |
     range=daten["Anmeldungen"]["Bereich"]
   )
 ---
-# A task that adds a row to the Mitgliederliste.
-code: |
-  add_member_task = background_action(
-    'append_to_spreadsheet',
-    'refresh',
-    test_variable='test_mitglieder_tabelle',
-    spreadsheet=daten["Mitgliederliste"]["Tabelle"],
-    range=daten["Mitgliederliste"]["Bereich"]
-  )
----
 # This action saves member_data to a spreadsheet configured via action arguments.
 # All arguments are required.
 # - spreadsheet: This argument provides the spreadsheet ID

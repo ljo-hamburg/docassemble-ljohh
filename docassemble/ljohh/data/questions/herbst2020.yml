@@ -29,19 +29,14 @@ data:
   # Testmodus passiert wäre.
   Testmodus: false
 
-  # Der Name der Arbeitsphase. Dieser Wert wird in der Mitgliederliste benutzt.
+  # Bezeichnung der Arbeitsphase bzw. des Projektes.
   Phase: Herbst 2020
 
-  # Konfiguriert die Anbindung an die Mitgliederliste. Die 'Tabelle' gibt die ID
-  # einer Google Docs Tabelle an, in der neue Anmeldungen eingefügt werden
-  # sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an, in dem neue
-  # Anmeldungen eingefügt werden sollen.
-  Mitgliederliste:
-    Tabelle: 1UOr6lgxce8l75yhFFZdoXf9XCRb0odOQ0661fwAZUlc
-    Blatt-ID: 194218765
-    Bereich: Anmeldungen
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
+  # 'Tabelle' gibt die ID einer Google Docs Tabelle an, in der neue Anmeldungen
+  # eingefügt werden sollen. Der 'Bereich' gibt den Bereich (in A1-Notation) an,
+  # in dem neue Anmeldungen eingefügt werden sollen.
 
-  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab (s.o.)
   Anmeldungen:
     Tabelle: 1Dr0qfACZ1uYdYlWvuNxOaorGbdKibvGgtNCdpFsBIYY
     Blatt-ID: 1223040774

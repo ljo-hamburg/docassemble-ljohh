@@ -13,7 +13,6 @@ Der Anmeldeprozess kann beliebig komplex werden. Im Regelfall werden aber folgen
 Das automatische Speichern von Daten besteht aus den folgenden Schritten:
 
 - Hinzufügen der Daten zu einer Anmeldeliste (ein Google Sheet)
-- Hinzufügen der Daten zur Mitgliederliste (ein Google Sheet)
 - Hinzufügen der E-Mail-Adresse des Benutzers (sowie ggf. der Eltern) zu einer Mailingliste (Google Groups)
 - Abspeichern des Anmeldeformulars in einem Google Drive Ordner.
 - Schicken einer Begrüßungsmail an den Benutzer mit Anmeldung, Teilnahmebedingungen und Geschäftsordnung im Anhang.
@@ -33,11 +32,9 @@ Um die automatischen Anmeldungen zu nutzen, müssen einige Dinge vorbereitet wer
 
    Die Überschriften können nicht willkürlich sein. Anhand der Überschriften werden die dazugehörigen Daten gefunden. Die Überschriften entsprechen den Schlüsseln im `member_data`-Dictionary, das in `tasks.yml` definiert wird.
 
-3. Erstellung einer Google-Tabelle, in der Mitglieder gepflegt werden. Dies funktioniert exakt wie in 2. Auch hier benötigt der Account `anmeldung@docassemble-264719.iam.gserviceaccount.com` schreibenden Zugriff.
+3. Erstellen von zwei Mailinglisten, in denen Mitglieder-E-Mails und Eltern-E-Mails gespeichert werden sollen. Hier muss nichts weiter konfiguriert werden, damit automatische Anmeldungen funktionieren.
 
-4. Erstellen von zwei Mailinglisten, in denen Mitglieder-E-Mails und Eltern-E-Mails gespeichert werden sollen. Hier muss nichts weiter konfiguriert werden, damit automatische Anmeldungen funktionieren.
-
-5. Bearbeiten der Interview- und Template-Dateien (s.u.)
+4. Bearbeiten der Interview- und Template-Dateien (s.u.)
 
 ### Anmeldungen bearbeiten
 
