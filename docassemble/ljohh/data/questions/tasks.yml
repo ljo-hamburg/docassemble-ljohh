@@ -123,7 +123,7 @@ code: |
       **{action_argument('test_variable'): get_group_meta(action_argument('group'))}
     )
   else:
-    condition = action_argument('skip')
+    condition = action_argument('condition')
     if condition is None:
       condition = True
     result = (add_group_member(action_argument('group'),
