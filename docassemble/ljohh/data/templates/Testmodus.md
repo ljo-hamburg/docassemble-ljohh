@@ -128,8 +128,9 @@ ${ check_group(test_eltern_mailingliste) }
 
 ### Mailingliste (Mitglieder)
 % if status == "aushilfe":
-Aushilfen werden nicht auf der Mitglieder-Mailingliste eingetragen. In diesem
-Fall wird diese Aktion übersprungen.
+Aushilfen werden nicht auf der Mitglieder-Mailingliste
+`${ test_mitglied_mailingliste['email'] }` eingetragen. In diesem Fall wird
+diese Aktion übersprungen.
 % else:
 Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
 `${ test_mitglied_mailingliste['email'] }` für Mitglieder eingetragen.
