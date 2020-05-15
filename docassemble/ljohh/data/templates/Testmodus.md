@@ -28,7 +28,7 @@ An die E-Mail sind drei Dokumente angehängt:
 - [${ teilnahmebedingungen.filename }](${ teilnahmebedingungen.url_for() })
 - [${ geschaeftsordnung.filename }](${ geschaeftsordnung.url_for() })
 
-<div>
+<p>
   <%self:collapse_button id="mitglied-email-collapse">
     E-Mail-Inhalt anzeigen
   </%self:collapse_button>
@@ -36,7 +36,7 @@ An die E-Mail sind drei Dokumente angehängt:
                        message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die Mail ankommt.">
     E-Mail trotzdem senden
   </%self:action_button>
-</div>
+</p>
 
 <%self:collapse id="mitglied-email-collapse" title="${ mitglied_email.subject }">
   ${ mitglied_email }
@@ -60,7 +60,7 @@ Empfänger werden benachrichtigt:
 Wenn du unten auf "E-Mail trotzdem senden" klickst, wird die E-Mail im Testmodus
 nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
 
-<div>
+<p>
   <%self:collapse_button id="orga-email-collapse">
     E-Mail-Inhalt anzeigen
   </%self:collapse_button>
@@ -68,7 +68,7 @@ nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
                        message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die E-Mail ankommt.">
     E-Mail trotzdem senden
   </%self:action_button>
-</div>
+</p>
 
 <%self:collapse id="orga-email-collapse" title="${ orga_email.subject }">
   ${ orga_email }
@@ -81,7 +81,7 @@ Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
 
 ${ check_folder(test_archiv_ordner) }
 
-<div>
+<p>
   <%self:action_button action="archive_registration"
                        message="Die Anmeldung wurde zum Ordner hinzugefügt.">
     Anmeldung archivieren
@@ -89,7 +89,7 @@ ${ check_folder(test_archiv_ordner) }
   <a class="btn btn-secondary btn-sm"
      target="_blank"
      href="https://drive.google.com/drive/u/0/folders/${ test_archiv_ordner['id'] }">Ordner öffnen</a>
-</div>
+</p>
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
@@ -135,7 +135,7 @@ automatisch erkannt und den Einträgen zugeordnet.
 
 ${ check_spreadsheet(test_anmeldungen_tabelle) }
 
-<div>
+<p>
   <%self:action_button action="append_to_spreadsheet"
                        spreadsheet="${ test_anmeldungen_tabelle['id'] }"
                        range="${ daten['Anmeldungen']['Bereich'] }"
@@ -145,4 +145,4 @@ ${ check_spreadsheet(test_anmeldungen_tabelle) }
   <a class="btn btn-secondary btn-sm"
      target="_blank"
      href="https://docs.google.com/spreadsheets/d/${ test_anmeldungen_tabelle['id'] }/edit#gid=daten['Anmeldungen']['Blatt-ID']">Tabelle öffnen</a>
-</div>
+</p>
