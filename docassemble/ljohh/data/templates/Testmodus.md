@@ -93,13 +93,13 @@ ${ check_folder(test_archiv_ordner) }
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
-`${ test_mitglied_mailingliste['email'] }` hinzugefügt.
+`${ test_mitspieler_mailingliste['email'] }` hinzugefügt.
 
-${ check_group(test_mitglied_mailingliste) }
+${ check_group(test_mitspieler_mailingliste) }
 
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
-                     group="${ test_mitglied_mailingliste['email'] }"
+                     group="${ test_mitspieler_mailingliste['email'] }"
                      message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
@@ -122,6 +122,26 @@ ${ check_group(test_eltern_mailingliste) }
                      group="${ test_eltern_mailingliste['email'] }"
                      condition="${ minderjaehrig }"
                      message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
+  Zur Gruppe hinzufügen
+</%self:action_button>
+% endif
+
+### Mailingliste (Mitglieder)
+% if status == "aushilfe":
+Aushilfen werden nicht auf der Mitglieder-Mailingliste eingetragen. In diesem
+Fall wird diese Aktion übersprungen.
+% else:
+Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
+`${ test_mitglied_mailingliste['email'] }` für Mitglieder eingetragen.
+% endif
+
+${ check_group(test_mitglied_mailingliste) }
+
+% if status != "aushilfe":
+<%self:action_button action="register_email"
+                     email="${ mitglied.email }"
+                     group="${ test_mitglied_mailingliste['email'] }"
+                     message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
 % endif

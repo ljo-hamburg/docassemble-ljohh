@@ -71,8 +71,9 @@ code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
 code: |
   if not all(task.ready() for task in [
       save_data_task,
-      register_member_email_task,
+      register_player_email_task,
       register_parent_email_task,
+      register_member_email_task,
       member_email_task,
       orga_email_task,
       archive_registration_task

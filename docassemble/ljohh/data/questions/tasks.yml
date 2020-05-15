@@ -77,10 +77,10 @@ code: |
 ---
 # A task that adds the member email to a mailing list.
 code: |
-  register_member_email_task = background_action(
+  register_player_email_task = background_action(
     'register_email',
     'refresh',
-    test_variable='test_mitglied_mailingliste',
+    test_variable='test_mitspieler_mailingliste',
     email=mitglied.email,
     group=daten["Mailingliste"]
   )
@@ -95,6 +95,18 @@ code: |
     email=email,
     group=daten["Mailingliste (Eltern)"],
     condition=minderjaehrig
+  )
+---
+# A task that adds the member email to a mailing list (but only for true
+# members).
+code: |
+  register_member_email_task = background_action(
+    'register_email',
+    'refresh',
+    test_variable='test_mitglied_mailingliste',
+    email=mitglied.email,
+    group=daten["Mailingliste (Mitglieder)"],
+    condition=status != "aushilfe"
   )
 ---
 # Adds an email address to a group. The action receives the following arguments:

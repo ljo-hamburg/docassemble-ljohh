@@ -46,6 +46,7 @@ data:
   # Mailingliste hinzugefügt.
   Mailingliste: herbst-2020@ljo-hamburg.de
   Mailingliste (Eltern): herbst-2020-eltern@ljo-hamburg.de
+  Mailingliste (Mitglieder): mitglieder@ljo-hamburg.de
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
