@@ -44,13 +44,14 @@ data:
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
   # Mailingliste hinzugefügt.
-  Mailingliste: test@test.ljo-hamburg.de
-  Mailingliste (Eltern): test@test.ljo-hamburg.de
+  Mailingliste: herbst-2020@ljo-hamburg.de
+  Mailingliste (Eltern): herbst-2020-eltern@ljo-hamburg.de
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
   E-Mail Benachrichtigung:
-    - info@wittenburg.kim
+    - probespiel@ljo-hamburg.de
+    - zuern@lmr-hh.de
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.
@@ -58,7 +59,7 @@ data:
 
   # ID des Google Drive Ordners, in dem Anmeldungne archiviert werden sollen.
   # Die ID kann aus der URL herausgelesen werden.
-  Archivordner-ID: 1vNIPGD2x_T7xuEZFQHFFhNvQuOrBMIhe
+  Archivordner-ID: 17j0piaF3GOCmTrDxyI14MI2y9aTRH0Tf
 
   # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
   # sind möglich:
