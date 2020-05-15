@@ -31,11 +31,24 @@ subquestion: |
 
   ### Was ist mit Corona?
 
-  Zum jetzigen Zeitpunkt ist noch nicht klar, inwiefern die Corona-Situation
-  die Arbeitsphase beeinträchtigen wird. Wird sind zuversichtlich, dass Mitte
-  August wieder Proben stattfinden können und dass die Konzerte im November
-  möglich sind. Sobald es hierzu Neuigkeiten gibt, informieren wir dich
-  natürlich.
+  Die Corona-Situation wird sich mit großer Sicherheit auf die Arbeitsphase
+  auswirken. Wir sind jedoch optimistisch, dass im August geprobt werden kann
+  und dass im November Konzerte stattfinden können. Es ist aber klar, dass durch
+  die besonderen Umstände Einschränkungen nötig werden können, um die Gesundheit
+  nicht zu gefährden. Dazu gehört z.B. das Einhalten von Abstandsregeln bei
+  Proben und Konzerten. Auswirkungen können unter Anderem sein:
+
+    - Eventuell Anpassung von Probenzeiten, bzw. vermehrte Stimmproben
+    - Eventuell Anpassung des Programms, falls es Einschränkungen der
+      Besetzungsgröße bei Konzerten gibt (falls wir also nicht in großer
+      Besetzung auf die Bühne dürfen).
+    - Umgestaltung oder Entfall des Probenwochenendes in Tönning, falls es die
+      dann geltenden Richtlinien erforderlich machen.
+    - Ausfall der Konzerte, falls Konzerthäuser im September noch nicht geöffnet
+      sind.
+
+  Wir hoffen natürlich, dass die Probenphase wie gewohnt stattfinden kann,
+  können aber leider zum jetzigen Zeitpunkt keine Garantien machen.
 
   ### Wie melde ich mich an?
 
@@ -303,8 +316,15 @@ fields:
   - ? Ich habe die Teilnahmebedingungen gelesen und akzeptiere sie
     : bedingungen.tnbedingungen
     datatype: yesnowide
-    validate:
-      "lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')"
+    validate: >
+      lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
+  - ? Ich bin informiert, dass die Arbeitsphase unter Vorbehalt der jeweils
+      geltenden behördlichen Auflagen zur Eindämmung der COVID-19 Pandemie
+      steht.
+    : bedingungen.corona
+    datatype: yesnowide
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
       drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
       bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
@@ -312,8 +332,8 @@ fields:
     : bedingungen.veranstaltungsort
     datatype: yesnowide
     show if: {code: minderjaehrig}
-    validate:
-      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Ich gebe dem Landesmusikrat Hamburg e.V. (LMR HH) mein / unser
       Einverständnis zu Rundfunk- und Fernsehaufnahmen, Aufzeichnungen von Ton
       und Bild, die im Zusammenhang mit dem LJO Hamburg gemacht werden, sowie
@@ -322,8 +342,8 @@ fields:
       Rechte hiermit auf den LMR HH.
     : bedingungen.aufnahmen
     datatype: yesnowide
-    validate:
-      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Ich bin informiert, dass die Arbeitsphase nur stattfinden kann, wenn eine
       auskömmliche Finanzierung sowie eine vollständige Orchesterbesetzung
       gesichert ist. Im Falle des nicht Zustandekommen kann die Arbeitsphase
@@ -331,15 +351,15 @@ fields:
       Fall zurückerstattet.
     : bedingungen.finanzierung
     datatype: yesnowide
-    validate:
-      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Ich erkläre mich damit einverstanden, zukünftig Informationen des
       Landesmusikrates Hamburg zum Thema LJO HH, den Newsletter sowie weitere
       Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
-    validate:
-      "lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')"
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
 ---
 id: herbst-2020/kontrolle
 continue button field: Kontrolle

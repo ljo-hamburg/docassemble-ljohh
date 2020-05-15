@@ -64,7 +64,7 @@ setup(
     author='Kim Wittenburg',
     author_email='admin@ljo-hamburg.de',
     license='The MIT License (MIT)',
-    url='https://github.com/ljo-hamburg/Anmeldungen',
+    url='https://github.com/ljo-hamburg/docassemble-ljohh',
     packages=find_packages(),
     namespace_packages=['docassemble'],
     install_requires=[
