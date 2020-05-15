@@ -199,11 +199,12 @@ code: |
   recipients = daten["E-Mail Benachrichtigung"]
   if isinstance(recipients, str):
     recipients = [recipients]
-  if not recipients or (testmodus and background):
+  if (testmodus and background) or (not testmodus and not recipients):
     result = True
   else:
+    to = [mitglied] if testmodus else recipients
     result = send_ljo_email(
-      to=recipients,
+      to=to,
       template=orga_email,
       attachments=[anmeldung.pdf]
     )

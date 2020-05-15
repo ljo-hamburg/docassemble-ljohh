@@ -27,7 +27,7 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: false
+  Testmodus: true
 
   # Bezeichnung der Arbeitsphase bzw. des Projektes.
   Phase: Herbst 2020
@@ -49,7 +49,8 @@ data:
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
-  E-Mail Benachrichtigung: [info@wittenburg.kim]
+  E-Mail Benachrichtigung:
+    - info@wittenburg.kim
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.

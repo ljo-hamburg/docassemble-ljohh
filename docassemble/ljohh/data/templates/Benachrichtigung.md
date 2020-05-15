@@ -1,5 +1,5 @@
 Hallo,
-  
+
 ${ mitglied } hat sich soeben zur Arbeitsphase _${ daten['Phase'] }_ angemeldet.
 Die Anmeldung wurde automatisch archiviert und ist auch im Anhang.
 

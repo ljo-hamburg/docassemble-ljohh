@@ -57,6 +57,9 @@ Empfänger werden benachrichtigt:
   - `${ email }`
 % endfor
 
+Wenn du unten auf "E-Mail trotzdem senden" klickst, wird die E-Mail im Testmodus
+nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
+
 <div>
   <%self:collapse_button id="orga-email-collapse">
     E-Mail-Inhalt anzeigen
