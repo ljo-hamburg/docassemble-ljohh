@@ -370,7 +370,8 @@ review:
       % if testmodus:
       <div class="alert alert-warning" role="alert">
       Die Anmeldung wird im Testmodus ausgefüllt. Die Ergebnisse werden nicht
-      automatisch übermittelt.
+      automatisch übermittelt. Wenn du auf "Anmeldung abschicken" klickst,
+      bekommst du eine Zusammenfassung der automatischen Aktionen.
       </div>
       % endif
       Bevor du die Anmeldung abschickst, hast du nun noch einmal die Möglichkeit,

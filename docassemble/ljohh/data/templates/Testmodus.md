@@ -81,10 +81,13 @@ Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
 
 ${ check_folder(test_archiv_ordner) }
 
-<%self:action_button action="archive_registration"
-                     message="Die Anmeldung wurde zum Ordner hinzugefügt.">
-  Anmeldung archivieren
-</%self:action_button>
+<div>
+  <%self:action_button action="archive_registration"
+                       message="Die Anmeldung wurde zum Ordner hinzugefügt.">
+    Anmeldung archivieren
+  </%self:action_button>
+  <a class="btn btn-sm" href="https://drive.google.com/drive/u/0/folders/${ test_archiv_ordner['id'] }">Ordner öffnen</a>
+</div>
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
@@ -130,9 +133,12 @@ automatisch erkannt und den Einträgen zugeordnet.
 
 ${ check_spreadsheet(test_anmeldungen_tabelle) }
 
-<%self:action_button action="append_to_spreadsheet"
-                     spreadsheet="${ test_anmeldungen_tabelle['id'] }"
-                     range="${ daten['Anmeldungen']['Bereich'] }"
-                     message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
-  Zur Tabelle hinzufügen
-</%self:action_button>
+<div>
+  <%self:action_button action="append_to_spreadsheet"
+                       spreadsheet="${ test_anmeldungen_tabelle['id'] }"
+                       range="${ daten['Anmeldungen']['Bereich'] }"
+                       message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
+    Zur Tabelle hinzufügen
+  </%self:action_button>
+  <a class="btn btn-sm" href="https://docs.google.com/spreadsheets/d/${ test_anmeldungen_tabelle['id'] }/edit#gid=daten['Anmeldungen']['Blatt-ID']">Tabelle öffnen</a>
+</div>
