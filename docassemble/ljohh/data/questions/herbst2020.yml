@@ -140,6 +140,8 @@ sections:
 # Funktion, die nicht leichtfertig verändert werden sollte.
 mandatory: True
 code: |
+  if testmodus:
+    status
   Einleitung
   Kontaktdaten
   if minderjaehrig:

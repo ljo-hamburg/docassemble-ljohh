@@ -1,3 +1,28 @@
+id: herbst-2020/statuswahl
+field: status
+if: testmodus
+question: Status auswählen
+subquestion: |
+  <div class="alert alert-warning" role="alert">
+  Diese Seite wird nur im Testmodus angezeigt.
+  </div>
+
+  Du füllst die Anmeldung im Testmodus aus. Wähle aus, mit welchem Status du die
+  Anmeldung ausfüllen möchtest. Das ändert ggf. einige Inhalte. Normalerweise
+  wird der Status über einen URL-Parameter ausgewählt, sodass anhand des
+  Anmeldelinks der Status ausgewählt wird.
+
+  - **Mitglieder** sind reguläre Mitglieder. Hier ist zu beachten, dass die
+    maximale Anzahl an Fehlterminen begrenzt ist.
+  - **Flex-Mitglieder** werden wie reguläre Mitglieder behandelt, können aber
+    beliebig viele Fehltermine auswählen.
+  - **Aushilfen** können ebenfalls beliebig viele Fehltermine angeben, müssen aber
+    im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
+buttons:
+  - Mitglied: mitglied
+  - Flex-Mitglied: flex
+  - Aushilfe: aushilfe
+---
 id: herbst-2020/einleitung
 field: Einleitung
 question: Anmeldung zur Herbstphase 2020
@@ -63,10 +88,10 @@ subquestion: |
      deine Eltern die Anmeldung unterschreiben.
 
   % if status == "aushilfe":
-    ### Anmerkung
+  ### Anmerkung
 
-    Du meldest dich als Aushilfe an. Sollte das ein Versehen sein, klicke bitte
-    [hier](https://ljo-hamburg.de/interner-bereich).
+  Du meldest dich als Aushilfe an. Sollte das ein Versehen sein, klicke bitte
+  [hier](https://ljo-hamburg.de/interner-bereich) und melde dich dort an.
   % endif
 under: |
   <small>
