@@ -45,7 +45,7 @@ Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
 sehr dankbar für deine Unterstützung.
 % else:
 Bitte überweise den Betrag innerhalb von **2 Wochen** auf das folgende
-Konto:
+Konto (bzw. 2 Wochen vor Beginn der Arbeitsphase):
 
 Landesmusikrat in der Freien und Hansestadt Hamburg e.V.  
 IBAN: DE28 2007 0024 0053 6110 03  
@@ -55,13 +55,21 @@ Verwendungszweck: Teilnehmerbeitrag  (2. AP 2020, ${ mitglied.name })
 
 Wir möchten dich bitten, den Beitrag selbstständig und rechtzeitig zu überweisen.
 Es ist immer sehr aufwändig, wenn wir den Beiträgen „hinterherrennen“ müssen.
+
+## Anrechnung des Beitrages vom Sommer 2020
+Falls du bereits in der Sommerphase 2020 mitgespielt hast, hast du dort bereits
+einen Teilnehmerbeitrag gezahlt. Durch den Corona-bedingten Ausfall der Phase
+wird der Beitrag nachträglich auf 50% reduziert. Du kannst den Betrag, den du
+bereits im Sommer 2020 gezahlt hast, in der Herbstphase anrechnen lassen und
+musst dann nur noch die verbleibenden 30€ zahlen. Die Überweisungsfrist ist in
+dem Fall gleich. 
 % endif
 
 # Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das
-Formular und schicke es zeitnah an [zuern@lmr-hh.de](mailto:zuern@lmr-hh.de). Erst
-dann bist du offiziell angemeldet und darfst mitspielen. Denk auch daran, den
-Teilnehmerbeitrag rechtzeitig zu überweisen.
+Formular und schicke es zeitnah an unsere Projektleitung Ulrike Zürn
+([zuern@lmr-hh.de](mailto:zuern@lmr-hh.de)) oder per Post an den Landesmusikrat
+Hamburg. Erst dann bist du offiziell angemeldet und darfst mitspielen.
 
 Wir freuen uns auf die gemeinsame Probenphase. Solltest du irgendwelche Fragen
 haben, schreibe uns immer gerne:

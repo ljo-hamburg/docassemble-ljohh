@@ -46,8 +46,9 @@ subquestion: |
   Die Arbeitsphase findet im Zeitraum vom 17. August bis zum 22. November
   2020 statt. Wie üblich wird in dieser Zeit an den Montag in der Schulzeit
   geprobt. Zusätzlich finden außerdem insgesamt 4 Probentage in Hamburg an
-  Wochenendtagen statt. Vom 13. November bis zum 15. November 2020 findet ein
-  abschließendes Intensiv-Probenwochenede in der Jugendherberge Tönning statt.
+  Wochenendtagen statt. Vom 13. November bis zum 15. November 2020 findet
+  (sofern es die Corona-Richtlinien zulassen) ein abschließendes
+  Intensiv-Probenwochenede in der Jugendherberge Tönning statt.
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
@@ -56,12 +57,13 @@ subquestion: |
 
   ### Was ist mit Corona?
 
-  Die Corona-Situation wird sich mit großer Sicherheit auf die Arbeitsphase
-  auswirken. Wir sind jedoch optimistisch, dass im August geprobt werden kann
-  und dass im November Konzerte stattfinden können. Es ist aber klar, dass durch
-  die besonderen Umstände Einschränkungen nötig werden können, um die Gesundheit
-  nicht zu gefährden. Dazu gehört z.B. das Einhalten von Abstandsregeln bei
-  Proben und Konzerten. Auswirkungen können unter Anderem sein:
+  Die Corona-Situation wird sich mit großer Sicherheit auch auf die
+  Herbst-Arbeitsphase auswirken. Wir sind jedoch optimistisch, dass ab August
+  geprobt werden kann und dass im November Konzerte stattfinden können. Es ist
+  aber klar, dass durch die besonderen Umstände Einschränkungen nötig werden
+  können, um die Gesundheit der Musiker\*innen nicht zu gefährden. Dazu gehört
+  z.B. das Einhalten von Abstandsregeln bei Proben und Konzerten. Auswirkungen
+  können unter Anderem sein:
 
     - Eventuell Anpassung von Probenzeiten, bzw. vermehrte Stimmproben
     - Eventuell Anpassung des Programms, falls es Einschränkungen der
@@ -69,7 +71,7 @@ subquestion: |
       Besetzung auf die Bühne dürfen).
     - Umgestaltung oder Entfall des Probenwochenendes in Tönning, falls es die
       dann geltenden Richtlinien erforderlich machen.
-    - Ausfall der Konzerte, falls Konzerthäuser im September noch nicht geöffnet
+    - Ausfall der Konzerte, falls Konzerthäuser im November noch nicht geöffnet
       sind.
 
   Wir hoffen natürlich, dass die Probenphase wie gewohnt stattfinden kann,
@@ -155,9 +157,10 @@ subquestion: |
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
     sehr dankbar für deine Unterstützung.
   % else:
-    Der Beitrag muss innerhalb von 2 Wochen nach Eingang der Anmeldung auf das
-    Konto des Landesmusikrates Hamburg überwiesen werden. Die Kontoverbindung
-    erhältst du in der Bestätigungs-E-Mail, wenn du dieses Formular abschickst.
+    Der Beitrag muss innerhalb von 2 Wochen nach Eingang der Anmeldung, bzw. 2
+    Wochen vor Beginn der Arbeitsphase auf das Konto des Landesmusikrates
+    Hamburg überwiesen werden. Die Kontoverbindung erhältst du in der
+    Bestätigungs-E-Mail, wenn du dieses Formular abschickst.
   % endif
 buttons:
   - Einverstanden: continue
@@ -180,9 +183,8 @@ subquestion: |
   [LJO-Website im internen Bereich](https://ljo-hamburg.de/interner-bereich/freistellung/).
 
   % if status == "mitglied":
-    Wenn du bei mehr als 4 Probenterminen nicht kannst oder du bei vielen
-    wichtigen Proben nicht kannst, schreib uns bitte eine Mail an
-    [freistellung@ljo-hamburg.de](mailto:freistellung@ljo-hamburg.de),
+    Wenn du bei mehr als 4 Probenterminen nicht kannst, schreib uns bitte eine
+    Mail an [freistellung@ljo-hamburg.de](mailto:freistellung@ljo-hamburg.de),
     **bevor** du dich anmeldest. In so einem Fall muss der Vorstand
     entscheiden, ob du die Arbeitsphase trotzdem mitspielen kannst. Wenn du
     uns erst im Laufe der Phase mitteiltst, dass du bei vielen Terminen nicht
@@ -489,9 +491,10 @@ review:
   - note: |
       ## Unterschrift
 
-      Wenn du die Anmeldung abschickst, bekomsmt du per E-Mail eine PDF-Version der
-      Anmeldung. Drucke das PDF aus, unterschreibe es und schicke die unterschriebene
-      Anmeldung an [unser Projektleitung](mailto:zuern@lmr-hh.de).
+      Wenn du die Anmeldung abschickst, bekomsmt du per E-Mail eine PDF-Version
+      der Anmeldung. Drucke das PDF aus, unterschreibe es und schicke die
+      unterschriebene Anmeldung an unsere Projektleitung. Die E-Mail-Adresse
+      erhältst du in der Bestätigungsmail.
 continue button label: Anmeldung abschicken
 ---
 id: herbst-2020/warten

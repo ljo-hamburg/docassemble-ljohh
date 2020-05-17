@@ -69,8 +69,8 @@ data:
   #                         Texthinweis ein Komma enthält, muss er in
   #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
-    - [2020-11-21, Option Konzert]
     - [2020-11-22, Konzert Laeiszhalle]
+    - [2020-11-28, Option Konzert]
   Probentermine:
     - [2020-08-17, Erste Probe]
     - 2020-08-24
