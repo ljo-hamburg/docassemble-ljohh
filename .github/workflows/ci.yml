@@ -1,0 +1,47 @@
+name: Upload Docassemble Package
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Deploy to Docassemble
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Docassemble
+      id: deploy
+      run: |
+        TASK_ID=$(
+          curl -fsSL -X POST "https://anmeldung.ljo-hamburg.de/api/package" \
+                     -F "key=$API_KEY" \
+                     -F "github_url=https://github.com/$GITHUB_REPOSITORY" \
+          | jq -r .task_id
+        )
+        echo "::set-output name=taskId::$TASK_ID"
+      env:
+        API_KEY: ${{ secrets.DOCASSEMBLE_API_KEY }}
+    - name: Wait for Deployment to Finish
+      run: |
+        while true; do
+          RESULT=$(
+            curl -GfsSL "https://anmeldung.ljo-hamburg.de/api/package_update_status" \
+                        --data-urlencode "key=$API_KEY" \
+                        --data-urlencode "task_id=$TASK_ID"
+          )
+          STATUS=$(jq -r .status <<< "$RESULT")
+          if [ "$STATUS" = "completed" ]; then
+            if [ $(jq -r .ok <<< "$RESULT") != true ]; then
+              echo "$(jq -r .error_message <<< "$RESULT")"
+              exit 1
+            else
+              break
+            fi
+          elif [ "$STATUS" != "working" ]; then
+            echo "The deployment failed with status $STATUS"
+            exit 1
+          fi
+          sleep 5s
+        done
+      env:
+        API_KEY: ${{ secrets.DOCASSEMBLE_API_KEY }}
+        TASK_ID: ${{ steps.deploy.outputs.taskId }}

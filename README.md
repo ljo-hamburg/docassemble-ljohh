@@ -24,11 +24,11 @@ Das automatische Speichern von Daten besteht aus den folgenden Schritten:
 
 Um die automatischen Anmeldungen zu nutzen, müssen einige Dinge vorbereitet werden:
 
-1. Erstellen eines Ordners in Google Drive, in dem die generierten PDFs gespeichert werden. Der Ordner muss mit dem Account `anmeldung@docassemble-264719.iam.gserviceaccount.com` freigegeben werden. Der Account benötigt Schreibzugriff auf den Ordner.
+1. Erstellen eines Ordners in Google Drive, in dem die generierten PDFs gespeichert werden. Der Ordner muss für das ensprechenden Dienstkonto freigegeben werden. Der Account benötigt Schreibzugriff auf den Ordner.
    
    Befindet sich der Ordner in einer Geteilten Ablage, muss der Account Mitglied der Geteilten Ablage werden.
    
-2. Erstellung einer Google-Tabelle, in der die Anmeldedaten gespeichert werden. Der Account `anmeldung@docassemble-264719.iam.gserviceaccount.com` muss mit Schreibzugriff zu der Tabelle hinzugefügt werden. In der Tabelle muss es einen Bereich geben, in dem neue Daten hinzugefügt werden sollen. Der Bereich muss in seiner ersten Zeile Überschriften enthalten. Neue Einträge werden am logischen Ende der Tabelle hinzugefügt. Der Bereich kann per A1-Notation oder als benannter Bereich angegeben werden.
+2. Erstellung einer Google-Tabelle, in der die Anmeldedaten gespeichert werden. Das Dienstkonto muss mit Schreibzugriff zu der Tabelle hinzugefügt werden. In der Tabelle muss es einen Bereich geben, in dem neue Daten hinzugefügt werden sollen. Der Bereich muss in seiner ersten Zeile Überschriften enthalten. Neue Einträge werden am logischen Ende der Tabelle hinzugefügt. Der Bereich kann per A1-Notation oder als benannter Bereich angegeben werden.
 
    Die Überschriften können nicht willkürlich sein. Anhand der Überschriften werden die dazugehörigen Daten gefunden. Die Überschriften entsprechen den Schlüsseln im `member_data`-Dictionary, das in `tasks.yml` definiert wird.
 
@@ -81,5 +81,5 @@ Der Testmodus kann über die Konfiguration in `<anmeldung>.yml` oder über einen
 
 ## Konfiguration
 
-Die automatischen Anmeldungen verwenden [Dienstkonten](https://cloud.google.com/iam/docs/service-accounts?hl=de) (Service Accounts), um sich mit der G Suite API zu authentifizieren. Das Dienstkonto hat die E-Mail `anmeldung@docassemble-264719.iam.gserviceaccount.com`. Der Service-Account ist im GCP-Projekt `docassemble-264719` konfiguriert und ist mit [domänenweiter Delegation](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) autorisiert. Dies ist nötig, um Mitglieder zu Gruppen hinzuzufügen. Alle anderen Aktionen können im Namen des Service-Accounts ausgeführt werden, indem dem Account Schreibzugriff auf die nötigen Resourcen gegeben wird.
+Die automatischen Anmeldungen verwenden [Dienstkonten](https://cloud.google.com/iam/docs/service-accounts?hl=de) (Service Accounts), um sich mit der G Suite API zu authentifizieren. Das Dienstkonto muss mit [domänenweiter Delegation](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) autorisiert sein, um Mitglieder zu Gruppen hinzuzufügen. Alle anderen Aktionen können im Namen des Service-Accounts ausgeführt werden, indem dem Account Schreibzugriff auf die nötigen Resourcen gegeben wird (z.B. indem der Account zu Google Tabellen hinzugefügt wird).
 
