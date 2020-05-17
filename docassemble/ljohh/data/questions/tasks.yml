@@ -13,6 +13,7 @@ code: |
 code: |
   member_data = {
     "Status": status,
+    "Arbeitsphase": daten["Arbeitsphase"],
     "Vorname": mitglied.name.first,
     "Nachname": mitglied.name.last,
     "Instrument": mitglied.instrument,

@@ -30,7 +30,7 @@ data:
   Testmodus: true
 
   # Bezeichnung der Arbeitsphase bzw. des Projektes.
-  Phase: Herbst 2020
+  Arbeitsphase: Herbst 2020
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
   # 'Tabelle' gibt die ID einer Google Docs Tabelle an, in der neue Anmeldungen

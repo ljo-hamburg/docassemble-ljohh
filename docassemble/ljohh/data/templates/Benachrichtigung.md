@@ -1,6 +1,6 @@
 Hallo,
 
-${ mitglied } hat sich soeben zur Arbeitsphase _${ daten['Phase'] }_ angemeldet.
+${ mitglied } hat sich soeben zur Arbeitsphase _${ daten['Arbeitsphase'] }_ angemeldet.
 Die Anmeldung wurde automatisch archiviert und ist auch im Anhang.
 
 - [Archivordner öffnen](https://drive.google.com/drive/u/0/folders/${ daten['Archivordner-ID'] }).
