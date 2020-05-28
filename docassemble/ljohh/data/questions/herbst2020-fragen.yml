@@ -381,8 +381,8 @@ fields:
     validate: >
       lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Ich erkläre mich damit einverstanden, zukünftig Informationen des
-      Landesmusikrates Hamburg zum Thema LJO HH, den Newsletter sowie weitere
-      Informationen zu erhalten.
+      Landesmusikrates Hamburg zum Thema LJO HH (z.B. LJO-Newsletter) sowie
+      weitere Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
     validate: >

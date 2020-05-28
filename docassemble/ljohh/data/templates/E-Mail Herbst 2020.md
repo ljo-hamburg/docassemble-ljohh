@@ -62,7 +62,8 @@ einen Teilnehmerbeitrag gezahlt. Durch den Corona-bedingten Ausfall der Phase
 wird der Beitrag nachträglich auf 50% reduziert. Du kannst den Betrag, den du
 bereits im Sommer 2020 gezahlt hast, in der Herbstphase anrechnen lassen und
 musst dann nur noch die verbleibenden 30€ zahlen. Die Überweisungsfrist ist in
-dem Fall gleich. 
+dem Fall gleich. Alternativ kannst du die 30€ aus dem Sommer an das Orchester
+spenden und im Herbst die vollen 60€ überweisen.
 % endif
 
 # Was nun?
