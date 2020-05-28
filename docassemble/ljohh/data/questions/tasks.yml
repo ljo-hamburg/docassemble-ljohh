@@ -24,8 +24,6 @@ code: |
     "Probentermine": ', '.join(probentermine.true_values()),
     "Konzerttermine": ', '.join(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen.strip(),
-    "Nächste Phase": ja_nein_vielleicht(nachste_phase),
-    "Übernächste Phase": ja_nein_vielleicht(ubernachste_phase),
     "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
     "Sonstiges (PWE)": pwe_sonstiges.strip()
   }
@@ -34,6 +32,9 @@ code: |
     member_data["Eltern Nachname"] = eltern.name.last
     member_data["Eltern E-Mail"] = eltern.email
     member_data["Eltern Telefon"] = eltern.phone_number
+  if status != "aushilfe":
+    member_data["Nächste Phase"] = ja_nein_vielleicht(nachste_phase)
+    member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
 ---
 # A task that adds a row to the Anmeldungen.
 code: |
