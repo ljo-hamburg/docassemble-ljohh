@@ -33,6 +33,12 @@ subquestion: |
   automatisch übermittelt.
   </div>
   % endif
+  <div class="alert alert-info" role="alert">
+  Das Arbeitsprogramm der Arbeitsphase musste leider kurzfristig geändert werden,
+  damit es möglich ist, alle Hygienemaßnahmen umzusetzen. Dies ist die
+  aktualisierte Version der Anmeldung.
+  </div>
+
   Über dieses Formular meldest du dich zur Herbstarbeitsphase 2020 des LJO
   Hamburg an. Die Anmeldung ist **verbindlich**, das heißt sobald du die
   Anmeldung abgegeben hast, gehen wir davon aus, dass du auch zu allen
@@ -44,38 +50,31 @@ subquestion: |
   ### Informationen zur Arbeitsphase
 
   Die Arbeitsphase findet im Zeitraum vom 17. August bis zum 22. November
-  2020 statt. Wie üblich wird in dieser Zeit an den Montag in der Schulzeit
-  geprobt. Zusätzlich finden außerdem insgesamt 4 Probentage in Hamburg an
-  Wochenendtagen statt. Vom 13. November bis zum 15. November 2020 findet
+  2020 statt. Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit
+  geprobt. Zusätzlich finden außerdem insgesamt 2 Probenwochenenden in Hamburg
+  statt. Vom 13. November bis zum 15. November 2020 findet
   (sofern es die Corona-Richtlinien zulassen) ein abschließendes
-  Intensiv-Probenwochenede in der Jugendherberge Tönning statt.
+  Intensiv-Probenwochenede statt (der Ort wird noch geklärt).
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
-    - F. Mendelssohn: Violinkonzert in e-Moll, op. 64
-    - P. Tschaikowski: Sinfonie Nr. 5, op 64
+    - J.S. Bach: Violinkonzert (welches Violinkonzert wird noch festgelegt)
+    - A. Copland: Appalachian Spring Suite
+    - E.W. Korngold: "Much ado about nothing" Suite
 
   ### Was ist mit Corona?
 
-  Die Corona-Situation wird sich mit großer Sicherheit auch auf die
-  Herbst-Arbeitsphase auswirken. Wir sind jedoch optimistisch, dass ab August
-  geprobt werden kann und dass im November Konzerte stattfinden können. Es ist
-  aber klar, dass durch die besonderen Umstände Einschränkungen nötig werden
-  können, um die Gesundheit der Musiker\*innen nicht zu gefährden. Dazu gehört
-  z.B. das Einhalten von Abstandsregeln bei Proben und Konzerten. Auswirkungen
-  können unter Anderem sein:
+  Die Corona-Situation wirkt sich auch auf die Herbst-Arbeitsphase des LJO aus.
+  Zwar werden wir ab August wieder proben können, allerdings kann die Herbstphase
+  nur mit einer deutlich reduzierten Besetzung durchgeführt werden. Es werden ca.
+  30 Personen an der Arbeitsphase teilnehmen können. Die Auswahl erfolgt anhand
+  der Anmeldungen, die bis zum 2. August online eingegangen sind. Darüber hinaus
+  kann es im Laufe der Phase zu Einschränkungen kommen, die i.d.R. über den
+  Probenplan bekannt gegeben werden. Zum Beispiel:
 
     - Eventuell Anpassung von Probenzeiten, bzw. vermehrte Stimmproben
-    - Eventuell Anpassung des Programms, falls es Einschränkungen der
-      Besetzungsgröße bei Konzerten gibt (falls wir also nicht in großer
-      Besetzung auf die Bühne dürfen).
-    - Umgestaltung oder Entfall des Probenwochenendes in Tönning, falls es die
-      dann geltenden Richtlinien erforderlich machen.
-    - Ausfall der Konzerte, falls Konzerthäuser im November noch nicht geöffnet
-      sind.
-
-  Wir hoffen natürlich, dass die Probenphase wie gewohnt stattfinden kann,
-  können aber leider zum jetzigen Zeitpunkt keine Garantien machen.
+    - Umgestaltung des abschließenden Intensiv-Probenwochenendes.
+    - Ausfall der Konzerte, falls Konzerthäuser im November wieder geschlossen sind.
 
   ### Wie melde ich mich an?
 
@@ -192,7 +191,7 @@ subquestion: |
     müssen. Den Teilnehmerbeitrag musst du in dem Fall trotzdem zahlen.
 
     Die Anwesenheit bei Dozenten- und Stimmproben ist besonders wichtig.
-    Generalproben und das Probenwochenende in Tönning sind absolute
+    Generalproben und das Abschluss-Probenwochenende sind absolute
     Pflichttermine. Solltest du hier nicht können, können wir die Anmeldung nur
     in Sonderfällen akzeptieren.
   % elif status == "flex":
@@ -274,20 +273,19 @@ buttons:
 ---
 id: herbst-2020/probenwochenende
 field: Probenwochenende
-section: Probenwochenende in Tönning
-question: Probenwochenende in Tönning
+section: Abschluss-Probenwochenende
+question: Abschluss-Probenwochenende
 subquestion: |
-  Am Ende der Arbeitsphase fährt das LJO Hamburg kurz vor den Konzerten zu einem
-  gemeinsamen Probenwochenende nach Tönning, um die letzten Feinschliffe vor
+  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließenden
+  Intensiv-Probenwochenende statt, um die letzten Feinschliffe vor
   den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende ist
   mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die letzten
   Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien, chronische
-  Krankheiten oder sonstige Einschränkungen an, die wir für den Aufenthalt in
-  Tönning berücksichtigen sollen.
+  Krankheiten oder sonstige Einschränkungen an, die hierfür berücksichtigen sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 fields:
-  - "Ich möchte für Tönning folgendes angeben": pwe_versorgung
+  - "Ich möchte folgendes angeben": pwe_versorgung
     datatype: checkboxes
     required: false
     choices:
@@ -450,7 +448,7 @@ review:
       %endif
   - Angaben ändern: Probenwochenende
     button: |
-      ## Probenwochenende in Tönning
+      ## Abschluss-Probenwochenende
 
       % for zeile in get_pwe_versorgung():
         - ${ zeile }
