@@ -50,11 +50,11 @@ subquestion: |
   ### Informationen zur Arbeitsphase
 
   Die Arbeitsphase findet im Zeitraum vom 17. August bis zum 22. November
-  2020 statt. Wie üblich wird in dieser Zeit an den Montag in der Schulzeit
-  geprobt. Zusätzlich finden außerdem insgesamt 4 Probentage in Hamburg an
-  Wochenendtagen statt. Vom 13. November bis zum 15. November 2020 findet
+  2020 statt. Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit
+  geprobt. Zusätzlich finden außerdem insgesamt 2 Probenwochenenden in Hamburg
+  statt. Vom 13. November bis zum 15. November 2020 findet
   (sofern es die Corona-Richtlinien zulassen) ein abschließendes
-  Intensiv-Probenwochenede in der Jugendherberge Tönning statt.
+  Intensiv-Probenwochenede statt (der Ort wird noch geklärt).
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
@@ -73,8 +73,8 @@ subquestion: |
   Probenplan bekannt gegeben werden. Zum Beispiel:
 
     - Eventuell Anpassung von Probenzeiten, bzw. vermehrte Stimmproben
-    - Umgestaltung des Probenwochenendes in Tönning.
-    - Ausfall der Konzerte, falls Konzerthäuser im November nicht geöffnet sind.
+    - Umgestaltung des abschließenden Intensiv-Probenwochenendes.
+    - Ausfall der Konzerte, falls Konzerthäuser im November wieder geschlossen sind.
 
   ### Wie melde ich mich an?
 
@@ -191,7 +191,7 @@ subquestion: |
     müssen. Den Teilnehmerbeitrag musst du in dem Fall trotzdem zahlen.
 
     Die Anwesenheit bei Dozenten- und Stimmproben ist besonders wichtig.
-    Generalproben und das Probenwochenende in Tönning sind absolute
+    Generalproben und das Abschluss-Probenwochenende sind absolute
     Pflichttermine. Solltest du hier nicht können, können wir die Anmeldung nur
     in Sonderfällen akzeptieren.
   % elif status == "flex":
@@ -273,20 +273,19 @@ buttons:
 ---
 id: herbst-2020/probenwochenende
 field: Probenwochenende
-section: Probenwochenende in Tönning
-question: Probenwochenende in Tönning
+section: Abschluss-Probenwochenende
+question: Abschluss-Probenwochenende
 subquestion: |
-  Am Ende der Arbeitsphase fährt das LJO Hamburg kurz vor den Konzerten zu einem
-  gemeinsamen Probenwochenende nach Tönning, um die letzten Feinschliffe vor
+  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließenden
+  Intensiv-Probenwochenende statt, um die letzten Feinschliffe vor
   den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende ist
   mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die letzten
   Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien, chronische
-  Krankheiten oder sonstige Einschränkungen an, die wir für den Aufenthalt in
-  Tönning berücksichtigen sollen.
+  Krankheiten oder sonstige Einschränkungen an, die hierfür berücksichtigen sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 fields:
-  - "Ich möchte für Tönning folgendes angeben": pwe_versorgung
+  - "Ich möchte folgendes angeben": pwe_versorgung
     datatype: checkboxes
     required: false
     choices:
@@ -449,7 +448,7 @@ review:
       %endif
   - Angaben ändern: Probenwochenende
     button: |
-      ## Probenwochenende in Tönning
+      ## Abschluss-Probenwochenende
 
       % for zeile in get_pwe_versorgung():
         - ${ zeile }
