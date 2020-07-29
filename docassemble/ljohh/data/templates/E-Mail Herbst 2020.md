@@ -11,14 +11,16 @@ versuchen wir im Herbst wieder zu proben. Die erste Probe soll am 17. August
 stattfinden. Die Arbeitsphase wird von Johannes Witt mit folgendem Programm
 dirigiert:
 
-1. F. Mendelssohn: Violinkonzert in e-Moll, op. 64
-2. P. Tschaikowski: Sinfonie Nr. 5, op. 64
+1. J.S. Bach: Violinkonzert (welches Violinkonzert wird noch festgelegt)
+2. A. Copland: Appalachian Spring Suite
+3. E.W. Korngold: "Much ado about nothing" Suite
 
 Die Noten für die Arbeitsphase findest du unter
-[https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten). Lade dir dort die
-Noten für deine Stimme herunter und drucke sie aus. Bitte benutze genau die
-Ausgaben von unserer Website, da es sonst oft Unterschiede in der Dynamik gibt.
-Originalnoten werden erst kurz vor dem Konzert verteilt.
+[https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
+verfügbar sind. Lade dir dort die Noten für deine Stimme herunter und drucke sie
+aus. Bitte benutze genau die Ausgaben von unserer Website, da es sonst oft
+Unterschiede in der Dynamik gibt. Originalnoten werden erst kurz vor dem Konzert
+verteilt.
 
 # Probenplan
 In der Anmeldung hast du bereits die geplanten Proben- und Konzerttermine gesehen.
@@ -53,8 +55,10 @@ BIC: DEUTDEDBHAM
 Bank: Deutsche Bank  
 Verwendungszweck: Teilnehmerbeitrag  (2. AP 2020, ${ mitglied.name })
 
-Wir möchten dich bitten, den Beitrag selbstständig und rechtzeitig zu überweisen.
-Es ist immer sehr aufwändig, wenn wir den Beiträgen „hinterherrennen“ müssen.
+Bitte überweise den Betrag, nachdem du eine Zusage bekommen hast, dass du an der
+Arbeitsphase teilnehmen kannst. Wir möchten dich bitten, den Beitrag dann
+selbstständig und rechtzeitig zu überweisen. Es ist immer sehr aufwändig, wenn
+wir den Beiträgen „hinterherrennen“ müssen.
 
 ## Anrechnung des Beitrages vom Sommer 2020
 Falls du bereits in der Sommerphase 2020 mitgespielt hast, hast du dort bereits
