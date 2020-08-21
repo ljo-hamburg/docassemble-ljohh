@@ -4,8 +4,7 @@ from typing import Any, Dict, List
 import requests
 from bs4 import BeautifulSoup
 from docassemble.base.core import DAFile
-from docassemble.base.functions import get_config, mark_task_as_performed, value
-from docassemble.base.util import email_stringer, send_email
+from docassemble.base.util import email_stringer, send_email, mark_task_as_performed, get_config, value
 from flask_mail import sanitize_addresses
 from google.oauth2 import service_account
 from googleapiclient import discovery
