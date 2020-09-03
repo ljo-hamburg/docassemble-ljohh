@@ -70,17 +70,16 @@ data:
   #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
     - [2020-11-22, Konzert Laeiszhalle]
-    - [2020-11-28, Option Konzert]
   Probentermine:
     - [2020-08-17, Erste Probe]
     - 2020-08-24
     - [2020-08-29, Stimmproben / Probenwochenende Hamburg]
-    - [2020-08-30, Stimmproben / Probenwochenende Hamburg]
+    - [2020-08-30, Probenwochenende Hamburg]
     - 2020-09-07
-    - 2020-09-14
+    - [2020-09-14, Dozentenproben]
     - [2020-09-19, Dozentenproben / Probenwochenende Hamburg]
-    - [2020-09-20, Dozentenproben / Probenwochenende Hamburg]
-    - [2020-09-28, Dozentenproben]
+    - [2020-09-20, Probenwochenende Hamburg]
+    - 2020-09-28
     - 2020-10-19
     - 2020-10-26
     - 2020-11-02
@@ -90,7 +89,6 @@ data:
     - [2020-11-15, Abschluss-Probenwochenende]
     - 2020-11-16
     - [2020-11-20, Generalprobe]
-    - [2020-11-27, Option Generalprobe]
 ---
 # Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
 # Der variable name sowie die valid formats sollten nicht verändert werden.

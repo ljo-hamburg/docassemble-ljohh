@@ -57,7 +57,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude,
 
 setup(
     name='docassemble.ljohh',
-    version='2.0.2',
+    version='2.0.3',
     description=__doc__,
     long_description=long_description(),
     long_description_content_type='text/markdown',
