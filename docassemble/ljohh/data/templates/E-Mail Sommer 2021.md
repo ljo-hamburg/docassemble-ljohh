@@ -44,7 +44,7 @@ der Teilnahme am Konzert ausschließen.**
 # Teilnehmerbeitrag
 Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
 zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-Teilnehmerbeitrag von 60€ pro Person erheben.
+Teilnehmerbeitrag von 80€ pro Person erheben.
 % if status == "aushilfe":
 Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
 sehr dankbar für deine Unterstützung.

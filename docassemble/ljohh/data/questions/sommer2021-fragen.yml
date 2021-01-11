@@ -52,7 +52,8 @@ subquestion: |
   Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit geprobt.
   Zusätzlich finden außerdem 3 Probentage an Wochenenden in Hamburg statt. Vom
   4. Juni bis zum 6. November 2021 findet (sofern es die Corona-Richtlinien
-  zulassen) ein abschließendes Intensiv-Probenwochenede in Schersberg statt.
+  zulassen) ein abschließendes Intensiv-Probenwochenede in der
+  Jugendbildungsstätte Scheersberg statt.
 
   Die Arbeitsphase wird dirigiert von Johannes Witt mit folgendem Programm:
 
@@ -65,16 +66,18 @@ subquestion: |
 
   Nachdem im letzten Jahr zwei Konzert des LJO der Corona-Pandemie zum Opfer
   gefallen sind, müssen wir uns auch in diese Arbeitsphase auf eine gewisse
-  Unsicherheit einstellen. Zum jetzigen Zeitpunkt (Stand Januar 2021) kann
-  über die Corona-Regelungen zum Zeitpunkt unserer Konzerte nur spekuliert
-  werden. Wir hoffen natürlich, dass Proben und Konzerte stattfinden können,
-  müssen aber die Sicherheit aller Beteiligten dabei berücksichtigen.
+  Unsicherheit einstellen. Im Moment (Stand Januar 2021) kann über die
+  Corona-Regelungen zum Zeitpunkt unserer Konzerte nur spekuliert werden. Wir
+  hoffen natürlich, dass Proben und Konzerte stattfinden können, müssen aber die
+  Sicherheit aller Beteiligten dabei berücksichtigen.
 
   Es muss auch klar sein, dass die Proben gewissen Einschränkungen unterliegen.
   Konkret bedeutet dies:
 
     - Es ist wieder ein Programm in kleinerer Besetzung geplant (vermutlich ca.
       40 Beteiligte)
+    - Es wird wieder im Doppelkonzert-Format gespielt (d.h. zwei 60 Minuten
+      Konzerte an einem Abend mit längerer Pause dazwischen).
     - Alle Proben- und Konzerttermine stehen zunächst unter Vorbehalt. Es kann
       sein, dass Termine abhängig von den geltenden Regelungen und den
       verfügbaren Probenorten kurzfristig geändert oder abgesagt werden müssen.
@@ -96,7 +99,7 @@ subquestion: |
       Corona-Regelungen) Vorspiele stattfinden, anhand derer ausgewählt wird,
       wer mitspielt. Dabei werden bei gleicher Eignung diejenigen bevorzugt, die
       im Herbst nicht mitspielen durften.
-    - Die Entscheidung wird durch die künstlerische Leitung, Konzertmeiszer und
+    - Die Entscheidung wird durch die künstlerische Leitung, Konzertmeister und
       die jeweiligen Stimmführer getroffen.
 
   ### Wie melde ich mich an?
@@ -144,7 +147,9 @@ fields:
       Du erhältst per E-Mail wichtige Informationen zur Arbeitsphase und
       Konzerten.
   - Über welche Telefonnummer bist du erreichbar?: mitglied.phone_number
-  - Wie lautet deine Adresse?: mitglied.address
+  - Wie lautet deine Adresse?: mitglied.address.address
+    hint: Beethoven-Straße 42, 23456 Hamburg
+  - note: <small>Bitte gib deine Adresse mit Postleitzahl und Ort an.</small>
   - Wann wurdest du geboren? (Format YYYY-MM-DD): mitglied.birthdate
     datatype: date
     help: Gib das Datum im Format YYYY-MM-DD ein.
@@ -173,7 +178,7 @@ question: Teilnehmerbeitrag
 subquestion: |
   Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
   zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 60€ pro Person erheben.
+  Teilnehmerbeitrag von 80€ pro Person erheben.
 
   % if status == "aushilfe":
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
@@ -182,7 +187,8 @@ subquestion: |
     Der Beitrag muss innerhalb von 2 Wochen nach Eingang der Anmeldung, bzw. 2
     Wochen vor Beginn der Arbeitsphase auf das Konto des Landesmusikrates
     Hamburg überwiesen werden. Die Kontoverbindung erhältst du in der
-    Bestätigungs-E-Mail, wenn du dieses Formular abschickst.
+    Bestätigungs-E-Mail, wenn du dieses Formular abschickst. Bitte warte mit der
+    Überweisung bis sicher ist, dass Du für die Arbeitsphase besetzt wirst.
   % endif
 buttons:
   - Einverstanden: continue
@@ -300,11 +306,12 @@ section: Abschluss-Probenwochenende
 question: Abschluss-Probenwochenende
 subquestion: |
   Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließenden
-  Intensiv-Probenwochenende in Schersberg statt, um die letzten Feinschliffe vor
-  den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende ist
-  mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die letzten
-  Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien, chronische
-  Krankheiten oder sonstige Einschränkungen an, die hierfür berücksichtigen sollen.
+  Intensiv-Probenwochenende in der Jugendbildungsstätte Scheersberg statt, um
+  die letzten Feinschliffe vor den Konzerten zu erarbeiten. Die Teilnahme an
+  diesem Intensiv-Wochenende ist mit der Anmeldung verpflichtend. Auf dem
+  Probenwochenende werden die letzten Feinheiten vor den Konzerten erarbeitet.
+  Bitte gib hier Allergien, chronische Krankheiten oder sonstige Einschränkungen
+  an, die hierfür berücksichtigen sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 fields:
@@ -336,6 +343,8 @@ subquestion: |
     § 9 Abs. 1 JuSchG
   - Volljährige Musiker/innen sind angehalten insbesondere im Rahmen von Proben-
     und Konzertreisen aus Fairnessgründen auf harten Alkohol zu verzichten.
+  - Sonstige Drogen sind tabu. Die Verteilung oder Einnahme von sonstigen Drogen
+    führen zu einem sofortigen Ausschluss von der Arbeitsphase.
 
   Des Weiteren ist Alkoholkonsum vor oder während Konzertauftritten untersagt.
 
