@@ -1,19 +1,22 @@
 Liebe\*r ${ mitglied.name.first },
 
-vielen Dank zu deiner Anmeldung zur Herbstphase 2020 im Landesjugendorchester
+vielen Dank zu deiner Anmeldung zur Sommerphase 2021 im Landesjugendorchester
 Hamburg. In dieser Mail bekommst du nun einige wichtige Informationen für die
 Arbeitsphase. Bitte lies dir diese Mail durch, damit du gut auf die Phase
 vorbereitet bist.
 
 # Allgemeines
-Nachdem die Sommerarbeitsphase 2020 leider wegen Corona ausfallen musste,
-versuchen wir im Herbst wieder zu proben. Die erste Probe soll am 17. August
+Nachdem die letzten beiden Arbeitsphasen wegen der Corona-Pandemie ausfallen
+mussten, wird auch die Sommerphase 2021 nur mit einigen Einschränkunge
+durchgeführt werden können. Mehr dazu unten. Wir hoffen natürlich, dass wir im
+Juni endlich wieder Konzerte spielen können. Die erste Probe soll am 15. März
 stattfinden. Die Arbeitsphase wird von Johannes Witt mit folgendem Programm
 dirigiert:
 
-1. J.S. Bach: Violinkonzert (welches Violinkonzert wird noch festgelegt)
-2. A. Copland: Appalachian Spring Suite
-3. E.W. Korngold: "Much ado about nothing" Suite
+1. G.Finzi: Love‘s Labour‘s Lost, Suite Op.28b
+2. F. Schubert: Lieder, arrangiert für Orchester (die genauen Lieder werden
+noch festgelegt)
+3. W.A. Mozart: Sinfonie Nr. 35 „Haffner“, KV.385
 
 Die Noten für die Arbeitsphase findest du unter
 [https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
@@ -53,21 +56,12 @@ Landesmusikrat in der Freien und Hansestadt Hamburg e.V.
 IBAN: DE28 2007 0024 0053 6110 03  
 BIC: DEUTDEDBHAM  
 Bank: Deutsche Bank  
-Verwendungszweck: Teilnehmerbeitrag  (2. AP 2020, ${ mitglied.name })
+Verwendungszweck: Teilnehmerbeitrag  (1. AP 2021, ${ mitglied.name })
 
 Bitte überweise den Betrag, nachdem du eine Zusage bekommen hast, dass du an der
 Arbeitsphase teilnehmen kannst. Wir möchten dich bitten, den Beitrag dann
 selbstständig und rechtzeitig zu überweisen. Es ist immer sehr aufwändig, wenn
 wir den Beiträgen „hinterherrennen“ müssen.
-
-## Anrechnung des Beitrages vom Sommer 2020
-Falls du bereits in der Sommerphase 2020 mitgespielt hast, hast du dort bereits
-einen Teilnehmerbeitrag gezahlt. Durch den Corona-bedingten Ausfall der Phase
-wird der Beitrag nachträglich auf 50% reduziert. Du kannst den Betrag, den du
-bereits im Sommer 2020 gezahlt hast, in der Herbstphase anrechnen lassen und
-musst dann nur noch die verbleibenden 30€ zahlen. Die Überweisungsfrist ist in
-dem Fall gleich. Alternativ kannst du die 30€ aus dem Sommer an das Orchester
-spenden und im Herbst die vollen 60€ überweisen.
 % endif
 
 # Was nun?
