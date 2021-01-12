@@ -75,7 +75,7 @@ haben, schreibe uns immer gerne:
 
 - Der LJO-Vorstand: [vorstand@ljo-hamburg.de](mailto:vorstand@ljo-hamburg.de)
 - Ulrike Zürn (Projektleitung): [zuern@lmr-hh.de](mailto:zuern@lmr-hh.de)
-- Kim Wittenburg (1. Vorsitzender):
+- Daniel Niemann (1. Vorsitzender):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
 Viele Grüße  
