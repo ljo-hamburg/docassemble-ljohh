@@ -147,7 +147,7 @@ fields:
       Du erhältst per E-Mail wichtige Informationen zur Arbeitsphase und
       Konzerten.
   - Über welche Telefonnummer bist du erreichbar?: mitglied.phone_number
-  - Wie lautet deine Adresse?: mitglied.address.address
+  - Wie lautet deine Adresse?: mitglied.address
     hint: Beethoven-Straße 42, 23456 Hamburg
   - note: <small>Bitte gib deine Adresse mit Postleitzahl und Ort an.</small>
   - Wann wurdest du geboren? (Format YYYY-MM-DD): mitglied.birthdate
