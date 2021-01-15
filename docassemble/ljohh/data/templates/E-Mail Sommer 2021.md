@@ -44,24 +44,23 @@ der Teilnahme am Konzert ausschließen.**
 # Teilnehmerbeitrag
 Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
 zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-Teilnehmerbeitrag von 80€ pro Person erheben.
+**Teilnehmerbeitrag von 80 € pro Person** erheben.
 % if status == "aushilfe":
 Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
 sehr dankbar für deine Unterstützung.
 % else:
-Bitte überweise den Betrag innerhalb von **2 Wochen** auf das folgende
-Konto (bzw. 2 Wochen vor Beginn der Arbeitsphase):
+Bitte überweise den Betrag 2 Wochen vor Beginn der Arbeitsphase wenn, du eine
+Zusage bekommen hast, auf das folgende Konto:
 
 Landesmusikrat in der Freien und Hansestadt Hamburg e.V.  
-IBAN: DE28 2007 0024 0053 6110 03  
+IBAN: **DE28 2007 0024 0053 6110 03**  
 BIC: DEUTDEDBHAM  
 Bank: Deutsche Bank  
 Verwendungszweck: Teilnehmerbeitrag  (1. AP 2021, ${ mitglied.name })
 
-Bitte überweise den Betrag, nachdem du eine Zusage bekommen hast, dass du an der
-Arbeitsphase teilnehmen kannst. Wir möchten dich bitten, den Beitrag dann
-selbstständig und rechtzeitig zu überweisen. Es ist immer sehr aufwändig, wenn
-wir den Beiträgen „hinterherrennen“ müssen.
+Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
+überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
+„hinterherrennen“ müssen.
 % endif
 
 # Was nun?

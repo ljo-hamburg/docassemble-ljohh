@@ -1,0 +1,6 @@
+
+@media (min-width: 576px) {
+	fieldset.da-field-checkboxes div.dachoicewithhelp {
+		width: calc(100% + 32px);
+	}
+}

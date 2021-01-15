@@ -19,7 +19,7 @@ code: |
     "Instrument": mitglied.instrument,
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
-    "Adresse": mitglied.address,
+    "Adresse": adresse(mitglied),
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
     "Probentermine": ', '.join(probentermine.true_values()),
     "Konzerttermine": ', '.join(konzerttermine.true_values()),

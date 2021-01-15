@@ -4,7 +4,8 @@ features:
   hide navbar: false
   hide standard menu: true
   labels above fields: true
-  javascript: actions.js
+  javascript: [actions.js, datereplace.js]
+  css: termine.css
 ---
 objects:
   mitglied: Individual
