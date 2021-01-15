@@ -1,6 +1,6 @@
 <div class="alert alert-info" role="alert">
   <h5 class="alert-heading">Testmodus</h5>
-  
+
   Die Anmeldung befindet sich im Testmodus. Daher werden keine E-Mails
   verschickt und auch keine weiteren Automatisierungen vorgenommen. Dies ist nur
   eine Zusammenfassung der Automatisierung, die bei einer echten Anmeldung
@@ -8,6 +8,7 @@
 </div>
 
 ### Anmeldungsformular
+
 Es wurde ein Anmeldungsformular als PDF generiert.
 
 <a href="${ anmeldung.pdf.url_for() }"

@@ -439,7 +439,7 @@ review:
       |Name          | ${ mitglied.name }         |
       |Telefonnummer | ${ mitglied.phone_number } |
       |E-Mail        | ${ mitglied.email }        |
-      |Adresse       | ${ mitglied.address }      |
+      |Adresse       | ${ adresse(mitglied) }     |
       |Geburtsdatum  | ${ mitglied.birthdate }    |
       |Instrument    | ${ mitglied.instrument }   |
   - Kontaktdaten ändern: Elternkontakt
