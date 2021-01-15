@@ -4,12 +4,12 @@ $(document).on("daPageLoad", function () {
     $(dateElement).hide();
     $(dateElement).attr("type", "hidden");
     var parentElement = $('<div class="form-row">');
-    var yearParent = $('<div class="col">');
-    var monthParent = $('<div class="col">');
     var dayParent = $('<div class="col">');
-    var yearElement = $('<select class="form-control">');
-    var monthElement = $('<select class="form-control">');
+    var monthParent = $('<div class="col">');
+    var yearParent = $('<div class="col">');
     var dayElement = $('<select class="form-control">');
+    var monthElement = $('<select class="form-control">');
+    var yearElement = $('<select class="form-control">');
     var today = new Date();
     var dateEntered;
     if ($(dateElement).val()) {
@@ -22,9 +22,33 @@ $(document).on("daPageLoad", function () {
     } else {
       dateEntered = null;
     }
-    var opt = $("<option>");
+    var opt = $("<option disabled>");
     opt.val("");
-    opt.text("Month");
+    opt.text("Tag");
+    dayElement.append(opt);
+    if (!dateEntered) {
+      opt.attr("selected", "selected")
+    }
+    for (var day = 1; day <= 31; day++) {
+      var opt = $("<option>");
+      if (day < 10) {
+        opt.val("0" + day);
+      } else {
+        opt.val(day);
+      }
+      opt.text(day);
+      if (dateEntered && day == dateEntered.getDate()) {
+        opt.attr("selected", "selected");
+      }
+      dayElement.append(opt);
+    }
+    
+    opt = $("<option disabled>");
+    opt.val("");
+    opt.text("Monat");
+    if (!dateEntered) {
+      opt.attr("selected", "selected")
+    }
     monthElement.append(opt);
     for (var month = 0; month < 12; month++) {
       opt = $("<option>");
@@ -40,30 +64,17 @@ $(document).on("daPageLoad", function () {
       }
       monthElement.append(opt);
     }
-    opt = $("<option>");
+    
+    opt = $("<option disabled>");
     opt.val("");
-    opt.text("Day");
-    dayElement.append(opt);
-    for (var day = 1; day <= 31; day++) {
-      var opt = $("<option>");
-      if (day < 10) {
-        opt.val("0" + day);
-      } else {
-        opt.val(day);
-      }
-      opt.text(day);
-      if (dateEntered && day == dateEntered.getDate()) {
-        opt.attr("selected", "selected");
-      }
-      dayElement.append(opt);
+    opt.text("Jahr");
+    if (!dateEntered) {
+      opt.attr("selected", "selected")
     }
-    opt = $("<option>");
-    opt.val("");
-    opt.text("Year");
     yearElement.append(opt);
     for (
-      var year = today.getFullYear();
-      year > today.getFullYear() - 50;
+      var year = today.getFullYear() - 10;
+      year > today.getFullYear() - 35;
       year--
     ) {
       opt = $("<option>");
@@ -83,16 +94,17 @@ $(document).on("daPageLoad", function () {
           $(dayElement).val()
       );
     }
+    
     $(dateElement).before(parentElement);
-    $(monthParent).append(monthElement);
-    $(parentElement).append(monthParent);
     $(dayParent).append(dayElement);
     $(parentElement).append(dayParent);
+    $(monthParent).append(monthElement);
+    $(parentElement).append(monthParent);
     $(yearParent).append(yearElement);
     $(parentElement).append(yearParent);
-    yearElement.on("change", updateDate);
-    monthElement.on("change", updateDate);
     dayElement.on("change", updateDate);
+    monthElement.on("change", updateDate);
+    yearElement.on("change", updateDate);
     updateDate();
   });
 });
