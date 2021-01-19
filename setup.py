@@ -1,4 +1,4 @@
-"""Die Anmeldung für die Sommerarbeitsphase 2020 des LJO Hamburg."""
+"""Die Anmeldungen für das LJO Hamburg."""
 
 import os
 from distutils.util import convert_path
@@ -57,7 +57,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude,
 
 setup(
     name='docassemble.ljohh',
-    version='2.1.1',
+    version='2.1.2',
     description=__doc__,
     long_description=long_description(),
     long_description_content_type='text/markdown',
