@@ -44,9 +44,9 @@ data:
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
   # Mailingliste hinzugefügt.
-  Mailingliste: sommer-2021@ljo-hamburg.de
-  Mailingliste (Eltern): sommer-2021-eltern@ljo-hamburg.de
-  Mailingliste (Mitglieder): mitglieder@ljo-hamburg.de
+  Mailingliste: sommer-2021@lists.ljo-hamburg.de
+  Mailingliste (Eltern): sommer-2021-eltern@lists.ljo-hamburg.de
+  Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
   # wenn eine Anmeldung abgeschickt wird.
