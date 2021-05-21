@@ -1,20 +1,20 @@
 def: test_defs
 mako: |
-  <%def name="cross(msg='')">
+  <%def name="cross(msg)">
     <span style="color:red"
           data-toggle="tooltip"
           title="${ caller.body() }"
         ><i class="fas fa-times"></i> ${ msg }</span>
   </%def>
 
-  <%def name="check(help='')">
+  <%def name="check(help)">
     <span style="color:green"
           data-toggle="tooltip"
           title="${ help }"
         ><i class="fas fa-check"></i> ${ caller.body() }</span>
   </%def>
 
-  <%def name="action_button(action, message='', **kwargs)">
+  <%def name="action_button(action, message, **kwargs)">
     <button class="btn btn-primary btn-sm"
             type="button"
             data-da-action='${ action }'
@@ -35,7 +35,7 @@ mako: |
         >${ caller.body() }</button>
   </%def>
 
-  <%def name="collapse(id, title='')">
+  <%def name="collapse(id, title)">
     <div class="collapse card" id="${ id }">
     % if title:
       <div class="card-header">${ title }</div>
