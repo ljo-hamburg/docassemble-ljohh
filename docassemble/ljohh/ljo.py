@@ -241,7 +241,7 @@ def send_ljo_email(
     The template can be configured in the interview configuration as
     daten['Mailgun Vorlage'].
     """
-    config = get_config('mail')
+    config = get_config('ljo mail')
     url = config.get('mailgun send url',
                      "https://api.mailgun.net/v3/%s/messages")
     domain = config.get('mailgun domain', None)
