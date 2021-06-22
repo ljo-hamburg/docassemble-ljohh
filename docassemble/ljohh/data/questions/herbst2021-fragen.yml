@@ -438,8 +438,6 @@ fields:
       weitere Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
-    validate: >
-      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
 ---
 id: herbst-2021/kontrolle
 continue button field: Kontrolle
