@@ -25,7 +25,8 @@ code: |
     "Konzerttermine": ', '.join(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen.strip(),
     "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
-    "Sonstiges (PWE)": pwe_sonstiges.strip()
+    "Sonstiges (PWE)": pwe_sonstiges.strip(),
+    "Newsletter": bedingungen.newsletter
   }
   if minderjaehrig:
     member_data["Eltern Vorname"] = eltern.name.first

@@ -148,9 +148,7 @@ def get_group_meta(group: str):
     Returns information about the specified group.
     """
     credentials = get_google_credentials(
-        subject="wittenburg-admin@lmr-hh.de",  # Delegate to Domain Admin
-        scopes=[
-            "https://www.googleapis.com/auth/admin.directory.group.readonly"]
+        scopes=["https://www.googleapis.com/auth/admin.directory.group.readonly"]
     )
     service = discovery.build('admin', 'directory_v1', credentials=credentials)
     request = service.groups().get(
@@ -178,7 +176,6 @@ def add_group_member(group: str, email: str):
     address.
     """
     credentials = get_google_credentials(
-        subject="wittenburg-admin@lmr-hh.de",  # Delegate to Domain Admin
         scopes=["https://www.googleapis.com/auth/admin.directory.group.member"],
     )
     service = discovery.build('admin', 'directory_v1', credentials=credentials)
