@@ -173,6 +173,9 @@ fields:
   - Wann wurdest du geboren?: mitglied.birthdate
     datatype: date
   - Welches Instrument spielst du?: mitglied.instrument
+validation code: |
+  if mitglied.phone_number and not phone_number_is_valid(mitglied.phone_number, "DE"):
+    validation_error('Bitte geben Sie eine gültige Telefonnummer ein.', field='mitglied.phone_number')
 ---
 id: herbst-2021/elternkontakt
 field: Elternkontakt
