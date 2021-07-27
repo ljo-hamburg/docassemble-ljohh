@@ -69,8 +69,8 @@ subquestion: |
     um Laienmusikern die Möglichkeit zu geben, ohne große Proben in einem Orchester
     zu spielen. Das LJO stellt den _Profi-Teil_ des Orchesters für den Workshop.
     Das Programm hierfür steht noch nicht fest.
-  - Im August oder September ist ein Open-Air-Konzert des Landesmusikrats in der Reihe
-    **Wir verschaffen uns Gehör** geplant. Leider steht dafür bisher noch kein Datum fest.
+  - Am 4. oder 5.9. ist ein Open-Air-Konzert des Landesmusikrats in der Reihe
+    **Wir verschaffen uns Gehör** geplant. Dafür steht das genaue Datum noch nicht fest.
     Auf diesem Konzert soll auch das LJO vertreten sein. Vermutlich werden wir hier ein
     paar kleine Stücke spielen (z.B. Valse Triste). Details folgen.
 
@@ -80,9 +80,10 @@ subquestion: |
     - N.N.: Kompositionswettbewerb-Gewinnerstück
     - W.A. Mozart: Sinfonie Nr. 35 „Haffner“, KV.385
   
-  Da unsere künstlerische Leitung Johannes Witt leider in der Arbeitsphase terminlich
-  zu viele Konflikte hat, wird die Arbeitsphase von einem **Gastdirigenten** dirigiert.
-  Es steht noch nicht fest, wer das sein wird.
+  Dirigieren werden sowohl **Johannes Witt** als auch ein **Gastdirigent**. Der Gastdirigent
+  wird die 3 nominierten Werke des Kompositionswettbewerbs einstudieren und auch bei der
+  Jurysitzung dirigieren. Johannes Witt erarbeitet das Gewinnerstück, Mozart und Finzi
+  und dirigiert die Konzerte.
 
   ### Auswirkungen der Corona-Pandemie
 
@@ -95,10 +96,10 @@ subquestion: |
   Nach aktuellem Stand werden die Proben gewissen Einschränkungen unterliegen.
   Konkret bedeutet dies:
 
-    - Es ist wieder ein Programm in kleinerer Besetzung geplant (vermutlich ca.
-      40 Beteiligte). Sollte es die Entwicklung der Pandemie zulassen, in größeren
-      Besetzungen zu proben und aufzutreten, lässt sich die Besetzung in dem
-      geplanten Programm problemlos vergrößern.
+    - Es ist wieder ein Programm in kleinerer Besetzung geplant. Sollte es die
+      Entwicklung der Pandemie zulassen, in größeren Besetzungen zu proben und
+      aufzutreten, lässt sich die Besetzung in dem geplanten Programm problemlos
+      vergrößern.
     - Es wird wieder im Doppelkonzert-Format gespielt (d.h. zwei 60 Minuten
       Konzerte an einem Abend mit längerer Pause dazwischen).
     - Alle Proben- und Konzerttermine stehen zunächst unter Vorbehalt. Es kann
@@ -106,6 +107,12 @@ subquestion: |
       verfügbaren Probenorten kurzfristig geändert oder abgesagt werden müssen.
     - Falls es die Einschränkungen nicht zulassen, dass Konzerte gespielt
       werden, müssen diese ggf. ausfallen.
+
+  <div class="alert alert-info" role="alert">
+  Die Arbeitsphase steht bezüglich des Programms und bezüglich Termine unter
+  Vorbehalt. Je nach Entwicklung der Pandemie können kurzfristige Änderungen
+  unvermeidlich sein.
+  </div>
 
   ### Wie wird ausgewählt, wer mitspielt?
 
@@ -200,7 +207,7 @@ question: Teilnehmerbeitrag
 subquestion: |
   Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
   zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 60€ pro Person erheben.
+  Teilnehmerbeitrag von 80€ pro Person erheben.
 
   % if status == "aushilfe":
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir

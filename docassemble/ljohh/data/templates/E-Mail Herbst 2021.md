@@ -15,7 +15,7 @@ stattfinden. Die Arbeitsphase findet mit folgendem Programm statt:
 2. N.N.: Kompositionswettbewerb
 3. W.A. Mozart: Sinfonie Nr. 35 „Haffner“, KV.385
 
-Dirigieren wird ein **Gastdirigent**. Es steht noch nicht fest, wer das sein wird.
+Dirigieren werden sowohl **Johannes Witt** als auch ein **Gastdirigent**.
 
 Die Noten für die Arbeitsphase findest du unter
 [https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
@@ -43,12 +43,12 @@ geändert hat. Die neue Adresse ist im
 [internen Bereich](https://ljo-hamburg.de/interner-bereich/probenplan/) zu finden.
 
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
-der Teilnahme am Konzert ausschließen.** 
+der Teilnahme am Konzert ausschließen.**
 
 # Teilnehmerbeitrag
 Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
 zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-**Teilnehmerbeitrag von 60 € pro Person** erheben.
+**Teilnehmerbeitrag von 80 € pro Person** erheben.
 % if status == "aushilfe":
 Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
 sehr dankbar für deine Unterstützung.
