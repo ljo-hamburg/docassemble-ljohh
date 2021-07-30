@@ -94,7 +94,7 @@ Wir freuen uns auf die gemeinsame Probenphase. Solltest du irgendwelche Fragen
 haben, schreibe uns immer gerne:
 
 - Der LJO-Vorstand: [vorstand@ljo-hamburg.de](mailto:vorstand@ljo-hamburg.de)
-- Ulrike Zürn (Projektleitung): [steinhagen@lmr-hh.de](mailto:zuern@lmr-hh.de)
+- Caroline Steinhagen (Projektleitung): [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de)
 - Daniel Niemann (1. Vorsitzender):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
