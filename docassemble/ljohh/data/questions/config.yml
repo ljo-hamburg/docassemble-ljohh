@@ -116,7 +116,7 @@ code: |
 ---
 code: |
   mailingliste_eltern = get_group_meta(daten["Mailingliste (Eltern)"])
-  _code = mailingliste.get("code", None)
+  _code = mailingliste_eltern.get("code", None)
   if _code:
     if _code == 404:
       da_error(
@@ -130,12 +130,12 @@ code: |
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
       "Eltern-Mailingliste festgestellt worden. Die Fehlermeldung ist "
-      f"{mailingliste['message']}"
+      f"{mailingliste_eltern['message']}"
     )
 ---
 code: |
   mailingliste_mitglieder = get_group_meta(daten["Mailingliste (Mitglieder)"])
-  _code = mailingliste.get("code", None)
+  _code = mailingliste_mitglieder.get("code", None)
   if _code:
     if _code == 404:
       da_error(
@@ -149,7 +149,7 @@ code: |
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
       "Mitglieder-Mailingliste festgestellt worden. Die Fehlermeldung ist "
-      f"{mailingliste['message']}"
+      f"{mailingliste_mitglieder['message']}"
     )
 ---
 code: |
