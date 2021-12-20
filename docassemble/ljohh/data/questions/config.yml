@@ -2,6 +2,7 @@
 modules:
   - docassemble.msgraph
   - docassemble.mailgun
+  - .ljo
 ---
 code: |
   msgraph = MSGraphSession()

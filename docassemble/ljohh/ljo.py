@@ -43,6 +43,7 @@ def get_group_meta(group: str):
     credentials = get_google_credentials(
         scopes=["https://www.googleapis.com/auth/admin.directory.group.readonly"]
     )
+
     service = discovery.build('admin', 'directory_v1', credentials=credentials)
     request = service.groups().get(
         groupKey=group

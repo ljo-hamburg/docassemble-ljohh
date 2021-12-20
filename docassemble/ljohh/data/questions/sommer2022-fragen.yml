@@ -503,7 +503,7 @@ review:
     show if: status != "aushilfe"
     button: |
       ## Nächste Arbeitsphasen
-  - note: |
+
       % if unsicher(nachste_phase):
         - Ich **weiß noch nicht**, ob ich im Herbst 2022 weiter dabei bin.
       % elif dabei(nachste_phase):

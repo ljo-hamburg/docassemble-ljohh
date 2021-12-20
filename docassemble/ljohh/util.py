@@ -2,8 +2,8 @@ from docassemble.base.functions import value
 from docassemble.base.util import Address, format_date, Person
 
 
-def FakeTask():
-    def ready():
+class FakeTask:
+    def ready(self):
         return True
 
 
