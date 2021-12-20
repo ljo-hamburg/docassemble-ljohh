@@ -1,0 +1,168 @@
+---
+imports:
+  - docassemble.msgraph
+  - docassemble.mailgun
+---
+code: |
+  msgraph = MSGraphSession()
+  msgraph.fetch_token()
+---
+code: |
+  mailgun = Mailgun(config_key="ljo mail")
+  mailgun.template = daten["Mailgun Vorlage"]
+---
+code: |
+  _file = msgraph.get_file_info(
+    daten["Anmeldungen"]["Bibliothek"],
+    daten["Anmeldungen"]["Dokument"]
+  ).json()
+  _error = _file.get("error", None)
+  if _error:
+    if _error["code"] == "invalidRequest":
+      da_error(
+        "Konfigurationsfehler: Die Tabellen-ID oder Dokumentenbibliothek-ID ist"
+        " ungültig.",
+        code=412
+      )
+    if _error["code"] == "itemNotFound":
+      da_error(
+        "Konfigurationsfehler: Die Excel-Datei für die Anmeldungen wurde nicht "
+        "gefunden. Möglicherweise wurde sie gelöscht oder umbenannt?",
+        code=412
+      )
+    if _error["code"] == "accessDenied":
+      da_error(
+        "Konfigurationsfehler: Das Anmeldesystem hat keinen Zugriff auf die "
+        "Anmeldetabelle. Der Account muss explizit über die Graph API Zugriff "
+        "auf die Dokumentenbibliothek erhalten.",
+        code=412
+      )
+    da_error(
+      "Konfigurationsfehler: Auf die Anmeldetabelle kann nicht zugegriffen "
+      f"werden. Die Fehlermeldung lautet: {_error['message']}",
+      code=412
+    )
+  _table = msgraph.get_table(
+    drive = daten["Anmeldungen"]["Bibliothek"],
+    file = daten["Anmeldungen"]["Dokument"],
+    table = daten["Anmeldungen"]["Tabelle"]
+  ).json()
+  _error = _table.get("error", None)
+  if _error:
+    if _error["code"] == "ItemNotFound":
+      da_error(
+        "Konfigurationsfehler: Die Datei für die Anmeldungen wurde gefunden, "
+        "allerdings nicht die Tabelle innerhalb der Datei. Vermutlich ist die "
+        "Tabellen-ID falsch.",
+        code=412
+      )
+    da_error(
+      "Es gibt einen Fehler mit der Tabelle in der Datei. Die Fehlermeldung "
+      f"lautet: {_error['message']}",
+      code=412
+    )
+  tabelle = {
+    "datei": _file,
+    "tabelle": _table
+  }
+---
+code: |
+  ordner = msgraph.get_file_info(
+    drive = daten["Archivordner"]["Bibliothek"],
+    folder = daten["Archivordner"]["Ordner"]
+  )
+  _error = ordner.get("error", None)
+  if _error:
+    if _error["code"] == "invalidRequest":
+      da_error(
+        "Konfigurationsfehler: Die angegebene ID für den Archivordner hat nicht"
+        " das richtige Format. Momentan kann die Ordner-ID nur über die "
+        "Microsoft Graph API herausgefunden werden.",
+        code=412
+      )
+    if _error["code"] == "itemNotFound":
+      da_error(
+        "Konfigurationsfehler: Der Archivordner wurde nicht gefunden. "
+        "Möglicherweise wurde der Ordner gelöscht oder befindet sich außerhalb "
+        "des Zugriffsbereiches vom Anmeldesystem.",
+        code=412
+      )
+    if _error["code"] == "accessDenied":
+      da_error(
+        "Konfigurationsfehler:  Das Anmeldesystem hat keinen Zufriff auf den "
+        "Archivordner. Der Account muss explizit Zugriffsrechte für die "
+        "Dokumentenbibliothek über die Microsoft Graph API erteilt bekommen.",
+        code=412
+      )
+    da_error(
+      "Konfigurationsfehler: Es ist ein Fehler beim Zufriff auf den "
+      f"Archivordner aufgetreten. Die Fehlermeldung ist {_error['message']}",
+      code=412
+    )
+---
+code: |
+  mailingliste = get_group_meta(daten["Mailingliste"])
+  _code = mailingliste.get("code", None)
+  if _code:
+    if _code == 404:
+      da_error(
+        "Konfigurationsfehler: Die Arbeitsphasen-Mailingliste existiert nicht",
+        code=412
+      )
+    if _code == 403:
+      da_error(
+        "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
+        "Arbeitsphasen-Mailingliste zugreifen.",
+        code=412
+      )
+    da_error(
+      "Konfigurationsfehler: Es gibt ein Problem mit der "
+      "Arbeitsphasen-Mailingliste festgestellt worden. Die Fehlermeldung ist "
+      f"{mailingliste['message']}"
+    )
+---
+code: |
+  mailingliste_eltern = get_group_meta(daten["Mailingliste (Eltern)"])
+  _code = mailingliste.get("code", None)
+  if _code:
+    if _code == 404:
+      da_error(
+        "Konfigurationsfehler: Die Eltern-Mailingliste existiert nicht",
+        code=412
+      )
+    if _code == 403:
+      da_error(
+        "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
+        "Eltern-Mailingliste zugreifen.",
+        code=412
+      )
+    da_error(
+      "Konfigurationsfehler: Es gibt ein Problem mit der "
+      "Eltern-Mailingliste festgestellt worden. Die Fehlermeldung ist "
+      f"{mailingliste['message']}"
+    )
+---
+code: |
+  mailingliste_mitglieder = get_group_meta(daten["Mailingliste (Mitglieder)"])
+  _code = mailingliste.get("code", None)
+  if _code:
+    if _code == 404:
+      da_error(
+        "Konfigurationsfehler: Die Mitglieder-Mailingliste existiert nicht",
+        code=412
+      )
+    if _code == 403:
+      da_error(
+        "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
+        "Mitglieder-Mailingliste zugreifen.",
+        code=412
+      )
+    da_error(
+      "Konfigurationsfehler: Es gibt ein Problem mit der "
+      "Mitglieder-Mailingliste festgestellt worden. Die Fehlermeldung ist "
+      f"{mailingliste['message']}"
+    )
+---
+code: |
+  need(tabelle, ordner, mailingliste, mailingliste_eltern, mailingliste_mitglieder)
+  Konfiguration = True

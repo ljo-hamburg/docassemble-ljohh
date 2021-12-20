@@ -77,12 +77,9 @@ nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
 % endif
 
 ### Archivieren der Anmeldung
-Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
-`${ daten['Archivordner']['Ordner'] }` archiviert.
+Das Anmeldeformular wird automatisch in dem Ordner **${ odner['name'] }**
+archiviert.
 
-${ check_folder(test_archiv_ordner) }
-
-%if "webUrl" in test_archiv_ordner:
 <p>
   <%self:action_button action="archive_registration"
                        message="Die Anmeldung wurde zum Ordner hinzugefügt.">
@@ -90,19 +87,16 @@ ${ check_folder(test_archiv_ordner) }
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="${ test_archiv_ordner['webUrl'] }">Ordner öffnen</a>
+     href="${ ordner['webUrl'] }">Ordner öffnen</a>
 </p>
-% endif
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
-`${ test_mitspieler_mailingliste['email'] }` hinzugefügt.
-
-${ check_group(test_mitspieler_mailingliste) }
+`${ mailingliste['email'] }` hinzugefügt.
 
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
-                     group="${ test_mitspieler_mailingliste['email'] }"
+                     group="${ mailingliste['email'] }"
                      message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
@@ -110,11 +104,11 @@ ${ check_group(test_mitspieler_mailingliste) }
 ### Mailingliste (Eltern)
 % if minderjaehrig:
 Die E-Mail-Adresse `${ eltern.email }` wird dem Verteiler
-`${ test_eltern_mailingliste['email'] }` hinzugefügt.
+`${ mailingliste_eltern['email'] }` hinzugefügt.
 % else:
 ${ mitglied.name } ist volljährig. Daher wird keine Elternadresse zur
 Mailingliste hinzugefügt. Der Elternverteiler ist
-`${ test_eltern_mailingliste['email'] }`.
+`${ mailingliste_eltern['email'] }`.
 % endif
 
 ${ check_group(test_eltern_mailingliste) }
@@ -122,7 +116,7 @@ ${ check_group(test_eltern_mailingliste) }
 % if minderjaehrig:
 <%self:action_button action="register_email"
                      email="${ eltern.email }"
-                     group="${ test_eltern_mailingliste['email'] }"
+                     group="${ mailingliste_eltern['email'] }"
                      condition="${ minderjaehrig }"
                      message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
@@ -132,11 +126,11 @@ ${ check_group(test_eltern_mailingliste) }
 ### Mailingliste (Mitglieder)
 % if status == "aushilfe":
 Aushilfen werden nicht auf der Mitglieder-Mailingliste
-`${ test_mitglied_mailingliste['email'] }` eingetragen. In diesem Fall wird
+`${ mailingliste_mitglieder['email'] }` eingetragen. In diesem Fall wird
 diese Aktion übersprungen.
 % else:
 Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
-`${ test_mitglied_mailingliste['email'] }` für Mitglieder eingetragen.
+`${ mailingliste_mitglieder['email'] }` für Mitglieder eingetragen.
 % endif
 
 ${ check_group(test_mitglied_mailingliste) }
@@ -144,7 +138,7 @@ ${ check_group(test_mitglied_mailingliste) }
 % if status != "aushilfe":
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
-                     group="${ test_mitglied_mailingliste['email'] }"
+                     group="${ mailingliste_mitglieder['email'] }"
                      message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
@@ -152,14 +146,11 @@ ${ check_group(test_mitglied_mailingliste) }
 
 ### Anmeldeliste
 Alle eingegebenen Daten werden automatisch zur Anmeldeliste hinzugefügt. Die
-Anmeldeliste ist eine Excel-Datei mit der ID
-`${ date["Anmeldungen"]["Dokument"] }`. Die Daten werden dort der Tabelle
-`${ daten["Anmeldungen"]["Tabelle"] }` hinzugefügt. Überschriften werden
+Anmeldeliste ist eine Excel-Datei Namen
+**${ tabelle["datei"]["name"] }**. Die Daten werden dort der Tabelle
+`${ tabelle["tabelle"]["name"] }` hinzugefügt. Überschriften werden
 automatisch erkannt und den Einträgen zugeordnet.
 
-${ check_table(test_anmeldungen_tabelle) }
-
-% if "webUrl" in test_anmeldungen_tabelle:
 <p>
   <%self:action_button action="append_to_table"
                        message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
@@ -167,6 +158,5 @@ ${ check_table(test_anmeldungen_tabelle) }
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="${ test_anmeldungen_tabelle['webUrl'] }">Tabelle öffnen</a>
+     href="${ tabelle['datei']['webUrl'] }">Tabelle öffnen</a>
 </p>
-% endif

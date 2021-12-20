@@ -40,11 +40,13 @@ code: |
 # A task that adds a row to the Anmeldungen.
 need: msgraph
 code: |
-  save_data_task = background_action(
-    'append_to_table',
-    'refresh',
-    test_variable='test_anmeldungen_tabelle'
-  )
+  if testmodus:
+    save_data_task = FakeTask()
+  else:
+    save_data_task = background_action(
+      'append_to_table',
+      'refresh',
+    )
 ---
 # This action saves member_data to a spreadsheet configured via action arguments.
 # All arguments are required.
@@ -59,68 +61,56 @@ code: |
   drive = daten["Anmeldungen"]["Bibliothek"]
   file = daten["Anmeldungen"]["Dokument"]
   table = daten["Anmeldungen"]["Tabelle"]
-  if testmodus and background:
-    background_response_action(
-      'set_variable',
-      **{action_argument('test_variable'): {
-        "file": msgraph.get_file_info(
-          drive,
-          file
-        ).json(),
-        "table": msgraph.get_table(
-          drive,
-          file,
-          table
-        ).json()
-      }}
-    )
+  result = msgraph.add_table_data(
+    action_argument('drive'),
+    action_argument('file'),
+    action_argument('table'),
+    member_data
+  ).json()
+  if background:
+    background_response(result)
   else:
-    result = msgraph.add_table_data(
-      action_argument('drive'),
-      action_argument('file'),
-      action_argument('table'),
-      member_data
-    ).json()
-    if background:
-      background_response(result)
-    else:
-      json_response(result)
+    json_response(result)
 ---
 
 ---
 # A task that adds the member email to a mailing list.
 code: |
-  register_player_email_task = background_action(
-    'register_email',
-    'refresh',
-    test_variable='test_mitspieler_mailingliste',
-    email=mitglied.email,
-    group=daten["Mailingliste"]
-  )
+  if testmodus:
+    register_player_email_task = FakeTask()
+  else:
+    register_player_email_task = background_action(
+      'register_email',
+      'refresh',
+      email=mitglied.email,
+      group=daten["Mailingliste"]
+    )
 ---
 # A task that adds the parent email to a mailing list.
 code: |
-  email = eltern.email if defined('eltern.email') else ''
-  register_parent_email_task = background_action(
-    'register_email',
-    'refresh',
-    test_variable='test_eltern_mailingliste',
-    email=email,
-    group=daten["Mailingliste (Eltern)"],
-    condition=minderjaehrig
-  )
+  if testmodus or not minderjaehrig:
+    register_parent_email_task = FakeTask()
+  else:
+    email = eltern.email if defined('eltern.email') else ''
+    register_parent_email_task = background_action(
+      'register_email',
+      'refresh',
+      email=email,
+      group=daten["Mailingliste (Eltern)"]
+    )
 ---
 # A task that adds the member email to a mailing list (but only for true
 # members).
 code: |
-  register_member_email_task = background_action(
-    'register_email',
-    'refresh',
-    test_variable='test_mitglied_mailingliste',
-    email=mitglied.email,
-    group=daten["Mailingliste (Mitglieder)"],
-    condition=status != "aushilfe"
-  )
+  if testmodus or satus == "aushilfe":
+    register_member_email_task = FakeTask()
+  else:
+    register_member_email_task = background_action(
+      'register_email',
+      'refresh',
+      email=mitglied.email,
+      group=daten["Mailingliste (Mitglieder)"],
+    )
 ---
 # Adds an email address to a group. The action receives the following arguments:
 # - test_variable: The variable name to fill in testing mode.
@@ -132,22 +122,14 @@ code: |
 event: register_email
 code: |
   background = interface() in {"worker", "cron"}
-  if testmodus and background:
-    background_response_action(
-      'set_variable',
-      **{action_argument('test_variable'): get_group_meta(action_argument('group'))}
-    )
+  result = add_group_member(
+    action_argument('group'),
+    action_argument('email')
+  )
+  if background:
+    background_response(result)
   else:
-    condition = action_argument('condition')
-    if condition is None:
-      condition = True
-    result = (add_group_member(action_argument('group'),
-                               action_argument('email'))
-              if condition else True)
-    if background:
-      background_response(result)
-    else:
-      json_response(result)
+    json_response(result)
 ---
 
 ---
@@ -167,11 +149,13 @@ code: |
 # A task that archives the registration PDF to a folder.
 need: [anmeldung, msgraph]
 code: |
-  archive_registration_task = background_action(
-    'archive_registration',
-    'refresh',
-    test_variable='test_archiv_ordner'
-  )
+  if testmodus:
+    archive_registration_task = FakeTask()
+  else:
+    archive_registration_task = background_action(
+      'archive_registration',
+      'refresh'
+    )
 ---
 # Archives the registration PDF to a folder. This action does not receive
 # arguments.
@@ -181,45 +165,37 @@ code: |
   background = interface() in {"worker", "cron"}
   drive = daten["Archivordner"]["Bibliothek"]
   folder = daten["Archivordner"]["Ordner"]
-  if testmodus and background:
-    background_response_action(
-      'set_variable',
-      **{action_argument('test_variable'): msgraph.get_file_info(
-          drive,
-          folder
-      ).json()}
-    )
+  result = msgraph.upload_file(
+    drive,
+    folder,
+    anmeldung.pdf.filename,
+    open(anmeldung.pdf.path(), 'rb')
+  ).json()
+  if background:
+    background_response(result)
   else:
-    result = msgraph.upload_file(
-      drive,
-      folder,
-      anmeldung.pdf.filename,
-      open(anmeldung.pdf.path(), 'rb')
-    ).json()
-    if background:
-      background_response(result)
-    else:
-      json_response(result)
+    json_response(result)
 ---
 
 ---
 # Sends an email to the registered email address
 need: [anmeldung, mailgun]
-code: member_email_task = background_action('send_member_email', 'refresh')
+code: |
+  if testmodus:
+    member_email_task = FakeTask()
+  else:
+    member_email_task = background_action('send_member_email', 'refresh')
 ---
 # Sends an email to the registered email address.
 event: send_member_email
 need: [anmeldung, mailgun]
 code: |
   background = interface() in {"worker", "cron"}
-  if testmodus and background:
-    result = True
-  else:
-    result = mailgun.send_email(
-        to=[mitglied],
-        template=mitglied_email,
-        attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
-    )
+  result = mailgun.send_email(
+      to=[mitglied],
+      template=mitglied_email,
+      attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
+  )
   if background:
     background_response(result)
   else:
@@ -228,26 +204,28 @@ code: |
 
 ---
 # Sends an email to the notification addresses.
-need: [anmeldung, mailgun]
-code: orga_email_task = background_action('send_orga_email', 'refresh')
+need: [mailgun]
+code: |
+  if testmodus:
+    orga_email_task = FakeTask()
+  else:
+    orga_email_task = background_action('send_orga_email', 'refresh')
 ---
 # Sends an email to the notification addresses.
 event: send_orga_email
-need: [anmeldung, mailgun]
+need: [mailgun]
 code: |
   background = interface() in {"worker", "cron"}
   recipients = daten["E-Mail Benachrichtigung"]
   if isinstance(recipients, str):
     recipients = [recipients]
-  if (testmodus and background) or (not testmodus and not recipients):
+  if not recipients:
     result = True
   else:
     to = [mitglied] if testmodus else recipients
-    # TODO: Send link to folder instead of attachment
     result = mailgun.send_email(
       to=to,
-      template=orga_email,
-      attachments=[anmeldung.pdf]
+      template=orga_email
     )
   if background:
     background_response(result)

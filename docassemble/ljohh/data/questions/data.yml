@@ -13,14 +13,13 @@ objects:
   bedingungen: DAObject
 ---
 include:
+  - config.yml
   - tasks.yml
   - defs.yml
 ---
 modules:
   - .util
   - .ljo
-  - docassemble.msgraph
-  - docassemble.mailgun
 ---
 # Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
 code: |
@@ -31,14 +30,6 @@ code: |
 # Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
 # festgelegt.
 code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
----
-code: |
-  msgraph = MSGraphSession()
-  msgraph.fetch_token()
----
-code: |
-  mailgun = Mailgun(config_key="ljo mail")
-  mailgun.template = daten["Mailgun Vorlage"]
 ---
 # Die minderjaehrig Variable ist True, wenn ein Mitglied unter 18 ist. Dafür
 # muss mitglied.birthdate definiert sein.

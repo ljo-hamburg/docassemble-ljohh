@@ -148,6 +148,7 @@ sections:
 # Funktion, die nicht leichtfertig verändert werden sollte.
 mandatory: True
 code: |
+  Konfiguration
   if testmodus:
     status
   Einleitung

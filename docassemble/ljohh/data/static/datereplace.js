@@ -95,7 +95,7 @@ $(document).on("daPageLoad", function () {
       );
     }
 
-    parentElement.style.display = "flex"
+    parentElement.css("display", "flex");
     $(dateElement).before(parentElement);
     $(dayParent).append(dayElement);
     $(parentElement).append(dayParent);

@@ -1,7 +1,5 @@
 import json
-from typing import Any, Dict, List
 
-import requests
 from docassemble.base.util import get_config
 from google.oauth2 import service_account
 from googleapiclient import discovery
@@ -10,12 +8,9 @@ __all__ = [
     "ljo_account",
     "get_group_meta",
     "add_group_member",
-    "upload_file",
 ]
 
 from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload
-from requests.auth import HTTPBasicAuth
 
 
 def ljo_account():
@@ -53,19 +48,9 @@ def get_group_meta(group: str):
         groupKey=group
     )
     try:
-        response = request.execute()
-        return {
-            "code": 200,
-            "email": response["email"],
-            "name": response["name"]
-        }
+        return request.execute()
     except HttpError as error:
-        if error.resp.status == 404:
-            return {
-                "email": group,
-                "code": 404
-            }
-        raise error
+        return json.loads(error.content)
 
 
 def add_group_member(group: str, email: str):
