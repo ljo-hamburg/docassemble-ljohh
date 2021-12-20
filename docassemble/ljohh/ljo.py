@@ -2,10 +2,7 @@ import json
 from typing import Any, Dict, List
 
 import requests
-from bs4 import BeautifulSoup
-from docassemble.base.core import DAFile
-from docassemble.base.util import email_stringer, send_email, mark_task_as_performed, get_config, value
-from flask_mail import sanitize_addresses
+from docassemble.base.util import get_config
 from google.oauth2 import service_account
 from googleapiclient import discovery
 
@@ -38,10 +35,11 @@ def get_google_credentials(**kwargs):
     the credentials).
     """
     info = get_config('google').get('service account credentials')
+    delegate = get_config('google').get('delegated admin')
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
         **kwargs
-    )
+    ).create_delegated(delegate)
 
 def get_group_meta(group: str):
     """
@@ -93,27 +91,4 @@ def add_group_member(group: str, email: str):
         # Status code 409 Conflict
         if error.resp.status != 409:
             raise error
-    return True
-
-
-def upload_file(file: DAFile, folder: str):
-    """
-    Uploads a file into the specified folder. The folder is specified using its
-    ID.
-    """
-    file.retrieve()
-    credentials = get_google_credentials(
-        scopes=['https://www.googleapis.com/auth/drive']
-    )
-    service = discovery.build('drive', 'v3', credentials=credentials)
-    file_metadata = {
-        'name': file.filename,
-        'parents': [folder]
-    }
-    media = MediaFileUpload(file.path(), mimetype=file.mimetype)
-    request = service.files().create(
-        supportsAllDrives=True,
-        body=file_metadata,
-        media_body=media)
-    request.execute()
     return True

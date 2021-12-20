@@ -45,31 +45,31 @@ mako: |
   </%def>
 
   <%def name="check_folder(folder)">
-    % if folder['code'] == 404:
-      <%self:cross msg="Der Ordner kann nicht gefunden werden.">
-        Die ID ist möglicherweise falsch oder der Account ${ ljo_account() }
-        hat keinen Zugriff auf den Ordner.
-      </%self:cross>
-    % elif folder['code'] == 403:
-      <%self:cross msg="Auf den Ordner kann nicht zugegriffen werden.">
-        Prüfe, dass der Account ${ ljo_account() } Schreibrechte hat.
-      </%self:cross>
-    % elif folder['code'] != 200:
-      <%self:cross msg="Der Ordner kann nicht überprüft werden.">
-        Ein unbekannter Fehler ist aufgetreten.
-      </%self:cross>
-    % elif not folder['folder']:
-      <%self:cross msg="Der Ordner ist kein Ordner.">
-        Die angegebene ID verweist auf eine Datei und nicht auf einen Ordner.
-      </%self:cross>
-    % elif not folder['editable']:
-      <%self:cross msg="Der Ordner ist nicht beschreibbar.">
-        Der Account ${ ljo_account() } muss Schreibrechte auf dem Ordner
-        haben.
-      </%self:cross>
+    % if "error" in folder:
+      % if folder["error"]["code"] == "invalidRequest":
+        <%self:cross msg="Die Ordner-ID ist ungültig.">
+          Momentan kann die Ordner-ID nur über die Microsoft Graph API
+          herausgefunden wreden.
+        </%self:cross>
+      % elif folder["error"]["code"] == "itemNotFound":
+        <%self:cross msg="Der Ordner wurde nicht gefunden.">
+          Möglicherweise wurde der Ordner gelöscht oder das Anmeldesystem hat
+          keinen Zugriff auf den Ordner.
+        </%self:cross>
+      % elif folder["error"]["code"] == "accessDenied":
+        <%self:cross msg="Das Anmeldesystem hat keinen Zugriff auf den Ordner.">
+          Der Account des Anmeldesystems hat scheinbar keinen Zugriff auf den Ordner.
+          Der Account muss explizit die Rechte für die Dokumentenbibliothek zugewiesen bekommen.
+        </%self:cross>
+      % else:
+        <%self:cross msg="Unbekannter Fehler">
+          Es besteht kein Zugriff auf die Datei. Die Fehlermeldung lautet
+          ${ table["file"]["error"]["message"] }
+        </%self:cross>
+      % endif
     % else:
-      <%self:check help="Anmeldungen werden automatisch in diesem Ordner gespeichert.">
-        Der Ordner **${ folder['name'] }** ist scheibar korrekt konfiguriert.
+      <%self:check help="Anmeldungen werden automatisch in diesem Ordner archiviert.">
+        Der Ordner **${ folder["name"] }** ist scheinbar korrekt konfiguriert.
       </%self:check>
     % endif
   </%def>
@@ -90,37 +90,44 @@ mako: |
     % endif
   </%def>
 
-  <%def name="check_spreadsheet(sheet)">
-    % if sheet["code"] == 404:
-      <%self:cross msg="Die Tabelle wurde nicht gefunden.">
-        Die ID ist möglicherweise falsch oder der Account ${ ljo_account() }
-        hat keinen Zugriff auf die Tabelle.
-      </%self:cross>
-    % elif sheet["code"] == 403:
-      <%self:cross msg="Auf die Tabelle kann nicht zugegriffen werden.">
-        Der Account ${ ljo_account() } braucht Schreibzugriff auf die Tabelle.
-      </%self:cross>
-    % elif sheet["code"] != 200:
-      <%self:cross msg="Die Tabelle kann nicht überprüft werden.">
-        Ein unbekannter Fehler ist aufgetreten.
-      </%self:cross>
-    % elif not sheet['sheet']:
-      <%self:cross msg="Die Tabelle hat das falsche Dateiformat.">
-        Es werden nur Google Tabellen unterstützt, die referenzierte Datei ist aber
-        in einem anderen Format.
-      </%self:cross>
-    % elif not sheet['editable']:
-      <%self:cross msg="Die Tabelle kann nicht bearbeitet werden.">
-        Der Account ${ ljo_account() } muss Schreibzugriff auf die Tabelle haben.
-      </%self:cross>
-    % elif not sheet['range']:
-      <%self:cross msg="Der Tabellenbereich ist ungültig.">
-        Der Tabellenbereich, in dem Daten eingefügt werden sollen, muss in
-        A1-Notation angegeben sein oder einen benannten Bereich definieren.
-      </%self:cross>
+  <%def name="check_table(table)">
+    % if "error" in table["file"]:
+      % if table["file"]["error"]["code"] == "invalidRequest":
+        <%self:cross msg="Die Datei-ID ist ungültig.">
+          Die Datei-ID kann momentan nur über die Microsoft Graph API
+          herausgefunden werden.
+        </%self:cross>
+      % elif table["file"]["error"]["code"] == "itemNotFound":
+        <%self:cross msg="Die Datei wurde nicht gefunden.">
+          Die Datei-ID ist möglicherweise falsch oder die Datei wurde gelöscht.
+        </%self:cross>
+      % elif table["file"]["error"]["code"] == "accessDenied":
+        <%self:cross msg="Das Anmeldesystem hat keinen Zugriff auf die Datei.">
+          Der Account des Anmeldesystems hat scheinbar keinen Zugriff auf die Datei.
+          Der Account muss explizit die Rechte für die Dokumentenbibliothek zugewiesen bekommen.
+        </%self:cross>
+      % else:
+        <%self:cross msg="Unbekannter Fehler">
+          Es besteht kein Zugriff auf die Datei. Die Fehlermeldung lautet
+          ${ table["file"]["error"]["message"] }
+        </%self:cross>
+      % endif
+    % elif "error" in table["table"]:
+      % if table["table"]["code"] == "ItemNotFound":
+        <%self:cross msg="Tabelle nicht gefunden">
+          Die Datei existiert, allerdings existiert die Tabelle nicht. Es muss
+          die ID einer Tabelle innerhalb des Excel-Workbooks angegeben werden.
+        </%self:cross>
+      % else:
+        <%self:cross msg="Unbekannter Fehler">
+          Es besteht zwar Zugriff auf die Datei, allerdings nicht auf die Tabelle.
+          Die Fehlermeldung lautet ${ table["table"]["error"]["message"] }
+        </%self:cross>
+      % endif
     % else:
       <%self:check help="Die Daten aus den Anmeldungen werden automatisch in der Tabelle ergänzt.">
-        Die Tabelle **${ sheet['name'] }** ist scheinbar korrekt konfiguriert.
+        Die Tabelle **${ table['table']['name'] }** in der Datei
+        **${ table['file']['name'] }** ist scheinbar korrekt konfiguriert.
       </%self:check>
     % endif
   </%def>

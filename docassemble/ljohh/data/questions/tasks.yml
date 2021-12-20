@@ -43,10 +43,7 @@ code: |
   save_data_task = background_action(
     'append_to_table',
     'refresh',
-    test_variable='test_anmeldungen_tabelle',
-    drive=daten["Anmeldungen"]["Bibliothek"],
-    file=daten["Anmeldungen"]["Dokument"],
-    table=daten["Anmeldungen"]["Tabelle"],
+    test_variable='test_anmeldungen_tabelle'
   )
 ---
 # This action saves member_data to a spreadsheet configured via action arguments.
@@ -59,18 +56,21 @@ event: append_to_table
 need: msgraph
 code: |
   background = interface() in {"worker", "cron"}
+  drive = daten["Anmeldungen"]["Bibliothek"]
+  file = daten["Anmeldungen"]["Dokument"]
+  table = daten["Anmeldungen"]["Tabelle"]
   if testmodus and background:
     background_response_action(
       'set_variable',
       **{action_argument('test_variable'): {
         "file": msgraph.get_file_info(
-          action_argument('drive'),
-          action_argument('file')
+          drive,
+          file
         ).json(),
         "table": msgraph.get_table(
-          action_argument('drive'),
-          action_argument('file'),
-          action_argument('table')
+          drive,
+          file,
+          table
         ).json()
       }}
     )
@@ -166,7 +166,12 @@ code: |
 ---
 # A task that archives the registration PDF to a folder.
 need: [anmeldung, msgraph]
-code: archive_registration_task = background_action('archive_registration', 'refresh')
+code: |
+  archive_registration_task = background_action(
+    'archive_registration',
+    'refresh',
+    test_variable='test_archiv_ordner'
+  )
 ---
 # Archives the registration PDF to a folder. This action does not receive
 # arguments.
@@ -174,13 +179,23 @@ event: archive_registration
 need: [anmeldung, msgraph]
 code: |
   background = interface() in {"worker", "cron"}
+  drive = daten["Archivordner"]["Bibliothek"]
+  folder = daten["Archivordner"]["Ordner"]
   if testmodus and background:
     background_response_action(
       'set_variable',
-      test_archiv_ordner=get_file_meta(daten["Archivordner-ID"])
+      **{action_argument('test_variable'): msgraph.get_file_info(
+          drive,
+          folder
+      ).json()}
     )
   else:
-    result = upload_file(anmeldung.pdf, daten["Archivordner-ID"])
+    result = msgraph.upload_file(
+      drive,
+      folder,
+      anmeldung.pdf.filename,
+      open(anmeldung.pdf.path(), 'rb')
+    ).json()
     if background:
       background_response(result)
     else:

@@ -115,7 +115,7 @@ under: |
   Zur Durchführung der Arbeitsphase erfragen wir einige persönliche Daten. Alle
   Angaben, die in diesem Formular gemacht werden, werden aber nur zur
   Durchführung von Arbeitsphasen des LJO Hamburg verwendet und werden nicht an
-  Dritte weitergegeben. Die Daten werden gemäß unserer[Datenschutzhinweise](
+  Dritte weitergegeben. Die Daten werden gemäß unserer [Datenschutzhinweise](
   https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
   verarbeitet. Falls du dazu Fragen hast, schreib gerne an den
   [Vorstand](mailto:vorstand@ljo-hamburg.de).
@@ -137,6 +137,8 @@ fields:
       Du erhältst per E-Mail wichtige Informationen zur Arbeitsphase und
       Konzerten.
   - Über welche Telefonnummer bist du erreichbar?: mitglied.phone_number
+    validate: >
+      lambda x: phone_number_is_valid(x, "DE") or validation_error('Bitte gib eine gültige Telefonnummer ein.')
   - An welcher Adresse wohnst du?: mitglied.address.address
     hint: Bitte Straße und Hausnummer angeben
   - Wie lautet deine Postleitzahl?: mitglied.address.zip
@@ -145,9 +147,6 @@ fields:
   - Wann wurdest du geboren?: mitglied.birthdate
     datatype: date
   - Welches Instrument spielst du?: mitglied.instrument
-validation code: |
-  if mitglied.phone_number and not phone_number_is_valid(mitglied.phone_number, "DE"):
-    validation_error('Bitte geben Sie eine gültige Telefonnummer ein.', field='mitglied.phone_number')
 ---
 id: sommer-2022/elternkontakt
 field: Elternkontakt
@@ -315,7 +314,7 @@ subquestion: |
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 under: |
-  Beachte auch unsere[Datenschutzhinweise](
+  Beachte auch unsere [Datenschutzhinweise](
   https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
 fields:
   - "Ich möchte folgendes angeben": pwe_versorgung
@@ -335,7 +334,7 @@ section: Jugend- und Datenschutz
 question: Jugendschutz
 subquestion: |
   <div class="alert alert-info" role="alert">
-  **Hinweis**: Die Regelungen haben sich seit der letzten Arbeitsphase geändert.
+  <b>Hinweis</b>: Die Regelungen haben sich seit der letzten Arbeitsphase geändert.
   </div>
 
   Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
@@ -348,8 +347,8 @@ subquestion: |
     der Öffentlichkeit konsumieren, hochprozentige Spirituosen sind aber tabu
     (d.h. Vodka, Rum, Schnäpse u.ä., auch Mixgetränke und süße Alkopops). Siehe
     § 9 Abs. 1 JuSchG
-  - Harter Alkohol, Mixgetränke und Spirituosen sind für **alle** Teilnehmenden
-    untersagt.
+  - **Harter Alkohol, Mixgetränke und Spirituosen sind für alle Teilnehmenden
+    untersagt.**
   - Sonstige Drogen sind tabu. Die Verteilung oder Einnahme von sonstigen Drogen
     führen zu einem sofortigen Ausschluss von der Arbeitsphase.
 

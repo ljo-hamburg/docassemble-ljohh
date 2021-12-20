@@ -78,10 +78,11 @@ nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
 
 ### Archivieren der Anmeldung
 Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
-`${ test_archiv_ordner['id'] }` archiviert.
+`${ daten['Archivordner']['Ordner'] }` archiviert.
 
 ${ check_folder(test_archiv_ordner) }
 
+%if "webUrl" in test_archiv_ordner:
 <p>
   <%self:action_button action="archive_registration"
                        message="Die Anmeldung wurde zum Ordner hinzugefügt.">
@@ -89,8 +90,9 @@ ${ check_folder(test_archiv_ordner) }
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="https://drive.google.com/drive/u/0/folders/${ test_archiv_ordner['id'] }">Ordner öffnen</a>
+     href="${ test_archiv_ordner['webUrl'] }">Ordner öffnen</a>
 </p>
+% endif
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
@@ -150,21 +152,21 @@ ${ check_group(test_mitglied_mailingliste) }
 
 ### Anmeldeliste
 Alle eingegebenen Daten werden automatisch zur Anmeldeliste hinzugefügt. Die
-Anmeldeliste ist eine Google-Tabelle mit der ID
-`${ test_anmeldungen_tabelle["id"] }`. Die Daten werden dort dem Bereich
-`${ daten["Anmeldungen"]["Bereich"] }` hinzugefügt. Überschriften werden
+Anmeldeliste ist eine Excel-Datei mit der ID
+`${ date["Anmeldungen"]["Dokument"] }`. Die Daten werden dort der Tabelle
+`${ daten["Anmeldungen"]["Tabelle"] }` hinzugefügt. Überschriften werden
 automatisch erkannt und den Einträgen zugeordnet.
 
-${ check_spreadsheet(test_anmeldungen_tabelle) }
+${ check_table(test_anmeldungen_tabelle) }
 
+% if "webUrl" in test_anmeldungen_tabelle:
 <p>
-  <%self:action_button action="append_to_spreadsheet"
-                       spreadsheet="${ test_anmeldungen_tabelle['id'] }"
-                       range="${ daten['Anmeldungen']['Bereich'] }"
+  <%self:action_button action="append_to_table"
                        message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
     Zur Tabelle hinzufügen
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="https://docs.google.com/spreadsheets/d/${ test_anmeldungen_tabelle['id'] }/edit#gid=daten['Anmeldungen']['Blatt-ID']">Tabelle öffnen</a>
+     href="${ test_anmeldungen_tabelle['webUrl'] }">Tabelle öffnen</a>
 </p>
+% endif
