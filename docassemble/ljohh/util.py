@@ -2,11 +2,6 @@ from docassemble.base.functions import value
 from docassemble.base.util import Address, format_date, Person
 
 
-class FakeTask:
-    def ready(self):
-        return True
-
-
 def max_fehltermine(key, anzahl):
     """
     Berechnet die Anzahl der Präsenztermine, sodass höchstens anzahl Fehltermine

@@ -7,6 +7,11 @@ code: |
     define(name, value)
   background_response()
 ---
+code: |
+  class FakeTask:
+      def ready(self):
+          return True
+---
 # The member_data forms is the data that is available to be put in spreadsheets.
 # The dictionary keys are compared to spreadsheet headings. The comparison is
 # case-insensitive.
