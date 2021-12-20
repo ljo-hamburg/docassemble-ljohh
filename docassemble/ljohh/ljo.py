@@ -1,15 +1,14 @@
-import json
-
-from docassemble.base.util import get_config
-from google.oauth2 import service_account
-from googleapiclient import discovery
-
 __all__ = [
     "ljo_account",
     "get_group_meta",
     "add_group_member",
 ]
 
+import json
+
+from docassemble.base.util import get_config
+from google.oauth2 import service_account
+from googleapiclient import discovery
 from googleapiclient.errors import HttpError
 
 

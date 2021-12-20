@@ -69,7 +69,7 @@ code: |
   ordner = msgraph.get_file_info(
     daten["Archivordner"]["Bibliothek"],
     daten["Archivordner"]["Ordner"]
-  )
+  ).json()
   _error = ordner.get("error", None)
   if _error:
     if _error["code"] == "invalidRequest":
