@@ -2,7 +2,6 @@
 modules:
   - docassemble.msgraph
   - docassemble.mailgun
-  - .util
 ---
 code: |
   msgraph = MSGraphSession()
@@ -11,6 +10,11 @@ code: |
 code: |
   mailgun = Mailgun(config_key="ljo mail")
   mailgun.template = daten["Mailgun Vorlage"]
+---
+code: |
+  def da_error(value, code=412):
+      from docassemble.base.error import DAError
+      raise DAError(value, code=code)
 ---
 code: |
   _file = msgraph.get_file_info(
@@ -22,31 +26,27 @@ code: |
     if _error["code"] == "invalidRequest":
       da_error(
         "Konfigurationsfehler: Die Tabellen-ID oder Dokumentenbibliothek-ID ist"
-        " ungültig.",
-        code=412
+        " ungültig."
       )
     if _error["code"] == "itemNotFound":
       da_error(
         "Konfigurationsfehler: Die Excel-Datei für die Anmeldungen wurde nicht "
-        "gefunden. Möglicherweise wurde sie gelöscht oder umbenannt?",
-        code=412
+        "gefunden. Möglicherweise wurde sie gelöscht oder umbenannt?"
       )
     if _error["code"] == "accessDenied":
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem hat keinen Zugriff auf die "
         "Anmeldetabelle. Der Account muss explizit über die Graph API Zugriff "
-        "auf die Dokumentenbibliothek erhalten.",
-        code=412
+        "auf die Dokumentenbibliothek erhalten."
       )
     da_error(
       "Konfigurationsfehler: Auf die Anmeldetabelle kann nicht zugegriffen "
-      f"werden. Die Fehlermeldung lautet: {_error['message']}",
-      code=412
+      f"werden. Die Fehlermeldung lautet: {_error['message']}"
     )
   _table = msgraph.get_table(
-    drive = daten["Anmeldungen"]["Bibliothek"],
-    file = daten["Anmeldungen"]["Dokument"],
-    table = daten["Anmeldungen"]["Tabelle"]
+    daten["Anmeldungen"]["Bibliothek"],
+    daten["Anmeldungen"]["Dokument"],
+    daten["Anmeldungen"]["Tabelle"]
   ).json()
   _error = _table.get("error", None)
   if _error:
@@ -54,13 +54,11 @@ code: |
       da_error(
         "Konfigurationsfehler: Die Datei für die Anmeldungen wurde gefunden, "
         "allerdings nicht die Tabelle innerhalb der Datei. Vermutlich ist die "
-        "Tabellen-ID falsch.",
-        code=412
+        "Tabellen-ID falsch."
       )
     da_error(
       "Es gibt einen Fehler mit der Tabelle in der Datei. Die Fehlermeldung "
-      f"lautet: {_error['message']}",
-      code=412
+      f"lautet: {_error['message']}"
     )
   tabelle = {
     "datei": _file,
@@ -69,8 +67,8 @@ code: |
 ---
 code: |
   ordner = msgraph.get_file_info(
-    drive = daten["Archivordner"]["Bibliothek"],
-    folder = daten["Archivordner"]["Ordner"]
+    daten["Archivordner"]["Bibliothek"],
+    daten["Archivordner"]["Ordner"]
   )
   _error = ordner.get("error", None)
   if _error:
@@ -78,27 +76,23 @@ code: |
       da_error(
         "Konfigurationsfehler: Die angegebene ID für den Archivordner hat nicht"
         " das richtige Format. Momentan kann die Ordner-ID nur über die "
-        "Microsoft Graph API herausgefunden werden.",
-        code=412
+        "Microsoft Graph API herausgefunden werden."
       )
     if _error["code"] == "itemNotFound":
       da_error(
         "Konfigurationsfehler: Der Archivordner wurde nicht gefunden. "
         "Möglicherweise wurde der Ordner gelöscht oder befindet sich außerhalb "
-        "des Zugriffsbereiches vom Anmeldesystem.",
-        code=412
+        "des Zugriffsbereiches vom Anmeldesystem."
       )
     if _error["code"] == "accessDenied":
       da_error(
         "Konfigurationsfehler:  Das Anmeldesystem hat keinen Zufriff auf den "
         "Archivordner. Der Account muss explizit Zugriffsrechte für die "
         "Dokumentenbibliothek über die Microsoft Graph API erteilt bekommen.",
-        code=412
       )
     da_error(
       "Konfigurationsfehler: Es ist ein Fehler beim Zufriff auf den "
       f"Archivordner aufgetreten. Die Fehlermeldung ist {_error['message']}",
-      code=412
     )
 ---
 code: |
@@ -108,13 +102,11 @@ code: |
     if _code == 404:
       da_error(
         "Konfigurationsfehler: Die Arbeitsphasen-Mailingliste existiert nicht",
-        code=412
       )
     if _code == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Arbeitsphasen-Mailingliste zugreifen.",
-        code=412
       )
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
@@ -129,13 +121,11 @@ code: |
     if _code == 404:
       da_error(
         "Konfigurationsfehler: Die Eltern-Mailingliste existiert nicht",
-        code=412
       )
     if _code == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Eltern-Mailingliste zugreifen.",
-        code=412
       )
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
@@ -150,13 +140,11 @@ code: |
     if _code == 404:
       da_error(
         "Konfigurationsfehler: Die Mitglieder-Mailingliste existiert nicht",
-        code=412
       )
     if _code == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Mitglieder-Mailingliste zugreifen.",
-        code=412
       )
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "

@@ -1,10 +1,5 @@
-from docassemble.base.error import DAError
 from docassemble.base.functions import value
 from docassemble.base.util import Address, format_date, Person
-
-
-def da_error(value, code=500):
-    raise DAError(value, code=code)
 
 
 def FakeTask():
