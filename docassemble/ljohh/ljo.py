@@ -33,7 +33,8 @@ def get_google_credentials(**kwargs):
     return service_account.Credentials.from_service_account_info(
         json.loads(info, strict=False),
         **kwargs
-    ).create_delegated(delegate)
+    ).with_subject(delegate)
+
 
 def get_group_meta(group: str):
     """
