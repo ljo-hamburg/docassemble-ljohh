@@ -16,6 +16,9 @@ modules:
   - .util
   - .ljo
 ---
+imports:
+  - docassemble.base.filter
+---
 include:
   - config.yml
   - tasks.yml

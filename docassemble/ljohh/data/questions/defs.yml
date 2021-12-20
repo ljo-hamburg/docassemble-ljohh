@@ -28,8 +28,8 @@ mako: |
   <%def name="collapse_button(id)">
     <button class="btn btn-primary btn-sm"
             type="button"
-            data-toggle="collapse"
-            data-target="#${ id }"
+            data-bs-toggle="collapse"
+            data-bs-target="#${ id }"
             aria-expanded="false"
             aria-controls="${ id }"
         >${ caller.body() }</button>
