@@ -77,7 +77,7 @@ nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
 % endif
 
 ### Archivieren der Anmeldung
-Das Anmeldeformular wird automatisch in dem Ordner **${ odner['name'] }**
+Das Anmeldeformular wird automatisch in dem Ordner **${ ordner['name'] }**
 archiviert.
 
 <p>
@@ -92,7 +92,7 @@ archiviert.
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
-`${ mailingliste['email'] }` hinzugefügt.
+**${ mailingliste['name'] }** hinzugefügt.
 
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
@@ -104,14 +104,12 @@ Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
 ### Mailingliste (Eltern)
 % if minderjaehrig:
 Die E-Mail-Adresse `${ eltern.email }` wird dem Verteiler
-`${ mailingliste_eltern['email'] }` hinzugefügt.
+**${ mailingliste_eltern['name'] }** hinzugefügt.
 % else:
 ${ mitglied.name } ist volljährig. Daher wird keine Elternadresse zur
 Mailingliste hinzugefügt. Der Elternverteiler ist
-`${ mailingliste_eltern['email'] }`.
+**${ mailingliste_eltern['name'] }**.
 % endif
-
-${ check_group(test_eltern_mailingliste) }
 
 % if minderjaehrig:
 <%self:action_button action="register_email"
@@ -126,14 +124,12 @@ ${ check_group(test_eltern_mailingliste) }
 ### Mailingliste (Mitglieder)
 % if status == "aushilfe":
 Aushilfen werden nicht auf der Mitglieder-Mailingliste
-`${ mailingliste_mitglieder['email'] }` eingetragen. In diesem Fall wird
+**${ mailingliste_mitglieder['email'] }** eingetragen. In diesem Fall wird
 diese Aktion übersprungen.
 % else:
 Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
-`${ mailingliste_mitglieder['email'] }` für Mitglieder eingetragen.
+**${ mailingliste_mitglieder['email'] }** für Mitglieder eingetragen.
 % endif
-
-${ check_group(test_mitglied_mailingliste) }
 
 % if status != "aushilfe":
 <%self:action_button action="register_email"

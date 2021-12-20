@@ -98,13 +98,13 @@ code: |
 ---
 code: |
   mailingliste = get_group_meta(daten["Mailingliste"])
-  _code = mailingliste.get("code", None)
-  if _code:
-    if _code == 404:
+  _error = mailingliste.get("error", None)
+  if _error:
+    if _error["code"] == 404:
       da_error(
         "Konfigurationsfehler: Die Arbeitsphasen-Mailingliste existiert nicht",
       )
-    if _code == 403:
+    if _error["code"] == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Arbeitsphasen-Mailingliste zugreifen.",
@@ -112,18 +112,18 @@ code: |
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
       "Arbeitsphasen-Mailingliste festgestellt worden. Die Fehlermeldung ist "
-      f"{mailingliste['message']}"
+      f"{_error['message']}"
     )
 ---
 code: |
   mailingliste_eltern = get_group_meta(daten["Mailingliste (Eltern)"])
-  _code = mailingliste_eltern.get("code", None)
-  if _code:
-    if _code == 404:
+  _error = mailingliste_eltern.get("error", None)
+  if _error:
+    if _error["code"] == 404:
       da_error(
         "Konfigurationsfehler: Die Eltern-Mailingliste existiert nicht",
       )
-    if _code == 403:
+    if _error["code"] == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Eltern-Mailingliste zugreifen.",
@@ -131,18 +131,18 @@ code: |
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
       "Eltern-Mailingliste festgestellt worden. Die Fehlermeldung ist "
-      f"{mailingliste_eltern['message']}"
+      f"{_error['message']}"
     )
 ---
 code: |
   mailingliste_mitglieder = get_group_meta(daten["Mailingliste (Mitglieder)"])
-  _code = mailingliste_mitglieder.get("code", None)
-  if _code:
-    if _code == 404:
+  _error = mailingliste_mitglieder.get("error", None)
+  if _error:
+    if _error["code"] == 404:
       da_error(
         "Konfigurationsfehler: Die Mitglieder-Mailingliste existiert nicht",
       )
-    if _code == 403:
+    if _error["code"] == 403:
       da_error(
         "Konfigurationsfehler: Das Anmeldesystem kann nicht auf die "
         "Mitglieder-Mailingliste zugreifen.",
@@ -150,7 +150,7 @@ code: |
     da_error(
       "Konfigurationsfehler: Es gibt ein Problem mit der "
       "Mitglieder-Mailingliste festgestellt worden. Die Fehlermeldung ist "
-      f"{mailingliste_mitglieder['message']}"
+      f"{_error['message']}"
     )
 ---
 code: |

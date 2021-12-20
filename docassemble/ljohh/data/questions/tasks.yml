@@ -58,13 +58,10 @@ event: append_to_table
 need: msgraph
 code: |
   background = interface() in {"worker", "cron"}
-  drive = daten["Anmeldungen"]["Bibliothek"]
-  file = daten["Anmeldungen"]["Dokument"]
-  table = daten["Anmeldungen"]["Tabelle"]
   result = msgraph.add_table_data(
-    action_argument('drive'),
-    action_argument('file'),
-    action_argument('table'),
+    daten["Anmeldungen"]["Bibliothek"],
+    daten["Anmeldungen"]["Dokument"],
+    daten["Anmeldungen"]["Tabelle"],
     member_data
   ).json()
   if background:
