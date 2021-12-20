@@ -1,4 +1,4 @@
-id: herbst-2021/statuswahl
+id: sommer-2022/statuswahl
 field: status
 if: testmodus
 question: Status auswählen
@@ -16,16 +16,16 @@ subquestion: |
     maximale Anzahl an Fehlterminen begrenzt ist.
   - **Flex-Mitglieder** werden wie reguläre Mitglieder behandelt, können aber
     beliebig viele Fehltermine auswählen.
-  - **Aushilfen** können ebenfalls beliebig viele Fehltermine angeben, müssen aber
-    im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
+  - **Aushilfen** können ebenfalls beliebig viele Fehltermine angeben, müssen
+    aber im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
 buttons:
   - Mitglied: mitglied
   - Flex-Mitglied: flex
   - Aushilfe: aushilfe
 ---
-id: herbst-2021/einleitung
+id: sommer-2022/einleitung
 field: Einleitung
-question: Anmeldung zur Herbstphase 2021
+question: Anmeldung zur Sommerphase 2022
 subquestion: |
   % if testmodus:
   <div class="alert alert-warning" role="alert">
@@ -34,7 +34,7 @@ subquestion: |
   </div>
   % endif
 
-  Über dieses Formular meldest du dich zur Herbstarbeitsphase 2021 des LJO
+  Über dieses Formular meldest du dich zur Sommerarbeitsphase 2022 des LJO
   Hamburg an. Die Anmeldung ist verbindlich, das heißt, sobald du die Anmeldung
   abgegeben hast, gehen wir davon aus, dass du auch zu allen Probenterminen
   erscheinst, zu denen du dich nicht explizit abgemeldet hast. Solltest du
@@ -43,70 +43,37 @@ subquestion: |
 
   ### Kurz und Knapp
 
-  - Anmelden bis zum 4. August 2021
-  - Du bekommst Rückmeldung, ob du dabei bist bis zum 6. August
-  - Erste Probe am 7. August. Denk dran bis dahin die unterschriebene Anmeldung
+  - Anmelden bis zum 7. Januar 2022
+  - Vollversammlung am 16. Januar 2022 (vermutlich online)
+  - Erste Probe am 24. Januar. Denk dran bis dahin die unterschriebene Anmeldung
     abzugeben und den Teilnahmebeitrag zu überweisen.
 
   ### Informationen zur Arbeitsphase
 
-  Die Arbeitsphase findet im Zeitraum vom 7. August bis zum 21. November 2021 statt.
-  Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit geprobt.
-  Zusätzlich finden 8 Probentage an Wochenenden in Hamburg statt. Vom 5. November
-  bis zum 7. November 2021 findet (sofern es die Corona-Richtlinien zulassen) ein
-  abschließendes Intensiv-Probenwochenede in der Jugendbildungsstätte
-  Scheersberg statt.
+  Die Arbeitsphase findet im Zeitraum vom 16. Januar bis zum 25. Juni 2022
+  statt. Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit
+  geprobt. Zusätzlich finden 7 Probentage an Wochenenden in Hamburg statt. Vom
+  10. Juni bis zum 12. Juni 2022 findet (sofern es die Corona-Richtlinien
+  zulassen) ein abschließendes Intensiv-Probenwochenede in Tönning statt.
 
-  Während der Arbeitsphase sind einige besondere Projekte geplant. Diese sind auch
-  der Grund dafür, dass verhältnismäßig viele Wochenend-Termine angesetzt sind:
+  Wir hoffen, dass diese Arbeitsphase wieder verhältnismässig normal stattfinden
+  kann, d.h. mit größerer Besetzung. Die Arbeitsphase wird mit folgendem
+  Programm gespielt:
 
-  - Es findet ein **Kompositionswettbewerb** mit der Kompositionsklasse der HfMT statt.
-    Im Laufe der Arbeitsphase werden 3 Werke der Komponisten eingeübt. Am 27.9.
-    werden dann alle drei Stücke vor eine Jury gespielt und es findet die Auswahl
-    des Gewinnerstücks statt. Das Gewinnerstück wird dann auch bei unseren Konzerten
-    aufgeführt.
-  - Am 19.9. findet ein **Workshop bei Kampnagel** statt. Dies ist ein eintägiges Ereignis,
-    um Laienmusikern die Möglichkeit zu geben, ohne große Proben in einem Orchester
-    zu spielen. Das LJO stellt den _Profi-Teil_ des Orchesters für den Workshop.
-    Im Programm ist hier die Prélude aus "Carmen" sowie ggf. weitere Stücke.
-  - Am 4. oder 5.9. ist ein Open-Air-Konzert des Landesmusikrats in der Reihe
-    **Wir verschaffen uns Gehör** geplant. Dafür steht das genaue Datum noch nicht fest.
-    Auf diesem Konzert soll auch das LJO vertreten sein. Vermutlich werden wir hier ein
-    paar kleine Stücke spielen (z.B. Valse Triste). Details folgen.
+    - L.v.Beethoven: Leonore-Ouvertüre Nr. 3, op.72b
+    - P.I.Tschaikowski: Rokoko-Variationen, op.33
+    - P.I.Tschaikowski: Sinfonie Nr. 4, op.36
 
-  Die Arbeitsphase wird mit folgendem Programm gespielt:
-
-    - G.Finzi: Love‘s Labour‘s Lost, Suite Op.28b
-    - N.N.: Kompositionswettbewerb-Gewinnerstück
-    - W.A. Mozart: Sinfonie Nr. 35 „Haffner“, KV.385
-  
-  Dirigieren werden sowohl **Johannes Witt** als auch ein **Gastdirigent**. Der Gastdirigent
-  wird die 3 nominierten Werke des Kompositionswettbewerbs einstudieren und auch bei der
-  Jurysitzung dirigieren. Johannes Witt erarbeitet das Gewinnerstück, Mozart und Finzi
-  und dirigiert die Konzerte.
+  Dirigiert wird die Arbeitsphase von **Johannes Witt**. Der Solist bzw. die
+  Solistin steht noch nicht fest.
 
   ### Auswirkungen der Corona-Pandemie
 
-  Nachdem im letzten Jahr alle Konzerte des LJO der Corona-Pandemie zum Opfer
-  gefallen sind, müssen wir uns auch in diese Arbeitsphase auf eine gewisse
-  Unsicherheit einstellen. Im Moment (Stand Juli 2021) gehen wir davon aus, dass
-  wir alle geplanten Proben und Konzerte durchführen können. Sollte sich die Situation
-  verändern, werden wir unverzüglich darüber informieren.
-
-  Nach aktuellem Stand werden die Proben gewissen Einschränkungen unterliegen.
-  Konkret bedeutet dies:
-
-    - Es ist wieder ein Programm in kleinerer Besetzung geplant. Sollte es die
-      Entwicklung der Pandemie zulassen, in größeren Besetzungen zu proben und
-      aufzutreten, lässt sich die Besetzung in dem geplanten Programm problemlos
-      vergrößern.
-    - Es wird wieder im Doppelkonzert-Format gespielt (d.h. zwei 60 Minuten
-      Konzerte an einem Abend mit längerer Pause dazwischen).
-    - Alle Proben- und Konzerttermine stehen zunächst unter Vorbehalt. Es kann
-      sein, dass Termine abhängig von den geltenden Regelungen und den
-      verfügbaren Probenorten kurzfristig geändert oder abgesagt werden müssen.
-    - Falls es die Einschränkungen nicht zulassen, dass Konzerte gespielt
-      werden, müssen diese ggf. ausfallen.
+  Auch im Sommer 2022 werden wir mit Einschränkungen durch die Corona-Pandemie
+  umgehen müssen. In erster Linie bedeutet das, dass die Arbeitsphase nur als
+  **2G-Arbeitsphase** stattfinden kann. Wir gehen im Moment davon aus, dass die
+  Konzerte normal stattfinden können (d.h. ohne große Abstände). Sollte sich die
+  Situation verändern, werden wir unverzüglich darüber informieren.
 
   <div class="alert alert-info" role="alert">
   Die Arbeitsphase steht bezüglich des Programms und bezüglich Termine unter
@@ -119,11 +86,9 @@ subquestion: |
   Zunächst einmal solltest du dich anmelden. Nur wer sich anmeldet wird für die
   Besetzung in Betracht gezogen. Sollte es für eine Instrumentengruppe oder ein
   Instrument mehr Anmeldungen als Positionen geben, werden wir versuchen die
-  Besetzung so aufgeteilt, dass jeder bei einem Teil des Programms mitspielen kann.
-  Das betrifft auch den geplanten Workshop bei Kampnagel sowie das Wir
-  verschaffen uns Gehör Open Air. Die Entscheidung wird durch die künstlerische
-  Leitung, Konzertmeister und die jeweiligen Stimmführer getroffen (ggf. in Absprache
-  mit dem Gastdirigenten).
+  Besetzung so aufgeteilt, dass jeder bei einem Teil des Programms mitspielen
+  kann. Die Entscheidung wird durch die künstlerische Leitung, Konzertmeister
+  und die jeweiligen Stimmführer getroffen.
 
   ### Wie melde ich mich an?
 
@@ -150,13 +115,13 @@ under: |
   Zur Durchführung der Arbeitsphase erfragen wir einige persönliche Daten. Alle
   Angaben, die in diesem Formular gemacht werden, werden aber nur zur
   Durchführung von Arbeitsphasen des LJO Hamburg verwendet und werden nicht an
-  Dritte weitergegeben. Die Daten werden gemäß unserer
-  [Datenschutzhinweise](https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
+  Dritte weitergegeben. Die Daten werden gemäß unserer[Datenschutzhinweise](
+  https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
   verarbeitet. Falls du dazu Fragen hast, schreib gerne an den
   [Vorstand](mailto:vorstand@ljo-hamburg.de).
   </small>
 ---
-id: herbst-2021/persoenliche-daten
+id: sommer-2022/persoenliche-daten
 field: Kontaktdaten
 section: Persönliche Daten
 question: Persönliche Daten
@@ -184,7 +149,7 @@ validation code: |
   if mitglied.phone_number and not phone_number_is_valid(mitglied.phone_number, "DE"):
     validation_error('Bitte geben Sie eine gültige Telefonnummer ein.', field='mitglied.phone_number')
 ---
-id: herbst-2021/elternkontakt
+id: sommer-2022/elternkontakt
 field: Elternkontakt
 section: Persönliche Daten
 question: Kontakt der Eltern
@@ -200,14 +165,14 @@ fields:
     datatype: email
   - Telefon: eltern.phone_number
 ---
-id: herbst-2021/teilnehmerbeitrag
+id: sommer-2022/teilnehmerbeitrag
 field: Teilnehmerbeitrag
 section: Teilnehmerbeitrag
 question: Teilnehmerbeitrag
 subquestion: |
   Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
   zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 80€ pro Person erheben.
+  Teilnehmerbeitrag von 60€ pro Person erheben.
 
   % if status == "aushilfe":
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
@@ -220,7 +185,7 @@ subquestion: |
 buttons:
   - Einverstanden: continue
 ---
-id: herbst-2021/termine
+id: sommer-2022/termine
 field: Termine
 section: Termine
 question: Termine
@@ -255,6 +220,14 @@ subquestion: |
     als 4 Fehltermine auswählen. Bitte gib hier an, zu welchen Terminen du zur
     Probe kommen kannst.
   % endif
+
+  Bitte beachte, dass unsere künstlerische Leitung Johannes Witt von Mitte April
+  bis Mitte Mai im Ausland ist. In diesem Zeitraum werden also Stimmproben,
+  Dozentenproben sowie ggf. Proben mit einem Gastdirigenten stattfinden.
+  Aufgrund der Lage von Ferien und Konzertterminen können im Mai und Juni nur
+  noch relativ wenig Proben stattfinden. Daher muss das Programm im Wesentlichen
+  bis Mitte April fertig erarbeitet sein. Bitte berücksichtige das bei deiner
+  Terminplanung.
 fields:
   - Ich bin an den folgenden Probenterminen anwesend: probentermine
     datatype: checkboxes
@@ -297,7 +270,7 @@ fields:
     input type: area
     required: False
 ---
-id: herbst-2021/naechste-phasen
+id: sommer-2022/naechste-phasen
 field: Phasen
 section: Zukünftige Arbeitsphasen
 question: Zukünftige Arbeitsphasen
@@ -307,14 +280,14 @@ subquestion: |
   und auch nicht verbindlich. Es hilft uns aber sehr, wenn wir rechtzeitig
   fehlende Positionen besetzen können.
 fields:
-  - "Ich spiele in der Sommerphase 2022 mit": nachste_phase
+  - "Ich spiele in der Herbstphase 2022 mit": nachste_phase
     datatype: radio
     code: ja_nein_vielleicht()
-  - "Ich spiele in der Herbstphase 2022 mit": ubernachste_phase
+  - "Ich spiele in der Sommerphase 2023 mit": ubernachste_phase
     datatype: radio
     code: ja_nein_vielleicht()
 ---
-id: herbst-2021/vorbereitung
+id: sommer-2022/vorbereitung
 field: Vorbereitung
 section: Vorbereitung
 question: Vorbereitung
@@ -323,27 +296,27 @@ subquestion: |
   wöchentlich. Das bedeutet allerdings nicht, dass wir die Stücke nur während der
   Proben üben. Es ist genauso wichtig, dass jede*r einzelne alle Stücke vor der
   ersten Probe vorbereitet und sicher beherrscht. Bereite dich also bitte
-  rechtzeitig mit den [Noten](http://ljo-hamburg.de/noten) vor.
+  rechtzeitig mit den [Noten](https://ljo-hamburg.de/noten) vor.
 buttons:
   - Alles klar, ich werde die Stücke vorbereiten: continue
 ---
-id: herbst-2021/probenwochenende
+id: sommer-2022/probenwochenende
 field: Probenwochenende
 section: Abschluss-Probenwochenende
 question: Abschluss-Probenwochenende
 subquestion: |
   Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließenden
-  Intensiv-Probenwochenende in der Jugendbildungsstätte Scheersberg statt, um
-  die letzten Feinschliffe vor den Konzerten zu erarbeiten. Die Teilnahme an
-  diesem Intensiv-Wochenende ist mit der Anmeldung verpflichtend. Auf dem
-  Probenwochenende werden die letzten Feinheiten vor den Konzerten erarbeitet.
-  Bitte gib hier Allergien, chronische Krankheiten oder sonstige Einschränkungen
-  an, die hierfür berücksichtigen sollen.
+  Intensiv-Probenwochenende in der Tönning statt, um die letzten Feinschliffe
+  vor den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende
+  ist mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die
+  letzten Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien,
+  chronische Krankheiten oder sonstige Einschränkungen an, die hierfür
+  berücksichtigen sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 under: |
-  Beachte auch unsere
-  [Datenschutzhinweise](https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
+  Beachte auch unsere[Datenschutzhinweise](
+  https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
 fields:
   - "Ich möchte folgendes angeben": pwe_versorgung
     datatype: checkboxes
@@ -356,11 +329,15 @@ fields:
     datatype: area
     required: false
 ---
-id: herbst-2021/jugendschutz
+id: sommer-2022/jugendschutz
 field: Jugendschutz
 section: Jugend- und Datenschutz
 question: Jugendschutz
 subquestion: |
+  <div class="alert alert-info" role="alert">
+  **Hinweis**: Die Regelungen haben sich seit der letzten Arbeitsphase geändert.
+  </div>
+
   Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
   und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen müssen
   sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit Alkohol
@@ -371,8 +348,8 @@ subquestion: |
     der Öffentlichkeit konsumieren, hochprozentige Spirituosen sind aber tabu
     (d.h. Vodka, Rum, Schnäpse u.ä., auch Mixgetränke und süße Alkopops). Siehe
     § 9 Abs. 1 JuSchG
-  - Volljährige Musiker/innen sind angehalten insbesondere im Rahmen von Proben-
-    und Konzertreisen aus Fairnessgründen auf harten Alkohol zu verzichten.
+  - Harter Alkohol, Mixgetränke und Spirituosen sind für **alle** Teilnehmenden
+    untersagt.
   - Sonstige Drogen sind tabu. Die Verteilung oder Einnahme von sonstigen Drogen
     führen zu einem sofortigen Ausschluss von der Arbeitsphase.
 
@@ -389,7 +366,7 @@ subquestion: |
 buttons:
   - Einverstanden: continue
 ---
-id: herbst-2021/datenschutz
+id: sommer-2022/datenschutz
 field: Datenschutz
 section: Jugend- und Datenschutz
 question: Datenschutz
@@ -405,9 +382,10 @@ fields:
     datatype: yesnowide
     validate: >
       lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
-  - ? Ich bin informiert, dass die Arbeitsphase unter Vorbehalt der jeweils
-      geltenden behördlichen Auflagen zur Eindämmung der COVID-19 Pandemie
-      steht.
+  - ? Ich bin informiert, dass die Arbeitsphase unter **2G-Regeln** stattfindet.
+      Außerdem bin ich informiert, dass Änderungen an der Arbeitsphase auf Basis
+      der geltenden behördlichen Auflagen zur Eindämmung der COVID-19 Pandemie
+      möglich sind.
     : bedingungen.corona
     datatype: yesnowide
     validate: >
@@ -446,10 +424,10 @@ fields:
     : bedingungen.newsletter
     datatype: yesnowide
 ---
-id: herbst-2021/kontrolle
+id: sommer-2022/kontrolle
 continue button field: Kontrolle
 section: Deine Anmeldung
-question: Deine Anmeldung zur Sommerphase 2021
+question: Deine Anmeldung zur Sommerphase 2022
 review:
   - note: |
       % if testmodus:
@@ -528,18 +506,18 @@ review:
       ## Nächste Arbeitsphasen
   - note: |
       % if unsicher(nachste_phase):
-        - Ich **weiß noch nicht**, ob ich im Sommer 2022 weiter dabei bin.
-      % elif dabei(nachste_phase):
-        - Ich werde vermutlich im Sommer 2022 **weiter mitspielen**.
-      % else:
-        - Im Sommer 2022 bin ich vermutlich **nicht mehr dabei**.
-      % endif
-      % if unsicher(ubernachste_phase):
         - Ich **weiß noch nicht**, ob ich im Herbst 2022 weiter dabei bin.
-      % elif dabei(ubernachste_phase):
+      % elif dabei(nachste_phase):
         - Ich werde vermutlich im Herbst 2022 **weiter mitspielen**.
       % else:
         - Im Herbst 2022 bin ich vermutlich **nicht mehr dabei**.
+      % endif
+      % if unsicher(ubernachste_phase):
+        - Ich **weiß noch nicht**, ob ich im Sommer 2023 weiter dabei bin.
+      % elif dabei(ubernachste_phase):
+        - Ich werde vermutlich im Sommer 2023 **weiter mitspielen**.
+      % else:
+        - Im Sommer 2023 bin ich vermutlich **nicht mehr dabei**.
       % endif
   - Erneut ansehen: Datenschutz
     button: |
@@ -555,7 +533,7 @@ review:
       erhältst du in der Bestätigungsmail.
 continue button label: Anmeldung abschicken
 ---
-id: herbst-2021/warten
+id: sommer-2022/warten
 event: Warten
 section: Deine Anmeldung
 prevent going back: True
@@ -564,7 +542,7 @@ subquestion:
   Deine Anmeldung wird gerade abgeschickt. Dies kann einen Moment dauern. Bitte
   lass dieses Fenster geöffnet, bis die Anmeldung erfolgreich abgeschickt wurde.
 ---
-id: herbst-2021/bestaetigung
+id: sommer-2022/bestaetigung
 event: Fertig
 section: Deine Anmeldung
 prevent going back: True
@@ -579,7 +557,7 @@ subquestion:
 buttons:
   - Fertig: exit
 ---
-id: herbst-2021/testergebnisse
+id: sommer-2022/testergebnisse
 event: Testergebnisse
 section: Deine Anmeldung
 prevent going back: True

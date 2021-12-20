@@ -38,13 +38,15 @@ code: |
     member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
 ---
 # A task that adds a row to the Anmeldungen.
+need: msgraph
 code: |
   save_data_task = background_action(
-    'append_to_spreadsheet',
+    'append_to_table',
     'refresh',
     test_variable='test_anmeldungen_tabelle',
-    spreadsheet=daten["Anmeldungen"]["Tabelle"],
-    range=daten["Anmeldungen"]["Bereich"]
+    drive=daten["Anmeldungen"]["Bibliothek"],
+    file=daten["Anmeldungen"]["Dokument"],
+    table=daten["Anmeldungen"]["Tabelle"],
   )
 ---
 # This action saves member_data to a spreadsheet configured via action arguments.
@@ -53,24 +55,32 @@ code: |
 # - range: This argument provides the range in the spreadsheet where the data
 #          should be inserted.
 # - test_variable: This argument provides the variable to fill in test mode.
-event: append_to_spreadsheet
+event: append_to_table
+need: msgraph
 code: |
   background = interface() in {"worker", "cron"}
   if testmodus and background:
     background_response_action(
       'set_variable',
-      **{action_argument('test_variable'): get_file_meta(
-        action_argument('spreadsheet'),
-        mode="spreadsheet",
-        range=action_argument('range')
-      )}
+      **{action_argument('test_variable'): {
+        "file": msgraph.get_file_info(
+          action_argument('drive'),
+          action_argument('file')
+        ).json(),
+        "table": msgraph.get_table(
+          action_argument('drive'),
+          action_argument('file'),
+          action_argument('table')
+        ).json()
+      }}
     )
   else:
-    result = add_spreadsheet_row(
-      action_argument('spreadsheet'),
-      action_argument('range'),
+    result = msgraph.add_table_data(
+      action_argument('drive'),
+      action_argument('file'),
+      action_argument('table'),
       member_data
-    )
+    ).json()
     if background:
       background_response(result)
     else:
@@ -155,13 +165,13 @@ code: |
 
 ---
 # A task that archives the registration PDF to a folder.
-need: anmeldung
+need: [anmeldung, msgraph]
 code: archive_registration_task = background_action('archive_registration', 'refresh')
 ---
 # Archives the registration PDF to a folder. This action does not receive
 # arguments.
 event: archive_registration
-need: anmeldung
+need: [anmeldung, msgraph]
 code: |
   background = interface() in {"worker", "cron"}
   if testmodus and background:
@@ -179,18 +189,18 @@ code: |
 
 ---
 # Sends an email to the registered email address
-need: anmeldung
+need: [anmeldung, mailgun]
 code: member_email_task = background_action('send_member_email', 'refresh')
 ---
 # Sends an email to the registered email address.
 event: send_member_email
-need: anmeldung
+need: [anmeldung, mailgun]
 code: |
   background = interface() in {"worker", "cron"}
   if testmodus and background:
     result = True
   else:
-    result = send_ljo_email(
+    result = mailgun.send_email(
         to=[mitglied],
         template=mitglied_email,
         attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
@@ -203,12 +213,12 @@ code: |
 
 ---
 # Sends an email to the notification addresses.
-need: anmeldung
+need: [anmeldung, mailgun]
 code: orga_email_task = background_action('send_orga_email', 'refresh')
 ---
 # Sends an email to the notification addresses.
 event: send_orga_email
-need: anmeldung
+need: [anmeldung, mailgun]
 code: |
   background = interface() in {"worker", "cron"}
   recipients = daten["E-Mail Benachrichtigung"]
@@ -218,7 +228,8 @@ code: |
     result = True
   else:
     to = [mitglied] if testmodus else recipients
-    result = send_ljo_email(
+    # TODO: Send link to folder instead of attachment
+    result = mailgun.send_email(
       to=to,
       template=orga_email,
       attachments=[anmeldung.pdf]

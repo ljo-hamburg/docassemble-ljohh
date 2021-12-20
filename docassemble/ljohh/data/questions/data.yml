@@ -19,6 +19,26 @@ include:
 modules:
   - .util
   - .ljo
+  - docassemble.msgraph
+  - docassemble.mailgun
+---
+# Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
+code: |
+  status = url_args.get("status", "").lower()
+  if status not in ["mitglied", "flex", "aushilfe"]:
+    status = "mitglied"
+---
+# Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
+# festgelegt.
+code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
+---
+code: |
+  msgraph = MSGraphSession()
+  msgraph.fetch_token()
+---
+code: |
+  mailgun = Mailgun(config_key="ljo mail")
+  mailgun.template = daten["Mailgun Vorlage"]
 ---
 # Die minderjaehrig Variable ist True, wenn ein Mitglied unter 18 ist. Dafür
 # muss mitglied.birthdate definiert sein.
@@ -56,16 +76,6 @@ code: |
   geschaeftsordnung.initialize(filename="Geschaeftsordnung.pdf")
   geschaeftsordnung.from_url("https://ljo-hamburg.de/Geschaeftsordnung")
   geschaeftsordnung.commit()
----
-# Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
-code: |
-  status = url_args.get("status", "").lower()
-  if status not in ["mitglied", "flex", "aushilfe"]:
-    status = "mitglied"
----
-# Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
-# festgelegt.
-code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
 ---
 # Startet alle Hintergrundaufgaben und aktiviert den Wartebildschirm, bis diese
 # beendet sind.
