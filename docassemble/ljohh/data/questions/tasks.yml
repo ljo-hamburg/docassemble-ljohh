@@ -7,11 +7,6 @@ code: |
     define(name, value)
   background_response()
 ---
-code: |
-  class FakeTask:
-      def ready(self):
-          return True
----
 # The member_data forms is the data that is available to be put in spreadsheets.
 # The dictionary keys are compared to spreadsheet headings. The comparison is
 # case-insensitive.
@@ -46,7 +41,7 @@ code: |
 need: msgraph
 code: |
   if testmodus:
-    save_data_task = FakeTask()
+    save_data_task = None
   else:
     save_data_task = background_action(
       'append_to_table',
@@ -82,7 +77,7 @@ code: |
 # A task that adds the member email to a mailing list.
 code: |
   if testmodus:
-    register_player_email_task = FakeTask()
+    register_player_email_task = None
   else:
     register_player_email_task = background_action(
       'register_email',
@@ -94,7 +89,7 @@ code: |
 # A task that adds the parent email to a mailing list.
 code: |
   if testmodus or not minderjaehrig:
-    register_parent_email_task = FakeTask()
+    register_parent_email_task = None
   else:
     email = eltern.email if defined('eltern.email') else ''
     register_parent_email_task = background_action(
@@ -108,7 +103,7 @@ code: |
 # members).
 code: |
   if testmodus or satus == "aushilfe":
-    register_member_email_task = FakeTask()
+    register_member_email_task = None
   else:
     register_member_email_task = background_action(
       'register_email',
@@ -155,7 +150,7 @@ code: |
 need: [anmeldung, msgraph]
 code: |
   if testmodus:
-    archive_registration_task = FakeTask()
+    archive_registration_task = None
   else:
     archive_registration_task = background_action(
       'archive_registration',
@@ -187,7 +182,7 @@ code: |
 need: [anmeldung, mailgun]
 code: |
   if testmodus:
-    member_email_task = FakeTask()
+    member_email_task = None
   else:
     member_email_task = background_action('send_member_email', 'refresh')
 ---
@@ -212,7 +207,7 @@ code: |
 need: [mailgun]
 code: |
   if testmodus:
-    orga_email_task = FakeTask()
+    orga_email_task = None
   else:
     orga_email_task = background_action('send_orga_email', 'refresh')
 ---

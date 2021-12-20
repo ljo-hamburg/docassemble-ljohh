@@ -71,7 +71,7 @@ code: |
 # Startet alle Hintergrundaufgaben und aktiviert den Wartebildschirm, bis diese
 # beendet sind.
 code: |
-  if not all(task.ready() for task in [
+  if not all(task is None or task.ready() for task in [
       save_data_task,
       register_player_email_task,
       register_parent_email_task,
