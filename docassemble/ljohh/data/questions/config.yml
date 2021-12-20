@@ -1,7 +1,8 @@
 ---
-imports:
+modules:
   - docassemble.msgraph
   - docassemble.mailgun
+  - .util
 ---
 code: |
   msgraph = MSGraphSession()

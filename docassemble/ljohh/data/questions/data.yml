@@ -12,14 +12,14 @@ objects:
   eltern: Individual
   bedingungen: DAObject
 ---
+modules:
+  - .util
+  - .ljo
+---
 include:
   - config.yml
   - tasks.yml
   - defs.yml
----
-modules:
-  - .util
-  - .ljo
 ---
 # Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
 code: |
