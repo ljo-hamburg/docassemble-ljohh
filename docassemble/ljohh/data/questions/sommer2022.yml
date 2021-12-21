@@ -69,7 +69,7 @@ data:
   #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
     - [2022-06-15, Generalprobe / Schülerkonzert]
-    - [2022-06-17, Konzert Laeiszhalle]
+    - [2022-06-17, Konzert Laeiszhalle, Einspielprobe ab 16:00 Uhr]
     - [2022-06-25, Konzert Bergedorf]
   Probentermine:
     - [2022-01-24, Erste Probe]
@@ -93,8 +93,9 @@ data:
     - 2022-05-30
     - [2022-06-10, Probenwochenende Tönning]
     - [2022-06-11, Probenwochenende Tönning]
-    - [2022-06-12, Probenwochenende Tönning]
+    - [2022-06-12, Probenwochenende Tönning, bis Mittags]
     - [2022-06-15, Generalprobe / Schülerkonzert]
+    - [2022-06-16, Generalprobe Laeiszhalle (Warteliste)]
     - [2022-06-24, Generalprobe Bergedorf]
 ---
 # Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.

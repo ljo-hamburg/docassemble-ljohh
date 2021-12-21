@@ -44,13 +44,13 @@ subquestion: |
   ### Kurz und Knapp
 
   - Anmelden bis zum 7. Januar 2022
-  - Vollversammlung am 16. Januar 2022 (vermutlich online)
+  - Vollversammlung am 17. Januar 2022 (vermutlich online)
   - Erste Probe am 24. Januar. Denk dran bis dahin die unterschriebene Anmeldung
     abzugeben und den Teilnahmebeitrag zu überweisen.
 
   ### Informationen zur Arbeitsphase
 
-  Die Arbeitsphase findet im Zeitraum vom 16. Januar bis zum 25. Juni 2022
+  Die Arbeitsphase findet im Zeitraum vom 17. Januar bis zum 25. Juni 2022
   statt. Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit
   geprobt. Zusätzlich finden 7 Probentage an Wochenenden in Hamburg statt. Vom
   10. Juni bis zum 12. Juni 2022 findet (sofern es die Corona-Richtlinien
@@ -70,13 +70,16 @@ subquestion: |
   ### Auswirkungen der Corona-Pandemie
 
   Auch im Sommer 2022 werden wir mit Einschränkungen durch die Corona-Pandemie
-  umgehen müssen. In erster Linie bedeutet das, dass die Arbeitsphase nur als
-  **2G-Arbeitsphase** stattfinden kann. Wir gehen im Moment davon aus, dass die
-  Konzerte normal stattfinden können (d.h. ohne große Abstände). Sollte sich die
-  Situation verändern, werden wir unverzüglich darüber informieren.
+  umgehen müssen. In erster Linie bedeutet das, dass die Proben und Konzerte als
+  2G-Veranstaltungen stattfinden. Das heißt, alle Teilnehmenden ab 16 Jahren
+  müssen genesen oder geimpft sein. Darüber hinaus müssen die 14-16-Jährigen
+  eine Schultestbescheinigung vorlegen oder sich vor der Probe selbst
+  schnelltesten. Wir gehen im Moment davon aus, dass die Konzerte normal
+  stattfinden können (d.h. ohne große Abstände). Sollte sich die Situation
+  verändern, werden wir unverzüglich darüber informieren.
 
   <div class="alert alert-info" role="alert">
-  Die Arbeitsphase steht bezüglich des Programms und bezüglich Termine unter
+  Die Arbeitsphase steht bezüglich des Programms und bezüglich der Termine unter
   Vorbehalt. Je nach Entwicklung der Pandemie können kurzfristige Änderungen
   unvermeidlich sein.
   </div>
@@ -86,14 +89,14 @@ subquestion: |
   Zunächst einmal solltest du dich anmelden. Nur wer sich anmeldet wird für die
   Besetzung in Betracht gezogen. Sollte es für eine Instrumentengruppe oder ein
   Instrument mehr Anmeldungen als Positionen geben, werden wir versuchen die
-  Besetzung so aufgeteilt, dass jeder bei einem Teil des Programms mitspielen
+  Besetzung so aufzuteilen, dass jeder bei einem Teil des Programms mitspielen
   kann. Die Entscheidung wird durch die künstlerische Leitung, Konzertmeister
   und die jeweiligen Stimmführer getroffen.
 
   ### Wie melde ich mich an?
 
   1. Fülle dieses Online-Formular aus. Im Laufe des Formulars fragen wir dich
-     u.A. danach, zu welchen Probenterminen du anwesend sein wirst. Nimm dir
+     u.a. danach, zu welchen Probenterminen du anwesend sein wirst. Nimm dir
      also deinen Terminkalender und etwas Zeit, um diese Fragen zu beantworten.
   2. Nachdem du das Online-Formular abgeschickt hast, erhältst du per E-Mail
      eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
@@ -177,9 +180,9 @@ subquestion: |
     Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
     sehr dankbar für deine Unterstützung.
   % else:
-    Bitte überweise den Betrag 2 Wochen vor Beginn der Arbeitsphase, wenn du
-    eine Zusage bekommen hast. Die Kontoverbindung erhältst du
-    in der Bestätigungs-E-Mail, wenn du dieses Formular abschickst.
+    Bitte überweise den Betrag bis zur ersten Probe, wenn du eine Zusage
+    bekommen hast. Die Kontoverbindung erhältst du in der Bestätigungs-E-Mail,
+    wenn du dieses Formular abschickst.
   % endif
 buttons:
   - Einverstanden: continue
@@ -220,6 +223,9 @@ subquestion: |
     Probe kommen kannst.
   % endif
 
+  Im Januar und Februar probt das LJO ausweichend in der Ida Ehre-Schule, da im
+  Stintfang ein Impfzentrum eingerichtet ist.
+
   Bitte beachte, dass unsere künstlerische Leitung Johannes Witt von Mitte April
   bis Mitte Mai im Ausland ist. In diesem Zeitraum werden also Stimmproben,
   Dozentenproben sowie ggf. Proben mit einem Gastdirigenten stattfinden.
@@ -227,6 +233,10 @@ subquestion: |
   noch relativ wenig Proben stattfinden. Daher muss das Programm im Wesentlichen
   bis Mitte April fertig erarbeitet sein. Bitte berücksichtige das bei deiner
   Terminplanung.
+
+  Generalprobe und Konzert in Bergedorf (24. und 25. Juni) stehen momentan noch
+  unter Vorbehalt, da es noch Terminkonflikte zu lösen gibt. Sollten Änderungen
+  notwendig sein, werden wir zeitnah Bescheid sagen.
 fields:
   - Ich bin an den folgenden Probenterminen anwesend: probentermine
     datatype: checkboxes
@@ -304,13 +314,13 @@ field: Probenwochenende
 section: Abschluss-Probenwochenende
 question: Abschluss-Probenwochenende
 subquestion: |
-  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließenden
-  Intensiv-Probenwochenende in der Tönning statt, um die letzten Feinschliffe
+  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließendes
+  Intensiv-Probenwochenende in Tönning statt, um die letzten Feinschliffe
   vor den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende
   ist mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die
   letzten Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien,
   chronische Krankheiten oder sonstige Einschränkungen an, die hierfür
-  berücksichtigen sollen.
+  berücksichtigt werden sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 under: |
@@ -338,15 +348,14 @@ subquestion: |
   </div>
 
   Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
-  und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen müssen
-  sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit Alkohol
-  regelt. Es gilt:
+  und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen
+  müssen sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit
+  Alkohol regelt. Darüber hinaus gelten im LJO auch für volljährige strengere
+  Regeln was den Alkoholkonsum angeht. Es gilt:
 
   - Kein Alkohol für Jugendliche unter 16 Jahren. 
   - Jugendliche zwischen 16 und 18 Jahren dürfen in Maßen Bier, Wein und Sekt in
-    der Öffentlichkeit konsumieren, hochprozentige Spirituosen sind aber tabu
-    (d.h. Vodka, Rum, Schnäpse u.ä., auch Mixgetränke und süße Alkopops). Siehe
-    § 9 Abs. 1 JuSchG
+    der Öffentlichkeit konsumieren.
   - **Harter Alkohol, Mixgetränke und Spirituosen sind für alle Teilnehmenden
     untersagt.**
   - Sonstige Drogen sind tabu. Die Verteilung oder Einnahme von sonstigen Drogen
@@ -526,7 +535,7 @@ review:
   - note: |
       ## Unterschrift
 
-      Wenn du die Anmeldung abschickst, bekomsmt du per E-Mail eine PDF-Version
+      Wenn du die Anmeldung abschickst, bekommst du per E-Mail eine PDF-Version
       der Anmeldung. Drucke das PDF aus, unterschreibe es und schicke die
       unterschriebene Anmeldung an unsere Projektleitung. Die E-Mail-Adresse
       erhältst du in der Bestätigungsmail.

@@ -6,9 +6,14 @@ Informationen für die Arbeitsphase. Bitte lies dir diese Mail durch, damit du
 gut auf die Phase vorbereitet bist.
 
 # Allgemeines
-Die Arbeitsphase findet unter **2G-Regeln** statt. Die entsprechenden Nachweise
-werden spätestens bei der ersten Probe kontrolliert. Die erste Probe soll am 24.
-Januar  stattfinden. Die Arbeitsphase findet mit folgendem Programm statt:
+Die Arbeitsphase findet unter **2G-Regeln** statt. In erster Linie bedeutet das,
+dass die Proben und Konzerte als 2G-Veranstaltungen stattfinden. Das heißt, alle
+Teilnehmenden ab 16 Jahren müssen genesen oder geimpft sein. Darüber hinaus
+müssen die 14-16-Jährigen eine Schultestbescheinigung vorlegen oder sich vor der
+Probe selbst schnelltesten. Die entsprechenden 2G-Nachweise werden spätestens bei
+der ersten Probe kontrolliert. Die erste Probe soll am 24. Januar stattfinden.
+
+Die Arbeitsphase findet mit folgendem Programm statt:
 
 1. L.v.Beethoven: Leonore-Ouvertüre Nr. 3, op.72b
 2. P.I.Tschaikowski: Rokoko-Variationen, op.33
