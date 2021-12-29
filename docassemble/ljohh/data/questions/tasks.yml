@@ -99,7 +99,7 @@ code: |
 # A task that adds the member email to a mailing list (but only for true
 # members).
 code: |
-  if testmodus or satus == "aushilfe":
+  if testmodus or status == "aushilfe":
     register_member_email_task = None
   else:
     register_member_email_task = background_action(
