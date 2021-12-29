@@ -1,21 +1,25 @@
 Liebe\*r ${ mitglied.name.first },
 
-vielen Dank zu deiner Anmeldung zur Herbstphase 2021 im Landesjugendorchester
-Hamburg. In dieser Mail bekommst du nun einige wichtige Informationen für die
-Arbeitsphase. Bitte lies dir diese Mail durch, damit du gut auf die Phase
-vorbereitet bist.
+vielen Dank zu deiner Anmeldung zur Sommerarbeitsphase 2022 im
+Landesjugendorchester Hamburg. In dieser Mail bekommst du nun einige wichtige
+Informationen für die Arbeitsphase. Bitte lies dir diese Mail durch, damit du
+gut auf die Phase vorbereitet bist.
 
 # Allgemeines
-Nachdem die letzten beiden Arbeitsphasen wegen der Corona-Pandemie ausfallen
-mussten, wird auch die Herbstphase 2021 nur mit einigen Einschränkunge
-durchgeführt werden können. Mehr dazu unten. Die erste Probe soll am 7. August
-stattfinden. Die Arbeitsphase findet mit folgendem Programm statt:
+Die Arbeitsphase findet unter **2G-Regeln** statt. In erster Linie bedeutet das,
+dass die Proben und Konzerte als 2G-Veranstaltungen stattfinden. Das heißt, alle
+Teilnehmenden ab 16 Jahren müssen genesen oder geimpft sein. Darüber hinaus
+müssen die 14-16-Jährigen eine Schultestbescheinigung vorlegen oder sich vor der
+Probe selbst schnelltesten. Die entsprechenden 2G-Nachweise werden spätestens bei
+der ersten Probe kontrolliert. Die erste Probe soll am 24. Januar stattfinden.
 
-1. G.Finzi: Love‘s Labour‘s Lost, Suite Op.28b
-2. N.N.: Kompositionswettbewerb
-3. W.A. Mozart: Sinfonie Nr. 35 „Haffner“, KV.385
+Die Arbeitsphase findet mit folgendem Programm statt:
 
-Dirigieren werden sowohl **Johannes Witt** als auch ein **Gastdirigent**.
+1. L.v.Beethoven: Leonore-Ouvertüre Nr. 3, op.72b
+2. P.I.Tschaikowski: Rokoko-Variationen, op.33
+3. P.I.Tschaikowski: Sinfonie Nr. 4, op.36
+
+Dirigiert wird die Arbeitsphase von **Johannes Witt**.
 
 Die Noten für die Arbeitsphase findest du unter
 [https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
@@ -48,7 +52,7 @@ der Teilnahme am Konzert ausschließen.**
 # Teilnehmerbeitrag
 Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
 zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-**Teilnehmerbeitrag von 80 € pro Person** erheben.
+**Teilnehmerbeitrag von 60 € pro Person** erheben.
 % if status == "aushilfe":
 Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
 sehr dankbar für deine Unterstützung.
@@ -60,7 +64,7 @@ Landesmusikrat in der Freien und Hansestadt Hamburg e.V.
 IBAN: **DE28 2007 0024 0053 6110 03**  
 BIC: DEUTDEDBHAM  
 Bank: Deutsche Bank  
-Verwendungszweck: Teilnehmerbeitrag  (2. AP 2021, ${ mitglied.name })
+Verwendungszweck: Teilnehmerbeitrag  (1. AP 2022, ${ mitglied.name })
 
 Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
 überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
@@ -68,21 +72,11 @@ Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
 % endif
 
 # Corona-Einschränkungen
-Nach aktuellem Stand werden die Proben gewissen Einschränkungen unterliegen.
-Konkret bedeutet dies:
-
-  - Es ist wieder ein Programm in kleinerer Besetzung geplant (vermutlich ca.
-    40 Beteiligte). Sollte es die Entwicklung der Pandemie zulassen, in größeren
-    Besetzungen zu proben und aufzutreten, lässt sich die Besetzung in dem
-    geplanten Programm problemlos vergrößern.
-  - Es wird wieder im Doppelkonzert-Format gespielt (d.h. zwei 60 Minuten
-    Konzerte an einem Abend mit längerer Pause dazwischen).
-  - Alle Proben- und Konzerttermine stehen zunächst unter Vorbehalt. Es kann
-    sein, dass Termine abhängig von den geltenden Regelungen und den
-    verfügbaren Probenorten kurzfristig geändert oder abgesagt werden müssen.
-  - Falls es die Einschränkungen nicht zulassen, dass Konzerte gespielt
-    werden, müssen diese ggf. ausfallen.
-
+Wir hoffen, dass die Arbeitsphase relativ normal stattfinden kann (d.h. keine
+Abstände oder reduzierte Besetzung). Die Arbeitsphase wird allerdings als
+**2G-Arbeitsphase** stattfinden, d.h. nur genesene oder geimpfte Personen dürfen
+mitspielen. Kontrolliert werden die entsprechenden Nachweise spätestens in der
+ersten Probe.
 
 # Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das

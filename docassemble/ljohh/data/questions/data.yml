@@ -12,13 +12,27 @@ objects:
   eltern: Individual
   bedingungen: DAObject
 ---
-include:
-  - tasks.yml
-  - defs.yml
----
 modules:
   - .util
   - .ljo
+---
+imports:
+  - docassemble.base.filter
+---
+include:
+  - config.yml
+  - tasks.yml
+  - defs.yml
+---
+# Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
+code: |
+  status = url_args.get("status", "").lower()
+  if status not in ["mitglied", "flex", "aushilfe"]:
+    status = "mitglied"
+---
+# Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
+# festgelegt.
+code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
 ---
 # Die minderjaehrig Variable ist True, wenn ein Mitglied unter 18 ist. Dafür
 # muss mitglied.birthdate definiert sein.
@@ -57,20 +71,10 @@ code: |
   geschaeftsordnung.from_url("https://ljo-hamburg.de/Geschaeftsordnung")
   geschaeftsordnung.commit()
 ---
-# Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
-code: |
-  status = url_args.get("status", "").lower()
-  if status not in ["mitglied", "flex", "aushilfe"]:
-    status = "mitglied"
----
-# Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
-# festgelegt.
-code: testmodus = url_args.get('test', False) or daten.get("Testmodus", False)
----
 # Startet alle Hintergrundaufgaben und aktiviert den Wartebildschirm, bis diese
 # beendet sind.
 code: |
-  if not all(task.ready() for task in [
+  if not all(task is None or task.ready() for task in [
       save_data_task,
       register_player_email_task,
       register_parent_email_task,

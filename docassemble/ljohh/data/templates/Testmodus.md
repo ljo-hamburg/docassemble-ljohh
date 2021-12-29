@@ -40,7 +40,7 @@ An die E-Mail sind drei Dokumente angehängt:
 </p>
 
 <%self:collapse id="mitglied-email-collapse" title="${ mitglied_email.subject }">
-  ${ mitglied_email }
+  ${ docassemble.base.filter.markdown_to_html(mitglied_email) }
 </%self:collapse>
 
 ### Benachrichtigungs-E-Mail
@@ -72,15 +72,13 @@ nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
 </p>
 
 <%self:collapse id="orga-email-collapse" title="${ orga_email.subject }">
-  ${ orga_email }
+  ${ docassemble.base.filter.markdown_to_html(orga_email) }
 </%self:collapse>
 % endif
 
 ### Archivieren der Anmeldung
-Das Anmeldeformular wird automatisch in einem Google Drive Ordner mit der ID
-`${ test_archiv_ordner['id'] }` archiviert.
-
-${ check_folder(test_archiv_ordner) }
+Das Anmeldeformular wird automatisch in dem Ordner **${ ordner['name'] }**
+archiviert.
 
 <p>
   <%self:action_button action="archive_registration"
@@ -89,18 +87,16 @@ ${ check_folder(test_archiv_ordner) }
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="https://drive.google.com/drive/u/0/folders/${ test_archiv_ordner['id'] }">Ordner öffnen</a>
+     href="${ ordner['webUrl'] }">Ordner öffnen</a>
 </p>
 
 ### Mailingliste
 Die E-Mail-Adresse `${ mitglied.email }` wird dem Verteiler
-`${ test_mitspieler_mailingliste['email'] }` hinzugefügt.
-
-${ check_group(test_mitspieler_mailingliste) }
+**${ mailingliste['name'] }** hinzugefügt.
 
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
-                     group="${ test_mitspieler_mailingliste['email'] }"
+                     group="${ mailingliste['email'] }"
                      message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
@@ -108,19 +104,17 @@ ${ check_group(test_mitspieler_mailingliste) }
 ### Mailingliste (Eltern)
 % if minderjaehrig:
 Die E-Mail-Adresse `${ eltern.email }` wird dem Verteiler
-`${ test_eltern_mailingliste['email'] }` hinzugefügt.
+**${ mailingliste_eltern['name'] }** hinzugefügt.
 % else:
 ${ mitglied.name } ist volljährig. Daher wird keine Elternadresse zur
 Mailingliste hinzugefügt. Der Elternverteiler ist
-`${ test_eltern_mailingliste['email'] }`.
+**${ mailingliste_eltern['name'] }**.
 % endif
-
-${ check_group(test_eltern_mailingliste) }
 
 % if minderjaehrig:
 <%self:action_button action="register_email"
                      email="${ eltern.email }"
-                     group="${ test_eltern_mailingliste['email'] }"
+                     group="${ mailingliste_eltern['email'] }"
                      condition="${ minderjaehrig }"
                      message="Die E-Mail ${ eltern.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
@@ -130,19 +124,17 @@ ${ check_group(test_eltern_mailingliste) }
 ### Mailingliste (Mitglieder)
 % if status == "aushilfe":
 Aushilfen werden nicht auf der Mitglieder-Mailingliste
-`${ test_mitglied_mailingliste['email'] }` eingetragen. In diesem Fall wird
+**${ mailingliste_mitglieder['email'] }** eingetragen. In diesem Fall wird
 diese Aktion übersprungen.
 % else:
 Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
-`${ test_mitglied_mailingliste['email'] }` für Mitglieder eingetragen.
+**${ mailingliste_mitglieder['email'] }** für Mitglieder eingetragen.
 % endif
-
-${ check_group(test_mitglied_mailingliste) }
 
 % if status != "aushilfe":
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
-                     group="${ test_mitglied_mailingliste['email'] }"
+                     group="${ mailingliste_mitglieder['email'] }"
                      message="Die E-Mail ${ mitglied.email } wurde zur Gruppe hinzugefügt.">
   Zur Gruppe hinzufügen
 </%self:action_button>
@@ -150,21 +142,17 @@ ${ check_group(test_mitglied_mailingliste) }
 
 ### Anmeldeliste
 Alle eingegebenen Daten werden automatisch zur Anmeldeliste hinzugefügt. Die
-Anmeldeliste ist eine Google-Tabelle mit der ID
-`${ test_anmeldungen_tabelle["id"] }`. Die Daten werden dort dem Bereich
-`${ daten["Anmeldungen"]["Bereich"] }` hinzugefügt. Überschriften werden
+Anmeldeliste ist eine Excel-Datei Namen
+**${ tabelle["datei"]["name"] }**. Die Daten werden dort der Tabelle
+`${ tabelle["tabelle"]["name"] }` hinzugefügt. Überschriften werden
 automatisch erkannt und den Einträgen zugeordnet.
 
-${ check_spreadsheet(test_anmeldungen_tabelle) }
-
 <p>
-  <%self:action_button action="append_to_spreadsheet"
-                       spreadsheet="${ test_anmeldungen_tabelle['id'] }"
-                       range="${ daten['Anmeldungen']['Bereich'] }"
+  <%self:action_button action="append_to_table"
                        message="Die Daten wurden zur Anmeldeliste hinzugefügt.">
     Zur Tabelle hinzufügen
   </%self:action_button>
   <a class="btn btn-secondary btn-sm"
      target="_blank"
-     href="https://docs.google.com/spreadsheets/d/${ test_anmeldungen_tabelle['id'] }/edit#gid=daten['Anmeldungen']['Blatt-ID']">Tabelle öffnen</a>
+     href="${ tabelle['datei']['webUrl'] }">Tabelle öffnen</a>
 </p>
