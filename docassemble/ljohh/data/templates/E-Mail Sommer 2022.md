@@ -80,7 +80,7 @@ ersten Probe.
 
 # Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das
-Formular und schicke es zeitnah an unsere Projektleitung Ulrike Zürn
+Formular und schicke es zeitnah an unsere Projektleitung Caroline Steinhagen
 ([steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de)) oder per Post an den Landesmusikrat
 Hamburg. Erst dann bist du offiziell angemeldet und darfst mitspielen.
 
