@@ -2,7 +2,7 @@
 # Dieser Abschnitt sollte nicht verändert werden.
 include:
   - data.yml
-  - sommer2022-fragen.yml
+  - mozartfest2022-fragen.yml
 ---
 # Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
 # Titel). Mögliche Felder sind hier dokumentiert:
@@ -117,7 +117,6 @@ content file: Testmodus.md
 # Abschnitten zugeordnet werden.
 sections:
   - Persönliche Daten
-  - Teilnehmerbeitrag
   - Termine
   - Jugend- und Datenschutz
   - Deine Anmeldung
@@ -133,7 +132,6 @@ code: |
   Kontaktdaten
   if minderjaehrig:
     Elternkontakt
-  Teilnehmerbeitrag
   Termine
   Jugendschutz
   Datenschutz

@@ -309,7 +309,7 @@ code: |
 id: mozartfest-2022/kontrolle
 continue button field: Kontrolle
 section: Deine Anmeldung
-question: Deine Anmeldung zur Sommerphase 2022
+question: Deine Anmeldung zum Mozartfest 2022
 review:
   - note: |
       % if testmodus:
