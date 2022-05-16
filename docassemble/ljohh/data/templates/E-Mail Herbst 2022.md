@@ -1,19 +1,17 @@
 Liebe\*r ${ mitglied.name.first },
 
-vielen Dank zu deiner Anmeldung zum Mozartfest 2022 mit dem
+vielen Dank zu deiner Anmeldung zur Herbstarbeitsphase 2022 im
 Landesjugendorchester Hamburg. In dieser Mail bekommst du nun einige wichtige
-Informationen für das Projekt. Bitte lies dir diese Mail durch, damit du
+Informationen für die Arbeitsphase. Bitte lies dir diese Mail durch, damit du
 gut auf die Phase vorbereitet bist.
 
 # Allgemeines
-Das Projekt findet mit folgendem Programm statt:
+Die Arbeitsphase findet mit folgendem Programm statt:
 
-- W.A. Mozart: Sinfonie Nr. 35 "Haffner", K.385 (1. Satz)
-- W.A. Mozart: Ch'io mi scordi di te, K.505
-- P. Schickele / PDQ Bach[^1]: Eine kleine Nichtmusik
-- N.N: Uraufführung gemeinsam mit Mitgliedern des ASJ und MJO
+1. F. Schubert: Sinfonie in h-Moll "Die Unvollendete", D.759
+2. E. Grieg: Klavierkonzert in a-Moll, op. 16
 
-Dirigiert wird das Projekt von **Johannes Witt**.
+Dirigiert wird die Arbeitsphase von **Volker Krafft**.
 
 Die Noten für die Arbeitsphase findest du unter
 [https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
@@ -42,6 +40,28 @@ geändert hat. Die neue Adresse ist im
 
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
 der Teilnahme am Konzert ausschließen.**
+
+# Teilnehmerbeitrag
+Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
+zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
+**Teilnehmerbeitrag von 60 € pro Person** erheben.
+% if status == "aushilfe":
+Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
+sehr dankbar für deine Unterstützung.
+% else:
+Bitte überweise den Betrag 2 Wochen vor Beginn der Arbeitsphase wenn, du eine
+Zusage bekommen hast, auf das folgende Konto:
+
+Landesmusikrat in der Freien und Hansestadt Hamburg e.V.  
+IBAN: **DE28 2007 0024 0053 6110 03**  
+BIC: DEUTDEDBHAM  
+Bank: Deutsche Bank  
+Verwendungszweck: Teilnehmerbeitrag  (2. AP 2022, ${ mitglied.name })
+
+Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
+überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
+„hinterherrennen“ müssen.
+% endif
 
 # Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das

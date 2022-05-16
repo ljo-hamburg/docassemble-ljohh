@@ -1,0 +1,190 @@
+---
+# Dieser Abschnitt sollte nicht verändert werden.
+include:
+  - data.yml
+  - herbst2022-fragen.yml
+---
+# Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
+# Titel). Mögliche Felder sind hier dokumentiert:
+# https://docassemble.org/docs/initial.html#metadata
+metadata:
+  title: Anmeldung zur Herbstarbeitsphase 2022
+  tab title: Anmeldung Herbst 2022
+  short title: LJO-Anmeldung
+  logo: '<img src="https://cdn.lmr-hh.de/logos/ljohh-square-white.svg" height="27">'
+  description:
+    Dies ist das Anmeldeformular zur Herbstarbeitsphase 2022 des LJO Hamburg.
+  exit url: https://ljo-hamburg.de
+  revision_date: 2022-05-16
+---
+# In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
+# konfiguriert. Die einzelnen Felder sind separat dokumentiert.
+variable name: daten
+data:
+  # Das Aktivieren des Testmodus verhindert, dass Anmeldungen automatisch
+  # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
+  # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
+  # Testmodus passiert wäre.
+  Testmodus: true
+
+  # Bezeichnung der Arbeitsphase bzw. des Projektes.
+  Arbeitsphase: Herbst 2022
+
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
+  # 'Bibliothek' gibt die ID einer Dokumentenbibliothek in SharePoint an, in der
+  # neue Anmeldungen eingefügt werden sollen. Die 'Tabelle' gibt die markierte
+  # Excel-Tabelle in der Datei an, in dem neue Anmeldungen eingefügt werden sollen.
+  Anmeldungen:
+    Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
+    Dokument: 01Z4U3TN4HWQBJ44ZDZRE2E74II3U4DIDN
+    Tabelle: "{5BBD3C0B-4179-4BE4-824A-264B475E0731}"
+
+  # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
+  # Mailingliste hinzugefügt.
+  Mailingliste: herbst-2022@lists.ljo-hamburg.de
+  Mailingliste (Eltern): herbst-2022-eltern@lists.ljo-hamburg.de
+  Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
+
+  # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
+  # wenn eine Anmeldung abgeschickt wird.
+  E-Mail Benachrichtigung:
+    - probespiel@ljo-hamburg.de
+    - steinhagen@lmr-hh.de
+
+  # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
+  # die Variable {{{ content }}} enthalten.
+  Mailgun Vorlage: anmeldung
+
+  # Dokumentenbibliothek und ID des SharePoint Ordners, in dem Anmeldungen
+  # archiviert werden sollen.
+  Archivordner:
+    Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
+    Ordner: 01Z4U3TN3ERH7RJ3LEO5EJ2NCYUQUJZREH
+
+  # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
+  # sind möglich:
+  # - yyyy-mm-dd: Ein einzelnes Datum. Der Wochentag wird automatisch erkannt.
+  # - [yyyy-mm-dd, <text>]: Ein Datum mit einem Texthinweis. Wenn der
+  #                         Texthinweis ein Komma enthält, muss er in
+  #                         Anführungszeichen eingeschlossen sein.
+  Konzerttermine:
+    - [2022-11-20, Konzert Lüneburg]
+    - [2022-11-22, Schülerkonzert]
+    - [2022-11-25, Konzert Laeiszhalle]
+  Probentermine:
+    - [2022-09-12, Erste Probe]
+    - 2022-09-19
+    - 2022-09-26
+    - [2022-10-01, Probenwochenende Hamburg]
+    - [2022-10-02, Probenwochenende Hamburg]
+    - [2022-10-03, Probenwochenende Hamburg]
+    - 2022-10-24
+    - 2022-11-07
+    - [2022-11-11, Probenwochenende Scheersberg]
+    - [2022-11-12, Probenwochenende Scheersberg]
+    - [2022-11-13, Probenwochenende Scheersberg]
+    - [2022-11-24, Generalprobe Laeiszhalle]
+---
+# Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
+# Der variable name sowie die valid formats sollten nicht verändert werden.
+attachment:
+  name: Anmeldung ${ mitglied.name }
+  # Dies ist der Dateiname, der u.A. im Mailanhang verwendet wird.
+  filename: Anmeldung ${ mitglied.name }
+  # Dies ist der Dateiname des Templates. Diese Datei muss sich im `templates`
+  # Ordner befinden.
+  docx template file: Anmeldung Herbst 2022.docx
+  # Die folgendne beiden Zeilen sollten nicht verändert werden
+  variable name: anmeldeformular
+  valid formats: [pdf]
+---
+# Der Inhalt der E-Mail, die an neu angemeldete Mitglieder geschickt wird. Der
+# Wert von template sollte nicht verändert werden.
+template: mitglied_email
+# Der E-Mail-Betreff
+subject: Deine Anmeldung zur Herbstarbeitsphase 2022 des LJO Hamburg
+# Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
+# Ordner).
+content file: E-Mail Herbst 2022.md
+---
+# Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
+# versendet wird. Der Wert von template sollte nicht verändert werden.
+template: orga_email
+# Der E-Mail-Betreff
+subject: ${ mitglied } hat sich zur Herbstphase 2022 angemeldet
+# Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
+# Ordner).
+content file: Benachrichtigung.md
+---
+template: testergebnis
+usedefs: [test_defs]
+content file: Testmodus.md
+---
+# Die Abschnitte der Anmeldung. In der fragen-Datei können Fragen diesen
+# Abschnitten zugeordnet werden.
+sections:
+  - Persönliche Daten
+  - Teilnehmerbeitrag
+  - Termine
+  - Zukünftige Arbeitsphasen
+  - Vorbereitung
+  - Abschluss-Probenwochenende
+  - Jugend- und Datenschutz
+  - Deine Anmeldung
+---
+# Die Reihenfolge, in der Fragen gestellt werden. Dies ist eine erweiterte
+# Funktion, die nicht leichtfertig verändert werden sollte.
+mandatory: True
+code: |
+  Konfiguration
+  if testmodus:
+    status
+  Einleitung
+  Kontaktdaten
+  if minderjaehrig:
+    Elternkontakt
+  Teilnehmerbeitrag
+  Termine
+  if status != "aushilfe":
+    Phasen
+  Vorbereitung
+  Probenwochenende
+  Jugendschutz
+  Datenschutz
+  Kontrolle
+  Abschicken
+  if testmodus:
+    Testergebnisse
+  else:
+    Fertig
+---
+# The member_data forms is the data that is available to be put in spreadsheets.
+# The dictionary keys are compared to spreadsheet headings. The comparison is
+# case-insensitive.
+code: |
+  member_data = {
+    "Status": status,
+    "Arbeitsphase": daten["Arbeitsphase"],
+    "Vorname": mitglied.name.first,
+    "Nachname": mitglied.name.last,
+    "Instrument": mitglied.instrument,
+    "E-Mail": mitglied.email,
+    "Telefonnummer": mitglied.phone_number,
+    "Adresse": adresse(mitglied),
+    "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
+    "Probentermine": ', '.join(probentermine.true_values()),
+    "Konzerttermine": ', '.join(konzerttermine.true_values()),
+    "Anmerkungen": anmerkungen.strip(),
+    "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
+    "Sonstiges (PWE)": pwe_sonstiges.strip(),
+    "Newsletter": bedingungen.newsletter
+  }
+  if minderjaehrig:
+    member_data["Eltern Vorname"] = eltern.name.first
+    member_data["Eltern Nachname"] = eltern.name.last
+    member_data["Eltern E-Mail"] = eltern.email
+    member_data["Eltern Telefon"] = eltern.phone_number
+  if status != "aushilfe":
+    member_data["Nächste Phase"] = ja_nein_vielleicht(nachste_phase)
+    member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
+---
