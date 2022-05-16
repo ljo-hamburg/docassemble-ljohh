@@ -7,36 +7,6 @@ code: |
     define(name, value)
   background_response()
 ---
-# The member_data forms is the data that is available to be put in spreadsheets.
-# The dictionary keys are compared to spreadsheet headings. The comparison is
-# case-insensitive.
-code: |
-  member_data = {
-    "Status": status,
-    "Arbeitsphase": daten["Arbeitsphase"],
-    "Vorname": mitglied.name.first,
-    "Nachname": mitglied.name.last,
-    "Instrument": mitglied.instrument,
-    "E-Mail": mitglied.email,
-    "Telefonnummer": mitglied.phone_number,
-    "Adresse": adresse(mitglied),
-    "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-    "Probentermine": ', '.join(probentermine.true_values()),
-    "Konzerttermine": ', '.join(konzerttermine.true_values()),
-    "Anmerkungen": anmerkungen.strip(),
-    "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
-    "Sonstiges (PWE)": pwe_sonstiges.strip(),
-    "Newsletter": bedingungen.newsletter
-  }
-  if minderjaehrig:
-    member_data["Eltern Vorname"] = eltern.name.first
-    member_data["Eltern Nachname"] = eltern.name.last
-    member_data["Eltern E-Mail"] = eltern.email
-    member_data["Eltern Telefon"] = eltern.phone_number
-  if status != "aushilfe":
-    member_data["Nächste Phase"] = ja_nein_vielleicht(nachste_phase)
-    member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
----
 # A task that adds a row to the Anmeldungen.
 need: msgraph
 code: |

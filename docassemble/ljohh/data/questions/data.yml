@@ -41,22 +41,6 @@ code: |
   if minderjaehrig:
     need(Elternkontakt)
 ---
-# Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
-# werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls
-# bestimmte Bedingungne noch nicht akzeptiert sind.
-code: |
-  bedingungen.akzeptiert = all([
-    bedingungen.tnbedingungen,
-    bedingungen.corona,
-    bedingungen.aufnahmen,
-    bedingungen.finanzierung,
-    bedingungen.newsletter
-  ])
-  if minderjaehrig:
-    bedingungen.akzeptiert = (
-      bedingungen.akzeptiert and bedingungen.veranstaltungsort
-    )
----
 # Lädt die Teilnahmebedingungen von der LJO-Website.
 code: |
   teilnahmebedingungen = DAFile('teilnahmebedingungen')

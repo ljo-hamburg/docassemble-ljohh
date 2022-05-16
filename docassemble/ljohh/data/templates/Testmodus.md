@@ -142,7 +142,7 @@ Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
 
 ### Anmeldeliste
 Alle eingegebenen Daten werden automatisch zur Anmeldeliste hinzugefügt. Die
-Anmeldeliste ist eine Excel-Datei Namen
+Anmeldeliste ist eine Excel-Datei mit Namen
 **${ tabelle["datei"]["name"] }**. Die Daten werden dort der Tabelle
 `${ tabelle["tabelle"]["name"] }` hinzugefügt. Überschriften werden
 automatisch erkannt und den Einträgen zugeordnet.

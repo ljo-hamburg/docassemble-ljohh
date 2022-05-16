@@ -57,7 +57,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude,
 
 setup(
     name='docassemble.ljohh',
-    version='3.0.2',
+    version='3.1.0',
     description=__doc__,
     long_description=long_description(),
     long_description_content_type='text/markdown',
@@ -71,7 +71,9 @@ setup(
         'requests',
         'Flask-Mail',
         'google-api-python-client',
-        'google-auth-oauthlib'
+        'google-auth-oauthlib',
+        'docassemble.msgraph',
+        'docassemble.mailgun'
     ],
     zip_safe=False,
     package_data=find_package_data(where='docassemble/ljohh/',
