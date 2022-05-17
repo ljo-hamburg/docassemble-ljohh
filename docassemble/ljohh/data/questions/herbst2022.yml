@@ -15,7 +15,7 @@ metadata:
   description:
     Dies ist das Anmeldeformular zur Herbstarbeitsphase 2022 des LJO Hamburg.
   exit url: https://ljo-hamburg.de
-  revision_date: 2022-05-16
+  revision_date: 2022-05-17
 ---
 # In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
 # konfiguriert. Die einzelnen Felder sind separat dokumentiert.
@@ -69,7 +69,6 @@ data:
   #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
     - [2022-11-20, Konzert Lüneburg]
-    - [2022-11-22, Schülerkonzert]
     - [2022-11-25, Konzert Laeiszhalle]
   Probentermine:
     - [2022-09-12, Erste Probe]
