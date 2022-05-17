@@ -61,6 +61,8 @@ subquestion: |
 
     - F. Schubert: Sinfonie in h-Moll "Die Unvollendete", D.759
     - E. Grieg: Klavierkonzert in a-Moll, op. 16
+  
+  Besetzung: 2.2.2.2 - 2.2.3.0 - Pk - Str
 
   Dirigiert wird die Arbeitsphase von **Volker Krafft**. Der Solist bzw. die
   Solistin steht noch nicht fest.
@@ -385,6 +387,13 @@ fields:
       weitere Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
+css: |
+  <style>
+  .da-field-checkbox .da-has-error.invalid-feedback {
+    margin-top: -.5rem;
+    margin-bottom: .5rem;
+  }
+  </style>
 ---
 # Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
 # werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls

@@ -60,6 +60,8 @@ subquestion: |
       Eine kleine Nichtmusik
     - N.N: Uraufführung gemeinsam mit Mitgliedern des ASJ und MJO
 
+  Besetzung: 1.1.1.1 - 1.1.1.0 - Str
+
   Dirigiert wird das Projekt von **Johannes Witt**. Die Solisten (Sopran und
   Klavier) für die Konzertarie stehen noch nicht fest.
 
@@ -284,6 +286,13 @@ fields:
       weitere Informationen zu erhalten.
     : bedingungen.newsletter
     datatype: yesnowide
+css: |
+  <style>
+  .da-field-checkbox .da-has-error.invalid-feedback {
+    margin-top: -.5rem;
+    margin-bottom: .5rem;
+  }
+  </style>
 ---
 # Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
 # werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls
