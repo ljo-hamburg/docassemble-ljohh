@@ -25,7 +25,7 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: true
+  Testmodus: false
 
   # Bezeichnung der Arbeitsphase bzw. des Projektes.
   Arbeitsphase: Herbst 2022
