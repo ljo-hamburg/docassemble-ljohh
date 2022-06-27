@@ -10,7 +10,7 @@ Das Projekt findet mit folgendem Programm statt:
 
 - W.A. Mozart: Sinfonie Nr. 35 "Haffner", K.385 (1. Satz)
 - W.A. Mozart: Ch'io mi scordi di te, K.505
-- P. Schickele / PDQ Bach[^1]: Eine kleine Nichtmusik
+- P. Schickele / PDQ Bach: Eine kleine Nichtmusik
 - N.N: Uraufführung gemeinsam mit Mitgliedern des ASJ und MJO
 
 Dirigiert wird das Projekt von **Johannes Witt**.
@@ -57,5 +57,5 @@ haben, schreibe uns immer gerne:
 - Lennart Beck (1. Vorsitzender):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
-Viele Grüße  
+Viele Grüße
 Der LJO-Vorstand
