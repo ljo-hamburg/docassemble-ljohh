@@ -2,20 +2,20 @@
 # Dieser Abschnitt sollte nicht verändert werden.
 include:
   - data.yml
-  - sommer2022-fragen.yml
+  - herbst2022-fragen.yml
 ---
 # Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
 # Titel). Mögliche Felder sind hier dokumentiert:
 # https://docassemble.org/docs/initial.html#metadata
 metadata:
-  title: Anmeldung zur Sommerarbeitsphase 2022
-  tab title: Anmeldung Sommer 2022
+  title: Anmeldung zur Herbstarbeitsphase 2022
+  tab title: Anmeldung Herbst 2022
   short title: LJO-Anmeldung
   logo: '<img src="https://cdn.lmr-hh.de/logos/ljohh-square-white.svg" height="27">'
   description:
-    Dies ist das Anmeldeformular zur Sommerarbeitsphase 2022 des LJO Hamburg.
+    Dies ist das Anmeldeformular zur Herbstarbeitsphase 2022 des LJO Hamburg.
   exit url: https://ljo-hamburg.de
-  revision_date: 2021-12-20
+  revision_date: 2022-05-17
 ---
 # In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
 # konfiguriert. Die einzelnen Felder sind separat dokumentiert.
@@ -25,10 +25,10 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: false
+  Testmodus: true
 
   # Bezeichnung der Arbeitsphase bzw. des Projektes.
-  Arbeitsphase: Sommer 2022
+  Arbeitsphase: Herbst 2022
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
   # 'Bibliothek' gibt die ID einer Dokumentenbibliothek in SharePoint an, in der
@@ -36,13 +36,13 @@ data:
   # Excel-Tabelle in der Datei an, in dem neue Anmeldungen eingefügt werden sollen.
   Anmeldungen:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
-    Dokument: 01Z4U3TN7JZGJDAU2TBZFJCWKPHAMJRTDY
+    Dokument: 01Z4U3TN4HWQBJ44ZDZRE2E74II3U4DIDN
     Tabelle: "{5BBD3C0B-4179-4BE4-824A-264B475E0731}"
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
   # Mailingliste hinzugefügt.
-  Mailingliste: sommer-2022@lists.ljo-hamburg.de
-  Mailingliste (Eltern): sommer-2022-eltern@lists.ljo-hamburg.de
+  Mailingliste: herbst-2022@lists.ljo-hamburg.de
+  Mailingliste (Eltern): herbst-2022-eltern@lists.ljo-hamburg.de
   Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
 
   # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
@@ -59,7 +59,7 @@ data:
   # archiviert werden sollen.
   Archivordner:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
-    Ordner: 01Z4U3TN6VX3AR4JA7MFHLVLB5DUE5BAKA
+    Ordner: 01Z4U3TN3ERH7RJ3LEO5EJ2NCYUQUJZREH
 
   # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
   # sind möglich:
@@ -68,35 +68,21 @@ data:
   #                         Texthinweis ein Komma enthält, muss er in
   #                         Anführungszeichen eingeschlossen sein.
   Konzerttermine:
-    - [2022-06-15, Generalprobe / Schülerkonzert]
-    - [2022-06-17, Konzert Laeiszhalle, Einspielprobe ab 16:00 Uhr]
-    - [2022-06-25, Konzert Bergedorf]
+    - [2022-11-20, Konzert Lüneburg]
+    - [2022-11-25, Konzert Laeiszhalle]
   Probentermine:
-    - [2022-01-24, Erste Probe]
-    - [2022-01-31, Stimmproben]
-    - 2022-02-07
-    - [2022-02-12, Probenwochenende Hamburg]
-    - [2022-02-13, Probenwochenende Hamburg]
-    - 2022-02-21
-    - [2022-02-27, Probentag Hamburg]
-    - 2022-02-28
-    - 2022-03-21
-    - 2022-03-28
-    - [2022-04-02, Probenwochenende Hamburg]
-    - [2022-04-03, Probenwochenende Hamburg]
-    - 2022-04-11
-    - [2022-04-25, Stimmproben]
-    - [2022-05-02, Dozentenproben]
-    - [2022-05-09, Vermutlich mit Gastdirigent]
-    - [2022-05-14, Probenwochenende Hamburg, Vermutlich mit Gastdirigent]
-    - [2022-05-15, Probenwochenende Hamburg, Vermutlich mit Gastdirigent]
-    - 2022-05-30
-    - [2022-06-10, Probenwochenende Tönning]
-    - [2022-06-11, Probenwochenende Tönning]
-    - [2022-06-12, Probenwochenende Tönning, bis Mittags]
-    - [2022-06-15, Generalprobe / Schülerkonzert]
-    - [2022-06-16, Generalprobe Laeiszhalle (Warteliste)]
-    - [2022-06-24, Generalprobe Bergedorf]
+    - [2022-09-12, Erste Probe]
+    - 2022-09-19
+    - 2022-09-26
+    - [2022-10-01, Probenwochenende Hamburg]
+    - [2022-10-02, Probenwochenende Hamburg]
+    - [2022-10-03, Probenwochenende Hamburg]
+    - 2022-10-24
+    - 2022-11-07
+    - [2022-11-11, Probenwochenende Scheersberg]
+    - [2022-11-12, Probenwochenende Scheersberg]
+    - [2022-11-13, Probenwochenende Scheersberg]
+    - [2022-11-24, Generalprobe Laeiszhalle]
 ---
 # Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
 # Der variable name sowie die valid formats sollten nicht verändert werden.
@@ -106,7 +92,7 @@ attachment:
   filename: Anmeldung ${ mitglied.name }
   # Dies ist der Dateiname des Templates. Diese Datei muss sich im `templates`
   # Ordner befinden.
-  docx template file: Anmeldung Sommer 2022.docx
+  docx template file: Anmeldung Herbst 2022.docx
   # Die folgendne beiden Zeilen sollten nicht verändert werden
   variable name: anmeldeformular
   valid formats: [pdf]
@@ -115,16 +101,16 @@ attachment:
 # Wert von template sollte nicht verändert werden.
 template: mitglied_email
 # Der E-Mail-Betreff
-subject: Deine Anmeldung zur Sommerarbeitsphase 2022 des LJO Hamburg
+subject: Deine Anmeldung zur Herbstarbeitsphase 2022 des LJO Hamburg
 # Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
 # Ordner).
-content file: E-Mail Sommer 2022.md
+content file: E-Mail Herbst 2022.md
 ---
 # Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
 # versendet wird. Der Wert von template sollte nicht verändert werden.
 template: orga_email
 # Der E-Mail-Betreff
-subject: ${ mitglied } hat sich zur Sommerphase 2022 angemeldet
+subject: ${ mitglied } hat sich zur Herbstphase 2022 angemeldet
 # Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
 # Ordner).
 content file: Benachrichtigung.md
