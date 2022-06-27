@@ -60,7 +60,7 @@ subquestion: |
       Eine kleine Nichtmusik
     - N.N: Uraufführung gemeinsam mit Mitgliedern des ASJ und MJO
 
-  Besetzung: 1.1.1.1 - 1.1.1.0 - Str
+  Besetzung: 1.1.2.2 - 2.1.1.0 - Str
 
   Dirigiert wird das Projekt von **Johannes Witt**. Die Solisten (Sopran und
   Klavier) für die Konzertarie stehen noch nicht fest.
@@ -180,7 +180,7 @@ fields:
     datatype: checkboxes
     none of the above: false
     code: alle_termine("Probentermine")
-    minlength: ${ max_fehltermine("Probentermine", 1) }
+    minlength: ${ max_fehltermine("Probentermine", 2) }
     validation messages:
       minlength: |
         Um im LJO mitspielen zu können erwarten wir, dass du auch zu allen
@@ -216,7 +216,7 @@ subquestion: |
   Alkohol regelt. Darüber hinaus gelten im LJO auch für volljährige strengere
   Regeln was den Alkoholkonsum angeht. Es gilt:
 
-  - Kein Alkohol für Jugendliche unter 16 Jahren. 
+  - Kein Alkohol für Jugendliche unter 16 Jahren.
   - Jugendliche zwischen 16 und 18 Jahren dürfen in Maßen Bier, Wein und Sekt in
     der Öffentlichkeit konsumieren.
   - Harter Alkohol, Mixgetränke und Spirituosen sind für alle Teilnehmenden
@@ -230,7 +230,7 @@ subquestion: |
   Jugendliche ab 16 Jahren dürfen in einer Gruppe von mindestens drei Personen
   ohne Betreuer den Veranstaltungs- / Probenort nach vorheriger Abmeldung bei den
   Betreuer/innen verlassen. Kinder und Jugendliche unter 16 Jahren dürfen den
-  Veranstaltungs- / Probenort ohne Betreuer/innen nicht verlassen. 
+  Veranstaltungs- / Probenort ohne Betreuer/innen nicht verlassen.
 
   Verstöße gegen diese Regeln oder wiederholt unangemessenes Verhalten können
   zum Ausschluss von Konzerten oder/und der Mitwirkung im Orchester führen.
