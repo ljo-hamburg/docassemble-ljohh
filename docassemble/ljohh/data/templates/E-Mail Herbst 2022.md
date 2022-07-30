@@ -8,8 +8,9 @@ gut auf die Phase vorbereitet bist.
 # Allgemeines
 Die Arbeitsphase findet mit folgendem Programm statt:
 
-1. F. Schubert: Sinfonie in h-Moll "Die Unvollendete", D.759
-2. E. Grieg: Klavierkonzert in a-Moll, op. 16
+1. E. Grieg: Konzertouvertüre "Im Herbst", op. 11
+2. F. Schubert: Sinfonie in h-Moll "Die Unvollendete", D.759
+3. E. Grieg: Klavierkonzert in a-Moll, op. 16
 
 Dirigiert wird die Arbeitsphase von **Volker Krafft**.
 
