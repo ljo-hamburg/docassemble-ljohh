@@ -1,23 +1,14 @@
 Liebe\*r ${ mitglied.name.first },
 
-vielen Dank zu deiner Anmeldung zur Sommerarbeitsphase 2022 im
+vielen Dank zu deiner Anmeldung zur Sommerarbeitsphase 2023 im
 Landesjugendorchester Hamburg. In dieser Mail bekommst du nun einige wichtige
 Informationen für die Arbeitsphase. Bitte lies dir diese Mail durch, damit du
 gut auf die Phase vorbereitet bist.
 
 # Allgemeines
-Die Arbeitsphase findet unter **2G-Regeln** statt. In erster Linie bedeutet das,
-dass die Proben und Konzerte als 2G-Veranstaltungen stattfinden. Das heißt, alle
-Teilnehmenden ab 16 Jahren müssen genesen oder geimpft sein. Darüber hinaus
-müssen die 14-16-Jährigen eine Schultestbescheinigung vorlegen oder sich vor der
-Probe selbst schnelltesten. Die entsprechenden 2G-Nachweise werden spätestens bei
-der ersten Probe kontrolliert. Die erste Probe soll am 24. Januar stattfinden.
-
 Die Arbeitsphase findet mit folgendem Programm statt:
 
-1. L.v.Beethoven: Leonore-Ouvertüre Nr. 3, op.72b
-2. P.I.Tschaikowski: Rokoko-Variationen, op.33
-3. P.I.Tschaikowski: Sinfonie Nr. 4, op.36
+1. ???
 
 Dirigiert wird die Arbeitsphase von **Johannes Witt**.
 
@@ -40,11 +31,7 @@ Probenplan angekündigt (z.B. durch „Bläserprobe“). Falls du
 unvorhergesehenerweise mal zu einer Probe nicht kommen kannst, musst du dich von
 der Probe freistellen lassen. Wie das geht, kannst du im internen Bereich der
 LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/freistellung/).
-
-**Achtung**: Wenn du den Probenplan vor dem 1. Mai 2021 als Kalender abonniert hast,
-solltest du den Kalender einmal neu abonnieren, da sich die Adresse des Kalenders
-geändert hat. Die neue Adresse ist im
-[internen Bereich](https://ljo-hamburg.de/interner-bereich/probenplan/) zu finden.
+Der Probenplan lässt sich auch direkt in deinem Kalender einbinden.
 
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
 der Teilnahme am Konzert ausschließen.**
@@ -64,19 +51,12 @@ Landesmusikrat in der Freien und Hansestadt Hamburg e.V.
 IBAN: **DE28 2007 0024 0053 6110 03**  
 BIC: DEUTDEDBHAM  
 Bank: Deutsche Bank  
-Verwendungszweck: Teilnehmerbeitrag  (1. AP 2022, ${ mitglied.name })
+Verwendungszweck: Teilnehmerbeitrag  (1. AP 2023, ${ mitglied.name })
 
 Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
 überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
 „hinterherrennen“ müssen.
 % endif
-
-# Corona-Einschränkungen
-Wir hoffen, dass die Arbeitsphase relativ normal stattfinden kann (d.h. keine
-Abstände oder reduzierte Besetzung). Die Arbeitsphase wird allerdings als
-**2G-Arbeitsphase** stattfinden, d.h. nur genesene oder geimpfte Personen dürfen
-mitspielen. Kontrolliert werden die entsprechenden Nachweise spätestens in der
-ersten Probe.
 
 # Was nun?
 Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das
@@ -89,7 +69,7 @@ haben, schreibe uns immer gerne:
 
 - Der LJO-Vorstand: [vorstand@ljo-hamburg.de](mailto:vorstand@ljo-hamburg.de)
 - Caroline Steinhagen (Projektleitung): [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de)
-- Daniel Niemann (1. Vorsitzender):
+- Lennart Beck (1. Vorsitzender):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
 Viele Grüße  
