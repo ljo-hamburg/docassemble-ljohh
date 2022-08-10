@@ -243,11 +243,10 @@ fields:
 ---
 # Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
 # werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls
-# bestimmte Bedingungne noch nicht akzeptiert sind.
+# bestimmte Bedingungen noch nicht akzeptiert sind.
 code: |
   bedingungen.akzeptiert = all([
     bedingungen.tnbedingungen,
-    bedingungen.corona,
     bedingungen.aufnahmen,
     bedingungen.finanzierung,
     bedingungen.newsletter
@@ -321,10 +320,6 @@ field: Jugendschutz
 section: Jugend- und Datenschutz
 question: Jugendschutz
 subquestion: |
-  <div class="alert alert-info" role="alert">
-  <b>Hinweis</b>: Die Regelungen haben sich seit der letzten Arbeitsphase geändert.
-  </div>
-
   Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
   und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen
   müssen sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit
@@ -368,14 +363,6 @@ fields:
     datatype: yesnowide
     validate: >
       lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
-  - ? Ich bin informiert, dass die Arbeitsphase unter **2G-Regeln** stattfindet.
-      Außerdem bin ich informiert, dass Änderungen an der Arbeitsphase auf Basis
-      der geltenden behördlichen Auflagen zur Eindämmung der COVID-19 Pandemie
-      möglich sind.
-    : bedingungen.corona
-    datatype: yesnowide
-    validate: >
-      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
       drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
       bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
