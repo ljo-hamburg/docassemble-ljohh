@@ -8,7 +8,7 @@ gut auf die Phase vorbereitet bist.
 # Allgemeines
 Die Arbeitsphase findet mit folgendem Programm statt:
 
-1. D. Schostakowitsch: Sinfonie Nr. 7 "Leningrader", Op. 60
+- D. Schostakowitsch: Sinfonie Nr. 7 "Leningrader", Op. 60
 
 Dirigiert wird die Arbeitsphase von **Johannes Witt**.
 

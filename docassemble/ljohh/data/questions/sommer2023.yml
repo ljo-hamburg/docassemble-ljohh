@@ -45,12 +45,6 @@ data:
   Mailingliste (Eltern): sommer-2023-eltern@lists.ljo-hamburg.de
   Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
 
-  # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
-  # wenn eine Anmeldung abgeschickt wird.
-  E-Mail Benachrichtigung:
-    - probespiel@ljo-hamburg.de
-    - steinhagen@lmr-hh.de
-
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.
   Mailgun Vorlage: anmeldung
@@ -83,15 +77,6 @@ subject: Deine Anmeldung zur Sommerarbeitsphase 2023 des LJO Hamburg
 # Ordner).
 content file: E-Mail Sommer 2023.md
 ---
-# Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
-# versendet wird. Der Wert von template sollte nicht verändert werden.
-template: orga_email
-# Der E-Mail-Betreff
-subject: ${ mitglied } hat sich zur Sommerphase 2023 angemeldet
-# Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
-# Ordner).
-content file: Benachrichtigung.md
----
 template: testergebnis
 usedefs: [test_defs]
 content file: Testmodus.md
@@ -119,7 +104,7 @@ code: |
   Kontaktdaten
   if minderjaehrig:
     Elternkontakt
-  Teilnehmerbeitrag
+  Teilnahmebeitrag
   Termine
   if status != "gast":
     Phasen
@@ -159,7 +144,7 @@ code: |
     member_data["Eltern Nachname"] = eltern.name.last
     member_data["Eltern E-Mail"] = eltern.email
     member_data["Eltern Telefon"] = eltern.phone_number
-  if status != "aushilfe":
+  if status != "gast":
     member_data["Nächste Phase"] = ja_nein_vielleicht(nachste_phase)
     member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
 ---

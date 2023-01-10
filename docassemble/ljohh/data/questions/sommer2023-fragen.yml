@@ -11,13 +11,11 @@ subquestion: |
   Anmeldung ausfüllen möchtest. Das ändert ggf. einige Inhalte. Normalerweise
   wird der Status über einen URL-Parameter ausgewählt, sodass anhand des
   Anmeldelinks der Status ausgewählt wird.
+  
+  Funktionell unterscheiden sich die beiden Varianten nicht.
 
-  - **Mitglieder** sind reguläre Mitglieder. Hier ist zu beachten, dass die
-    maximale Anzahl an Fehlterminen begrenzt ist.
-  - **Flex-Mitglieder** werden wie reguläre Mitglieder behandelt, können aber
-    beliebig viele Fehltermine auswählen.
-  - **Aushilfen** können ebenfalls beliebig viele Fehltermine angeben, müssen
-    aber im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
+  - **Mitglieder** sind reguläre Mitglieder.
+  - **Gäste** sind Mitspielende ohne Mitgliedsstatus.
 buttons:
   - Mitglied: mitglied
   - Gast: gast
@@ -55,15 +53,16 @@ subquestion: |
   - Konzert im Körber-Haus Bergedorf am 21. Mai
   - Konzert in der Laeiszhalle am 23. Mai
   
-  Wir spielen folgendes Programm:
+  #### Programm
 
-  - D. **Schostakowitsch**: Sinfonie Nr. 7 "Leningrader", Op. 60    
-    Besetzung: Piccoloflöte, 2 große Flöten (zweite auch Altflöte), 2 Oboen,
-    Englischhorn, kleine Klarinette (in Es), 2 Klarinetten (in B und A),
-    Bassklarinette (in B), 2 Fagotte, Kontrafagott, 4 Hörner, 3 Trompeten,
-    3 Posaunen, Basstuba, Pauken, große und kleine Trommel, Triangel, Becken,
-    Xylophon, Tamtam, Tamburin, Klavier, 2 Harfen, Streicher  
-    Fernorchester mit 4 Hörnern, 3 Trompeten, 3 Posaunen
+  D. Schostakowitsch: **Sinfonie Nr. 7 "Leningrader", Op. 60**
+  
+  **Besetzung**: Piccoloflöte, 2 große Flöten (zweite auch Altflöte), 2 Oboen,
+  Englischhorn, kleine Klarinette (in Es), 2 Klarinetten (in B und A),
+  Bassklarinette (in B), 2 Fagotte, Kontrafagott, 4 Hörner, 3 Trompeten,
+  3 Posaunen, Basstuba, Pauken, große und kleine Trommel, Triangel, Becken,
+  Xylophon, Tamtam, Tamburin, Klavier, 2 Harfen, Streicher  
+  Fernorchester mit 4 Hörnern, 3 Trompeten, 3 Posaunen
 
   Dirigieren wird **Johannes Witt**.
 

@@ -43,39 +43,6 @@ An die E-Mail sind drei Dokumente angehängt:
   ${ docassemble.base.filter.markdown_to_html(mitglied_email) }
 </%self:collapse>
 
-### Benachrichtigungs-E-Mail
-Bei jeder Anmeldung werden bestimmte Empfänger benachrichtigt.
-% if not daten["E-Mail Benachrichtigung"]:
-Es sind bisher keine Empfänger konfiguriert, daher würde dieser Schritt
-übersprungen werden.
-% else:
-Die Benachrichtigung enthält ebenfalls die
-[Anmeldung](${ anmeldung.pdf.url_for() }) im Anhang, enhält aber nur wenig Text
-und auch nicht die Teilnahmebedingungen und die Geschäftsordnung. Folgende
-Empfänger werden benachrichtigt:
-
-% for email in daten["E-Mail Benachrichtigung"]:
-  - `${ email }`
-% endfor
-
-Wenn du unten auf "E-Mail trotzdem senden" klickst, wird die E-Mail im Testmodus
-nur an die von dir angegebene Adresse `${ mitglied.email }` gesendet.
-
-<p>
-  <%self:collapse_button id="orga-email-collapse">
-    E-Mail-Inhalt anzeigen
-  </%self:collapse_button>
-  <%self:action_button action="send_orga_email"
-                       message="Die E-Mail wurde gesendet. Es kann einen Moment dauern, bis die E-Mail ankommt.">
-    E-Mail trotzdem senden
-  </%self:action_button>
-</p>
-
-<%self:collapse id="orga-email-collapse" title="${ orga_email.subject }">
-  ${ docassemble.base.filter.markdown_to_html(orga_email) }
-</%self:collapse>
-% endif
-
 ### Archivieren der Anmeldung
 Das Anmeldeformular wird automatisch in dem Ordner **${ ordner['name'] }**
 archiviert.
@@ -122,16 +89,14 @@ Mailingliste hinzugefügt. Der Elternverteiler ist
 % endif
 
 ### Mailingliste (Mitglieder)
-% if status == "aushilfe":
+% if status == "gast":
 Aushilfen werden nicht auf der Mitglieder-Mailingliste
 **${ mailingliste_mitglieder['email'] }** eingetragen. In diesem Fall wird
 diese Aktion übersprungen.
 % else:
 Die E-Mail-Adresse `${ mitglied.email }` wird auf dem Verteiler
 **${ mailingliste_mitglieder['email'] }** für Mitglieder eingetragen.
-% endif
 
-% if status != "aushilfe":
 <%self:action_button action="register_email"
                      email="${ mitglied.email }"
                      group="${ mailingliste_mitglieder['email'] }"

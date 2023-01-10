@@ -69,7 +69,7 @@ code: |
 # A task that adds the member email to a mailing list (but only for true
 # members).
 code: |
-  if testmodus or status == "aushilfe":
+  if testmodus or status == "gast":
     register_member_email_task = None
   else:
     register_member_email_task = background_action(
@@ -163,37 +163,6 @@ code: |
       template=mitglied_email,
       attachments=[anmeldung.pdf, teilnahmebedingungen, geschaeftsordnung]
   )
-  if background:
-    background_response(result)
-  else:
-    json_response(result)
----
-
----
-# Sends an email to the notification addresses.
-need: [mailgun]
-code: |
-  if testmodus:
-    orga_email_task = None
-  else:
-    orga_email_task = background_action('send_orga_email', 'refresh')
----
-# Sends an email to the notification addresses.
-event: send_orga_email
-need: [mailgun]
-code: |
-  background = interface() in {"worker", "cron"}
-  recipients = daten["E-Mail Benachrichtigung"]
-  if isinstance(recipients, str):
-    recipients = [recipients]
-  if not recipients:
-    result = True
-  else:
-    to = [mitglied] if testmodus else recipients
-    result = mailgun.send_email(
-      to=to,
-      template=orga_email
-    )
   if background:
     background_response(result)
   else:
