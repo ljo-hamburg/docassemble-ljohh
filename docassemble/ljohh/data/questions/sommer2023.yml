@@ -60,25 +60,6 @@ data:
   Archivordner:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
     Ordner: 01Z4U3TNZONZZYCD7SFRDJU7AUKCEMWD5Q
-
-  # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
-  # sind möglich:
-  # - yyyy-mm-dd: Ein einzelnes Datum. Der Wochentag wird automatisch erkannt.
-  # - [yyyy-mm-dd, <text>]: Ein Datum mit einem Texthinweis. Wenn der
-  #                         Texthinweis ein Komma enthält, muss er in
-  #                         Anführungszeichen eingeschlossen sein.
-  Konzerttermine:
-    - [2023-05-23, Konzert Laeiszhalle, Einspielprobe ab 16:00 Uhr]
-  Probentermine:
-    - [2023-05-13, Probenwoche Schlitz]
-    - [2023-05-14, Probenwoche Schlitz]
-    - [2023-05-15, Probenwoche Schlitz]
-    - [2023-05-16, Probenwoche Schlitz]
-    - [2023-05-17, Probenwoche Schlitz]
-    - [2023-05-18, Probenwoche Schlitz]
-    - [2023-05-19, Probenwoche Schlitz]
-    - [2023-05-20, Probenwoche Schlitz]
-    - [2023-05-21, Probenwoche Schlitz]
 ---
 # Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
 # Der variable name sowie die valid formats sollten nicht verändert werden.
@@ -140,7 +121,7 @@ code: |
     Elternkontakt
   Teilnehmerbeitrag
   Termine
-  if status != "aushilfe":
+  if status != "gast":
     Phasen
   Vorbereitung
   Probenwochenende
@@ -163,15 +144,14 @@ code: |
     "Vorname": mitglied.name.first,
     "Nachname": mitglied.name.last,
     "Instrument": mitglied.instrument,
+    "Stimmwunsch": mitglied.stimme,
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
     "Adresse": adresse(mitglied),
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-    "Probentermine": ', '.join(probentermine.true_values()),
-    "Konzerttermine": ', '.join(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen.strip(),
-    "Versorgung (PWE)": ', '.join(pwe_versorgung.true_values()),
-    "Sonstiges (PWE)": pwe_sonstiges.strip(),
+    "Versorgung": ', '.join(pwe_versorgung.true_values()),
+    "Sonstiges": pwe_sonstiges.strip(),
     "Newsletter": bedingungen.newsletter
   }
   if minderjaehrig:

@@ -20,8 +20,7 @@ subquestion: |
     aber im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
 buttons:
   - Mitglied: mitglied
-  - Flex-Mitglied: flex
-  - Aushilfe: aushilfe
+  - Gast: gast
 ---
 id: sommer-2023/einleitung
 field: Einleitung
@@ -34,62 +33,62 @@ subquestion: |
   </div>
   % endif
 
-  Über dieses Formular meldest du dich zur Sommerarbeitsphase 2023 des LJO
+  Über dieses Formular meldest du dich zur Block-Arbeitsphase 2023 des LJO
   Hamburg an. Die Anmeldung ist verbindlich, das heißt, sobald du die Anmeldung
   abgegeben hast, gehen wir davon aus, dass du auch zu allen Probenterminen
   erscheinst, zu denen du dich nicht explizit abgemeldet hast. Solltest du
   feststellen, dass du bei deiner Anmeldung einen Fehler gemacht hast, ist das
-  aber i. d. R. kein Problem. Schreib uns dazu dann einfach eine E-Mail.
+  aber i. d. R. kein Problem. Schreib uns dazu dann einfach eine E-Mail.
 
   ### Kurz und Knapp
 
-  - Anmelden bis zum 31. März 2023
-  - Unterschriebene Anmeldung abschicken und Teilnahmebeitrag überweisen.
-  - Erste Probe am 13. Mai
-
-  ### Informationen zur Arbeitsphase
-
-  Die Arbeitsphase findet im Zeitraum vom 13. Mai bis zum 23. Mai 2023 als
-  Blockarbeitsphase statt. Im Gegensatz zu früheren Arbeitsphasen werden wir im
-  gemeinsam nach Schlitz fahren und dort eine Woche intensiv proben.
-  Montagsproben finden keine statt. Dies ist für das LJO Hamburg ein eher
-  ungewöhnliches Modell, ist aber in anderen Landesjugendorchestern üblich.
-
+  - Anmelden bis zum 1. Februar 2023
+  - Teilnahmebeitrag überweisen
+  - Erste Probe am 24. April
+  
+  ### Übersicht über die Arbeitsphase
+  
+  - Erste Tuttiprobe am 24. April (18:00-21:30)
+  - Stimm- und Dozentenprobe am 8. Mai (18:00-21:30)
+  - Dozentenproben am 12. Mai (18:00-21:30)
+  - Probenwoche in Schlitz vom 13. Mai bis zum 20. Mai (Hamburger Himmelfahrtsferien)
+  - Konzert im Körber-Haus Bergedorf am 21. Mai
+  - Konzert in der Laeiszhalle am 23. Mai
+  
   Wir spielen folgendes Programm:
 
-    - ???
+  - D. **Schostakowitsch**: Sinfonie Nr. 7 "Leningrader", Op. 60    
+    Besetzung: Piccoloflöte, 2 große Flöten (zweite auch Altflöte), 2 Oboen,
+    Englischhorn, kleine Klarinette (in Es), 2 Klarinetten (in B und A),
+    Bassklarinette (in B), 2 Fagotte, Kontrafagott, 4 Hörner, 3 Trompeten,
+    3 Posaunen, Basstuba, Pauken, große und kleine Trommel, Triangel, Becken,
+    Xylophon, Tamtam, Tamburin, Klavier, 2 Harfen, Streicher  
+    Fernorchester mit 4 Hörnern, 3 Trompeten, 3 Posaunen
 
-  Dirigiert wird die Arbeitsphase von **Johannes Witt**.
+  Dirigieren wird **Johannes Witt**.
 
   ### Wie wird ausgewählt, wer mitspielt?
 
   Zunächst einmal solltest du dich anmelden. Nur wer sich anmeldet wird für die
   Besetzung in Betracht gezogen. Sollte es für eine Instrumentengruppe oder ein
-  Instrument mehr Anmeldungen als Positionen geben, werden wir versuchen die
-  Besetzung so aufzuteilen, dass jeder bei einem Teil des Programms mitspielen
-  kann. Die Entscheidung wird durch die künstlerische Leitung, Konzertmeister
-  und die jeweiligen Stimmführer getroffen.
-
+  Instrument mehr Anmeldungen als Positionen geben, werden künstlerische Leitung,
+  Konzertmeisterin, der\*die jeweilige Stimmführer\*in und die Personalwartin
+  über eine Teilnahme entscheiden. Die Verteilung der Stimmen in den Bläsern
+  erfolgt in Absprache zwischen künstlerischer Leitung, der jeweiligen
+  Stimmführung und den beteiligten Spieler\*innen.
+  
+  Wenn du einen Stimmwunsch hast, kannst du den im Anmeldeformular angeben.
+  Uns liegen dann alle Wünsche vor und wir werden letztendlich die Aufteilung
+  unter Berücksichtigung aller wichtigen Aspekte gestalten.
+  
   ### Wie melde ich mich an?
 
-  1. Fülle dieses Online-Formular aus. Im Laufe des Formulars fragen wir dich
-     u.a. danach, zu welchen Probenterminen du anwesend sein wirst. Nimm dir
-     also deinen Terminkalender und etwas Zeit, um diese Fragen zu beantworten.
+  1. Fülle dieses Online-Formular aus.
   2. Nachdem du das Online-Formular abgeschickt hast, erhältst du per E-Mail
      eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
-  3. Dieses PDF unterschreibst du und schickst es per E-Mail an
-     [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de).
-  4. Falls du zum Zeitpunkt der Anmeldung noch minderjährig bist, müssen auch
-     deine Eltern die Anmeldung unterschreiben.
-  5. Du bekommst eine Rückmeldung vom Vorstand oder deinem\*deiner Stimmführer\*in,
-     ob du dabei bist.
-
-  % if status == "aushilfe":
-  ### Anmerkung
-
-  Du meldest dich als Aushilfe an. Sollte das ein Versehen sein, klicke bitte
-  [hier](https://ljo-hamburg.de/interner-bereich) und melde dich dort an.
-  % endif
+  3. Überweise den Teilnahmebeitrag. Die Kontoverbindung erhältst du per E-Mail.
+  4. Falls eine Teilnahme nicht möglich ist, meldet sich der Vorstand oder
+     dein\*e Stimmführer\*in bei dir.
 under: |
   <small>
   Zur Durchführung der Arbeitsphase erfragen wir einige persönliche Daten. Alle
@@ -127,6 +126,13 @@ fields:
   - Wann wurdest du geboren?: mitglied.birthdate
     datatype: date
   - Welches Instrument spielst du?: mitglied.instrument
+    hint: Geige, Cello, Trompete, Klarinette, ...
+  - Wünscht du dir eine bestimmte Stimme zu spielen?: mitglied.stimme
+    hint: 1. Geige, Kontrafagott, 2. Trompete, ...
+    required: False
+    help: |
+      Deine Angabe ist keine Garantie, dass du diese Stimme spielen wirst. Wir
+      werden eine Entscheidung unter Berücksichtigung aller Wünsche treffen.
 ---
 id: sommer-2023/elternkontakt
 field: Elternkontakt
@@ -144,23 +150,32 @@ fields:
     datatype: email
   - Telefon: eltern.phone_number
 ---
-id: sommer-2023/teilnehmerbeitrag
-field: Teilnehmerbeitrag
-section: Teilnehmerbeitrag
-question: Teilnehmerbeitrag
+id: sommer-2023/teilnahmebeitrag
+field: Teilnahmebeitrag
+section: Teilnahmebeitrag
+question: Teilnahmebeitrag und Rücktrittsmodalitäten
 subquestion: |
-  Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
-  zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 60€ pro Person erheben.
-
-  % if status == "aushilfe":
-    Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
-    sehr dankbar für deine Unterstützung.
-  % else:
-    Bitte überweise den Betrag bis zur ersten Probe, wenn du eine Zusage
-    bekommen hast. Die Kontoverbindung erhältst du in der Bestätigungs-E-Mail,
-    wenn du dieses Formular abschickst.
-  % endif
+  Um Kosten für Transport (Busse HH-Schlitz-HH), Unterkunft (Mehrbettzimmer 7
+  Nächte), Verpflegung (Vollpension), Noten, Dozenten, Konzertsäle zu decken,
+  müssen wir einen Teilnehmerbeitrag erheben. Der Maximalbeitrag wird bei 250
+  Euro liegen (zum Vergleich: die Gesamtkosten pro Teilnehmer\*in für die
+  Blockarbeitsphase belaufen sich auf ca. 850 Euro). Es wird daran gearbeitet,
+  dass der Beitrag von 250 Euro noch etwas reduziert werden kann, dies können
+  wir zum jetzigen Zeitpunkt aber nicht fest zusagen. Der genaue Betrag wird
+  voraussichtlich im Februar feststehen.
+  
+  Bitte überweise den Betrag fristgemäß an den Landesmusikrat Hamburg nach
+  Erhalt der Rechnung, welche Dir voraussichtlich bis Ende Februar zugemailt
+  wird.
+  
+  Die Anmeldung zur Sommerarbeitsphase ist mit diesem Formular und mit der
+  Überweisung des Teilnehmerbeitrages verbindlich. Sollte Dir eine Teilnahme
+  kurzfristig aus Krankheitsgründen nicht möglich sein, informiere umgehend
+  deine\*n Stimmführer\*in oder
+  [Caroline Steinhagen](mailto:steinhagen@lmr-hh.de)/Projektleitung. Da wir nach
+  Anmeldung verbindlich mit Dir für die Gesamtbesetzung planen, ist bei
+  kurzfristigem Rücktritt ohne nachgewiesene Erkrankung ein\*e Ersatzspieler\*in
+  zu stellen und es erfolgt keine Erstattung des Teilnehmerbeitrages.
 buttons:
   - Einverstanden: continue
 ---
@@ -169,74 +184,25 @@ field: Termine
 section: Termine
 question: Termine
 subquestion: |
-  Damit eine vernünftige Probenplanung möglich ist, möchten wir gerne von dir
-  wissen, zu welchen Probenterminen du anwesend sein wirst. Bitte nimm dir die
-  Zeit, die Termine mit deinem Kalender abzugleichen. Die Angaben, die du hier
-  machst, sind **verbindlich**.
+  Voraussetzung für eine Teilnahme ist die Anwesenheit bei allen Dozentenproben,
+  den Probenterminen in Schlitz sowie bei der Generalprobe und den Konzerten:
+  
+  - Mo. 24.4. 18-21.30 h Tuttiprobe Hamburg
+  - Mo. 8.5. 18-21.30 h Stimm-/Dozentenproben Hamburg
+  - Fr. 12.5. 18-21.30 h Dozentenproben Hamburg
+  - Sa. 13.5. Abfahrt nach Schlitz/Hessen, 13.-20.5. Übernachtung und Proben in der Landesmusikakademie Hessen
+  - Sa. 20.5. Werkstattkonzert in der LMA Hessen (öffentliche GP) und Rückfahrt nach Hamburg
+  - So. 21.5. 11 h GP Laeiszhalle, 16 h Konzert Bergedorfer Musiktage/Körber-Haus
+  - Di. 23.5. 20 h Jubiläumskonzert Laeiszhalle – 55 Jahre Landesjugendorchester Hamburg
 
-  Uns ist natürlich bewusst, dass es manchmal unvorhergesehene Umstände gibt,
-  wegen derer du kurzfristig nicht zu einer Probe kommen kannst (z.B.
-  Krankheiten). In so einem Fall solltest du uns umgehend per Mail
-  informieren, um dich von der Probe freistellen zu lassen. Mehr
-  Informationen dazu findest du auf der
-  [LJO-Website im internen Bereich](https://ljo-hamburg.de/interner-bereich/freistellung/).
-
-  % if status == "mitglied":
-    Wenn du bei mehr als 4 Probenterminen nicht kannst, schreib uns bitte eine
-    Mail an [freistellung@ljo-hamburg.de](mailto:freistellung@ljo-hamburg.de),
-    **bevor** du dich anmeldest. In so einem Fall muss der Vorstand
-    entscheiden, ob du die Arbeitsphase trotzdem mitspielen kannst. Wenn du
-    uns erst im Laufe der Phase mitteilst, dass du bei vielen Terminen nicht
-    kannst, kann es sein, dass wir dich dann von den Konzerten ausschließen
-    müssen. Den Teilnehmerbeitrag musst du in dem Fall trotzdem zahlen.
-
-    Die Anwesenheit bei Dozenten- und Stimmproben ist besonders wichtig.
-    Generalproben und das Abschluss-Probenwochenende sind absolute
-    Pflichttermine. Solltest du hier nicht können, können wir die Anmeldung nur
-    in Sonderfällen akzeptieren.
-  % elif status == "flex":
-    Da du eine Sonderregelung mit dem Vorstand vereinbart hast, kannst du mehr
-    als 4 Fehltermine auswählen. Bitte gib hier an, zu welchen Terminen du zur
-    Probe kommen kannst.
-  % endif
+  Solltest Du Probleme mit einzelnen Terminen haben, dann sende eine Mail an
+  freistellung@ljo-hamburg.de, bevor Du Dich anmeldest. Der Vorstand entscheidet
+  in dem Fall, ob Du trotzdem mitspielen kannst. (evtl. rauslassen, um
+  Abmeldungen zu vermeiden? Besonderheiten können auch über Textfeld kommuniziert
+  werden)
 fields:
-  - Ich bin an den folgenden Probenterminen anwesend: probentermine
-    datatype: checkboxes
-    none of the above: false
-    code: alle_termine("Probentermine")
-    minlength: ${ max_fehltermine("Probentermine", 4) }
-    validation messages:
-      minlength: |
-        Um im LJO mitspielen zu können erwarten wir, dass du auch zu allen
-        Proben kommst. Für eine Sonderregelung sprich bitte sofort mit dem
-        Vorstand: vorstand@ljo-hamburg.de.
-  - note: |
-      % if status == "mitglied":
-        Die Anwesenheit bei allen Konzerten ist verpflichtend. Solltest du die
-        Arbeitsphase mitspielen wollen, kannst aber nicht zu allen
-        Konzertterminen, setze dich bitte vorher mit uns
-        [in Verbindung](mailto:freistellung@ljo-hamburg.de).
-      % elif status == "flex":
-        Wir möchten gerne vermeiden, dass unsere Besetzung von Konzert zu Konzert
-        wechselt. Uns ist es daher sehr wichtig, dass alle Mitspieler*innen zu
-        allen Konzertterminen können. Bitte gib hier an, zu welchen Terminen du
-        dabei bist.
-      % else:
-        Bitte gib hier an, zu welchen Konzertterminen du aushelfen wirst.
-      % endif
-  - Ich bin an den folgenden Konzertterminen anwesend: konzerttermine
-    datatype: checkboxes
-    none of the above: false
-    code: alle_termine("Konzerttermine")
-    minlength: ${ max_fehltermine("Konzerttermine", 0) }
-    validation messages:
-      minlength: |
-        Es ist leider nicht möglich, nur bei einigen Konzerten mitzuspielen. Für
-        eine Sonderregelung sprich bitte sofort mit dem Vorstand:
-        vorstand@ljo-hamburg.de.
-  - ? Falls du möchtest, kannst du hier Details zu deinen Fehlzeiten schreiben.
-      Falls du beispielsweise an einem Tag möglicherweise erst sehr knapp zur
-      Probe kommen kannst, kannst du das hier erwähnen.
+  - ? Wenn Du möchtest, kann Du uns hier Details zu den Terminen schreiben, falls es
+      bei Dir Besonderheiten gibt.
     : anmerkungen
     input type: area
     required: False
@@ -278,26 +244,20 @@ field: Vorbereitung
 section: Vorbereitung
 question: Vorbereitung
 subquestion: |
-  Im Gegensatz zu vielen anderen Landesjugendorchestern probt das LJO Hamburg
-  wöchentlich. Das bedeutet allerdings nicht, dass wir die Stücke nur während der
-  Proben üben. Es ist genauso wichtig, dass jede*r einzelne alle Stücke vor der
-  ersten Probe vorbereitet und sicher beherrscht. Bereite dich also bitte
-  rechtzeitig mit den [Noten](https://ljo-hamburg.de/noten) vor.
+  Aufgrund der kurzen Vorbereitungszeit ist es unerlässlich, dass die Sinfonie
+  sehr gut und selbstständig mit den [Noten](https://ljo-hamburg.de/noten) vor
+  der 1. Probe vorbereitet wird. Im internen Bereich findest Du auch einen Link
+  zu einer Aufnahme, welche Du Dir für die Vorbereitung anhören kannst.
 buttons:
-  - Alles klar, ich werde die Stücke vorbereiten: continue
+  - Alles klar, ich werde das Stück vorbereiten: continue
 ---
 id: sommer-2023/probenwochenende
 field: Probenwochenende
-section: Abschluss-Probenwochenende
-question: Abschluss-Probenwochenende
+section: Verpflegung etc.
+question: Besonderheiten, Verpflegung etc.
 subquestion: |
-  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließendes
-  Intensiv-Probenwochenende in Tönning statt, um die letzten Feinschliffe
-  vor den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende
-  ist mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die
-  letzten Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien,
-  chronische Krankheiten oder sonstige Einschränkungen an, die hierfür
-  berücksichtigt werden sollen.
+  Bitte gib hier an, welche Besonderheiten bei der Ernährung während der
+  Unterbringung in Schlitz berücksichtigt werden sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 under: |
@@ -311,7 +271,10 @@ fields:
       - "Ich möchte vegetarisch versorgt werden": vegetarisch
       - "Ich möchte vegan versorgt werden": vegan
     none of the above: false
-  - "Weitere Angaben": pwe_sonstiges
+  - ? Bitte gib hier Unverträglichkeiten, Allergien, chronische Krankheiten,
+      Medikamenteneinnahmen oder sonstige Besonderheiten an, die berücksichtigt
+      werden sollen.
+    : pwe_sonstiges
     datatype: area
     required: false
 ---
@@ -385,7 +348,7 @@ fields:
   - ? Ich bin informiert, dass die Arbeitsphase nur stattfinden kann, wenn eine
       auskömmliche Finanzierung sowie eine vollständige Orchesterbesetzung
       gesichert ist. Im Falle des nicht Zustandekommen kann die Arbeitsphase
-      abgesagt werden. Bereits überwiesene Teilnehmerbeiträge werden in diesem
+      abgesagt werden. Bereits überwiesene Teilnahmebeiträge werden in diesem
       Fall zurückerstattet.
     : bedingungen.finanzierung
     datatype: yesnowide
@@ -441,13 +404,9 @@ review:
   - Angaben ändern: Termine
     button: |
       ## Termine
-
-      Du hast dich zu den folgenden Proben- und Konzertterminen verbindlich
-      angemeldet:
-
-      ${ terminliste() }
-
+      
       % if anmerkungen:
+      Du hast folgende Angaben zu den Terminen der Arbeitsphase gemacht:
       <p><div class="card">
       <div class="card-header">Weitere Anmerkungen</div>
       <div class="card-body">
@@ -455,11 +414,12 @@ review:
       </div>
       </div></p>
       % else:
-      *Keine weiteren Anmerkungen.*
-      %endif
+      *Du hast keine weiteren Anmerkungen zu den Terminen der Arbeitsphase
+      gemacht.*
+      % endif
   - Angaben ändern: Probenwochenende
     button: |
-      ## Abschluss-Probenwochenende
+      ## Besonderheiten Verpflegung etc.
 
       % for zeile in get_pwe_versorgung():
         - ${ zeile }
@@ -471,10 +431,10 @@ review:
         </div></p>
       % endif
       % if not pwe_angaben():
-        *Du hast keine Angaben zum Probenwochenende gemacht*
+        *Du hast keine weiteren Angaben zum Aufenthalt gemacht*
       % endif
   - Angaben ändern: Phasen
-    show if: status != "aushilfe"
+    show if: status != "gast"
     button: |
       ## Nächste Arbeitsphasen
 

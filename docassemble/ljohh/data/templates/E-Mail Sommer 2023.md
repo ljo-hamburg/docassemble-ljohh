@@ -8,42 +8,38 @@ gut auf die Phase vorbereitet bist.
 # Allgemeines
 Die Arbeitsphase findet mit folgendem Programm statt:
 
-1. ???
+1. D. Schostakowitsch: Sinfonie Nr. 7 "Leningrader", Op. 60
 
 Dirigiert wird die Arbeitsphase von **Johannes Witt**.
 
 Die Noten für die Arbeitsphase findest du unter
-[https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten), sobald sie
-verfügbar sind. Lade dir dort die Noten für deine Stimme herunter und drucke sie
-aus. Bitte benutze genau die Ausgaben von unserer Website, da es sonst oft
-Unterschiede in der Dynamik gibt. Originalnoten werden erst kurz vor dem Konzert
-verteilt.
+[https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten). Lade dir dort die
+Noten für deine Stimme herunter und drucke sie aus. Originalnoten werden erst
+kurz vor dem Konzert verteilt, da es sich um Leihmaterial handelt.
 
 # Probenplan
 In der Anmeldung hast du bereits die geplanten Proben- und Konzerttermine gesehen.
 Einen detaillierten Probenplan kannst du im internen Bereich der LJO-Website
 finden oder unter auch als Übersicht unter https://probenplan.ljo-hamburg.de.
-Wir versuchen den Probenplan für jeden Termin spätestens eine Woche vorher
-bekannt zu geben, also guck regelmäßig auf dieser Seite nach.
-
-Wenn nicht alle Stimmen zu einer Probe gebraucht werden, wird das ebenfalls im
-Probenplan angekündigt (z.B. durch „Bläserprobe“). Falls du
-unvorhergesehenerweise mal zu einer Probe nicht kommen kannst, musst du dich von
-der Probe freistellen lassen. Wie das geht, kannst du im internen Bereich der
-LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/freistellung/).
 Der Probenplan lässt sich auch direkt in deinem Kalender einbinden.
+
+Falls du unvorhergesehenerweise mal zu einer Probe nicht kommen kannst, musst du
+dich von der Probe freistellen lassen. Wie das geht, kannst du im internen
+Bereich der LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/freistellung/).
 
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
 der Teilnahme am Konzert ausschließen.**
 
 # Teilnehmerbeitrag
-Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
-zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-**Teilnehmerbeitrag von 60 € pro Person** erheben.
-% if status == "aushilfe":
-Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
-sehr dankbar für deine Unterstützung.
-% else:
+Um Kosten für Transport (Busse HH-Schlitz-HH), Unterkunft (Mehrbettzimmer 7
+Nächte), Verpflegung (Vollpension), Noten, Dozenten, Konzertsäle zu decken,
+müssen wir einen Teilnehmerbeitrag erheben. Der Maximalbeitrag wird bei 250
+Euro liegen (zum Vergleich: die Gesamtkosten pro Teilnehmer\*in für die
+Blockarbeitsphase belaufen sich auf ca. 850 Euro). Es wird daran gearbeitet,
+dass der Beitrag von 250 Euro noch etwas reduziert werden kann, dies können
+wir zum jetzigen Zeitpunkt aber nicht fest zusagen. Der genaue Betrag wird
+voraussichtlich im Februar feststehen.
+
 Bitte überweise den Betrag 2 Wochen vor Beginn der Arbeitsphase wenn, du eine
 Zusage bekommen hast, auf das folgende Konto:
 
@@ -56,20 +52,17 @@ Verwendungszweck: Teilnehmerbeitrag  (1. AP 2023, ${ mitglied.name })
 Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
 überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
 „hinterherrennen“ müssen.
-% endif
 
 # Was nun?
-Im Anhang dieser Mail bekommst du dein Anmeldungs-Formular. Unterschreibe das
-Formular und schicke es zeitnah an unsere Projektleitung Caroline Steinhagen
-([steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de)) oder per Post an den Landesmusikrat
-Hamburg. Erst dann bist du offiziell angemeldet und darfst mitspielen.
 
+Du hast dich nun erfolgreich zur Arbeitsphase angemeldet. Weitere Informationen
+erhältst du per E-Mail.
 Wir freuen uns auf die gemeinsame Probenphase. Solltest du irgendwelche Fragen
 haben, schreibe uns immer gerne:
 
 - Der LJO-Vorstand: [vorstand@ljo-hamburg.de](mailto:vorstand@ljo-hamburg.de)
 - Caroline Steinhagen (Projektleitung): [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de)
-- Lennart Beck (1. Vorsitzender):
+- Katharina Kühn (1. Vorsitzende):
   [vorsitz1@ljo-hamburg.de](mailto:vorsitz1@ljo-hamburg.de)
 
 Viele Grüße  
