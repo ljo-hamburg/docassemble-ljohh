@@ -1,9 +1,13 @@
 Liebe\*r ${ mitglied.name.first },
 
-vielen Dank zu deiner Anmeldung zur Sommerarbeitsphase 2023 im
-Landesjugendorchester Hamburg. In dieser Mail bekommst du nun einige wichtige
-Informationen für die Arbeitsphase. Bitte lies dir diese Mail durch, damit du
-gut auf die Phase vorbereitet bist.
+Vielen Dank für Deine Online-Anmeldung zur Sommerarbeitsphase 2023 mit dem
+Landesjugendorchester Hamburg. Bitte drucke die angehängte PDF-Datei aus,
+unterschreibe beide Seiten (wenn Du minderjährig bist unbedingt auch ein
+Elternteil beide Seiten unterschreiben lassen) und sende sie per Mail an
+Caroline Steinhagen/Projektleitung:
+[steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de). Erst wenn die
+Unterschriften vorliegen ist die Anmeldung vollständig abgeschlossen!
+
 
 # Allgemeines
 Die Arbeitsphase findet mit folgendem Programm statt:
@@ -23,7 +27,7 @@ Einen detaillierten Probenplan kannst du im internen Bereich der LJO-Website
 finden oder unter auch als Übersicht unter https://probenplan.ljo-hamburg.de.
 Der Probenplan lässt sich auch direkt in deinem Kalender einbinden.
 
-Falls du unvorhergesehenerweise mal zu einer Probe nicht kommen kannst, musst du
+Falls du unvorhergesehenerweise zu einer Probe nicht kommen kannst, musst du
 dich von der Probe freistellen lassen. Wie das geht, kannst du im internen
 Bereich der LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/freistellung/).
 
@@ -40,23 +44,15 @@ dass der Beitrag von 250 Euro noch etwas reduziert werden kann, dies können
 wir zum jetzigen Zeitpunkt aber nicht fest zusagen. Der genaue Betrag wird
 voraussichtlich im Februar feststehen.
 
-Bitte überweise den Betrag 2 Wochen vor Beginn der Arbeitsphase wenn, du eine
-Zusage bekommen hast, auf das folgende Konto:
-
-Landesmusikrat in der Freien und Hansestadt Hamburg e.V.  
-IBAN: **DE28 2007 0024 0053 6110 03**  
-BIC: DEUTDEDBHAM  
-Bank: Deutsche Bank  
-Verwendungszweck: Teilnehmerbeitrag  (1. AP 2023, ${ mitglied.name })
-
-Wir möchten dich bitten, den Beitrag dann selbstständig und rechtzeitig zu
-überweisen. Es ist immer sehr aufwändig, wenn wir den Beiträgen
-„hinterherrennen“ müssen.
+Bitte überweise den Betrag fristgemäß an den Landesmusikrat Hamburg nach
+Erhalt der Rechnung, welche Dir voraussichtlich bis Ende Februar zugemailt
+wird.
 
 # Was nun?
 
-Du hast dich nun erfolgreich zur Arbeitsphase angemeldet. Weitere Informationen
-erhältst du per E-Mail.
+Unterschreibe das PDF im Anhang auf beiden Seiten (ggf. auch von den Eltern
+unterschreiben lassen) und schicke es an Caroline Steinhagen. Alle weiteren
+Informationen erhältst du dann per E-Mail.  
 Wir freuen uns auf die gemeinsame Probenphase. Solltest du irgendwelche Fragen
 haben, schreibe uns immer gerne:
 

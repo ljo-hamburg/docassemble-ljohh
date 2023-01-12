@@ -34,16 +34,10 @@ subquestion: |
   Über dieses Formular meldest du dich zur Block-Arbeitsphase 2023 des LJO
   Hamburg an. Die Anmeldung ist verbindlich, das heißt, sobald du die Anmeldung
   abgegeben hast, gehen wir davon aus, dass du auch zu allen Probenterminen
-  erscheinst, zu denen du dich nicht explizit abgemeldet hast. Solltest du
-  feststellen, dass du bei deiner Anmeldung einen Fehler gemacht hast, ist das
-  aber i. d. R. kein Problem. Schreib uns dazu dann einfach eine E-Mail.
+  erscheinst Solltest du feststellen, dass du bei deiner Anmeldung einen Fehler
+  gemacht hast, ist das aber i. d. R. kein Problem. Schreib uns dazu dann
+  einfach eine E-Mail.
 
-  ### Kurz und Knapp
-
-  - Anmelden bis zum 1. Februar 2023
-  - Teilnahmebeitrag überweisen
-  - Erste Probe am 24. April
-  
   ### Übersicht über die Arbeitsphase
   
   - Erste Tuttiprobe am 24. April (18:00-21:30)
@@ -85,7 +79,9 @@ subquestion: |
   1. Fülle dieses Online-Formular aus.
   2. Nachdem du das Online-Formular abgeschickt hast, erhältst du per E-Mail
      eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
-  3. Überweise den Teilnahmebeitrag. Die Kontoverbindung erhältst du per E-Mail.
+  3. Schicke das PDF, das du am Ende dieser Anmeldung per E-Mail bekommst,
+     unterschrieben (bei Minderjährigen auch die Eltern) an
+     [Caroline](mailto:steinhagen@lmr-hh.de). 
   4. Falls eine Teilnahme nicht möglich ist, meldet sich der Vorstand oder
      dein\*e Stimmführer\*in bei dir.
 under: |
@@ -125,7 +121,22 @@ fields:
   - Wann wurdest du geboren?: mitglied.birthdate
     datatype: date
   - Welches Instrument spielst du?: mitglied.instrument
-    hint: Geige, Cello, Trompete, Klarinette, ...
+    choices:
+      - Flöte
+      - Oboe
+      - Klarinette
+      - Fagott
+      - Trompete
+      - Horn
+      - Posaune
+      - Tuba
+      - Klavier
+      - Harfe
+      - Schlagwerk / Pauke
+      - Geige
+      - Bratsche
+      - Cello
+      - Kontrabass
   - Wünscht du dir eine bestimmte Stimme zu spielen?: mitglied.stimme
     hint: 1. Geige, Kontrafagott, 2. Trompete, ...
     required: False
@@ -191,17 +202,15 @@ subquestion: |
   - Fr. 12.5. 18-21.30 h Dozentenproben Hamburg
   - Sa. 13.5. Abfahrt nach Schlitz/Hessen, 13.-20.5. Übernachtung und Proben in der Landesmusikakademie Hessen
   - Sa. 20.5. Werkstattkonzert in der LMA Hessen (öffentliche GP) und Rückfahrt nach Hamburg
-  - So. 21.5. 11 h GP Laeiszhalle, 16 h Konzert Bergedorfer Musiktage/Körber-Haus
-  - Di. 23.5. 20 h Jubiläumskonzert Laeiszhalle – 55 Jahre Landesjugendorchester Hamburg
+  - So. 21.5. 11 h GP Laeiszhalle  
+    16 h Anspielprobe Körber-Haus  
+    19 h Konzert Bergedorfer Musiktage/Körber-Haus
+  - Di. 23.5. 16 h Anspielprobe Laeiszhalle  
+    20 h Jubiläumskonzert Laeiszhalle – 55 Jahre Landesjugendorchester Hamburg
 
-  Solltest Du Probleme mit einzelnen Terminen haben, dann sende eine Mail an
-  freistellung@ljo-hamburg.de, bevor Du Dich anmeldest. Der Vorstand entscheidet
-  in dem Fall, ob Du trotzdem mitspielen kannst. (evtl. rauslassen, um
-  Abmeldungen zu vermeiden? Besonderheiten können auch über Textfeld kommuniziert
-  werden)
 fields:
   - ? Wenn Du möchtest, kann Du uns hier Details zu den Terminen schreiben, falls es
-      bei Dir Besonderheiten gibt.
+      bei Dir Besonderheiten zu berücksichtigen gibt.
     : anmerkungen
     input type: area
     required: False
@@ -245,8 +254,7 @@ question: Vorbereitung
 subquestion: |
   Aufgrund der kurzen Vorbereitungszeit ist es unerlässlich, dass die Sinfonie
   sehr gut und selbstständig mit den [Noten](https://ljo-hamburg.de/noten) vor
-  der 1. Probe vorbereitet wird. Im internen Bereich findest Du auch einen Link
-  zu einer Aufnahme, welche Du Dir für die Vorbereitung anhören kannst.
+  der 1. Probe vorbereitet wird.
 buttons:
   - Alles klar, ich werde das Stück vorbereiten: continue
 ---
