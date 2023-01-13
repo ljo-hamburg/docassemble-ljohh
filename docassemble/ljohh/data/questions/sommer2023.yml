@@ -2,20 +2,20 @@
 # Dieser Abschnitt sollte nicht verändert werden.
 include:
   - data.yml
-  - mozartfest2022-fragen.yml
+  - sommer2023-fragen.yml
 ---
 # Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
 # Titel). Mögliche Felder sind hier dokumentiert:
 # https://docassemble.org/docs/initial.html#metadata
 metadata:
-  title: Anmeldung zum Mozartfest 2022
-  tab title: Anmeldung Mozartfest 2022
+  title: Anmeldung zur Sommerarbeitsphase 2023
+  tab title: Anmeldung Sommer 2023
   short title: LJO-Anmeldung
   logo: '<img src="https://cdn.lmr-hh.de/logos/ljohh-square-white.svg" height="27">'
   description:
-    Dies ist das Anmeldeformular zum Mozartfest 2022 mit dem LJO Hamburg.
+    Dies ist das Anmeldeformular zur Sommerarbeitsphase 2023 des LJO Hamburg.
   exit url: https://ljo-hamburg.de
-  revision_date: 2022-05-16
+  revision_date: 2022-08-10
 ---
 # In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
 # konfiguriert. Die einzelnen Felder sind separat dokumentiert.
@@ -25,12 +25,10 @@ data:
   # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
   # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
   # Testmodus passiert wäre.
-  Testmodus: false
+  Testmodus: true
 
-  # Bezeichnung der Arbeitsphase bzw. des Projektes. Bei Sonderprojekten wird
-  # nicht nach der Teilnahme an weiteren Arbeitsphasen gefragt.
-  Arbeitsphase: Mozartfest 2022
-  Sonderprojekt: true
+  # Bezeichnung der Arbeitsphase bzw. des Projektes.
+  Arbeitsphase: Sommer 2023
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
   # 'Bibliothek' gibt die ID einer Dokumentenbibliothek in SharePoint an, in der
@@ -38,20 +36,14 @@ data:
   # Excel-Tabelle in der Datei an, in dem neue Anmeldungen eingefügt werden sollen.
   Anmeldungen:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
-    Dokument: 01Z4U3TNZX26EXXNMEABAJMNSH3OEIQRD7
+    Dokument: 01Z4U3TNYNDQKWUCXQTVE2QHLFDQR5YAG6
     Tabelle: "{5BBD3C0B-4179-4BE4-824A-264B475E0731}"
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
   # Mailingliste hinzugefügt.
-  Mailingliste: mozartfest-2022@lists.ljo-hamburg.de
-  Mailingliste (Eltern): mozartfest-2022-eltern@lists.ljo-hamburg.de
+  Mailingliste: sommer-2023@lists.ljo-hamburg.de
+  Mailingliste (Eltern): sommer-2023-eltern@lists.ljo-hamburg.de
   Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
-
-  # Die hier angegebenen Personen erhalten automatisch eine Benachrichtigung,
-  # wenn eine Anmeldung abgeschickt wird.
-  E-Mail Benachrichtigung:
-    - probespiel@ljo-hamburg.de
-    - steinhagen@lmr-hh.de
 
   # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
   # die Variable {{{ content }}} enthalten.
@@ -61,22 +53,7 @@ data:
   # archiviert werden sollen.
   Archivordner:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
-    Ordner: 01Z4U3TN44J3XPPKGSEVFK2CRWY7HAUU7X
-
-  # Alle Konzerttermine und Probentermine der Arbeitsphase. Folgende Formate
-  # sind möglich:
-  # - yyyy-mm-dd: Ein einzelnes Datum. Der Wochentag wird automatisch erkannt.
-  # - [yyyy-mm-dd, <text>]: Ein Datum mit einem Texthinweis. Wenn der
-  #                         Texthinweis ein Komma enthält, muss er in
-  #                         Anführungszeichen eingeschlossen sein.
-  Konzerttermine:
-    - [2022-09-10, Mozartfest]
-  Probentermine:
-    - [2022-08-27, Probentag Hamburg]
-    - 2022-08-29
-    - [2022-09-03, Probenwochenende Hamburg]
-    - [2022-09-04, Probenwochenende Hamburg]
-    - [2022-09-05, Probe]
+    Ordner: 01Z4U3TNZONZZYCD7SFRDJU7AUKCEMWD5Q
 ---
 # Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
 # Der variable name sowie die valid formats sollten nicht verändert werden.
@@ -86,7 +63,7 @@ attachment:
   filename: Anmeldung ${ mitglied.name }
   # Dies ist der Dateiname des Templates. Diese Datei muss sich im `templates`
   # Ordner befinden.
-  docx template file: Anmeldung Mozartfest 2022.docx
+  docx template file: Anmeldung Sommer 2023.docx
   # Die folgendne beiden Zeilen sollten nicht verändert werden
   variable name: anmeldeformular
   valid formats: [pdf]
@@ -95,19 +72,10 @@ attachment:
 # Wert von template sollte nicht verändert werden.
 template: mitglied_email
 # Der E-Mail-Betreff
-subject: Deine Anmeldung zum Mozartfest 2022 mit dem LJO Hamburg
+subject: Deine Anmeldung zur Sommerarbeitsphase 2023 des LJO Hamburg
 # Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
 # Ordner).
-content file: E-Mail Mozartfest 2022.md
----
-# Der Inhalt der E-Mail, die als Benachrichtigung bei neuen Anmeldungen
-# versendet wird. Der Wert von template sollte nicht verändert werden.
-template: orga_email
-# Der E-Mail-Betreff
-subject: ${ mitglied } hat sich zum Mozartfest 2022 angemeldet
-# Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
-# Ordner).
-content file: Benachrichtigung.md
+content file: E-Mail Sommer 2023.md
 ---
 template: testergebnis
 usedefs: [test_defs]
@@ -117,7 +85,11 @@ content file: Testmodus.md
 # Abschnitten zugeordnet werden.
 sections:
   - Persönliche Daten
+  - Teilnehmerbeitrag
   - Termine
+  - Zukünftige Arbeitsphasen
+  - Vorbereitung
+  - Abschluss-Probenwochenende
   - Jugend- und Datenschutz
   - Deine Anmeldung
 ---
@@ -132,7 +104,12 @@ code: |
   Kontaktdaten
   if minderjaehrig:
     Elternkontakt
+  Teilnahmebeitrag
   Termine
+  if status != "gast":
+    Phasen
+  Vorbereitung
+  Probenwochenende
   Jugendschutz
   Datenschutz
   Kontrolle
@@ -152,13 +129,14 @@ code: |
     "Vorname": mitglied.name.first,
     "Nachname": mitglied.name.last,
     "Instrument": mitglied.instrument,
+    "Stimmwunsch": mitglied.stimme,
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
     "Adresse": adresse(mitglied),
     "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
-    "Probentermine": ', '.join(probentermine.true_values()),
-    "Konzerttermine": ', '.join(konzerttermine.true_values()),
     "Anmerkungen": anmerkungen.strip(),
+    "Versorgung": ', '.join(pwe_versorgung.true_values()),
+    "Sonstiges": pwe_sonstiges.strip(),
     "Newsletter": bedingungen.newsletter
   }
   if minderjaehrig:
@@ -166,4 +144,7 @@ code: |
     member_data["Eltern Nachname"] = eltern.name.last
     member_data["Eltern E-Mail"] = eltern.email
     member_data["Eltern Telefon"] = eltern.phone_number
+  if status != "gast":
+    member_data["Nächste Phase"] = ja_nein_vielleicht(nachste_phase)
+    member_data["Übernächste Phase"] = ja_nein_vielleicht(ubernachste_phase)
 ---

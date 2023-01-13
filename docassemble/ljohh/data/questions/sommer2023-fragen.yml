@@ -1,4 +1,4 @@
-id: sommer-2022/statuswahl
+id: sommer-2023/statuswahl
 field: status
 if: testmodus
 question: Status auswählen
@@ -11,21 +11,18 @@ subquestion: |
   Anmeldung ausfüllen möchtest. Das ändert ggf. einige Inhalte. Normalerweise
   wird der Status über einen URL-Parameter ausgewählt, sodass anhand des
   Anmeldelinks der Status ausgewählt wird.
+  
+  Funktionell unterscheiden sich die beiden Varianten nicht.
 
-  - **Mitglieder** sind reguläre Mitglieder. Hier ist zu beachten, dass die
-    maximale Anzahl an Fehlterminen begrenzt ist.
-  - **Flex-Mitglieder** werden wie reguläre Mitglieder behandelt, können aber
-    beliebig viele Fehltermine auswählen.
-  - **Aushilfen** können ebenfalls beliebig viele Fehltermine angeben, müssen
-    aber im Gegensatz zu Mitgliedern keinen Teilnehmerbeitrag zahlen.
+  - **Mitglieder** sind reguläre Mitglieder.
+  - **Gäste** sind Mitspielende ohne Mitgliedsstatus.
 buttons:
   - Mitglied: mitglied
-  - Flex-Mitglied: flex
-  - Aushilfe: aushilfe
+  - Gast: gast
 ---
-id: sommer-2022/einleitung
+id: sommer-2023/einleitung
 field: Einleitung
-question: Anmeldung zur Sommerphase 2022
+question: Anmeldung zur Sommerphase 2023
 subquestion: |
   % if testmodus:
   <div class="alert alert-warning" role="alert">
@@ -34,85 +31,59 @@ subquestion: |
   </div>
   % endif
 
-  Über dieses Formular meldest du dich zur Sommerarbeitsphase 2022 des LJO
+  Über dieses Formular meldest du dich zur Block-Arbeitsphase 2023 des LJO
   Hamburg an. Die Anmeldung ist verbindlich, das heißt, sobald du die Anmeldung
   abgegeben hast, gehen wir davon aus, dass du auch zu allen Probenterminen
-  erscheinst, zu denen du dich nicht explizit abgemeldet hast. Solltest du
-  feststellen, dass du bei deiner Anmeldung einen Fehler gemacht hast, ist das
-  aber i. d. R. kein Problem. Schreib uns dazu dann einfach eine E-Mail.
+  erscheinst Solltest du feststellen, dass du bei deiner Anmeldung einen Fehler
+  gemacht hast, ist das aber i. d. R. kein Problem. Schreib uns dazu dann
+  einfach eine E-Mail.
 
-  ### Kurz und Knapp
+  ### Übersicht über die Arbeitsphase
+  
+  - Erste Tuttiprobe am 24. April (18:00-21:30)
+  - Stimm- und Dozentenprobe am 8. Mai (18:00-21:30)
+  - Dozentenproben am 12. Mai (18:00-21:30)
+  - Probenwoche in Schlitz vom 13. Mai bis zum 20. Mai (Hamburger Himmelfahrtsferien)
+  - Konzert im Körber-Haus Bergedorf am 21. Mai
+  - Konzert in der Laeiszhalle am 23. Mai
+  
+  #### Programm
 
-  - Anmelden bis zum 7. Januar 2022
-  - Vollversammlung am 17. Januar 2022 (vermutlich online)
-  - Erste Probe am 24. Januar. Denk dran bis dahin die unterschriebene Anmeldung
-    abzugeben und den Teilnahmebeitrag zu überweisen.
+  D. Schostakowitsch: **Sinfonie Nr. 7 "Leningrader", Op. 60**
+  
+  **Besetzung**: Piccoloflöte, 2 große Flöten (zweite auch Altflöte), 2 Oboen,
+  Englischhorn, kleine Klarinette (in Es), 2 Klarinetten (in B und A),
+  Bassklarinette (in B), 2 Fagotte, Kontrafagott, 4 Hörner, 3 Trompeten,
+  3 Posaunen, Basstuba, Pauken, große und kleine Trommel, Triangel, Becken,
+  Xylophon, Tamtam, Tamburin, Klavier, 2 Harfen, Streicher  
+  Fernorchester mit 4 Hörnern, 3 Trompeten, 3 Posaunen
 
-  ### Informationen zur Arbeitsphase
-
-  Die Arbeitsphase findet im Zeitraum vom 17. Januar bis zum 25. Juni 2022
-  statt. Wie üblich wird in dieser Zeit an den Montagen in der Schulzeit
-  geprobt. Zusätzlich finden 7 Probentage an Wochenenden in Hamburg statt. Vom
-  10. Juni bis zum 12. Juni 2022 findet (sofern es die Corona-Richtlinien
-  zulassen) ein abschließendes Intensiv-Probenwochenede in Tönning statt.
-
-  Wir hoffen, dass diese Arbeitsphase wieder verhältnismässig normal stattfinden
-  kann, d.h. mit größerer Besetzung. Die Arbeitsphase wird mit folgendem
-  Programm gespielt:
-
-    - L.v.Beethoven: Leonore-Ouvertüre Nr. 3, op.72b
-    - P.I.Tschaikowski: Rokoko-Variationen, op.33
-    - P.I.Tschaikowski: Sinfonie Nr. 4, op.36
-
-  Dirigiert wird die Arbeitsphase von **Johannes Witt**. Der Solist bzw. die
-  Solistin steht noch nicht fest.
-
-  ### Auswirkungen der Corona-Pandemie
-
-  Auch im Sommer 2022 werden wir mit Einschränkungen durch die Corona-Pandemie
-  umgehen müssen. In erster Linie bedeutet das, dass die Proben und Konzerte als
-  2G-Veranstaltungen stattfinden. Das heißt, alle Teilnehmenden ab 16 Jahren
-  müssen genesen oder geimpft sein. Darüber hinaus müssen die 14-16-Jährigen
-  eine Schultestbescheinigung vorlegen oder sich vor der Probe selbst
-  schnelltesten. Wir gehen im Moment davon aus, dass die Konzerte normal
-  stattfinden können (d.h. ohne große Abstände). Sollte sich die Situation
-  verändern, werden wir unverzüglich darüber informieren.
-
-  <div class="alert alert-info" role="alert">
-  Die Arbeitsphase steht bezüglich des Programms und bezüglich der Termine unter
-  Vorbehalt. Je nach Entwicklung der Pandemie können kurzfristige Änderungen
-  unvermeidlich sein.
-  </div>
+  Dirigieren wird **Johannes Witt**.
 
   ### Wie wird ausgewählt, wer mitspielt?
 
   Zunächst einmal solltest du dich anmelden. Nur wer sich anmeldet wird für die
   Besetzung in Betracht gezogen. Sollte es für eine Instrumentengruppe oder ein
-  Instrument mehr Anmeldungen als Positionen geben, werden wir versuchen die
-  Besetzung so aufzuteilen, dass jeder bei einem Teil des Programms mitspielen
-  kann. Die Entscheidung wird durch die künstlerische Leitung, Konzertmeister
-  und die jeweiligen Stimmführer getroffen.
-
+  Instrument mehr Anmeldungen als Positionen geben, werden künstlerische Leitung,
+  Konzertmeisterin, der\*die jeweilige Stimmführer\*in und die Personalwartin
+  über eine Teilnahme entscheiden. Die Verteilung der Stimmen in den Bläsern
+  erfolgt in Absprache zwischen künstlerischer Leitung, der jeweiligen
+  Stimmführung und den beteiligten Spieler\*innen.
+  
+  Wenn du einen Stimmwunsch hast, kannst du den im Anmeldeformular angeben.
+  Uns liegen dann alle Wünsche vor und wir werden letztendlich die Aufteilung
+  unter Berücksichtigung aller wichtigen Aspekte gestalten.
+  
   ### Wie melde ich mich an?
 
-  1. Fülle dieses Online-Formular aus. Im Laufe des Formulars fragen wir dich
-     u.a. danach, zu welchen Probenterminen du anwesend sein wirst. Nimm dir
-     also deinen Terminkalender und etwas Zeit, um diese Fragen zu beantworten.
+  1. Fülle dieses Online-Formular aus.
   2. Nachdem du das Online-Formular abgeschickt hast, erhältst du per E-Mail
      eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
-  3. Dieses PDF unterschreibst du und schickst es per E-Mail an
-     [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de).
-  4. Falls du zum Zeitpunkt der Anmeldung noch minderjährig bist, müssen auch
-     deine Eltern die Anmeldung unterschreiben.
-  5. Du bekommst eine Rückmeldung vom Vorstand oder deinem\*deiner Stimmführer\*in,
-     ob du dabei bist.
-
-  % if status == "aushilfe":
-  ### Anmerkung
-
-  Du meldest dich als Aushilfe an. Sollte das ein Versehen sein, klicke bitte
-  [hier](https://ljo-hamburg.de/interner-bereich) und melde dich dort an.
-  % endif
+  3. Schicke das PDF, das du am Ende dieser Anmeldung per E-Mail bekommst,
+     unterschrieben (bei Minderjährigen auch die Eltern) an
+     [Caroline](mailto:steinhagen@lmr-hh.de). 
+  4. Falls eine Teilnahme nicht möglich ist, meldet sich der Vorstand oder
+     dein\*e Stimmführer\*in bei dir.
 under: |
   <small>
   Zur Durchführung der Arbeitsphase erfragen wir einige persönliche Daten. Alle
@@ -124,7 +95,7 @@ under: |
   [Vorstand](mailto:vorstand@ljo-hamburg.de).
   </small>
 ---
-id: sommer-2022/persoenliche-daten
+id: sommer-2023/persoenliche-daten
 field: Kontaktdaten
 section: Persönliche Daten
 question: Persönliche Daten
@@ -150,8 +121,30 @@ fields:
   - Wann wurdest du geboren?: mitglied.birthdate
     datatype: date
   - Welches Instrument spielst du?: mitglied.instrument
+    choices:
+      - Flöte
+      - Oboe
+      - Klarinette
+      - Fagott
+      - Trompete
+      - Horn
+      - Posaune
+      - Tuba
+      - Klavier
+      - Harfe
+      - Schlagwerk / Pauke
+      - Geige
+      - Bratsche
+      - Cello
+      - Kontrabass
+  - Wünscht du dir eine bestimmte Stimme zu spielen?: mitglied.stimme
+    hint: 1. Geige, Kontrafagott, 2. Trompete, ...
+    required: False
+    help: |
+      Deine Angabe ist keine Garantie, dass du diese Stimme spielen wirst. Wir
+      werden eine Entscheidung unter Berücksichtigung aller Wünsche treffen.
 ---
-id: sommer-2022/elternkontakt
+id: sommer-2023/elternkontakt
 field: Elternkontakt
 section: Persönliche Daten
 question: Kontakt der Eltern
@@ -167,125 +160,69 @@ fields:
     datatype: email
   - Telefon: eltern.phone_number
 ---
-id: sommer-2022/teilnehmerbeitrag
-field: Teilnehmerbeitrag
-section: Teilnehmerbeitrag
-question: Teilnehmerbeitrag
+id: sommer-2023/teilnahmebeitrag
+field: Teilnahmebeitrag
+section: Teilnahmebeitrag
+question: Teilnahmebeitrag und Rücktrittsmodalitäten
 subquestion: |
-  Um Kosten für Konzertsäle, Probenräume, Noten, Dozenten, Probenwochenenden etc.
-  zu decken, müssen wir für die Teilnahme an einer Arbeitsphase einen
-  Teilnehmerbeitrag von 60€ pro Person erheben.
-
-  % if status == "aushilfe":
-    Als Aushilfe **entfällt** dieser Teilnehmerbeitrag für dich. Wir sind dir
-    sehr dankbar für deine Unterstützung.
-  % else:
-    Bitte überweise den Betrag bis zur ersten Probe, wenn du eine Zusage
-    bekommen hast. Die Kontoverbindung erhältst du in der Bestätigungs-E-Mail,
-    wenn du dieses Formular abschickst.
-  % endif
+  Um Kosten für Transport (Busse HH-Schlitz-HH), Unterkunft (Mehrbettzimmer 7
+  Nächte), Verpflegung (Vollpension), Noten, Dozenten, Konzertsäle zu decken,
+  müssen wir einen Teilnehmerbeitrag erheben. Der Maximalbeitrag wird bei 250
+  Euro liegen (zum Vergleich: die Gesamtkosten pro Teilnehmer\*in für die
+  Blockarbeitsphase belaufen sich auf ca. 850 Euro). Es wird daran gearbeitet,
+  dass der Beitrag von 250 Euro noch etwas reduziert werden kann, dies können
+  wir zum jetzigen Zeitpunkt aber nicht fest zusagen. Der genaue Betrag wird
+  voraussichtlich im Februar feststehen.
+  
+  Bitte überweise den Betrag fristgemäß an den Landesmusikrat Hamburg nach
+  Erhalt der Rechnung, welche Dir voraussichtlich bis Ende Februar zugemailt
+  wird. In Einzelfällen kann über eine Bezuschussung des Teilnehmerbeitrages
+  entschieden werden. Bitte setze Dich dafür rechtzeitig mit der Projektleitung
+  Caroline Steinhagen (steinhagen@lmr-hh.de) in Verbindung.
+  
+  Die Anmeldung zur Sommerarbeitsphase ist mit diesem Formular und mit der
+  Überweisung des Teilnehmerbeitrages verbindlich. Sollte Dir eine Teilnahme
+  kurzfristig aus Krankheitsgründen nicht möglich sein, informiere umgehend
+  deine\*n Stimmführer\*in oder
+  [Caroline Steinhagen](mailto:steinhagen@lmr-hh.de)/Projektleitung. Da wir nach
+  Anmeldung verbindlich mit Dir für die Gesamtbesetzung planen, ist bei
+  kurzfristigem Rücktritt ohne nachgewiesene Erkrankung ein\*e Ersatzspieler\*in
+  zu stellen und es erfolgt keine Erstattung des Teilnehmerbeitrages.
 buttons:
   - Einverstanden: continue
 ---
-id: sommer-2022/termine
+id: sommer-2023/termine
 field: Termine
 section: Termine
 question: Termine
 subquestion: |
-  Damit eine vernünftige Probenplanung möglich ist, möchten wir gerne von dir
-  wissen, zu welchen Probenterminen du anwesend sein wirst. Bitte nimm dir die
-  Zeit, die Termine mit deinem Kalender abzugleichen. Die Angaben, die du hier
-  machst, sind **verbindlich**.
+  Voraussetzung für eine Teilnahme ist die Anwesenheit bei allen Dozentenproben,
+  den Probenterminen in Schlitz sowie bei der Generalprobe und den Konzerten:
+  
+  - Mo. 24.4. 18-21.30 h Tuttiprobe Hamburg
+  - Mo. 8.5. 18-21.30 h Stimm-/Dozentenproben Hamburg
+  - Fr. 12.5. 18-21.30 h Dozentenproben Hamburg
+  - Sa. 13.5. Abfahrt nach Schlitz/Hessen, 13.-20.5. Übernachtung und Proben in der Landesmusikakademie Hessen
+  - Sa. 20.5. Werkstattkonzert in der LMA Hessen (öffentliche GP) und Rückfahrt nach Hamburg
+  - So. 21.5. 11 h GP Laeiszhalle  
+    16 h Anspielprobe Körber-Haus  
+    19 h Konzert Bergedorfer Musiktage/Körber-Haus
+  - Di. 23.5. 16 h Anspielprobe Laeiszhalle  
+    20 h Jubiläumskonzert Laeiszhalle – 55 Jahre Landesjugendorchester Hamburg
 
-  Uns ist natürlich bewusst, dass es manchmal unvorhergesehene Umstände gibt,
-  wegen derer du kurzfristig nicht zu einer Probe kommen kannst (z.B.
-  Krankheiten). In so einem Fall solltest du uns umgehend per Mail
-  informieren, um dich von der Probe freistellen zu lassen. Mehr
-  Informationen dazu findest du auf der
-  [LJO-Website im internen Bereich](https://ljo-hamburg.de/interner-bereich/freistellung/).
-
-  % if status == "mitglied":
-    Wenn du bei mehr als 4 Probenterminen nicht kannst, schreib uns bitte eine
-    Mail an [freistellung@ljo-hamburg.de](mailto:freistellung@ljo-hamburg.de),
-    **bevor** du dich anmeldest. In so einem Fall muss der Vorstand
-    entscheiden, ob du die Arbeitsphase trotzdem mitspielen kannst. Wenn du
-    uns erst im Laufe der Phase mitteiltst, dass du bei vielen Terminen nicht
-    kannst, kann es sein, dass wir dich dann von den Konzerten ausschließen
-    müssen. Den Teilnehmerbeitrag musst du in dem Fall trotzdem zahlen.
-
-    Die Anwesenheit bei Dozenten- und Stimmproben ist besonders wichtig.
-    Generalproben und das Abschluss-Probenwochenende sind absolute
-    Pflichttermine. Solltest du hier nicht können, können wir die Anmeldung nur
-    in Sonderfällen akzeptieren.
-  % elif status == "flex":
-    Da du eine Sonderregelung mit dem Vorstand vereinbart hast, kannst du mehr
-    als 4 Fehltermine auswählen. Bitte gib hier an, zu welchen Terminen du zur
-    Probe kommen kannst.
-  % endif
-
-  Im Januar und Februar probt das LJO ausweichend in der Ida Ehre-Schule, da im
-  Stintfang ein Impfzentrum eingerichtet ist.
-
-  Bitte beachte, dass unsere künstlerische Leitung Johannes Witt von Mitte April
-  bis Mitte Mai im Ausland ist. In diesem Zeitraum werden also Stimmproben,
-  Dozentenproben sowie ggf. Proben mit einem Gastdirigenten stattfinden.
-  Aufgrund der Lage von Ferien und Konzertterminen können im Mai und Juni nur
-  noch relativ wenig Proben stattfinden. Daher muss das Programm im Wesentlichen
-  bis Mitte April fertig erarbeitet sein. Bitte berücksichtige das bei deiner
-  Terminplanung.
-
-  Generalprobe und Konzert in Bergedorf (24. und 25. Juni) stehen momentan noch
-  unter Vorbehalt, da es noch Terminkonflikte zu lösen gibt. Sollten Änderungen
-  notwendig sein, werden wir zeitnah Bescheid sagen.
 fields:
-  - Ich bin an den folgenden Probenterminen anwesend: probentermine
-    datatype: checkboxes
-    none of the above: false
-    code: alle_termine("Probentermine")
-    minlength: ${ max_fehltermine("Probentermine", 4) }
-    validation messages:
-      minlength: |
-        Um im LJO mitspielen zu können erwarten wir, dass du auch zu allen
-        Proben kommst. Für eine Sonderregelung sprich bitte sofort mit dem
-        Vorstand: vorstand@ljo-hamburg.de.
-  - note: |
-      % if status == "mitglied":
-        Die Anwesenheit bei allen Konzerten ist verpflichtend. Solltest du die
-        Arbeitsphase mitspielen wollen, kannst aber nicht zu allen
-        Konzertterminen, setze dich bitte vorher mit uns
-        [in Verbindung](mailto:freistellung@ljo-hamburg.de).
-      % elif status == "flex":
-        Wir möchten gerne vermeiden, dass unsere Besetzung von Konzert zu Konzert
-        wechselt. Uns ist es daher sehr wichtig, dass alle Mitspieler*innen zu
-        allen Konzertterminen können. Bitte gib hier an, zu welchen Terminen du
-        dabei bist.
-      % else:
-        Bitte gib hier an, zu welchen Konzertterminen du aushelfen wirst.
-      % endif
-  - Ich bin an den folgenden Konzertterminen anwesend: konzerttermine
-    datatype: checkboxes
-    none of the above: false
-    code: alle_termine("Konzerttermine")
-    minlength: ${ max_fehltermine("Konzerttermine", 0) }
-    validation messages:
-      minlength: |
-        Es ist leider nicht möglich, nur bei einigen Konzerten mitzuspielen. Für
-        eine Sonderregelung sprich bitte sofort mit dem Vorstand:
-        vorstand@ljo-hamburg.de.
-  - ? Falls du möchtest, kannst du hier Details zu deinen Fehlzeiten schreiben.
-      Falls du beispielsweise an einem Tag möglicherweise erst sehr knapp zur
-      Probe kommen kannst, kannst du das hier erwähnen.
+  - ? Wenn Du möchtest, kann Du uns hier Details zu den Terminen schreiben, falls es
+      bei Dir Besonderheiten zu berücksichtigen gibt.
     : anmerkungen
     input type: area
     required: False
 ---
 # Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
 # werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls
-# bestimmte Bedingungne noch nicht akzeptiert sind.
+# bestimmte Bedingungen noch nicht akzeptiert sind.
 code: |
   bedingungen.akzeptiert = all([
     bedingungen.tnbedingungen,
-    bedingungen.corona,
     bedingungen.aufnahmen,
     bedingungen.finanzierung,
     bedingungen.newsletter
@@ -295,7 +232,7 @@ code: |
       bedingungen.akzeptiert and bedingungen.veranstaltungsort
     )
 ---
-id: sommer-2022/naechste-phasen
+id: sommer-2023/naechste-phasen
 field: Phasen
 section: Zukünftige Arbeitsphasen
 question: Zukünftige Arbeitsphasen
@@ -305,38 +242,32 @@ subquestion: |
   und auch nicht verbindlich. Es hilft uns aber sehr, wenn wir rechtzeitig
   fehlende Positionen besetzen können.
 fields:
-  - "Ich spiele in der Herbstphase 2022 mit": nachste_phase
+  - "Ich spiele in der Herbstphase 2023 mit": nachste_phase
     datatype: radio
     code: ja_nein_vielleicht()
-  - "Ich spiele in der Sommerphase 2023 mit": ubernachste_phase
+  - "Ich spiele in der Sommerphase 2024 mit": ubernachste_phase
     datatype: radio
     code: ja_nein_vielleicht()
 ---
-id: sommer-2022/vorbereitung
+id: sommer-2023/vorbereitung
 field: Vorbereitung
 section: Vorbereitung
 question: Vorbereitung
 subquestion: |
-  Im Gegensatz zu vielen anderen Landesjugendorchestern probt das LJO Hamburg
-  wöchentlich. Das bedeutet allerdings nicht, dass wir die Stücke nur während der
-  Proben üben. Es ist genauso wichtig, dass jede*r einzelne alle Stücke vor der
-  ersten Probe vorbereitet und sicher beherrscht. Bereite dich also bitte
-  rechtzeitig mit den [Noten](https://ljo-hamburg.de/noten) vor.
+  Aufgrund der kurzen Vorbereitungszeit ist es unerlässlich, dass die Sinfonie
+  sehr gut und selbstständig mit den [Noten](https://ljo-hamburg.de/noten) vor
+  der 1. Probe vorbereitet wird. Im internen Bereich findest Du auch einen Link
+  zu einer Aufnahme, welche Du Dir für die Vorbereitung anhören kannst.
 buttons:
-  - Alles klar, ich werde die Stücke vorbereiten: continue
+  - Alles klar, ich werde das Stück vorbereiten: continue
 ---
-id: sommer-2022/probenwochenende
+id: sommer-2023/probenwochenende
 field: Probenwochenende
-section: Abschluss-Probenwochenende
-question: Abschluss-Probenwochenende
+section: Verpflegung etc.
+question: Besonderheiten, Verpflegung etc.
 subquestion: |
-  Am Ende der Arbeitsphase findet kurz vor den Konzerten ein abschließendes
-  Intensiv-Probenwochenende in Tönning statt, um die letzten Feinschliffe
-  vor den Konzerten zu erarbeiten. Die Teilnahme an diesem Intensiv-Wochenende
-  ist mit der Anmeldung verpflichtend. Auf dem Probenwochenende werden die
-  letzten Feinheiten vor den Konzerten erarbeitet. Bitte gib hier Allergien,
-  chronische Krankheiten oder sonstige Einschränkungen an, die hierfür
-  berücksichtigt werden sollen.
+  Bitte gib hier an, welche Besonderheiten bei der Ernährung während der
+  Unterbringung in Schlitz berücksichtigt werden sollen.
 
   Deine Angaben werden selbstverständlich vertraulich behandelt.
 under: |
@@ -350,19 +281,18 @@ fields:
       - "Ich möchte vegetarisch versorgt werden": vegetarisch
       - "Ich möchte vegan versorgt werden": vegan
     none of the above: false
-  - "Weitere Angaben": pwe_sonstiges
+  - ? Bitte gib hier Unverträglichkeiten, Allergien, chronische Krankheiten,
+      Medikamenteneinnahmen oder sonstige Besonderheiten an, die berücksichtigt
+      werden sollen.
+    : pwe_sonstiges
     datatype: area
     required: false
 ---
-id: sommer-2022/jugendschutz
+id: sommer-2023/jugendschutz
 field: Jugendschutz
 section: Jugend- und Datenschutz
 question: Jugendschutz
 subquestion: |
-  <div class="alert alert-info" role="alert">
-  <b>Hinweis</b>: Die Regelungen haben sich seit der letzten Arbeitsphase geändert.
-  </div>
-
   Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
   und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen
   müssen sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit
@@ -390,7 +320,7 @@ subquestion: |
 buttons:
   - Einverstanden: continue
 ---
-id: sommer-2022/datenschutz
+id: sommer-2023/datenschutz
 field: Datenschutz
 section: Jugend- und Datenschutz
 question: Datenschutz
@@ -406,14 +336,6 @@ fields:
     datatype: yesnowide
     validate: >
       lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
-  - ? Ich bin informiert, dass die Arbeitsphase unter **2G-Regeln** stattfindet.
-      Außerdem bin ich informiert, dass Änderungen an der Arbeitsphase auf Basis
-      der geltenden behördlichen Auflagen zur Eindämmung der COVID-19 Pandemie
-      möglich sind.
-    : bedingungen.corona
-    datatype: yesnowide
-    validate: >
-      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
       drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
       bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
@@ -436,7 +358,7 @@ fields:
   - ? Ich bin informiert, dass die Arbeitsphase nur stattfinden kann, wenn eine
       auskömmliche Finanzierung sowie eine vollständige Orchesterbesetzung
       gesichert ist. Im Falle des nicht Zustandekommen kann die Arbeitsphase
-      abgesagt werden. Bereits überwiesene Teilnehmerbeiträge werden in diesem
+      abgesagt werden. Bereits überwiesene Teilnahmebeiträge werden in diesem
       Fall zurückerstattet.
     : bedingungen.finanzierung
     datatype: yesnowide
@@ -448,10 +370,10 @@ fields:
     : bedingungen.newsletter
     datatype: yesnowide
 ---
-id: sommer-2022/kontrolle
+id: sommer-2023/kontrolle
 continue button field: Kontrolle
 section: Deine Anmeldung
-question: Deine Anmeldung zur Sommerphase 2022
+question: Deine Anmeldung zur Sommerphase 2023
 review:
   - note: |
       % if testmodus:
@@ -492,13 +414,9 @@ review:
   - Angaben ändern: Termine
     button: |
       ## Termine
-
-      Du hast dich zu den folgenden Proben- und Konzertterminen verbindlich
-      angemeldet:
-
-      ${ terminliste() }
-
+      
       % if anmerkungen:
+      Du hast folgende Angaben zu den Terminen der Arbeitsphase gemacht:
       <p><div class="card">
       <div class="card-header">Weitere Anmerkungen</div>
       <div class="card-body">
@@ -506,11 +424,12 @@ review:
       </div>
       </div></p>
       % else:
-      *Keine weiteren Anmerkungen.*
-      %endif
+      *Du hast keine weiteren Anmerkungen zu den Terminen der Arbeitsphase
+      gemacht.*
+      % endif
   - Angaben ändern: Probenwochenende
     button: |
-      ## Abschluss-Probenwochenende
+      ## Besonderheiten Verpflegung etc.
 
       % for zeile in get_pwe_versorgung():
         - ${ zeile }
@@ -522,26 +441,26 @@ review:
         </div></p>
       % endif
       % if not pwe_angaben():
-        *Du hast keine Angaben zum Probenwochenende gemacht*
+        *Du hast keine weiteren Angaben zum Aufenthalt gemacht*
       % endif
   - Angaben ändern: Phasen
-    show if: status != "aushilfe"
+    show if: status != "gast"
     button: |
       ## Nächste Arbeitsphasen
 
       % if unsicher(nachste_phase):
-        - Ich **weiß noch nicht**, ob ich im Herbst 2022 weiter dabei bin.
+        - Ich **weiß noch nicht**, ob ich im Herbst 2023 weiter dabei bin.
       % elif dabei(nachste_phase):
-        - Ich werde vermutlich im Herbst 2022 **weiter mitspielen**.
+        - Ich werde vermutlich im Herbst 2023 **weiter mitspielen**.
       % else:
-        - Im Herbst 2022 bin ich vermutlich **nicht mehr dabei**.
+        - Im Herbst 2023 bin ich vermutlich **nicht mehr dabei**.
       % endif
       % if unsicher(ubernachste_phase):
-        - Ich **weiß noch nicht**, ob ich im Sommer 2023 weiter dabei bin.
+        - Ich **weiß noch nicht**, ob ich im Sommer 2024 weiter dabei bin.
       % elif dabei(ubernachste_phase):
-        - Ich werde vermutlich im Sommer 2023 **weiter mitspielen**.
+        - Ich werde vermutlich im Sommer 2024 **weiter mitspielen**.
       % else:
-        - Im Sommer 2023 bin ich vermutlich **nicht mehr dabei**.
+        - Im Sommer 2024 bin ich vermutlich **nicht mehr dabei**.
       % endif
   - Erneut ansehen: Datenschutz
     button: |
@@ -557,7 +476,7 @@ review:
       erhältst du in der Bestätigungsmail.
 continue button label: Anmeldung abschicken
 ---
-id: sommer-2022/warten
+id: sommer-2023/warten
 event: Warten
 section: Deine Anmeldung
 prevent going back: True
@@ -566,7 +485,7 @@ subquestion:
   Deine Anmeldung wird gerade abgeschickt. Dies kann einen Moment dauern. Bitte
   lass dieses Fenster geöffnet, bis die Anmeldung erfolgreich abgeschickt wurde.
 ---
-id: sommer-2022/bestaetigung
+id: sommer-2023/bestaetigung
 event: Fertig
 section: Deine Anmeldung
 prevent going back: True
@@ -581,7 +500,7 @@ subquestion:
 buttons:
   - Fertig: exit
 ---
-id: sommer-2022/testergebnisse
+id: sommer-2023/testergebnisse
 event: Testergebnisse
 section: Deine Anmeldung
 prevent going back: True

@@ -27,7 +27,7 @@ include:
 # Der Status einer Anmeldung wird über einen URL-Parameter festgelegt.
 code: |
   status = url_args.get("status", "").lower()
-  if status not in ["mitglied", "flex", "aushilfe"]:
+  if status not in ["mitglied", "gast"]:
     status = "mitglied"
 ---
 # Der Testmodus wird über einen URL-Parameter oder eine Konfigurationsvariable
@@ -64,7 +64,6 @@ code: |
       register_parent_email_task,
       register_member_email_task,
       member_email_task,
-      orga_email_task,
       archive_registration_task
   ]):
     Warten
