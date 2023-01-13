@@ -19,7 +19,9 @@ Dirigiert wird die Arbeitsphase von **Johannes Witt**.
 Die Noten für die Arbeitsphase findest du unter
 [https://ljo-hamburg.de/noten](https://ljo-hamburg.de/noten). Lade dir dort die
 Noten für deine Stimme herunter und drucke sie aus. Originalnoten werden erst
-kurz vor dem Konzert verteilt, da es sich um Leihmaterial handelt.
+kurz vor dem Konzert verteilt, da es sich um Leihmaterial handelt. Dort findest
+du auch einen Link zu einer Aufnahme, welche Du Dir für die Vorbereitung anhören
+kannst.
 
 # Probenplan
 In der Anmeldung hast du bereits die geplanten Proben- und Konzerttermine gesehen.
@@ -46,7 +48,9 @@ voraussichtlich im Februar feststehen.
 
 Bitte überweise den Betrag fristgemäß an den Landesmusikrat Hamburg nach
 Erhalt der Rechnung, welche Dir voraussichtlich bis Ende Februar zugemailt
-wird.
+wird. In Einzelfällen kann über eine Bezuschussung des Teilnehmerbeitrages
+entschieden werden. Bitte setze Dich dafür rechtzeitig mit der Projektleitung
+Caroline Steinhagen (steinhagen@lmr-hh.de) in Verbindung.
 
 # Was nun?
 
