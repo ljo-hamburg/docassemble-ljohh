@@ -222,7 +222,8 @@ fields:
     show if: {code: minderjaehrig}
     validate: >
       lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
-  - ? Ich/Wir gebe(n) dem Landesmusikrat Hamburg e.V. (LMR HH) mein/unser
+  - ? >
+      Ich/Wir gebe(n) dem Landesmusikrat Hamburg e.V. (LMR HH) mein/unser
       Einverständnis zu Rundfunk- und Fernsehaufnahmen, Aufzeichnungen in Ton
       und Bild (hier insbesondere: Videoaufnahmen für einen Werbetrailer für die
       Opernproduktion „Aida“ von FKP Scorpio), die im Zusammenhang mit dem LJO
