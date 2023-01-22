@@ -325,7 +325,7 @@ review:
         </div></p>
       % endif
       % if not pwe_angaben():
-        *Du hast keine weiteren Angaben zum Aufenthalt gemacht*
+        *Du hast keine weiteren Angaben zum gemacht*
       % endif
   - Erneut ansehen: Datenschutz
     button: |
