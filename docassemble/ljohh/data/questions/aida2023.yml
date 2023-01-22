@@ -1,0 +1,137 @@
+---
+# Dieser Abschnitt sollte nicht verändert werden.
+include:
+  - data.yml
+  - aida2023-fragen.yml
+---
+# Die Metadaten konfigurieren das Erscheinungsbild der Anmeldungen (z.B. den
+# Titel). Mögliche Felder sind hier dokumentiert:
+# https://docassemble.org/docs/initial.html#metadata
+metadata:
+  title: Anmeldung zum Aida-Projekt 2023
+  tab title: Anmeldung Aida 2023
+  short title: LJO-Anmeldung
+  logo: '<img src="https://cdn.lmr-hh.de/logos/ljohh-square-white.svg" height="27">'
+  description:
+    Dies ist das Anmeldeformular zum AIDA-Projekt des LJO Hamburg.
+  exit url: https://ljo-hamburg.de/interner-bereich/noten
+  revision_date: 2023-01-22
+---
+# In diesem Abschnitt werden die Anmeldungen sowie die Automatisierung
+# konfiguriert. Die einzelnen Felder sind separat dokumentiert.
+variable name: daten
+data:
+  # Das Aktivieren des Testmodus verhindert, dass Anmeldungen automatisch
+  # archiviert werden. Stattdessen wird eine Zusammenfassung der Aktionen an die
+  # angegebene E-Mail geschickt, in der steht, was bei ausgeschaltetem
+  # Testmodus passiert wäre.
+  Testmodus: true
+
+  # Bezeichnung der Arbeitsphase bzw. des Projektes.
+  Arbeitsphase: Aida 2023
+
+  # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
+  # 'Bibliothek' gibt die ID einer Dokumentenbibliothek in SharePoint an, in der
+  # neue Anmeldungen eingefügt werden sollen. Die 'Tabelle' gibt die markierte
+  # Excel-Tabelle in der Datei an, in dem neue Anmeldungen eingefügt werden sollen.
+  Anmeldungen:
+    Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
+    Dokument: 01Z4U3TN2BI636ELMG5FAKGJVUY7VTSMNK
+    Tabelle: "{5BBD3C0B-4179-4BE4-824A-264B475E0731}"
+
+  # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
+  # Mailingliste hinzugefügt.
+  Mailingliste: aida-2023@lists.ljo-hamburg.de
+  Mailingliste (Eltern): aida-2023-eltern@lists.ljo-hamburg.de
+  Mailingliste (Mitglieder): mitglieder@lists.ljo-hamburg.de
+
+  # Dieses Mailgun Template wird zum Verschicken von E-Mails benutzt. Es sollte
+  # die Variable {{{ content }}} enthalten.
+  Mailgun Vorlage: anmeldung
+
+  # Dokumentenbibliothek und ID des SharePoint Ordners, in dem Anmeldungen
+  # archiviert werden sollen.
+  Archivordner:
+    Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
+    Ordner: 01Z4U3TN6R5VZN7KYM6VEY5MFBYV2POLVX
+---
+# Das Anmeldeformular als PDF. Hier können Dateiname und -inhalt gesetzt werden.
+# Der variable name sowie die valid formats sollten nicht verändert werden.
+attachment:
+  name: Anmeldung ${ mitglied.name }
+  # Dies ist der Dateiname, der u.A. im Mailanhang verwendet wird.
+  filename: Anmeldung ${ mitglied.name }
+  # Dies ist der Dateiname des Templates. Diese Datei muss sich im `templates`
+  # Ordner befinden.
+  docx template file: Anmeldung Aida-Projekt 2023.docx
+  # Die folgendne beiden Zeilen sollten nicht verändert werden
+  variable name: anmeldeformular
+  valid formats: [pdf]
+---
+# Der Inhalt der E-Mail, die an neu angemeldete Mitglieder geschickt wird. Der
+# Wert von template sollte nicht verändert werden.
+template: mitglied_email
+# Der E-Mail-Betreff
+subject: Deine Anmeldung zum Aida-Projekt 2023 des LJO Hamburg
+# Diese Datei enthält den Mailinhalt (die Datei befindet sich im `templates`
+# Ordner).
+content file: E-Mail Aida 2023.md
+---
+template: testergebnis
+usedefs: [test_defs]
+content file: Testmodus.md
+---
+# Die Abschnitte der Anmeldung. In der fragen-Datei können Fragen diesen
+# Abschnitten zugeordnet werden.
+sections:
+  - Persönliche Daten
+  - Projektdetails
+  - Jugend- und Datenschutz
+  - Deine Anmeldung
+---
+# Die Reihenfolge, in der Fragen gestellt werden. Dies ist eine erweiterte
+# Funktion, die nicht leichtfertig verändert werden sollte.
+mandatory: True
+code: |
+  Konfiguration
+  if testmodus:
+    status
+  Einleitung
+  Kontaktdaten
+  if minderjaehrig:
+    Elternkontakt
+  Termine
+  Jugendschutz
+  Datenschutz
+  Kontrolle
+  Abschicken
+  if testmodus:
+    Testergebnisse
+  else:
+    Fertig
+---
+# The member_data forms is the data that is available to be put in spreadsheets.
+# The dictionary keys are compared to spreadsheet headings. The comparison is
+# case-insensitive.
+code: |
+  member_data = {
+    "Arbeitsphase": daten["Arbeitsphase"],
+    "Vorname": mitglied.name.first,
+    "Nachname": mitglied.name.last,
+    "Instrument": mitglied.instrument,
+    "Stimmwunsch": mitglied.stimme,
+    "E-Mail": mitglied.email,
+    "Telefonnummer": mitglied.phone_number,
+    "Adresse": adresse(mitglied),
+    "Geburtsdatum": format_date(mitglied.birthdate, 'yyyy-MM-dd'),
+    "Anmerkungen": anmerkungen.strip(),
+    "Versorgung": ', '.join(pwe_versorgung.true_values()),
+    "Sonstiges": pwe_sonstiges.strip(),
+    "Newsletter": bedingungen.newsletter
+  }
+  if minderjaehrig:
+    member_data["Eltern Vorname"] = eltern.name.first
+    member_data["Eltern Nachname"] = eltern.name.last
+    member_data["Eltern E-Mail"] = eltern.email
+    member_data["Eltern Telefon"] = eltern.phone_number
+---
