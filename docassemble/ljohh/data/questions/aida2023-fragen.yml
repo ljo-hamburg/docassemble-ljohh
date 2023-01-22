@@ -298,7 +298,7 @@ review:
       |Telefonnummer | ${ eltern.phone_number }   |
   - Angaben ändern: Termine
     button: |
-      ## Termine
+      ## Projektdetails
       
       % if anmerkungen:
       Du hast folgende Angaben zu den Terminen der Arbeitsphase gemacht:
@@ -312,8 +312,7 @@ review:
       *Du hast keine weiteren Anmerkungen zu den Terminen der Arbeitsphase
       gemacht.*
       % endif
-  - Angaben ändern: Probenwochenende
-    button: |
+      
       ## Besonderheiten Verpflegung etc.
 
       % for zeile in get_pwe_versorgung():

@@ -29,6 +29,9 @@ data:
 
   # Bezeichnung der Arbeitsphase bzw. des Projektes.
   Arbeitsphase: Aida 2023
+  # Dies ist ein Zusatzprojekt. Mitspielende werden nicht in die Mitgliederliste
+  # eingetragen.
+  Projekt: true
 
   # Speichert alle angegebenen Daten in der Tabelle mit dieser ID ab. Die
   # 'Bibliothek' gibt die ID einer Dokumentenbibliothek in SharePoint an, in der

@@ -89,7 +89,11 @@ Mailingliste hinzugefügt. Der Elternverteiler ist
 % endif
 
 ### Mailingliste (Mitglieder)
-% if status == "gast":
+% if daten.get("Projekt", False):
+Dies ist ein Zusatz-Projekt. Mitspielende werden nicht auf der
+Mitglieder-Mailingliste **${ mailingliste_mitglieder['email'] }** eingetragen.
+In diesem Fall wird diese Aktion übersprungen.
+% elif status == "gast":
 Aushilfen werden nicht auf der Mitglieder-Mailingliste
 **${ mailingliste_mitglieder['email'] }** eingetragen. In diesem Fall wird
 diese Aktion übersprungen.

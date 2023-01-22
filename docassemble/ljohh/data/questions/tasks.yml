@@ -69,7 +69,7 @@ code: |
 # A task that adds the member email to a mailing list (but only for true
 # members).
 code: |
-  if testmodus or status == "gast":
+  if testmodus or status == "gast" or daten.get('Projekt', False):
     register_member_email_task = None
   else:
     register_member_email_task = background_action(
