@@ -6,8 +6,9 @@ unterschreibe beide Seiten (wenn Du minderjährig bist unbedingt auch ein
 Elternteil beide Seiten unterschreiben lassen) und sende sie per Mail an
 Caroline Steinhagen/Projektleitung:
 [steinhagen@lmr-hh.de](mailto:steinhagen@lmr-hh.de). Erst wenn die
-Unterschriften vorliegen ist die Anmeldung vollständig abgeschlossen!
-
+Unterschriften vorliegen ist die Anmeldung vollständig abgeschlossen!  
+Minderjährige müssen das Anmeldeformular zusätzlich bei der ersten Probe mit den
+Unterschriften in Papierform bei Caroline abgeben.
 
 # Allgemeines
 Die Firma FKP Scorpio produziert eine Inszenierung der Oper „Aida“ als Show

@@ -9,12 +9,14 @@ subquestion: |
   </div>
   % endif
   
-  Die Firma FKP Scorpio produziert eine Inszenierung der Oper „Aida“ als Show
-  für große Arenen, die 2024 auf Europatournee geht. Hierfür werden am 1.3.2023
-  Videoaufnahmen für einen Werbetrailer mit den Originalkulissen in der
+  Die Firma FKP Show Creations produziert eine Inszenierung der Oper „Aida“ als
+  Show für große Arenen, die 2024 auf Europatournee geht. Hierfür werden am
+  1.3.2023 Videoaufnahmen für einen Werbetrailer mit den Originalkulissen in der
   Barclayarena aufgenommen. Das LJO Hamburg wird in dem Videotrailer das
   Orchester darstellen und Auszüge aus der Oper „Aida“ playback spielen (also am
   Ende im Werbetrailer zu sehen, aber nicht zu hören sein).
+  
+  ${ action_button_html('https://fkpshowcreations.com/de/news/detail/pressemitteilung/', label='Pressemitteilung ansehen', color='secondary', new_window=True) }
   
   Als Gegenleistung erhält das LJO Gelder für die Orchesterkasse, welche für die
   Durchführung der Blockarbeitsphase dringend benötigt werden. Die Europatournee
@@ -29,10 +31,18 @@ subquestion: |
   Dirigent: Michael Ellis Ingram (1. Kapellmeister Theater Schwerin, Dozent an
   der HfMT HH für Orchesterdirigieren).
   
+  <div class="alert alert-warning" role="alert">
+  Wichtig: Aus Gründen des Jugendschutzgesetzes dürfen bei der Produktion nur
+  Musiker*innen dabei sein, die mind. 15 Jahre alt sind und mind. das achte
+  Schuljahr vollendet haben.
+  </div>
+  
   ### Programm
   
-  Es werden Ausschnitte aus Verdis Oper "Aida" gespielt. Welche Ausschnitte
-  genau muss noch festgelegt werden.
+  Es werden Ausschnitte aus Verdis Oper "Aida" gespielt. Welche Ausschnitte genau
+  muss noch festgelegt werden würde ich ersetzen durch Die Noten erhalten wir
+  Anfang Februar (Prélude + ca. 3 weitere Ausschnitte).
+
   
   ### Teilnahmebeitrag/Besonderheiten:
   
@@ -50,7 +60,9 @@ subquestion: |
      eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
   3. Schicke das PDF, das du am Ende dieser Anmeldung per E-Mail bekommst,
      unterschrieben (bei Minderjährigen auch die Eltern) an
-     [Caroline](mailto:steinhagen@lmr-hh.de). 
+     [Caroline](mailto:steinhagen@lmr-hh.de). Bei Minderjährigen müssen auch die
+     Eltern unterschreiben und das Anmeldeformular muss zusätzlich bei der ersten
+     Probe (mit den Unterschriften) in Papierform bei Caroline abgegeben werden.
   4. Falls eine Teilnahme nicht möglich ist, meldet sich der Vorstand oder
      dein\*e Stimmführer\*in bei dir.
 under: |
@@ -165,43 +177,17 @@ fields:
     datatype: area
     required: false
 ---
-id: aida-2023/jugendschutz
-field: Jugendschutz
-section: Jugend- und Datenschutz
-question: Jugendschutz
-subquestion: |
-  Das LJO Hamburg befindet sich in der Trägerschaft des Landesmusikrates Hamburg
-  und wird mit öffentlichen Geldern gefördert. Minderjährige Musiker/innen
-  müssen sich an das Jugendschutzgesetz (JuSchG) halten, das u.a. den Umgang mit
-  Alkohol regelt. Darüber hinaus gelten im LJO auch für volljährige strengere
-  Regeln was den Alkoholkonsum angeht. Es gilt:
-
-  - Kein Alkohol für Jugendliche unter 16 Jahren. 
-  - Jugendliche zwischen 16 und 18 Jahren dürfen in Maßen Bier, Wein und Sekt in
-    der Öffentlichkeit konsumieren.
-  - **Harter Alkohol, Mixgetränke und Spirituosen sind für alle Teilnehmenden
-    untersagt.**
-  - Sonstige Drogen sind tabu. Die Verteilung oder Einnahme von sonstigen Drogen
-    führen zu einem sofortigen Ausschluss von der Arbeitsphase.
-
-  Des Weiteren ist Alkoholkonsum vor oder während Konzertauftritten untersagt.
-
-  Für minderjährige Jugendliche gilt bei Veranstaltungen außerhalb von Hamburg:
-  Jugendliche ab 16 Jahren dürfen in einer Gruppe von mindestens drei Personen
-  ohne Betreuer den Veranstaltungs- / Probenort nach vorheriger Abmeldung bei den
-  Betreuer/innen verlassen. Kinder und Jugendliche unter 16 Jahren dürfen den
-  Veranstaltungs- / Probenort ohne Betreuer/innen nicht verlassen. 
-
-  Verstöße gegen diese Regeln oder wiederholt unangemessenes Verhalten können
-  zum Ausschluss von Konzerten oder/und der Mitwirkung im Orchester führen.
-buttons:
-  - Einverstanden: continue
----
 id: aida-2023/datenschutz
 field: Datenschutz
 section: Jugend- und Datenschutz
-question: Datenschutz
+question: Verhaltensregeln und Datenschutz
 subquestion:
+  Während der Proben und des gesamten Aufnahmetages ist das Konsumieren von
+  Alkohol und jeglicher Drogen für alle Teilnehmenden tabu.
+
+  Verstöße gegen diese Regeln oder wiederholt unangemessenes Verhalten können
+  zum Ausschluss von Konzerten oder/und der Mitwirkung im Orchester führen.
+
   Um die erfolgreiche Durchführung der Arbeitsphase zu gewährleisten, brauchen
   wir deine Zustimmung zu den folgenden Punkten.
 fields:
