@@ -1,0 +1,364 @@
+id: aida-2023/einleitung
+field: Einleitung
+question: Anmeldung zum Aida-Projekt 2023
+subquestion: |
+  % if testmodus:
+  <div class="alert alert-warning" role="alert">
+  Die Anmeldung wird im Testmodus ausgefüllt. Die Ergebnisse werden nicht
+  automatisch übermittelt.
+  </div>
+  % endif
+  
+  Die Firma FKP Show Creations produziert eine Inszenierung der Oper „Aida“ als
+  Show für große Arenen, die 2024 auf Europatournee geht. Hierfür werden am
+  1.3.2023 Videoaufnahmen für einen Werbetrailer mit den Originalkulissen in der
+  Barclayarena aufgenommen. Das LJO Hamburg wird in dem Videotrailer das
+  Orchester darstellen und Auszüge aus der Oper „Aida“ playback spielen (also am
+  Ende im Werbetrailer zu sehen, aber nicht zu hören sein).
+  
+  ${ action_button_html('https://fkpshowcreations.com/de/news/detail/pressemitteilung/', label='Pressemitteilung ansehen', color='secondary', new_window=True) }
+  
+  Als Gegenleistung erhält das LJO Gelder für die Orchesterkasse, welche für die
+  Durchführung der Blockarbeitsphase dringend benötigt werden. Die Europatournee
+  wird ein Profiorchester spielen, da die Produktion wochenlang unterwegs sein
+  wird. Es handelt sich bei dem Projekt also lediglich um zwei Proben- und den
+  Aufnahmetermin für das LJO:
+  
+  - Mo. 20.2. 18-21.30 h Stimm- und/oder Tuttiproben
+  - Mo. 27.2. 18-21.30 h Tuttiprobe
+  - Mi. 1.3. 12-22 h Videoaufnahmen in der Barclayarena
+
+  Dirigent: Michael Ellis Ingram (1. Kapellmeister Theater Schwerin, Dozent an
+  der HfMT HH für Orchesterdirigieren).
+  
+  <div class="alert alert-warning" role="alert">
+  Wichtig: Aus Gründen des Jugendschutzgesetzes dürfen bei der Produktion nur
+  Musiker*innen dabei sein, die mind. 15 Jahre alt sind und mind. das achte
+  Schuljahr vollendet haben.
+  </div>
+  
+  ### Programm
+  
+  Es werden Ausschnitte aus Verdis Oper "Aida" gespielt. Welche Ausschnitte genau
+  muss noch festgelegt werden würde ich ersetzen durch Die Noten erhalten wir
+  Anfang Februar (Prélude + ca. 3 weitere Ausschnitte).
+
+  
+  ### Teilnahmebeitrag/Besonderheiten:
+  
+  Für die Teilnahme an dem Projekt muss kein Teilnehmerbeitrag gezahlt werden.
+  
+  Verpflegung während des Aufnahmetages wird von FKP Scorpio gestellt. Es müssen
+  keine Kostüme getragen werden, die Orchesterkleidung ist komplett schwarz
+  (weitere Infos zum Ablauf des Drehtages folgen).
+
+
+  ### Wie melde ich mich an?
+
+  1. Fülle dieses Online-Formular aus.
+  2. Nachdem du das Online-Formular abgeschickt hast, erhältst du per E-Mail
+     eine Bestätigung mit deinem Anmeldungsformular als PDF im Anhang.
+  3. Schicke das PDF, das du am Ende dieser Anmeldung per E-Mail bekommst,
+     unterschrieben (bei Minderjährigen auch die Eltern) an
+     [Caroline](mailto:steinhagen@lmr-hh.de). Bei Minderjährigen müssen auch die
+     Eltern unterschreiben und das Anmeldeformular muss zusätzlich bei der ersten
+     Probe (mit den Unterschriften) in Papierform bei Caroline abgegeben werden.
+  4. Falls eine Teilnahme nicht möglich ist, meldet sich der Vorstand oder
+     dein\*e Stimmführer\*in bei dir.
+under: |
+  <small>
+  Zur Durchführung der Arbeitsphase erfragen wir einige persönliche Daten. Alle
+  Angaben, die in diesem Formular gemacht werden, werden aber nur zur
+  Durchführung von Arbeitsphasen des LJO Hamburg verwendet und werden nicht an
+  Dritte weitergegeben. Die Daten werden gemäß unserer [Datenschutzhinweise](
+  https://anmeldung.lmr-hh.de/packagestatic/docassemble.lmrhh/datenschutzhinweise.html)
+  verarbeitet. Falls du dazu Fragen hast, schreib gerne an den
+  [Vorstand](mailto:vorstand@ljo-hamburg.de).
+  </small>
+---
+id: aida-2023/persoenliche-daten
+field: Kontaktdaten
+section: Persönliche Daten
+question: Persönliche Daten
+subquestion: |
+  Um dich im Laufe der Arbeitsphase kontaktieren zu können, benötigen wir von
+  dir folgende einige Daten.
+fields:
+  - Wie lautet dein Vorname?: mitglied.name.first
+  - Wie lautet dein Nachname?: mitglied.name.last
+  - Wie ist deine E-Mail Adresse?: mitglied.email
+    datatype: email
+    help: |
+      Du erhältst per E-Mail wichtige Informationen zur Arbeitsphase und
+      Konzerten.
+  - Über welche Telefonnummer bist du erreichbar?: mitglied.phone_number
+    validate: >
+      lambda x: phone_number_is_valid(x, "DE") or validation_error('Bitte gib eine gültige Telefonnummer ein.')
+  - An welcher Adresse wohnst du?: mitglied.address.address
+    hint: Bitte Straße und Hausnummer angeben
+  - Wie lautet deine Postleitzahl?: mitglied.address.zip
+  - In welchem Ort wohnst du?: mitglied.address.city
+    default: Hamburg
+  - Wann wurdest du geboren?: mitglied.birthdate
+    datatype: date
+  - Welches Instrument spielst du?: mitglied.instrument
+    choices:
+      - Flöte
+      - Oboe
+      - Klarinette
+      - Fagott
+      - Trompete
+      - Horn
+      - Posaune
+      - Tuba
+      - Klavier
+      - Harfe
+      - Schlagwerk / Pauke
+      - Geige
+      - Bratsche
+      - Cello
+      - Kontrabass
+  - Wünscht du dir eine bestimmte Stimme zu spielen?: mitglied.stimme
+    hint: 1. Geige, Kontrafagott, 2. Trompete, ...
+    required: False
+    help: |
+      Deine Angabe ist keine Garantie, dass du diese Stimme spielen wirst. Wir
+      werden eine Entscheidung unter Berücksichtigung aller Wünsche treffen.
+---
+id: aida-2023/elternkontakt
+field: Elternkontakt
+section: Persönliche Daten
+question: Kontakt der Eltern
+subquestion: |
+  Da du noch minderjährig bist, brauchen wir sowohl den Kontakt als auch das
+  Einverständnis deiner Eltern, dass du im LJO Hamburg mitspielst. Deine Eltern
+  erhalten nicht alle, aber die wichtigsten Informationen zur Arbeitsphase.
+fields:
+  - Vorname: eltern.name.first
+  - Nachname: eltern.name.last
+    default: ${ mitglied.name.last }
+  - E-Mail: eltern.email
+    datatype: email
+  - Telefon: eltern.phone_number
+---
+id: aida-2023/termine
+field: Termine
+section: Projektdetails
+question: Projektdetails
+subquestion: |
+  Die folgenden Termine sind geplant:
+  
+  - Mo. 20.2. 18-21.30 h Stimm- und/oder Tuttiproben
+  - Mo. 27.2. 18-21.30 h Tuttiprobe
+  - Mi. 1.3. 12-22 h Videoaufnahmen in der Barclayarena
+  
+  Für die Teilnahme an dem Projekt muss kein Teilnehmerbeitrag gezahlt werden.
+
+  Verpflegung während des Aufnahmetages wird von FKP Scorpio gestellt. Es müssen
+  keine Kostüme getragen werden, die Orchesterkleidung ist komplett schwarz
+  (weitere Infos zum Ablauf des Drehtages folgen).
+fields:
+  - ? Wenn Du möchtest, kann Du uns hier Details zu den Terminen schreiben, falls es
+      bei Dir Besonderheiten zu berücksichtigen gibt.
+    : anmerkungen
+    input type: area
+    required: False
+  - "Ich möchte folgendes angeben": pwe_versorgung
+    datatype: checkboxes
+    required: false
+    choices:
+      - "Ich möchte vegetarisch versorgt werden": vegetarisch
+      - "Ich möchte vegan versorgt werden": vegan
+    none of the above: false
+  - ? Bitte gib hier Unverträglichkeiten, Allergien, chronische Krankheiten,
+      Medikamenteneinnahmen oder sonstige Besonderheiten an, die berücksichtigt
+      werden sollen.
+    : pwe_sonstiges
+    datatype: area
+    required: false
+---
+id: aida-2023/datenschutz
+field: Datenschutz
+section: Jugend- und Datenschutz
+question: Verhaltensregeln und Datenschutz
+subquestion:
+  Während der Proben und des gesamten Aufnahmetages ist das Konsumieren von
+  Alkohol und jeglicher Drogen für alle Teilnehmenden tabu.
+  
+  
+  Verstöße gegen diese Regeln oder wiederholt unangemessenes Verhalten können
+  zum Ausschluss von Konzerten oder/und der Mitwirkung im Orchester führen.
+  
+  
+  Um die erfolgreiche Durchführung der Arbeitsphase zu gewährleisten, brauchen
+  wir deine Zustimmung zu den folgenden Punkten.
+fields:
+  - note:
+      Die Teilnahmebedingungen können unter
+      <https://ljo-hamburg.de/Teilnahmebedingungen> eingesehen werden.
+  - ? Ich habe die Teilnahmebedingungen gelesen und akzeptiere sie
+    : bedingungen.tnbedingungen
+    datatype: yesnowide
+    validate: >
+      lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
+  - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
+      drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
+      bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
+      dürfen den Veranstaltungsort ohne Betreuer nicht verlassen.
+    : bedingungen.veranstaltungsort
+    datatype: yesnowide
+    show if: {code: minderjaehrig}
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
+  - ? >
+      Ich/Wir gebe(n) dem Landesmusikrat Hamburg e.V. (LMR HH) mein/unser
+      Einverständnis zu Rundfunk- und Fernsehaufnahmen, Aufzeichnungen in Ton
+      und Bild (hier insbesondere: Videoaufnahmen für einen Werbetrailer für die
+      Opernproduktion „Aida“ von FKP Scorpio), die im Zusammenhang mit dem LJO
+      Hamburg gemacht werden, sowie deren Vervielfältigung für
+      Dokumentationszwecke und die Presse- und Öffentlichkeitsarbeit inkl.
+      Social Media des LMR HH. Ich/Wir übertrage(n) die hieraus entstehenden
+      Rechte auf den LMR HH.
+    : bedingungen.aufnahmen
+    datatype: yesnowide
+    validate: >
+      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
+  - ? Ich erkläre mich damit einverstanden, zukünftig Informationen des
+      Landesmusikrates Hamburg zum Thema LJO HH (z.B. LJO-Newsletter) sowie
+      weitere Informationen zu erhalten.
+    : bedingungen.newsletter
+    datatype: yesnowide
+---
+# Berechnet, ob die Teilnahmebedingungen akzeptiert wurden. Dies kann benutzt
+# werden, um ggf. die notwendige Frage nach den Bedingungen zu stellen, falls
+# bestimmte Bedingungen noch nicht akzeptiert sind.
+code: |
+  bedingungen.akzeptiert = all([
+    bedingungen.tnbedingungen,
+    bedingungen.aufnahmen,
+    bedingungen.newsletter
+  ])
+  if minderjaehrig:
+    bedingungen.akzeptiert = (
+      bedingungen.akzeptiert and bedingungen.veranstaltungsort
+    )
+---
+id: aida-2023/kontrolle
+continue button field: Kontrolle
+section: Deine Anmeldung
+question: Deine Anmeldung zum Aida-Projekt 2023
+review:
+  - note: |
+      % if testmodus:
+      <div class="alert alert-warning" role="alert">
+      Die Anmeldung wird im Testmodus ausgefüllt. Die Ergebnisse werden nicht
+      automatisch übermittelt. Wenn du auf "Anmeldung abschicken" klickst,
+      bekommst du eine Zusammenfassung der automatischen Aktionen.
+      </div>
+      % endif
+      Bevor du die Anmeldung abschickst, hast du nun noch einmal die Möglichkeit,
+      deine Angaben zu überprüfen. Nachdem du die Anmeldung abgeschickt hast,
+      bekommst du eine Bestätigung per E-Mail.
+  - Persönliche Daten ändern:
+      - Kontaktdaten
+      - {recompute: [minderjaehrig, bedingungen.akzeptiert]}
+    button: |
+      ## Persönliche Daten
+
+      |Feld          |Deine Angabe                |
+      |--------------|----------------------------|
+      |Name          | ${ mitglied.name }         |
+      |Telefonnummer | ${ mitglied.phone_number } |
+      |E-Mail        | ${ mitglied.email }        |
+      |Adresse       | ${ adresse(mitglied) }     |
+      |Geburtsdatum  | ${ mitglied.birthdate }    |
+      |Instrument    | ${ mitglied.instrument }   |
+  - Kontaktdaten ändern: Elternkontakt
+    show if: minderjaehrig
+    button: |
+      Da du noch minderjaehrig bist, hast du folgende Kontaktdaten deiner Eltern
+      angegeben:
+
+      |Feld          |Deine Angabe                |
+      |--------------|----------------------------|
+      |Name          | ${ eltern.name }           |
+      |E-Mail        | ${ eltern.email }          |
+      |Telefonnummer | ${ eltern.phone_number }   |
+  - Angaben ändern: Termine
+    button: |
+      ## Projektdetails
+      
+      % if anmerkungen:
+      Du hast folgende Angaben zu den Terminen der Arbeitsphase gemacht:
+      <p><div class="card">
+      <div class="card-header">Weitere Anmerkungen</div>
+      <div class="card-body">
+      ${ verbatim(anmerkungen.strip()).replace('\n', '<br />') }
+      </div>
+      </div></p>
+      % else:
+      *Du hast keine weiteren Anmerkungen zu den Terminen der Arbeitsphase
+      gemacht.*
+      % endif
+      
+      ## Besonderheiten Verpflegung etc.
+
+      % for zeile in get_pwe_versorgung():
+        - ${ zeile }
+      % endfor
+
+      % if pwe_sonstiges.strip():
+        <p><div class="card card-body">
+        ${ verbatim(pwe_sonstiges.strip()).replace('\n', '<br />') }
+        </div></p>
+      % endif
+      % if not pwe_angaben():
+        *Du hast keine weiteren Angaben zum gemacht*
+      % endif
+  - Erneut ansehen: Datenschutz
+    button: |
+      ## Teilnahmebedingungen
+
+      Du hast den Teilnahmebedingungen **zugestimmt**.
+  - note: |
+      ## Unterschrift
+
+      Wenn du die Anmeldung abschickst, bekommst du per E-Mail eine PDF-Version
+      der Anmeldung. Drucke das PDF aus, unterschreibe es und schicke die
+      unterschriebene Anmeldung an unsere Projektleitung. Die E-Mail-Adresse
+      erhältst du in der Bestätigungsmail.
+continue button label: Anmeldung abschicken
+---
+id: aida-2023/warten
+event: Warten
+section: Deine Anmeldung
+prevent going back: True
+question: Anmeldung abschicken...
+subquestion:
+  Deine Anmeldung wird gerade abgeschickt. Dies kann einen Moment dauern. Bitte
+  lass dieses Fenster geöffnet, bis die Anmeldung erfolgreich abgeschickt wurde.
+---
+id: aida-2023/bestaetigung
+event: Fertig
+section: Deine Anmeldung
+prevent going back: True
+question: Deine Anmeldung
+subquestion:
+  Deine Anmeldung wurde erfolgreich abgeschickt. Du hast eine Kopie per E-Mail
+  bekommen. Du kannst deine Anmeldung auch direkt hier
+  [herunterladen](${ anmeldung.pdf.url_for() }). Wir freuen uns darauf, mit
+  dir zusammenzuspielen.
+
+  Klicke auf "Fertig", um die Anmeldung zu beenden.
+buttons:
+  - Fertig: exit
+---
+id: aida-2023/testergebnisse
+event: Testergebnisse
+section: Deine Anmeldung
+prevent going back: True
+question: Testmodus
+subquestion: ${ testergebnis }
+buttons:
+  - Fertig: exit
+---
