@@ -121,7 +121,6 @@ code: |
     "Vorname": mitglied.name.first,
     "Nachname": mitglied.name.last,
     "Instrument": mitglied.instrument,
-    "Stimmwunsch": mitglied.stimme,
     "E-Mail": mitglied.email,
     "Telefonnummer": mitglied.phone_number,
     "Adresse": adresse(mitglied),

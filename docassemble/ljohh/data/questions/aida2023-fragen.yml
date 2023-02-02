@@ -39,18 +39,23 @@ subquestion: |
   
   ### Programm
   
-  Es werden Ausschnitte aus Verdis Oper "Aida" gespielt. Welche Ausschnitte genau
-  muss noch festgelegt werden würde ich ersetzen durch Die Noten erhalten wir
-  Anfang Februar (Prélude + ca. 3 weitere Ausschnitte).
+  Es werden Ausschnitte aus Verdis Oper "Aida" gespielt. Die Noten erhalten wir
+  voraussichtlich am 7. Februar. Es wird ca. 6-10 Minuten Musik gespielt (Prélude
+  + ca. 3 weitere Ausschnitte).
+  
+  Es wird mit folgender Besetzung gespielt (es werden nicht alle Instrumente aus
+  der gesamten Oper benötigt): 3 Flöten (1 Piccolo), 2 Oboen, 2 Klarinetten,
+  2 Fagotte, 4 Hörner, 2 Trompeten, 3 Posaunen, Tuba, 1 Pauke, 1 Schlagwerk,
+  Streicher.
 
   
   ### Teilnahmebeitrag/Besonderheiten:
   
   Für die Teilnahme an dem Projekt muss kein Teilnehmerbeitrag gezahlt werden.
   
-  Verpflegung während des Aufnahmetages wird von FKP Scorpio gestellt. Es müssen
-  keine Kostüme getragen werden, die Orchesterkleidung ist komplett schwarz
-  (weitere Infos zum Ablauf des Drehtages folgen).
+  Verpflegung während des Aufnahmetages wird von FKP Show Creations gestellt. Es
+  müssen keine Kostüme getragen werden, die Orchesterkleidung ist komplett
+  schwarz (weitere Infos zum Ablauf des Drehtages folgen).
 
 
   ### Wie melde ich mich an?
@@ -118,12 +123,6 @@ fields:
       - Bratsche
       - Cello
       - Kontrabass
-  - Wünscht du dir eine bestimmte Stimme zu spielen?: mitglied.stimme
-    hint: 1. Geige, Kontrafagott, 2. Trompete, ...
-    required: False
-    help: |
-      Deine Angabe ist keine Garantie, dass du diese Stimme spielen wirst. Wir
-      werden eine Entscheidung unter Berücksichtigung aller Wünsche treffen.
 ---
 id: aida-2023/elternkontakt
 field: Elternkontakt
@@ -144,19 +143,13 @@ fields:
 id: aida-2023/termine
 field: Termine
 section: Projektdetails
-question: Projektdetails
+question: Termine
 subquestion: |
   Die folgenden Termine sind geplant:
   
   - Mo. 20.2. 18-21.30 h Stimm- und/oder Tuttiproben
   - Mo. 27.2. 18-21.30 h Tuttiprobe
   - Mi. 1.3. 12-22 h Videoaufnahmen in der Barclayarena
-  
-  Für die Teilnahme an dem Projekt muss kein Teilnehmerbeitrag gezahlt werden.
-
-  Verpflegung während des Aufnahmetages wird von FKP Scorpio gestellt. Es müssen
-  keine Kostüme getragen werden, die Orchesterkleidung ist komplett schwarz
-  (weitere Infos zum Ablauf des Drehtages folgen).
 fields:
   - ? Wenn Du möchtest, kann Du uns hier Details zu den Terminen schreiben, falls es
       bei Dir Besonderheiten zu berücksichtigen gibt.
@@ -187,10 +180,10 @@ subquestion:
   
   
   Verstöße gegen diese Regeln oder wiederholt unangemessenes Verhalten können
-  zum Ausschluss von Konzerten oder/und der Mitwirkung im Orchester führen.
+  zum Ausschluss vom Projekt oder/und der Mitwirkung im Orchester führen.
   
   
-  Um die erfolgreiche Durchführung der Arbeitsphase zu gewährleisten, brauchen
+  Um die erfolgreiche Durchführung des Projektes zu gewährleisten, brauchen
   wir deine Zustimmung zu den folgenden Punkten.
 fields:
   - note:
@@ -201,21 +194,12 @@ fields:
     datatype: yesnowide
     validate: >
       lambda x: x or validation_error('Du musst die Teilnahmebedingungen akzeptieren')
-  - ? Hiermit erlaube ich meinem Kind, dass es in einer Gruppe von mindestens
-      drei Personen den Veranstaltungsort ohne Betreuer nach vorheriger Abmeldung
-      bei den Betreuern verlassen darf.  Kinder und Jugendliche unter 16 Jahren
-      dürfen den Veranstaltungsort ohne Betreuer nicht verlassen.
-    : bedingungen.veranstaltungsort
-    datatype: yesnowide
-    show if: {code: minderjaehrig}
-    validate: >
-      lambda x: x or validation_error('Dieses Feld muss ausgewählt sein')
   - ? >
       Ich/Wir gebe(n) dem Landesmusikrat Hamburg e.V. (LMR HH) mein/unser
       Einverständnis zu Rundfunk- und Fernsehaufnahmen, Aufzeichnungen in Ton
       und Bild (hier insbesondere: Videoaufnahmen für einen Werbetrailer für die
-      Opernproduktion „Aida“ von FKP Scorpio), die im Zusammenhang mit dem LJO
-      Hamburg gemacht werden, sowie deren Vervielfältigung für
+      Opernproduktion „Aida“ von FKP Show Creations), die im Zusammenhang mit
+      dem LJO Hamburg gemacht werden, sowie deren Vervielfältigung für
       Dokumentationszwecke und die Presse- und Öffentlichkeitsarbeit inkl.
       Social Media des LMR HH. Ich/Wir übertrage(n) die hieraus entstehenden
       Rechte auf den LMR HH.
@@ -238,10 +222,6 @@ code: |
     bedingungen.aufnahmen,
     bedingungen.newsletter
   ])
-  if minderjaehrig:
-    bedingungen.akzeptiert = (
-      bedingungen.akzeptiert and bedingungen.veranstaltungsort
-    )
 ---
 id: aida-2023/kontrolle
 continue button field: Kontrolle
