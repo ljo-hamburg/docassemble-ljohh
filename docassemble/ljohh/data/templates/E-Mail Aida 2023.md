@@ -11,9 +11,9 @@ Minderjährige müssen das Anmeldeformular zusätzlich bei der ersten Probe mit 
 Unterschriften in Papierform bei Caroline abgeben.
 
 # Allgemeines
-Die Firma FKP Scorpio produziert eine Inszenierung der Oper „Aida“ als Show
-für große Arenen, die 2024 auf Europatournee geht. Hierfür werden am 1.3.2023
-Videoaufnahmen für einen Werbetrailer mit den Originalkulissen in der
+Die Firma FKP Show Creations produziert eine Inszenierung der Oper „Aida“ als
+Show für große Arenen, die 2024 auf Europatournee geht. Hierfür werden am 
+1.3.2023 Videoaufnahmen für einen Werbetrailer mit den Originalkulissen in der
 Barclayarena aufgenommen. Das LJO Hamburg wird in dem Videotrailer das
 Orchester darstellen und Auszüge aus der Oper „Aida“ playback spielen (also am
 Ende im Werbetrailer zu sehen, aber nicht zu hören sein).
@@ -48,11 +48,8 @@ Bereich der LJO-Website [nachlesen](https://ljo-hamburg.de/interner-bereich/frei
 **Wenn du ohne Freistellung bei einer Probe fehlst, kann dich der Vorstand von
 der Teilnahme am Konzert ausschließen.**
 
-# Was nun?
 
-Unterschreibe das PDF im Anhang auf beiden Seiten (ggf. auch von den Eltern
-unterschreiben lassen) und schicke es an Caroline Steinhagen. Alle weiteren
-Informationen erhältst du dann per E-Mail.  
+  
 Wir freuen uns auf das gemeinsame Projekt. Solltest du irgendwelche Fragen
 haben, schreibe uns immer gerne:
 
