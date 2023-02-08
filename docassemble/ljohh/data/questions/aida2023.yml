@@ -39,7 +39,7 @@ data:
   # Excel-Tabelle in der Datei an, in dem neue Anmeldungen eingefügt werden sollen.
   Anmeldungen:
     Bibliothek: b!ptJtfn5sZ0SqLpjCxjhwrczSgtVFLutIiRz0QimEgU1biPS6NbFxT5aRfSmFNRM7
-    Dokument: 01Z4U3TN2BI636ELMG5FAKGJVUY7VTSMNK
+    Dokument: 01Z4U3TN3ZYDOLVSXVNBDJOOKUEDJDNFPL
     Tabelle: "{5BBD3C0B-4179-4BE4-824A-264B475E0731}"
 
   # Die E-Mail Adresse des Mitglieds sowie der Eltern wird der entsprechenden
