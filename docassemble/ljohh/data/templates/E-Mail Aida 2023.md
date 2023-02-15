@@ -24,7 +24,6 @@ wird ein Profiorchester spielen, da die Produktion wochenlang unterwegs sein
 wird. Es handelt sich bei dem Projekt also lediglich um zwei Proben- und den
 Aufnahmetermin für das LJO:
   
-- Mo. 20.2. 18-21.30 h Stimm- und/oder Tuttiproben
 - Mo. 27.2. 18-21.30 h Tuttiprobe
 - Mi. 1.3. 12-22 h Videoaufnahmen in der Barclayarena
 
