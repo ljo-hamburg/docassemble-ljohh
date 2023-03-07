@@ -39,18 +39,15 @@ der Teilnahme am Konzert ausschließen.**
 # Teilnehmerbeitrag
 Um Kosten für Transport (Busse HH-Schlitz-HH), Unterkunft (Mehrbettzimmer 7
 Nächte), Verpflegung (Vollpension), Noten, Dozenten, Konzertsäle zu decken,
-müssen wir einen Teilnehmerbeitrag erheben. Der Maximalbeitrag wird bei 250
-Euro liegen (zum Vergleich: die Gesamtkosten pro Teilnehmer\*in für die
-Blockarbeitsphase belaufen sich auf ca. 850 Euro). Es wird daran gearbeitet,
-dass der Beitrag von 250 Euro noch etwas reduziert werden kann, dies können
-wir zum jetzigen Zeitpunkt aber nicht fest zusagen. Der genaue Betrag wird
-voraussichtlich im Februar feststehen.
+müssen wir einen Teilnehmerbeitrag von 220 € erheben (zum Vergleich: die
+Gesamtkosten pro Teilnehmer\*in für die Blockarbeitsphase belaufen sich auf
+ca. 850 Euro).
 
+Du erhältst bald in einer separaten E-Mail eine Rechnung für den Betrag.
 Bitte überweise den Betrag fristgemäß an den Landesmusikrat Hamburg nach
-Erhalt der Rechnung, welche Dir voraussichtlich bis Ende Februar zugemailt
-wird. In Einzelfällen kann über eine Bezuschussung des Teilnehmerbeitrages
-entschieden werden. Bitte setze Dich dafür rechtzeitig mit der Projektleitung
-Caroline Steinhagen (steinhagen@lmr-hh.de) in Verbindung.
+Erhalt der Rechnung. In Einzelfällen kann über eine Bezuschussung des
+Teilnehmerbeitrages entschieden werden. Bitte setze Dich dafür rechtzeitig
+mit der Projektleitung Caroline Steinhagen (steinhagen@lmr-hh.de) in Verbindung.
 
 # Was nun?
 
